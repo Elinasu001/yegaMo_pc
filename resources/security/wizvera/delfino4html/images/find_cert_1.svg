@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="76px" viewBox="0 0 102 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>search/nomal@1x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="search/nomal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#E4E4E4" fill="#FFFFFF" x="0.5" y="0.5" width="101" height="75"></rect>
+        <g id="Group-5" transform="translate(32.000000, 15.000000)" fill="#9F9F9F" fill-rule="nonzero">
+            <path d="M31.51206,27.91774 L37.11346,32.11634 L35.91386,33.71674 L30.31246,29.51814 L31.51206,27.91774 Z M16,0 C24.8,0 32,7.2 32,16 C32,19.8337319 30.6334969,23.3637965 28.3635164,26.1271678 L29.47611,26.96045 L28.87621,27.76055 L27.703903,26.8813421 C24.7773627,30.0257603 20.6080413,32 16,32 C7.2,32 0,24.8 0,16 C0,7.2 7.2,0 16,0 Z M16,1 C7.7,1 1,7.7 1,16 C1,24.3 7.7,31 16,31 C24.3,31 31,24.3 31,16 C31,7.8 24.3,1 16,1 Z" id="locate"></path>
+        </g>
+    </g>
+</svg>

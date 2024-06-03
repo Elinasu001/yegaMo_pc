@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="76px" viewBox="0 0 102 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>smart/ready@1x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="smart/ready" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#E4E4E4" fill="#F6F6F6" x="0.5" y="0.5" width="101" height="75"></rect>
+        <g id="Group-6" transform="translate(37.000000, 14.000000)" fill-rule="nonzero">
+            <path d="M25.5,0 C27.4,0 29,1.6 29,3.5 L29,31.5 C29,33.4 27.4,35 25.5,35 L10.5,35 C8.6,35 7,33.4 7,31.5 L7,3.5 C7,1.6 8.6,0 10.5,0 L25.5,0 Z M28,30 L8,30 L8,31.5 C8,32.9 9.1,34 10.5,34 L25.5,34 C26.9,34 28,32.9 28,31.5 L28,30 Z M28,6 L8,6 L8,29 L28,29 L28,6 Z M25.5,1 L10.5,1 C9.1,1 8,2.1 8,3.5 L8,5 L28,5 L28,3.5 C28,2.1 26.9,1 25.5,1 Z" id="Combined-Shape" fill="#CCCCCC"></path>
+            <g id="Group-4" transform="translate(0.000000, 21.000000)">
+                <path d="M11.6,15 L3.3,15 C1.5,15 0,13 0,11.3 L0,3.2 C0,1.4 1.4,0 3.3,0 L11.6,0 C13.5,0 15,1.4 15,3.2 L15,11.3 C15,13 13.5,15 11.6,15 Z M3.3,1 C2,1 1,1.9 1,3.2 L1,11.3 C1,12.5 2,14 3.3,14 L11.6,14 C12.9,14 14,12.5 14,11.3 L14,3.2 C14,2 12.9,1 11.6,1 L3.3,1 Z" id="Shape" fill="#9F9F9F"></path>
+                <rect id="Rectangle" fill="#E4E4E4" x="1" y="7" width="13" height="1"></rect>
+                <rect id="Rectangle" fill="#E4E4E4" x="1" y="3" width="13" height="1"></rect>
+                <rect id="Rectangle" fill="#E4E4E4" x="1" y="11" width="13" height="1"></rect>
+                <path d="M7.6,15 L7.5,15 C6.9,15 5.1,14.8 5.1,11.6 L5.1,8.9 L5.4,8.8 C5.4,8.8 5.9,8.5 5.9,7.6 C5.9,6.6 5.4,6.1 5.3,6.1 L5.1,5.9 L5.1,5.7 L5.1,3.5 C5.1,3.4 5.1,3.2 5.1,3.1 C5.3,0.3 7,0.1 7.5,0.1 L7.6,0.1 C8.2,0.1 10,0.3 10,3.5 L10,5.9 L9.8,6.1 C9.8,6.1 9.2,6.6 9.2,7.6 C9.2,8.5 9.7,8.8 9.7,8.8 L10,8.9 L10,9.2 L10,11.6 C10,14.8 8.1,15 7.6,15 Z M6,9.4 L6,11.6 C6,12.5 6.2,14 7.4,14 L7.5,14 C8.8,14 8.9,12.5 8.9,11.6 L8.9,9.4 C8.6,9.1 8.1,8.6 8.1,7.5 C8.1,6.4 8.6,5.7 8.9,5.4 L8.9,3.5 C8.9,2.6 8.7,1.1 7.5,1.1 L7.4,1.1 C6.3,1.1 6,2.2 6,3.2 C6,3.3 6,3.4 6,3.6 L6,5.5 C6.3,5.8 6.8,6.5 6.8,7.6 C6.8,8.5 6.4,9.1 6,9.4 Z" id="Shape" fill="#E4E4E4"></path>
+                <path d="M11.6,15 L3.3,15 C1.5,15 0,13 0,11.3 L0,3.2 C0,1.4 1.4,0 3.3,0 L11.6,0 C13.5,0 15,1.4 15,3.2 L15,11.3 C15,13 13.5,15 11.6,15 Z M3.3,1 C2,1 1,1.9 1,3.2 L1,11.3 C1,12.5 2,14 3.3,14 L11.6,14 C12.9,14 14,12.5 14,11.3 L14,3.2 C14,2 12.9,1 11.6,1 L3.3,1 Z" id="Shape" fill="#CCCCCC"></path>
+            </g>
+        </g>
+        <image id="준비중" x="34" y="22" width="35" height="14" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAOCAYAAACl66WxAAAABGdBTUEAALGOfPtRkwAAAi1JREFUOBGdlT2vaVEQhte52UhQachNaGhoVCoNDQ2/0w9QqVQqlYaGhuRGRYMEzc0zue/O7H3P4eRMsq1Z87Vm3pm1fIR/dLvd/oj/bM3n878/k7+TvYuLv2J/sMHhcrnAfknFYtGcfHCC+L13lu5+v4fn8+lVCT6TyYRcLmexI4LhMJ/PY6PH42F8NpuNZYPBwJLebrfhcDiEfr8f6/CtVquh0WhYHHgludvtAp+IoilMVK/XQ6vVsm2kCsbjsfRhNpsZPxwOY9lPGQ7SYcvlMuz3+1AqlUK32/0v5C8vOR6PlgiV8VHx6XTyJgle1SeEqQ3+6/U6LnA0GgUQp2DkPr61CegFZbPZDLVazUICJ9VAJKcKSXoymZhcP+jTRPvxL5fLhoTa0+l0Au3iXPS9Xs/aGhGgUqkYdMDniaT4yN7PD/bpmfF+4imQmAzwZrOROLGix45CI3q4Wq0SBl9t2u12QqV5SwjdBiR8EVwMziKOl4uPqDyNiKqgZZ4IDrSidzOjdmNP0efz2Vyv16vdKK+nsPg2MUwc5g3UYx2u9bszI+QWi0UAFWaHeYGnNTwR3CrsiG0zA0O2got9muQAGrwn3yFsGVRmzj8d+DIj0+nUBhk7Q8YHJWOceYggeIhXUg5KyhSpH2xSIvNFBvIMPgVzDuhCxBbFyBQKBYNOV1wGrLTL3x6ve8WTOAniy6zRLhFPAXL9FSCP/5tk9Gp9hQp+Hhlv6+Xp+N7uL3/PRNFZXL9rAAAAAElFTkSuQmCC"></image>
+    </g>
+</svg>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Expires" content="-1"/>
+    <meta http-equiv="Progma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+
+    <title>::: WizIN-Delfino(공동인증서 보안 프로그램)설치 :::</title>
+
+    <script type="text/javascript" src="../jquery/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="../delfino_config.js"></script>
+    <script type="text/javascript" src="../delfino_internal.min.js"></script>
+    <script type="text/javascript" src="../delfino.js"></script>
+    <script type="text/javascript" src="./install.js"></script>
+    <link   type="text/css" href="./images/install_mini.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div id="installVP_wrap">
+    <div id="container">
+        <div><img src="images/top_logo_mini.gif" /></div>
+
+        <div id="downVP">
+            <div><img src="images/install_line_mini.gif" /></div>
+            <div id="downVP_multi">
+                <div id="msg">
+                    <ul>
+                        <li>≫ 접속PC정보: <script>document.write(delfino_getSystemInfo_mini());</script></li>
+                        <li>≫ 하단의 버튼을 눌러 프로그램을 다운로드 받아 설치 하시기 바랍니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="downVP_btn">
+                <button id="VP_btn_download" type="button" onclick="javascript:delfino_getDownload();">설치파일 다운로드</button>
+                <button id="VP_btn_downloadU" style="display:none;" type="button" onclick="javascript:delfino_getDownload('DEV');">Ubuntu용</button>
+                <button id="VP_btn_downloadF" style="display:none;" type="button" onclick="javascript:delfino_getDownload('RPM');">Fedora용</button>
+                <script type="text/javascript">
+                if (DC_platformInfo.Linux && !DC_platformInfo.Fedora && !DC_platformInfo.Ubuntu) { //Linux
+                    fn_updateElementByDisplayOFF("VP_btn_download", false);
+                    fn_updateElementByDisplayON("VP_btn_downloadU", false);
+                    fn_updateElementByDisplayON("VP_btn_downloadF", false);
+                }
+                </script>
+            </div>
+
+            <div><img src="images/install_line_mini.gif" /></div>
+            <div id="downVP_msg">
+                <ul>
+                    <li>설치가 정상적으로 되지 않는 경우에는 사용중인 브라우저를 모두 종료한뒤 [제어판]의 [프로그램 추가제거]에서 [Delfino]삭제 후에 수동설치 파일로 재 설치후  이용하십시오.</li>
+                    <li>공동인증서 프로그램 설치안내: <b><a href="http://help.wizvera.com/guide/delfino.html" target="_guide">[설치안내바로가기]</a></b></li>
+                </ul>
+            </div>
+            <div><img src="images/install_line_mini.gif" /></div>
+        </div>
+    </div>
+</div>
+
+<!-- WizIN-Delfno: 설치확인/START-->
+<div id="DC_object_install"></div>
+<script type="text/javascript">
+//<![CDATA[
+    top.document.title = "[" + Delfino.getModule() + "]" + top.document.title;
+    function SITE_goHomePage() {
+        var returnURL = instConfig.returnURL;
+        if (instConfig.returnURL == "") returnURL = instConfig.homeURL;
+
+        if (returnURL == "close") {
+            alert("WizIN-Delfino 설치가 완료되었습니다.");
+            window.close();
+        } else {
+            alert("WizIN-Delfino 설치가 완료되었습니다. 이전 페이지로 이동합니다.");
+            location.replace(returnURL);
+            //history.back();
+            //setTimeout("history.back()", 10000);
+        }
+    }
+    delfino_objectInstall(); //Delfino 설치확인스크립트 호출: 설치완료 후   SITE_goHomePage() 호출됨
+//]]>
+</script>
+<!-- WizIN-Delfno: 설치확인/END -->
+
+</body>
+</html>

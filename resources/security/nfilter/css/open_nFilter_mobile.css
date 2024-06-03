@@ -1,0 +1,424 @@
+F@charset "utf-8";
+
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+#nfilter_document {
+	width: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.nfilter_bg {
+	display: none;
+	position: absolute;
+	z-index: 999999;
+	width: 100%;
+	min-height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(102, 102, 102, .4);
+}
+
+.nfilter_main {
+	outline: none;
+	display: none;
+	position: absolute;
+	width: 320px;
+	z-index: 1000000;
+	left: 0;
+	top: 0;
+	font-size: 30px;
+	text-align: center;
+	overflow:hidden;
+	-moz-overflow: hidden;
+}
+
+.nfilter_char {
+	width: 100%;
+	height: auto;
+	background-color: #5467c2;
+	/*background-color: #464A53;*/
+}
+
+.nfilter_char_header {
+	width: 100%;
+	height: 50px;
+	box-sizing: border-box;
+}
+
+.nfilter_char_header_up {
+	padding: 6px 6px 0px 6px;
+}
+
+.nfilter_char_header_down {
+	padding: 0px 6px 6px 6px;
+}
+
+.nfilter_char_header_L {
+	height: 80px;
+	line-height: 80px;
+}
+
+.nfilter_char_header_M {
+	height: 50px;
+	line-height: 50px;
+}
+
+.nfilter_char_header_S {
+	height: 50px;
+	line-height: 50px;
+}
+
+.nfilter_char_header_XS {
+	height: 50px;
+	line-height: 50px;
+}
+
+.nfilter_char_header_ul {
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.nfilter_char_header_li1 {
+	display: inline-block;
+	width: 0px;
+}
+
+.nfilter_char_header_li2 {
+	display: inline-block;
+	float: left;
+	width: 40%;
+	height: 100%;
+	margin-bottom: 1px;
+	background-color: #5467c2;
+	text-align: left;
+}
+
+.nfilter_char_header_li2 .nfilter_tmp_editview {
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-color: #FFFFFF;
+	text-align: left;
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.nfilter_char_header_li3 {
+	display: inline-block;
+	float: right;
+	 background-color: #5467c2;
+	/*background-color: #464A53;*/
+	width: 100%;
+	height: 100%;
+}
+
+.nfilter_char_header_li3 img {
+	display: inline-block;
+	position: relative;
+	float: right;
+	margin: 0 2px;
+	height: 100%;
+	border-radius: 2px;
+	background-color: #4a4d54;
+}
+
+.nfilter_char_content {
+	text-align: center;
+}
+
+.nfilter_char_content ul {
+	list-style: none;
+	width: 100%;
+	margin: 1px 0;
+}
+
+.nfilter_char_content li {
+	display: inline-block;
+	text-align: center;
+}
+
+.nfilter_char_content img {
+	margin: 4px 0;
+}
+
+.nfilter_num {
+	width: 100%;
+	height: auto;
+	 background-color: #5467c2;
+	/*background-color: #434956;*/
+	overflow: hidden;
+}
+
+.nfilter_num_header {
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+}
+
+.nfilter_num_header_up {
+	padding: 6px 6px 0px 6px;
+}
+
+.nfilter_num_header_down {
+	padding: 0px 6px 6px 6px;
+}
+
+.nfilter_num1_header_L {
+	height: 50px;
+	line-height: 50px;
+}
+
+.nfilter_num1_header_M {
+	height: 40px;
+	line-height: 40px;
+}
+
+.nfilter_num1_header_S {
+	height: 40px;
+	line-height: 40px;
+}
+
+.nfilter_num1_header_XS {
+	height: 40px;
+	line-height: 40px;
+}
+
+.nfilter_num2_header_L {
+	height: 40px;
+	line-height: 40px;
+}
+
+.nfilter_num2_header_M {
+	height: 26px;
+	line-height: 26px;
+}
+
+.nfilter_num2_header_S {
+	height: 24px;
+	line-height: 24px;
+}
+
+.nfilter_num2_header_XS {
+	height: 22px;
+	line-height: 22px;
+}
+
+.nfilter_num_header_ul {
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.nfilter_num_header_li2 {
+	display: inline-block;
+	float: left;
+	width: -webkit-calc(80% - 6px); /** Safari 6, Chrome 19-25 **/
+	width: -moz-calc(80% - 6px); /** FF 4-15  **/
+	width: calc(80% - 6px);
+	/** FF 16+, IE 9+, Opera 15, Chrome 26+, Safari 7 and future other browsers **/
+	height: 100%;
+	text-align: left;
+	vertical-align: middle;
+	background-color: #5467c2;
+}
+
+.nfilter_num_header_li2 .nfilter_tmp_editview {
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-color: #FFFFFF;
+	/*background-color: #434956;*/
+	text-align: left;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.nfilter_num_header_li3 {
+	display: inline-block;
+	float: right;
+	background-color: #5467c2;
+	width: 12%;
+	height: 100%;
+}
+
+.nfilter_num_header_li3 img {
+	display: inline-block;
+	position: relative;
+	float: right;
+	margin: 0 2px;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	background: #4a4d54;
+}
+
+.nfilter_num_content {
+	text-align: center;
+}
+
+.nfilter_num_content ul {
+	list-style: none;
+	width: 100%;
+	margin: 1px 0;
+}
+
+.nfilter_num_content li {
+	display: inline-block;
+	border-radius: 2px;
+	text-align: center;
+	background: #5467c2;
+	/*background: #434956;*/
+}
+
+.nfilter_num_content img {
+	margin: 4px 0;
+	display:block;
+}
+
+.nfilter_num_content .nfilter_key_logo {
+	width: 8%;
+	margin-right: 0px;
+	background-color: #5467c2;
+	border-radius: 0px;
+	border: 0px
+}
+
+.nfilter_num_content .nfilter_enter_num, .nfilter_num_content .nfilter_backspace_num
+	{
+	width: 14.7%;
+	background: #4a4d54;
+}
+
+/* 
+	header logo (replace input)
+	comment		: path 주의!! "css" 폴더와 "image" 폴더와의 관계에 주의할 것
+ */
+.nfilter_header_logo {
+	height: inherit;
+	background-color: inherit;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+}
+
+.nfilter_header_logo_num {
+	background-image: url('../image/custom/logo.png');
+}
+
+.nfilter_header_logo_char {
+	background-image: url('../image/custom/logo.png');
+}
+
+/* header btn rate */
+.nfilter_btn {
+	/* 1st : right, 2nd : bottom, 3rd : blur, 4th : color */
+	/*box-shadow: 0px 1px 2px black;*/
+}
+
+.nfilter_btn_close {
+	width: 20%;
+}
+
+.nfilter_btn_enter {
+	width: 25%;
+}
+
+.nfilter_btn_clear {
+	width: 25%;
+}
+
+.nfilter_btn_change {
+	/* 30% = 100% - 20%(close) - 25%(enter) - 25%(clear) */
+	/* 18px = margin으로 인한 term */
+	width: -webkit-calc(30% - 18px); /** Safari 6, Chrome 19-25 **/
+	width: -moz-calc(30% - 18px); /** FF 4-15  **/
+	width: calc(30% - 18px);
+	/** FF 16+, IE 9+, Opera 15, Chrome 26+, Safari 7 and future other browsers **/
+}
+
+.nfilter_btn_close_inputnone {
+	width: 10%;
+}
+
+.nfilter_btn_enter_inputnone {
+	width: 32%;
+}
+
+.nfilter_btn_clear_inputnone {
+	width: 32%;
+}
+
+.nfilter_btn_change_inputnone {
+	/* 26% = 100% - 10%(close) - 32%(enter) - 32%(clear) */
+	/* 18px = margin으로 인한 term */
+	width: -webkit-calc(26% - 18px); /** Safari 6, Chrome 19-25 **/
+	width: -moz-calc(26% - 18px); /** FF 4-15  **/
+	width: calc(26% - 18px);
+	/** FF 16+, IE 9+, Opera 15, Chrome 26+, Safari 7 and future other browsers **/
+}
+
+/* for map fit img */
+.nfilter_fit_map_to_img {
+	position: absolute;
+
+	/*
+	width:350px;
+	height:10px;
+	background-color:orange;
+	opacity:0.5;
+	*/
+}
+
+/* for mask - header img */
+.nfilter_char_header_li3 img:active, .nfilter_num_header_li3 img:active
+	{
+	background: #434956;
+}
+
+/* for mask - contents */
+.nfilter_mask {
+	width: 23px;
+	height: 44px;
+	background-color: #434956; /* rgb(230, 126, 34) */
+	opacity: 0.8;
+	border: 0px solid #434956;
+	position: absolute;
+	z-index: 1000001;
+	left: 0px;
+	top: 0px;
+	display: none;
+	/* border-radius: 3px; */
+}
+
+/* optional */
+.nfilter_edit_none {
+	display: none !important;
+}
+
+.nfilter_keypad_div {
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.nfilter_keypad_button {
+    opacity: 0;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+	display:block;
+}

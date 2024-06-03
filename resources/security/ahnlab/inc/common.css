@@ -1,0 +1,11 @@
+/* ASTx 1.3 | (C) Copyright AhnLab, Inc. | $Revision: 18550 $ */
+* { font-family:Malgun Gothic,Gulim; font-size:9pt; }
+
+body { padding: 0.5em; margin: 0.5em; word-break:break-all; word-wrap:break-word; }
+input,textarea { padding:0.1em; margin:0.1em; }
+ul, li, ol { list-style-type:none; padding-left:0; margin-left:0; }
+table { border-spacing:0; border-collapse:collapse; }
+form { padding:0; margin:0; }
+
+.params { color:blue; font-weight:bold; }
+.astx2Overlay { background:black; position:absolute; left:0; top:0; display:none; overflow:hidden }

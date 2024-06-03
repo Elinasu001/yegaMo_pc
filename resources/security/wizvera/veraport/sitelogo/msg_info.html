@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>veraport</title>
+		<style type="text/css">
+			html {
+				overflow:hidden;
+			}
+			body {
+				overflow:hidden;
+				background-image:url(msg_info.gif);
+				background-repeat: no-repeat;
+			}
+			li {
+				margin:0px;
+				padding:0px;
+				list-style: none;
+			}
+			ul {
+				margin:0px;
+			}
+			a:link		{text-decoration: none;}
+			a:visited	{text-decoration: none;}
+			a:active	{text-decoration: none;}
+			a:hover		{text-decoration: none;}
+			
+			img {
+				border:none;
+			}
+			div#btn {
+				width:200px;
+				height:200px;
+				position:absolute;
+				display:block;
+				left:160px;
+				top:85px;
+				margin:0px;
+				padding:0px;
+			}
+		</style>
+		<script language="javascript" type="text/javascript">
+			function init() {
+				document.oncontextmenu 	= function() {return false;};
+				document.ondragstart 	= function() {return false;};
+				document.onselectstart 	= function() {return false;};
+				document.onkeydown	 	= function() {return false;};
+			}
+		</script>
+	</head>
+	<body onload="javascript:init();" scrolling="no">
+		<div id="btn">
+			<li>
+				<ul>&nbsp;</ul>
+				<ul>&nbsp;</ul>
+				<ul><a href="http://www.wizvera.com/veraport/install_guide.html" target="_blank"><img src="install_guide.gif"/></a></ul>
+			</li>
+		</div>
+	</body>
+</html>

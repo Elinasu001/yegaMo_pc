@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61 (101010) - https://sketch.com -->
+    <title>0C60DA6A-BE15-4287-8094-B08E2CEB678D</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="키보드-디자인" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="인증서이동1-키보드시안2" transform="translate(-332.000000, -442.000000)" fill="#EDEDED">
+            <g id="Group-7" transform="translate(-1.000000, 430.000000)">
+                <g id="Group-6" transform="translate(0.000000, 4.000000)">
+                    <g id="Group-3" transform="translate(36.000000, 0.000000)">
+                        <g id="Hide-keyboard" transform="translate(284.000000, 0.000000)">
+                            <path d="M21.2606497,26.4868127 C21.5222733,26.109891 22.0202227,25.9946192 22.4164463,26.2020372 L22.5131873,26.2606497 L27.463,29.696 L32.4390597,26.3614442 C32.8201895,26.1059899 33.3258642,26.1803827 33.6190704,26.518089 L33.6877505,26.6079628 C33.9432048,26.9890926 33.868812,27.4947673 33.5311057,27.7879734 L33.4412319,27.8566535 L27.9554637,31.5335196 C27.6820455,31.7167797 27.3336579,31.7345539 27.0459651,31.5879463 L26.9411903,31.5252653 L21.4868127,27.7393503 C21.0784808,27.4559247 20.9772242,26.8951446 21.2606497,26.4868127 Z" id="Arrow-down" fill-rule="nonzero"></path>
+                            <path d="M42.0018463,8 C42.5531114,8 43,8.53234863 43,9.1765182 L43,22.8234818 C43,23.4732549 42.5526348,24 42.0018463,24 L13.9981537,24 C13.4468886,24 13,23.4676514 13,22.8234818 L13,9.1765182 C13,8.52674514 13.4473652,8 13.9981537,8 L42.0018463,8 Z M41,10 L15,10 L15,22 L41,22 L41,10 Z" id="Rectangle" fill-rule="nonzero"></path>
+                            <g id="Group-5" transform="translate(17.000000, 12.000000)">
+                                <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="4" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="8" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="12" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="16" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                            </g>
+                            <g id="Group-5" transform="translate(17.000000, 15.000000)">
+                                <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="4" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="8" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="12" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="16" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                            </g>
+                            <g id="Group-5" transform="translate(17.000000, 18.000000)">
+                                <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                                <rect id="Key" x="4" y="0" width="14" height="2"></rect>
+                                <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

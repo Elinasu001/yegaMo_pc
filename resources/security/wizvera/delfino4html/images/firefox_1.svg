@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="76px" viewBox="0 0 102 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>fire/nomal@1x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="fire/nomal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#E4E4E4" fill="#FFFFFF" x="0.5" y="0.5" width="101" height="75"></rect>
+        <g id="Group" transform="translate(34.000000, 14.000000)"></g>
+        <path d="M38,21 C37.3333333,21.6666667 37,23 37,25 C39,22 42,17 51,18 C46,22 44,26 45,32 C45,28 48,26 49,26 C48,28 49,36 55,36 C61,36 63,31 63,27 C63,23 58,15 51,15 C44,15 43,16 43,16 C43,16 46,14 51,14 C56,14 68,18 68,31 C68,44 57,49 51,49 C45,49 34,44.9994574 34,31 C34,27 35.3333333,23.6666667 38,21 Z" id="Path-4" stroke="#979797" stroke-linejoin="round"></path>
+    </g>
+</svg>

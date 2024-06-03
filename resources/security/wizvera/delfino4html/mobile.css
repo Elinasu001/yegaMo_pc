@@ -1,0 +1,2027 @@
+.content .messagebox {
+    margin:0px auto 11px auto;
+    border:solid 1px #ccc;
+    width:100%;
+    background:#fff;
+    padding:24px 15px 20px 15px;
+    box-sizing: border-box;
+}
+.content .message {
+    text-align:left;
+    font-weight:600;
+    color:#4d4d4d; 
+    float:left;
+    width:calc(100% - 65px);
+    word-break:keep-all;
+   
+}
+.content .message.npkiDetailMessage {
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+div.progress {
+    word-break: keep-all;
+}
+.content .messagebox img{
+    width:65px;
+}
+.content .importWrapper {
+    position:relative;
+    width:calc(100% - 20px);
+    font-weight:600;
+    font-size:16px;
+    color:#4d4d4d;
+    line-height:30px;
+    padding-left:20px;
+}
+.content .certWrapper{
+    margin:35px auto 20px auto;
+}
+.content .keyWrapper{
+    margin:20px auto 20px auto;
+    border-bottom:solid 1px #ccc;
+    padding-bottom:10%;
+}
+.content .buttonOKMsg.ok.button-gray {
+    padding: 0px 9px;
+    height: 41px;
+    line-height: 41px;
+    width: 108px;
+    min-width: unset;
+    margin: 0 auto;
+}
+
+/*.passwordInputPage .passwordInputBlock {
+    text-align: center;
+}
+*/.passwordInputPage label.passwordLabel,
+.passwordInputPage input {
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+}
+.passwordInputPage input {
+    margin: 16px 0 4px 0;
+}
+.passwordInputPage label.passwordLabel {
+    color: #333;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.content button {
+    position:absolute;
+    width:136px;
+    height:30px;
+    margin:0px 30px 0px 10px;
+    text-align:center;
+    background:#fff;
+    border:solid 1px #2484e4;
+    color:#0D6DCE;
+    font-weight:600;
+    font-size:15px;
+    right:0px;
+}
+.content button:disabled {
+    background-image: url("images/check.png?<%=releaseDate%>");
+    background-position: 5px 5px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-color: #06c;
+    border-color: #06c;
+    color: #fff;
+}
+.content button.importButton { top: 0px; }
+.content .detailTable{
+    border:solid 1px #ccc;
+    padding:5px 5px;
+    width:100% !important;
+    margin-top: 5px;
+}
+
+div.jsTouch div.toolbar { padding : 0px; margin: 0px;} /* override */
+
+div.jsTouch div.toolbar h1 { 
+    text-align: center;
+    position:fixed; 
+    top:44px;
+    height: 110%; height: 33px; 
+    border-bottom: 1px solid #999;
+    width: 100%;
+    font-size:17px !important;
+    z-index: 1;
+    box-sizing: border-box;
+    letter-spacing: -0.81px
+}
+
+div.jsTouch div.toolbar h1 > span {
+    /*border-bottom: solid 2px #B3B3B3; padding-bottom:3px;*/
+    outline: none;
+    width: 80%;
+    /*display: block;*/
+    /*margin: 0px auto;*/
+    /*float: left;*/
+    overflow: auto;
+    text-overflow: ellipsis;
+    letter-spacing: -1px;
+    text-align: center;
+    height: 20px;
+}
+
+div.jsTouch div.content ul.edgetoedge li {
+    padding:10px; margin: 0px;
+    border-top: none;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+div.jsTouch div.toolbar { 
+    border-bottom: solid 0px #B3B3B3 ;
+    height: initial;
+    padding-left:0px;
+    padding-right:0px;
+}
+
+div.toolbar div.logoBlock { 
+    position:fixed;
+    width: 100%;
+    height:32px;
+}
+
+div.logoBlock img{
+    position:relative;
+    display: block;
+}
+
+div.jsTouch div.toolbar div.backButton {
+    position: relative;
+    box-sizing: border-box;
+    width:110px;
+    height:77px;
+    z-index: 2;
+    padding-top: 46px;
+}
+div.jsTouch div.toolbar img.back {
+    position: relative;
+    margin: 0px 4px 0px 10px;
+	width:11px;
+}
+div.jsTouch div.toolbar div.backButton span.changePasswordInput {
+    height: 18px;
+    width: 91px;
+    color: #555555;
+    font-size: 14px;
+    letter-spacing: -0.99px;
+    line-height: 18px;
+    vertical-align: top;
+}
+
+div.dolphinLogo { 
+    position: fixed; 
+    top:45px;
+    right:11px; 
+    z-index: 2;
+}
+
+/*        #selectPage div.jsTouch div.toolbar h1 {
+    text-align: left;
+    padding-left: 50px;
+}
+*/
+.dolphinLogo img {
+    width: 24px;
+    height: 24px;
+}
+
+img.ui-li-image { float:left; margin-right:11px; }
+.ui-li-heading { font-weight : bold; font-size:0.8em; margin-top:5px;margin-bottom:6px; text-overflow: ellipsis; overflow: hidden; white-space:nowrap;    color:#333333;  }
+.ui-li-desc { font-weight : normal ; font-size:0.7em; margin-bottom:1px; }
+
+.certificateBlock { margin : 0px 10px 20px 10px; padding:20px 10px 20px 10px; border-bottom:1px solid #ccc; }
+.certificateBlock > span { display: block; white-space: nowrap; }
+.certificateBlock img { float: left; margin:1px 10px 0px 0px; }
+.strong { font-weight:bold; }
+.certificateBlock .heading { font-size : 0.9em; text-overflow: ellipsis; overflow: hidden; white-space:nowrap;    }
+.certificateBlock .desc { font-size : 0.8em; margin-top:4px; }
+.passwordInputBlock { clear:both; text-align:center; font-size: 0.9em; }
+.passwordInputBlock div div { font-size: 0.7em; display: inline-block; }
+.passwordInputBlock label { display: inline-block; width:100px; text-align: right; padding-right:10px; color:#0D6DCE; font-weight:600; font-size : 1.1em; margin:3px auto 10px auto;  }
+.passwordInputBlock > div { /*padding: 0px 10px 0px 0px;*/margin:15px 0px 15px 0px; }
+.passwordInputBlock > span { font-size: 0.8em;}
+.passwordInputBlock > a { }
+
+.footer {
+    position: absolute;
+	width: 100% !important;
+}
+.button-gray { width : 93%; margin-top:3%; border: 0px;}
+div.footer a.button-gray { margin-top: inherit ; }
+.confirmDataTable  {width:95%; table-layout:fixed;margin:10px;border-collapse: collapse;}
+.confirmDataTable tr:nth-child(odd) {background: white;}
+.confirmDataTable tr:nth-child(even) {background: #f3f6fa;}
+.confirmDataTable .formattedText { width: 100%; text-align:left; padding-left:10px;}
+.confirmDataTable .formattedText pre { margin: 0.2em 0; line-height:1.3em; }
+.confirmDataTable .label { width: 40%; text-align:left; padding-left:10px;}
+.confirmDataTable .value { width: 60%; text-align:left; }
+
+
+#importCertWrapper {
+    padding: 15px;
+    position: relative;
+}
+#importCertWrapper a {
+    width: 120px;
+    margin: auto;
+}
+#importCertWrapper div.version {
+    vertical-align: bottom;
+    float: right;
+    font-weight: normal;
+    color: #8e999f;
+    font-size: 10px;
+}
+
+#importCertMenu {
+    box-shadow: 0px 0px 10px #777;
+    display:none;
+    position:absolute;
+	margin-top:35px;
+    margin-left:auto;
+    margin-right:auto;
+    left:10px;
+    right:10px;
+	border:1px solid #666;
+    height:215px;
+    background-color: inherit;
+	border-radius:7px;
+}
+
+#importCertMenu div {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 29px;
+    vertical-align: top;
+    padding-top:12px;
+	/*text-align:center;*/
+    border-bottom:1px solid #ccc;
+	height:64px;
+    width: calc(100% - 64px);
+	margin:0px auto;
+	color:#333;
+}
+#importCertMenu div > a {
+    color: #333;
+    width: initial;
+}
+#importCertMenu span {
+    font-weight: bold;
+    color: #8e999f;
+}
+#importCertMenu div.last {
+    border-bottom: none;
+}
+#importCertMenu div.first {
+    padding-top: 16px;
+    height:43px;
+}
+
+img.importCert {
+    width: 28px;
+    height: 28px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.importCertLabel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap;
+    margin-top: 5px;
+    font-size: 13px;
+    color:#8e999f;
+    font-weight: normal;
+    width:120px;
+    text-align:center;
+}
+
+li.emptyList { height: 60px;}
+
+td {padding:3px 0px 4px 6px;overflow:hidden;text-overflow:ellipsis; vertical-align:text-top; }
+.cert_td{width: 25%; color:#0D6DCE; text-align:left; font-weight:600; font-size:1em; margin:5px 0px 5px 0px; padding:8px 0px 8px 10px;}
+
+input{height:28px; /*width:85%;*/ border:solid 1px #1861AE;}
+div.content.passwordInputPage input {height: 42px; font-size: 36px;padding: 1px 2px; box-sizing: content-box;}
+.content{margin-left: 10px;margin-right: 10px;}
+.certificateBlockSetting{border:solid 1px #CCC; margin-top:5px; padding-bottom:10px;}
+
+.strongLabel { font-weight: bold; }
+
+/* 인증서 암호 변경 */
+.passwordChange{ background-color:passwordChange; }
+
+div.authCodeContent { 
+    text-align:center; 
+    margin-top:16px;
+    min-height: calc(100vh - 171px);
+}
+
+div.authCodeContent img{ 
+    width:300px;
+}
+
+
+div.authCodeContent div.upBlock {
+    height: 22%;
+    border: solid 1px #CCC;
+    background-color:#fff;
+	margin:-10px 0 0 0;
+}
+
+div.authCodeContent div.downBlock {
+    margin: 10px 0 0 0;
+	height:auto;
+    /*height: 800px;
+    border: solid 1px #CCC;
+    background-color:#F0F8FF;*/
+	position:relative;
+}
+
+div.authCodeContent div.title { 
+    width: 80%; 
+    margin: auto auto 0 auto; 
+    font-size:90%;
+    padding-top:5%;
+	word-break:keep-all;
+}
+
+div.labels { padding: 5% 0 0 0; }
+
+div.authCodeContent div.image {
+    padding-top:8%;
+	height:auto;
+	height:130px;
+	width:300px;
+	margin:0px auto;
+}
+
+div.authCodeContent div.notification { 
+    /*height: 25%; */
+    width: 70% ; 
+    margin: 8% auto 8% auto;
+    font-size:75%;
+    /*padding-bottom:15%;*/
+	word-break:keep-all;
+}
+
+div.authCodeContent div.notification img { position:relative; top: 3px; width:15px;}
+
+
+div.authCodeBlock input { 
+    width:28%; 
+    text-align:center;
+    margin: 3% 1% 5% 1%; 
+    padding: 0;
+}
+
+
+@media (min-width:320px) and (max-width:359px) {
+    div.authCodeContent div.title { 
+        padding-top:2%;
+    }
+
+    div.labels { padding: 2% 0 0 0; }
+
+    div.authCodeContent div.image {
+        padding-top:1%;
+    }
+
+    div.authCodeContent div.notification { 
+        margin: 5% auto auto auto;
+        font-size:75%;
+        padding-bottom:2%;
+		width:100%;
+		position:absolute;
+		top:105%;
+    }
+
+    div.authCodeBlock input { 
+        font-size: 1.2em; 
+    }
+}
+
+.keyboard button {
+    outline: none;
+}
+#keyboardPage {
+    position: fixed;
+    border-top: 1px solid #999999;
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    z-index: 10;
+    display: none;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.25s;
+}
+#keyboardPage.shown {
+    display: block;
+}
+
+#keyboardPage .keyboardCloseDiv{
+    height: 42px;
+    background-color: #F9F9F9;
+}
+#keyboardPage .keyboardClose{
+    width: 56px;
+    height: 40px;
+    background-image: url(images/kb_close_black@2x.png);
+    background-size: 30px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*position: relative;*/
+    margin-top: 2px;
+    float: right;
+}
+
+#keyboardPage .keyboardDiv {
+    padding:10px 0px;
+    background-color: #fff;
+}
+
+#keyboardPage .keyboard {
+    min-height: 200px;
+    padding-bottom:10px;
+    position: relative;
+    text-align: center;
+}
+
+#certpinCreatePage {
+    z-index: 9;
+    display: block;
+    position: fixed;
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+    bottom: 0;
+    transition: height 0.3s;
+}
+#certpinCreatePage.shown {
+    top: 0;
+}
+
+.certpinCreateWrapper {
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.certpinCreateWrapper * {
+    transition: opacity 0.6s;
+}
+
+.certpinCreateWrapper.loading * {
+    opacity: 0;
+}
+
+.certpinCreateWrapper * {
+    opacity: 1;
+}
+
+.certpinCreateWrapper .closeButton, .webauthn.closeButton {
+    float: right;
+    height: 15px;
+    width: 15px;
+    background-image: url('images/certpin-close.png');
+    background-size: 15px 15px;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2) {
+    .certpinCreateWrapper .closeButton, .webauthn.closeButton {
+        background-image: url('images/certpin-close@2x.png');
+    }
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (   min--moz-device-pixel-ratio: 3),
+only screen and (     -o-min-device-pixel-ratio: 3/1),
+only screen and (        min-device-pixel-ratio: 3) {
+    .certpinCreateWrapper .closeButton, .webauthn.closeButton {
+        background-image: url('images/certpin-close@3x.png');
+    }
+}
+
+.certpinCreateWrapper .descWrapper {
+    margin-left: -20px;
+    padding: 10px 32px 20px 32px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+    width: calc(100% + 40px);
+}
+.certpinCreateWrapper .descWrapper > div {
+    display: inline-block;
+    height: 62px;
+    color: #222;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: -1.19px;
+    line-height: 26px;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.certpinCreateWrapper .descWrapper .descDiv {
+    width: 75%;
+}    
+.certpinCreateWrapper .descWrapper .progressDiv {
+    line-height: 26px;
+    margin-top: 26px;
+    color: #666;
+    font-size: 14px;
+    float: right;
+}
+.certpinCreateWrapper .descWrapper .progressDiv b {
+    color: #222;
+    font-size: 19px;
+}
+
+.passwordArea {
+    /*padding: 40px 27px 0px 27px;*/
+    padding: 40px 0px 0px 0px;
+}
+
+.passwordArea .passwordInputBlock {
+    font-size: 0px;
+}
+
+.passwordArea .passwordInputBlock * {
+    padding: 0px; margin: 0px;
+}
+
+.passwordArea .passwordInputBlock .certpinLabel,
+.passwordArea .certpinConfirmInputBlock .certpinLabel,
+.passwordArea .certpinCreateInputBlock .certpinLabel,
+.webauthnPasswordArea .webauthnPasswordInputBlock .webauthnCreateLabel {
+    width: 100%;
+    height: 25px;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: -0.69px;
+    line-height: 17px;
+    text-align: center;
+    margin-bottom: 19px;
+}
+.passwordArea .certpinCreateInputBlock .certpinLabel.wrong {
+    transition: opacity 0.3s;
+}
+.passwordArea .passwordInputBlock .certpinLabel b,
+.passwordArea .certpinCreateInputBlock .certpinLabel b,
+.passwordArea .certpinConfirmInputBlock .certpinLabel b,
+.webauthnPasswordArea .webauthnPasswordInputBlock .webauthnCreateLabel b {
+    color: #1D79D3;
+}
+.passwordArea .passwordInputBlock .certpinLabel {
+    margin-bottom: 8px;
+}
+
+.passwordArea .passwordInputBlock.passwordInputPage .certpinLabel {
+    font-weight: 400;
+}
+
+.passwordArea .passwordInputBlock.passwordInputPage input {
+    margin-bottom: 20px;
+}
+
+/*.passwordArea .passwordInputBlock input.password,*/
+.webauthnPasswordArea .webauthnPasswordInputBlock .password {
+    height: 41px;
+    width: calc(100% - 45px);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #ededed !important;
+    border: none !important;
+    font-size: 30px;
+    letter-spacing: -1px;
+    vertical-align: middle;
+}
+/*.passwordArea .passwordInputBlock div a {
+    display: inline-block;
+    width: 45px;
+    height: 41px;
+    line-height: 41px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #ededed;
+    color: #0062B3;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.passwordArea .passwordInputBlock div input:placeholder-shown + a {
+    color: #737373;
+}*/
+
+.passwordArea .certpinCompleteBlock {
+    text-align: center;
+}
+.passwordArea .certpinCompleteBlock div.certpinLabel {
+    height: 49px;
+    /*width: 261px;*/
+    color: #333333;
+    font-size: 16px;
+    letter-spacing: -0.69px;
+    line-height: 17px;
+    margin-bottom: 29px;
+}
+.passwordArea .certpinCompleteBlock a {
+    width: 108px;
+    height: 41px;
+    line-height: 41px;
+    border-radius: 2px;
+    background-color: #0062b3;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.passwordArea .certpinCompleteBlock a:hover {
+    -webkit-box-shadow: none; 
+    border: none;
+}
+
+
+#passwordTypeSelectPageWrapper {
+    position:fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    display: none;
+    z-index: 10;
+    overflow: hidden;
+    transition: background-color 0.25s;
+    background-color: rgba(0, 0, 0, 0);
+}
+#passwordTypeSelectPageWrapper.shown {
+    display: block;
+}
+
+#passwordTypeSelectPage, #passwordTypeSelectPageConfirm {
+    position:absolute;
+    border-radius: 30px 30px 0px 0px;
+    left:0;
+    bottom:0;
+    width:100%;
+    z-index: 10;
+    display: none;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.25s;
+    background-color: #fff;
+    box-shadow: 0 -3px 7px 2px rgba(167,167,167,0.55);
+    padding: 24px 36px 20px 36px;
+    box-sizing: border-box;
+}
+#passwordTypeSelectPage.shown, #passwordTypeSelectPageConfirm.shown {
+    display: block;
+    /*min-height: 300px;*/
+}
+
+#passwordTypeSelectPageWrapper .passwordTypeSelectLabel {
+    height: 25px;
+    color: #333333;
+    /*font-family: "Malgun Gothic";*/
+    font-size: 17px;
+    letter-spacing: -0.41px;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#passwordTypeSelectPageWrapper .passwordTypeSelectManage {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 20px; right: 32px;
+    background-image: url('images/certpin_manage@2x.png');
+    background-size: 20px 20px;
+    background-position: 6px 6px;
+    background-repeat: no-repeat;
+}
+
+#passwordTypeSelectPageWrapper .passwordTypeSelectDiv {
+    background-color: #fff;
+    position: relative;
+    height: calc(100% - 45px);
+}
+
+#passwordTypeSelectPage .passwordTypeSelect {
+    padding: 0px 26px;
+    height: 65px;
+    line-height: 65px;
+    /*position: relative;*/
+    border: 1px solid #e2e2e2;
+    border-radius: 9px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+    background-image: url('images/menu_next@2x.png');
+    background-size: 8px 18px;
+    background-position: 90% 24px;
+    background-repeat: no-repeat;
+    transition: background 0.5s;
+}
+#passwordTypeSelectPage .passwordTypeSelect.create {
+    background-image: url('images/menu_create@2x.png');
+    background-size: 19px 19px;
+    background-position: 91% 22px;
+}
+#passwordTypeSelectPage .passwordTypeSelect.edit {
+    background-image: url('images/certpin_delete@2x.png');
+    background-size: 19px 19px;
+    background-position: 91% 24px;
+}
+
+#passwordTypeSelectPage .passwordTypeSelect * {
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+#passwordTypeSelectPage #webauthn.passwordTypeSelect img, #passwordTypeSelectPage #webauthnCreate.passwordTypeSelect img {
+    width: 26px; height: 25px; margin: 0px 1px;
+}
+#passwordTypeSelectPage #certpin.passwordTypeSelect img, #passwordTypeSelectPage #certpinCreate.passwordTypeSelect img {
+    width: 28px; height: 11px;
+}
+#passwordTypeSelectPage #keyboard.passwordTypeSelect img {
+    width: 28px; height: 22px;
+}
+
+#passwordTypeSelectPage .passwordTypeSelect span.label{
+    color: #333333;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: -0.41px;
+    margin-left: 14px;
+}
+
+#passwordTypeSelectPageWrapper .shown .passwordTypeSelectClose, #passwordTypeSelectPageWrapper .shown .passwordTypeSelectConfirm{
+    display: block;
+    box-sizing: border-box;
+    height: 51px;
+    line-height: 51px;
+    width: 100%;
+    border: 1px solid #E2E2E2;
+    border-radius: 9px;
+    background-color: #E4E4E4;
+    text-align: center;
+}
+#passwordTypeSelectPageWrapper #passwordTypeSelectPage.shown .passwordTypeSelectClose{
+    position: absolute;
+    bottom: 0;
+}
+
+
+#passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon {
+    width: 56px; height: 56px;
+    margin: 24px auto 26px auto;
+    background-image: url('images/warning_cloud.png');
+    background-size: 56px;
+}
+#passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon.useCloud {
+    width: 70px; height: 50px;
+    margin: 26px auto 30px auto;
+    background-image: url('images/upload_cloud.png');
+    background-size: 70px 50px;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2) {
+    #passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon {
+        background-image: url('images/warning_cloud@2x.png');
+    }
+    #passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon.useCloud {
+        background-image: url('images/upload_cloud@2x.png');
+    }
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (   min--moz-device-pixel-ratio: 3),
+only screen and (     -o-min-device-pixel-ratio: 3/1),
+only screen and (        min-device-pixel-ratio: 3) {
+    #passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon {
+        background-image: url('images/warning_cloud@3x.png');
+    }
+    #passwordTypeSelectPageConfirm div.passwordTypeSelectWarningIcon.useCloud {
+        background-image: url('images/upload_cloud@3x.png');
+    }
+}
+
+#passwordTypeSelectPageConfirm div.passwordTypeSelectConfirmTitle {
+    line-height: 28px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: -0.43px;
+    color: #333333;
+}
+
+#passwordTypeSelectPageConfirm div.passwordTypeSelectDescription {
+    width: 100%;
+    padding: 19px 13px;
+    box-sizing: border-box;
+    border: 1px solid #E2E2E2;
+    border-radius: 4px;
+    line-height: 27px;
+    font-size: 17px;
+    letter-spacing: -0.41px;
+}
+
+#passwordTypeSelectPageWrapper .passwordTypeSelectDiv.passwordTypeSelectButtonArea {
+    position: absolute;
+    bottom: 20px;
+    right: 36px;
+    left: 36px;
+    height: fit-content;
+    height: webkit-fit-content;
+}
+
+#passwordTypeSelectPageWrapper .shown .passwordTypeSelectButtonArea .passwordTypeSelectConfirm {
+    border: 1px solid #0062B3;
+    background-color: #0062B3;
+    margin-bottom: 11px;
+    color: #fff;
+}
+
+.certpinInputBlock, .certpinCreateInputBlock, .certpinConfirmInputBlock{
+    text-align: center;
+    margin-top: 14px;
+}
+
+.kbtamCreateInputBlock label,
+.certpinInputBlock .certpin label,
+.certpinCreateInputBlock .certpinCreate label,
+.certpinConfirmInputBlock .certpinConfirm label {
+    display: inline-block;
+    height: 23px;
+    color: #0B80C7;
+    font-size: 17px;
+    letter-spacing: -1.2px;
+    line-height: 23px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.kbtamCreateInputBlock .certpinCreate input,
+.kbtamCreateInputBlock .certpinConfirm input,
+.certpinInputBlock .certpin input.certpinInput,
+.certpinCreateInputBlock .certpinCreate input.certpinCreateInput,
+.certpinConfirmInputBlock .certpinConfirm input.certpinConfirmInput {
+    border: none;
+    background-color: #d8d8d8;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    padding: 0px;
+    font-size: 0px;
+    margin-right: 6px;
+    transition: background-color 0.3s;
+}
+
+.kbtamCreateInputBlock .certpinCreate input:last-child,
+.kbtamCreateInputBlock .certpinConfirm input:last-child,
+.certpinInputBlock .certpin input.certpinInput:last-child,
+.certpinCreateInputBlock .certpinCreate input.certpinCreateInput:last-child,
+.certpinConfirmInputBlock .certpinConfirm input.certpinConfirmInput:last-child {
+    margin-right: 0px;
+}
+.kbtamCreateInputBlock .certpinCreate input.fill,
+.kbtamCreateInputBlock .certpinConfirm input.fill,
+.certpinInputBlock .certpin input.certpinInput.fill,
+.certpinCreateInputBlock .certpinCreate input.certpinCreateInput.fill,
+.certpinConfirmInputBlock .certpinConfirm input.certpinConfirmInput.fill {
+    background-color: #0B80C7;
+}
+
+div.certpinCreateWrapper .passwordInputPage input {height: 42px; font-size: 36px;padding: 1px 2px; box-sizing: content-box;}
+#kbtamPage .kbtamCreateInputBlock {
+    text-align: center;
+    margin-bottom: 25px;
+}
+#kbtamPage .kbtampinInput {
+    margin-bottom: 10px;
+}
+#kbtamPage .kbtamCreateInputBlock label {
+    height: unset;
+}
+#kbtamPage .buttonBlock a.cancelButton {
+    background-color: #d8d8d8;
+    color: #181818;
+}
+
+.certpinInputBlock .certpin, .certpinCreateInputBlock .certpinCreate, .certpinConfirmInputBlock .certpinConfirm {
+    margin-bottom: 23px;
+    font-size: 0px;
+}
+
+.certpinInputBlock .seperator {
+    display: inline-block;
+    margin: 0px 12px;
+}
+@media (min-width:360px) and (max-width:413px) {
+    div.authCodeBlock input { font-size: 1.4em; }
+	div.keyboardPasswordLabel{margin-top:10px !important;}
+	div.authCodeContent div.notification{margin:18% auto 8% auto; width:80%; font-size:90%;}
+	div.authCodeContent img{width:300px;}
+	div.authCodeContent div.image{padding-top:10%; width:320px;}
+	div.authCodeContent div.title{font-size:100%;}
+	/*#importCertMenu{width:300px; }*/
+	/*#importCertMenu div{width:300px;}*/
+}
+
+@media (min-width:414px) {
+    div.authCodeBlock input { font-size: 1.6em; }
+	div.authCodeContent div.notification{margin:25% auto 8% auto; width:80%; font-size:90%;}
+	div.authCodeContent img{width:300px;}
+	div.authCodeContent div.image{padding-top:15%; width:320px;}
+	div.authCodeContent div.title{padding-top:12%; font-size:100%; }
+	/*#importCertMenu{width:300px; }*/
+	/*#importCertMenu div{width:300px;}*/
+}
+
+/* 숫자 키보드 */
+#numKeyboard{
+    overflow: hidden;
+    padding: 0;
+    margin: 0 -11px 0 -11px;
+    position: fixed;
+    width: 100vw;
+    bottom: 0px;
+    height: 0px;
+    transition: height 0.25s;
+}
+#numKeyboard.shown{
+    height: 242px;
+}
+
+#numKeyboard hr{
+    height:0;
+    border:0;
+    padding:0;
+    margin: 0;
+}
+
+.numKeyboardBox{
+    background-color: #fff;
+}
+
+.numKeyboardBox div.button{
+    width: 100%;
+    height: 64px;
+    text-align: center;
+    border: none;
+    /*border-radius: 4px;*/
+    background-color: initial;
+    font-size: 30px;
+    line-height: 64px;
+    font-weight: normal;
+    padding:0;
+    color: #494949;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    outline: none;
+    transition: background-color 0.25s;
+}
+
+.numKeyboardBox div.button:active{
+    background-color: #ddd;
+}
+
+.numKeyboardBox div.button.back-button{
+    background-image: url(images/mobile_numkb_backspace_black@2x.png);
+    background-size: 42px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.numKeyboardBox table{
+    width:100%;
+    height: 200px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.numKeyboardBox td{
+    vertical-align: top;
+    text-overflow: clip;
+    border: none;
+    padding: 0px;
+}
+
+.numKeyboardBox .numKeyboardCloseDiv{
+    height: 42px;
+    background-color: #f9f9f9;
+}
+.numKeyboardBox .numKeyboardClose{
+    width: 56px;
+    height: 40px;
+    background-image: url(images/kb_close_black@2x.png);
+    background-size: 30px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 2px;
+    float: right;
+}
+div.jsTouch div.footer.authCode {
+    padding: 16px;
+    height: 80px;
+}
+div.jsTouch div.footer.importCertificate.dark, #numKeyboard.dark .numKeyboardBox {
+    background-color: #555;
+}
+div.jsTouch div.content.importCertificate {
+    overflow: visible !important;
+}
+
+/* for dark keyboard */
+#numKeyboard.dark .numKeyboardCloseDiv {background-color: unset;}
+#numKeyboard.dark .numKeyboardBox div.button.back-button{background-image: url(images/mobile_numkb_backspace@2x.png);}
+#numKeyboard.dark .numKeyboardBox .numKeyboardClose{background-image: url(images/kb_close_white@2x.png);}
+#numKeyboard.dark .numKeyboardBox div.button:active{background-color: #fff;}
+#numKeyboard.dark .numKeyboardBox td{border: 1px solid #4e4e4e;}
+#numKeyboard.dark .numKeyboardBox div.button{color: #ebebeb;}
+div.jsTouch div.footer.importCertificate.dark, #numKeyboard.dark .numKeyboardBox {background-color: #555;}
+
+/* pin 키보드 */
+#pinKeypad{
+    z-index: 10;
+    overflow: hidden;
+    padding: 0;
+    /*margin: 0 -11px 0 -11px;*/
+    position: fixed;
+    width: 100vw;
+    bottom: 0px;
+    height: 0px;
+    transition: height 0.25s;
+}
+#pinKeypad.shown{
+    height: 0px;
+}
+
+#pinKeypad hr{
+    height:0;
+    border:0;
+    padding:0;
+    margin: 0;
+}
+
+.pinKeypadBox{
+    box-sizing: border-box;
+    position: relative;
+    background-color: #F7F6F6;
+    padding: 24px;
+}
+
+.pinKeypadBox div.button{
+    width: 100%;
+    height: 71px;
+    text-align: center;
+    border: none;
+    /*border-radius: 4px;*/
+    background-color: initial;
+    font-size: 30px;
+    line-height: 71px;
+    font-weight: normal;
+    padding:0;
+    color: #494949;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    outline: none;
+    transition: background-color 0.25s;
+}
+
+.pinKeypadBox div.button:active{
+    background-color: #ddd;
+}
+
+.pinKeypadBox div.button.re-order{
+    color: #555555;
+    font-size: 16px;
+    letter-spacing: -0.39px;
+    text-align: center;
+}
+
+.pinKeypadBox div.button.back-button{
+    background-image: url(images/mobile_pinkb_backspace@2x.png);
+    background-size: 30px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.reorder {
+    color: #555555;
+    font-size: 16px;
+    letter-spacing: -0.39px;
+    line-height: 21px;
+    text-align: center;
+}
+
+.pinKeypadBox table{
+    width:100%;
+    height: 200px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.pinKeypadBox td{
+    vertical-align: top;
+    text-overflow: clip;
+    border: none;
+    padding: 0px;
+}
+#pinKeypad .pinKeypadBox .pinKeypadArea canvas {
+    /*width: 100%; height: 64px;*/
+}
+
+.content .certWrapper img, .content .keyWrapper img {
+    width: 18px;
+    height: 18px;
+    display: none;
+	position:absolute;
+	left:300px;
+	/*bottom:6px;*/
+    top: 6px;
+}
+/* 인증서 찾기*/
+.content .pasteAreaLabel {
+    margin: 0px 0px 13px 16px;
+}
+.content .pasteArea {
+    margin: auto;
+    width:288px;
+    height:170px;
+    overflow: hidden;
+    border-radius: 7px;
+    margin-bottom: 19px;
+}
+.content .detailPaste {
+    width:calc(100% - 32px);
+    font-size: 12pt;
+    color: #000;
+    padding: 10px 7px 8px 5px;
+    border: 1px solid #e6e6e6;
+}
+.content .detailPaste img {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+.content .detailPaste a {
+    font-weight: bold;
+}
+.content .detailPaste .rightAlign {
+    text-align: right;
+}
+#pasteForm {
+    padding:0px;
+    border:none;
+    width:100%;
+    height:100%;
+    background-image:url('images/mobile_paste_area_x2.png');
+    background-size: 288px 170px;
+    text-align: center;
+}
+
+/* g4 모바일 로컬 인증서 이동 */
+.detailImportNotice {
+	margin: 10px 0;
+	padding: 20px 10px;
+	color: #4d4d4d;
+	font-size: 14px;
+	font-weight: bold;
+	word-break: keep-all;
+	text-align: center;
+}
+
+.detailImportNotice .importMessage {
+	
+}
+.detailImportMobile {
+	padding: 10px 20px 10px 30px;
+	word-break: keep-all;
+	margin: 20px 0;
+	font-size: 12px;
+	color: #4d4d4d;
+	text-indent: -20px;
+}
+
+.detailImportMobile span > img {
+    width:15px;
+    height:15px;
+	padding-right: 5px;
+	vertical-align: sub;
+}
+
+.detailImportLogo {
+	text-align: center;
+}
+.detailImportLogo img{
+    width: 193px; height: 74px;
+}
+
+.importMobileFooter.error .cancelButton {
+	width: 40%;
+}
+
+.importMobileFooter .importCertRetry {
+	display: none;
+	width: 40%;
+}
+
+.importMobileFooter.error .importCertRetry {
+	display: inline-block;
+}
+
+.mobileImportCertMenu .menulist  {
+	display: table;
+	width: 100%;
+}
+
+.mobileImportCertMenu .menulist  li {
+    vertical-align: middle;
+	display: table-row;
+	width: 100%;
+	padding:10px; margin: 0px;
+    border-top: none;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.mobileImportCertMenu .menulist li div {
+	height: 85px;
+	display: table-cell;
+	vertical-align: middle;
+	border-top: none;
+	border-bottom: 1px solid #E4E4E4;
+	color: #1A1A1A;
+	padding: 0 0 0 40px;
+    background: url(icons/arrow_right.png);
+	background-repeat: no-repeat;
+	background-position: right 5px center;
+	background-size: 10px;
+	position: relative;
+}
+
+.mobileImportCertMenu .menulist li div.mobile a.mobileAppLink {
+	padding: 20px 0;
+	margin-left: -40px;
+	padding-left: 40px;
+}
+
+.mobileImportCertMenu .menulist li div.roaming:after {
+    content: '';
+	background: url(icons/import_menu_roaming.png);
+    background-repeat: no-repeat;
+    background-position: left 5px center;
+    background-size: 24px 21px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.mobileImportCertMenu .menulist li div.mobile:after {
+    content: '';
+	background: url(icons/import_menu_mobile.png);
+	background-repeat: no-repeat;
+	background-position: left 5px center;
+    background-size: 21px 24px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 35px;
+	pointer-events: none;
+}
+
+
+.mobileImportCertMenu .menulist li div  a {
+	color: #1A1A1A !important;
+}
+
+.mobileImportCertMenu .menulist li div span {
+	font-size: 13px;
+	color: #575859;
+	font-weight: 300;
+}
+
+/* new okButton */
+.content .button-gray.buttonOKMsg, .content .button-gray, .content .buttonOKMsg, .footer .button-gray, .footer .button-gray{
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    position:initial;
+    width: 75%;
+    min-width: 290px;
+    font-weight:400;
+    font-size:16px;
+    color:#fff;
+    height: 48px;
+    background-color:#0062B3;
+    color:#FFFFFF;
+    border-radius:2px;
+    padding: 0px;
+    line-height: 48px;
+}
+div.footer div.button-gray {
+    margin-top: 0px;
+}
+.content .button-gray.buttonOKMsg:active{ background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; }
+
+.webauthnBackgroundInner .webauthnButton {
+    display: inline-block;
+    margin-top: 50px;
+}
+div.jsTouch div.content.webauthnBackground {
+    top: 0px !important;
+    padding-top: 85px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.webauthnBackgroundInner {
+    width: 100%;
+    /*margin: 0px;*/
+    box-sizing: border-box;
+}
+.passwordArea.webauthnPasswordArea {
+    padding: 40px 27px 0px 27px;
+}
+.webauthnPasswordArea .webauthnPasswordInputBlock .webauthnCreateLabel {
+    height: 50px;
+    font-weight: 400;
+}
+.webauthnBackgroundInner .webauthnLabel  b {
+    color: #0062B3;
+}
+
+#wizveraAlertBackground {
+    position: fixed;
+    top: 0;bottom: 0;left: 0;right: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    vertical-align: middle;
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    z-index: 100010;
+}
+#wizveraAlertBackground .wizveraAlertDialog {
+    display: block;
+    width: 80vw;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas:"title" "message" "button";
+    text-align: center;
+
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+    padding: 21px;
+    grid-row-gap: 33px;
+}
+
+.wizveraAlertDialog .wizveraAlertTitle {
+    grid-area: title;
+    color: #292929;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: -1.2px;
+    line-height: 23px;
+    padding-top: 10px;
+}
+.wizveraAlertDialog .wizveraAlertMessage {
+    grid-area: message;
+    color: #333333;
+    font-size: 16px;
+    letter-spacing: -0.39px;
+    line-height: 21px;
+    padding-bottom: 11px;
+}
+.wizveraAlertDialog .wizveraAlertMessage b {
+    color: #0062B3;
+}
+.wizveraAlertDialog .wizveraAlertMessage b.warning {
+    color: #E95454;
+}
+.wizveraAlertDialog .wizveraAlertButtonArea {
+    grid-area: button;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    column-gap: 4px
+}
+
+.wizveraAlertDialog .wizveraAlertButtonArea.confirm {
+    grid-template-columns: auto auto;
+}
+
+.wizveraAlertDialog .wizveraAlertButtonArea a.wizveraAlertButton {
+    box-sizing: border-box;
+    /*height: 46px;*/
+    line-height: 46px;
+    border-radius: 6px;
+    vertical-align: middle;
+
+    font-size: 15px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.wizveraAlertDialog .wizveraAlertButtonArea a.wizveraAlertOk {
+    background-color: #0062B3;
+    color: #fff;
+}
+
+.wizveraAlertDialog .wizveraAlertButtonArea a.wizveraAlertCancel {
+    border: 1px solid #E4E4E4;
+    background-color: #FFFFFF;
+    color: #555;
+}
+
+    /*#providerContent {display: none;}*/
+    #providerContent #delfino-section.rightContent {margin-left: 7px;}
+
+    #providerContent {position:absolute;right: 74px;top:0px;bottom:0px;border:0;margin:0;left:0;background-color: #fff;}
+    #providerContent .rightContent {display:none;width:100%;height:100%;margin:0;border:0;padding:0;} 
+    #providerContent .rightContent:disabled::after {position: absolute;display: inline-block;right: 0;content: ' ';top: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.12);}
+    #providerContent .rightContent .logoBlock{display: none !important;}
+    
+    #providerContent #g10-loading-section {
+        text-align: center;
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        border: 0;
+        background: #fff;
+        z-index: 3000;
+    }
+	
+	#providerContent #g10-loading-section.use {
+		display: inline-block !important;
+		background: rgba(255,255,255,0.5);
+	}
+
+    #providerContent #g10-loading-section .vpcg_img_loading {
+        /*margin: 200px 180px;*/
+        position: relative;
+        top: calc(50vh - 81px);
+        left: calc(50% - 80px - 37px);
+        width: 160px;
+        height: 106px;
+        padding: 0px 0px;
+        border: 1px solid #CBE5FF;
+        background: white;
+        border-radius: 6px;
+    }
+	
+	#providerContent #g10-loading-section .vpcg_img_loading > img {
+        width: 123px;
+    }
+    
+    #providerContent #g10-loading-section .vpcg_img_loading > span {
+        display: block;
+        margin-top: 6px;
+        color: #0266cc;
+        font-size: 15px;
+        line-height: 21px;
+    }
+    
+    #providerContent #g10-intro-section {
+        display: none;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0;
+        bottom: 0;
+        background: white;
+        z-index: 3000;
+        padding: 37px;
+    }
+    
+    #providerContent #g10-intro-section .intro_title_box {
+        text-align: center;
+        line-height: 21px;
+        font-size: 16px;
+        color: #252525;
+        font-weight: bold;
+        display: block;
+        position: relative;
+        width: max-content;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+		min-height: 40px;
+    }
+    
+    #providerContent #g10-intro-section .intro_title_box > span.title {
+        z-index: 2;
+        display: inline-block;
+        position: relative;
+    }
+    
+    #providerContent #g10-intro-section .intro_title_box > span.title.name {
+        font-size: 18px;
+        margin: 0 0px;
+		width: 75px;
+    }
+	
+	#providerContent #g10-intro-section .intro_title_box > span.title.name::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 17px;
+		background: #E6F6FF;
+		left: 0px;
+		top: 7px;
+		z-index: -1;
+		content: ' ';
+	}
+    
+    #providerContent #g10-intro-section .intro_provider_box {
+        display: block;
+        position: relative;
+    }
+    
+    #providerContent #g10-intro-section .intro_provider_box .provider_row {
+		overflow: auto;
+    }
+    
+    #providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col {
+        display: inline-block;
+        width: 100%;
+        height: 63px;
+        /*margin: 0px 5px;*/
+        /*border-top: 1px solid #efefef;*/
+        border-bottom: 1px solid #efefef;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    #providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col:hover {
+        cursor: pointer;
+		font-weight: bold;
+    }
+    
+    #providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col .img_logo {
+        float: left;
+        padding: 19.5px 4px 0px 15px;
+    }
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col .img_logo > div {
+		width: 48px;
+		height: 24px;
+	}
+    
+    #providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col > span {
+		display: block;
+		padding: 6px 0;
+		margin: 0;
+		font-size: 16px;
+		letter-spacing: -0.9px;
+		color: #282828;
+		height: 100%;
+		box-sizing: border-box;
+		line-height: 51px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+    }
+
+    
+    #certificateProviderList {position:absolute;display:inline-block;right:0;top:0;bottom:0;width:100%;margin:0;z-index: 2000;transition: background-color,width 0.3s;pointer-events: none;}
+    #certificateProviderList.hover {box-shadow:0px 0px 3px 0px #000000;pointer-events: initial;background-color: rgba(0,0,0,0.15);}
+    #certificateProviderList .g10_navCurtain{width: calc(100% - 74px);height:100%;float: left;transition: width 0.3s;}
+    #certificateProviderList.hover .g10_navCurtain{width: calc(100% - 274px);pointer-events: all;}
+    #certificateProviderList .g10_wrapper{width: 74px;float:left;pointer-events: all;right: 0;transition: width 0.3s;background-color: #f6f6f6;height: 100%;}
+    #certificateProviderList.hover .g10_wrapper{width: 274px;}
+    /*#certificateProviderList.hover .g10_wrapper{background-color: rgba(0,0,0,0.15);cursor:initial;}*/
+    #certificateProviderList .g10_navMenu {position: absolute; top: 55px;width: 74px;background-color:#f6f6f6;/*background-image: url('images/');*/}
+    #certificateProviderList.hover .g10_navMenu {width: 274px;}
+    /*#certificateProviderList #g10_navMenu {width: 74px;}*/
+    #certificateProviderList #g10_navMenu .login_side_menu {padding: 4px 0px;height: 32px; border-radius: 21px; text-align: center;cursor: pointer;margin:5px; transition:background-color 0.3s;border: 1px solid #f6f6f6;}
+    #certificateProviderList #g10_navMenu .login_side_menu:hover, #certificateProviderList #g10_navMenu .login_side_menu.active {border: 1px solid #f0f0f0;}
+    #certificateProviderList #g10_navMenu .login_side_menu:not(.disabled):hover, #certificateProviderList #g10_navMenu .login_side_menu:not(.disabled).active {background-color: #fff !important;font-weight: bold;}
+    #certificateProviderList #g10_navMenu .login_side_menu .login_logo {float: left;padding: 4.5px 4px 3.5px 8px;}
+	#certificateProviderList #g10_navMenu .login_side_menu .login_logo > .img_logo {width: 48px; height: 24px;}
+    #certificateProviderList #g10_navMenu .login_side_menu:hover .login_logo, #certificateProviderList #g10_navMenu .login_side_menu.active .login_logo {}
+    #certificateProviderList #g10_navMenu .login_side_menu .login_name {padding: 6px 0;margin: 0;font-size: 16px;line-height: 21px;letter-spacing: -0.97px;color: #282828;display:none;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+    #certificateProviderList.hover #g10_navMenu .login_side_menu .login_name {display: block;}
+
+    /*#certificateProviderList .g10_folding {height: 55px;width: 74px;float: right;}*/
+    #certificateProviderList .g10_folding {
+        position: relative;
+        right: 18px;
+        top: 8px;
+        width: 37px;
+        height: 37px;
+        background: transparent;
+        border-radius: 50%;
+        float: right;
+    }
+    #certificateProviderList .g10_folding:hover {
+        background: #e9e9e9;
+    }
+    #certificateProviderList .g10_folding::before {
+        position: absolute;
+        left: 11px;
+        top: 18px;
+        right: 11px;
+        bottom: 0;
+        height: 1px;
+        content: ' ';
+        background: #333333;
+    }
+    #certificateProviderList.hover .g10_folding::after {
+        display: none;
+    }
+    #certificateProviderList .g10_folding::after {
+        position: absolute;
+        left: 18px;
+        top: 11px;
+        right: 0;
+        bottom: 11px;
+        width: 1px;
+        content: ' ';
+        background: #333333;
+        display: block;
+    }
+
+div#vpcg_content.content{
+    margin: 19px;
+    margin-bottom: 0;
+    position: relative;
+}
+.vpcg_section_right_on {
+    /*display: none !important;*/
+    margin-left: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: unset !important;
+    min-width: unset !important;
+    border: none !important;
+}
+
+/*
+.vpcg_section_right_on .vpcg_section_right_on_logo {  
+    padding: 1px 0 !important;
+    margin: 44px 0px 26px 0 !important;
+    width: 75px !important;
+    height: 27px !important;
+    border-radius: 18px !important;
+    text-align: center !important;
+    box-sizing: border-box;
+}
+*/
+
+.vpcg_section_right_on .vpcg_section_sign_logo {
+	border: none;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-position: left 0px bottom 0px;
+	padding: 1px 0;
+    margin: 44px 0px 26px 0;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+.vpcg_section_right_on input {
+    padding-left: 0 !important;
+    width: 100% !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 20px !important;
+    border: none !important;
+    outline:none !important;
+    border-bottom: 1px solid #d6d6d6 !important;
+    margin-bottom: 5px;
+	height: 30px !important;
+}
+.vpcg_section_right_on input::placeholder {
+    font-size: 17px !important;
+}
+
+.vpcg_section_right_on input:focus {
+    border-bottom: 1px solid #999 !important;
+}
+
+.vpcg_section_right_on .vpcg_section_right_on_phone {
+    text-align: left !important;
+}
+
+.content .vpcg_section_right_on .vpcg_btn_login {
+    margin: 20px 0 0 0 !important;
+    padding: 3.5% 0 !important;
+    width: 100% !important;
+    height: 42px !important;
+    border-radius: 4px !important;
+    color: #fff;
+    font-size: 15px !important;
+    line-height: 19px !important;
+    text-align: center !important;
+    background-color: #D6D6D6;
+    background-image: none;
+    border: 0px;
+    cursor: not-allowed !important;
+}
+
+.vpcg_btn_close {
+	position: fixed;
+	left: 15px;
+	top: 15px;
+	cursor: pointer;
+	width: 13px;
+	height: 13px;
+	background-image: url(images/g10/icon/vpcg_esc.png);
+	z-index: 1;
+}
+
+.vpcg_btn_close.svg {
+	background-image: url(images/g10/icon/vpcg_esc.svg);
+}
+
+
+.vpcg_inputfield label {
+	line-height: 15px;
+	height: 21px;
+	display: block;
+	color: red;
+	font-size: 12px;
+}
+
+
+.vpcg_section_popup {
+	display: none;
+	width: 100%;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 {
+	position: relative;
+    display: block;
+    height: 85px;
+    /*padding: 44px 0px 0px 0px;*/
+	margin: 44px 0 0 0;
+    border-bottom: 1px solid #E2DDE3;
+	background: url(images/g10/icon/img_confirm.png) no-repeat;
+	background-position: right 15px bottom 28px;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1.svg {
+	background-image: url(images/g10/icon/img_confirm.svg);
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box {
+	display: inline-block;
+	position: absolute;
+	bottom: 20px;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title {
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 27px;
+	text-align: center;
+	position: relative;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title > .l1 {
+	text-align: left;
+	position: relative;
+	display: block;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title .name {
+	font-size: 18px;
+	margin: 0 1px;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+
+.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title .name::after {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 17px;
+	background: #E6F6FF;
+	left: 0px;
+	top: 7px;
+	z-index: -1;
+	content: ' ';
+}
+
+.vpcg_section_popup .vpcg_popup_banner2 {
+	position: relative;
+    display: block;
+    padding: 35px 0px 50px 0px;
+}
+
+.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > .title {
+	line-height: 23px;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: -1.1px;
+	word-break: keep-all;
+}
+
+.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > .title.name {
+	color: #7C49f6;
+}
+
+.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > div.desc {
+	font-size: 15px;
+	letter-spacing: -1px;
+	line-height: 23px;
+	word-break: keep-all;
+	margin-top: 26px;
+}
+
+.vpcg_section_popup .vpcg_popup_open {
+	width: 146px;
+    height: 30px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 3px;
+    background-color: #1D79D3;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;	
+	margin: auto;
+}
+
+.vpcg_section_wait_btn .vpcg_wait_button {
+	width: 146px;
+    height: 30px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 3px;
+    background-color: #1D79D3;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;	
+	margin: 40px auto 0;		
+}
+
+.m_vpcg_sign_screen {
+	width: 100%;
+}
+
+.m_vpcg_sign_screen .m_vpcg_sign_screen_body .m_vpcg_sign_screen_popup_open {
+	line-height: 20px !important;
+    height: 20px !important;
+    border-radius: 3px !important;
+	background-color: #1D79D3 !important;
+	padding: 9px 0 !important;
+}
+
+.m_vpcg_info_screen_normal {
+	word-break: keep-all;
+}
+
+.m_vpcg_info_screen_normal .m_vpcg_info_top_text {
+	color: #1D79D3 !important;
+}
+
+.m_vpcg_sign_screen .m_vpcg_sign_screen_body .m_vpcg_sign_screen_text_top {
+	color: #1D79D3 !important;
+}
+
+.m_vpcg_sign_screen .m_vpcg_sign_screen_body {
+	padding: 50% 0% !important;
+    word-break: keep-all;
+}
+
+.vpcg_section_reauth {
+	width: 100%;
+	padding-top: 44px;
+}
+
+/*
+.vpcg_reauth_logo {
+	padding: 1px 0;
+	margin-bottom: 41px;
+	width: 75px;
+	height: 27px;
+	border-radius: 18px;
+	text-align: center;
+	box-sizing: border-box;
+}
+*/
+.vpcg_reauth_logo {
+	padding: 1px 0;
+	border: none;
+	background-repeat: no-repeat;
+	background-position: left 0px bottom 0px;
+	margin-bottom: 41px;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.vpcg_reauth_logo.png {
+	background-size: auto 60%;
+}
+
+.vpcg_sign_banner1 {
+	width: 100%;
+	height: 56px;
+	background: right 0 url(images/g10/icon/img_request.png) no-repeat;
+	padding-bottom: 21px;
+	border-bottom: 1px solid #e2dde3;
+	box-sizing: content-box;
+}
+
+.vpcg_sign_banner1 > span {
+	display: block;
+	font-size: 18px;
+	line-height: 28px;
+	text-align: left;
+	color: #676767;
+	font-weight: bold;
+	width: calc(100% - 50px);
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.vpcg_sign_banner1 > span .title {
+	font-size: 18px;
+	color: #000000;
+}
+
+@media screen and (max-width: 350px) {
+	.vpcg_sign_banner1 > span {
+		font-size: 15px;
+	}
+	
+	.vpcg_sign_banner1 > span .title {
+		font-size: 16px;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col > span {
+		font-size: 15px;
+	}
+}
+
+.vpcg_sign_banner1.svg {
+	background-image: url(images/g10/icon/img_request.svg);
+}
+
+.vpcg_sign_banner2 {
+	margin-top: 25px;
+	font-size: 15px;
+	line-height: 23px;
+	letter-spacing: -1.15px;
+	color: #575757;
+	margin-bottom: 37px;
+	word-break: break-word;
+}
+
+.vpcg_btn_sign {
+	width: 100%;
+	height: 42px;
+	border-radius: 4px;
+	font-size: 15px;
+	line-height: 38px;
+	text-align: center;
+	border: 0px;
+}

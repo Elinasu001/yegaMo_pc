@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>3A4F0082-0C62-478D-8C21-529EF94958AF</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="4차-화면" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="크롬브라우저-인증서선택1-삭제" transform="translate(-295.000000, -405.000000)">
+            <g id="sign_delete" transform="translate(294.000000, 404.000000)">
+                <g id="Group-7" transform="translate(1.000000, 1.000000)">
+                    <circle id="Oval" fill="#E95454" cx="12" cy="12" r="12"></circle>
+                    <g id="Group-6" transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(5.000000, 5.000000)" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="0" y1="7" x2="14" y2="7" id="Line-3"></line>
+                        <line x1="7" y1="0" x2="7" y2="14" id="Line-3"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

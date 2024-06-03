@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60.1 (101010) - https://sketch.com -->
+    <title>3B239141-9AF6-474E-8834-9151D889970F</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="인증서암호입력" transform="translate(-332.000000, -424.000000)">
+            <g id="Group-3" transform="translate(0.000000, 412.000000)">
+                <g id="Hide-keyboard-2" transform="translate(319.000000, 4.000000)">
+                    <polyline id="Arrow-down" stroke="#5F636D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" points="22 27 27.4543776 30.785915 32.9401458 27.1090489"></polyline>
+                    <path d="M42.0018463,8 C42.5531114,8 43,8.53234863 43,9.1765182 L43,22.8234818 C43,23.4732549 42.5526348,24 42.0018463,24 L13.9981537,24 C13.4468886,24 13,23.4676514 13,22.8234818 L13,9.1765182 C13,8.52674514 13.4473652,8 13.9981537,8 L42.0018463,8 Z M41,10 L15,10 L15,22 L41,22 L41,10 Z" id="Rectangle" fill="#5F636D" fill-rule="nonzero"></path>
+                    <g id="Group-5" transform="translate(17.000000, 12.000000)" fill="#5F636D">
+                        <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="4" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="8" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="12" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="16" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                    </g>
+                    <g id="Group-5" transform="translate(17.000000, 15.000000)" fill="#5F636D">
+                        <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="4" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="8" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="12" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="16" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                    </g>
+                    <g id="Group-5" transform="translate(17.000000, 18.000000)" fill="#5F636D">
+                        <rect id="Key" x="0" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="4" y="0" width="14" height="2"></rect>
+                        <rect id="Key" x="8" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="12" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="16" y="0" width="2" height="2"></rect>
+                        <rect id="Key" x="20" y="0" width="2" height="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

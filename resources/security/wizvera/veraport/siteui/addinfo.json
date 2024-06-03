@@ -1,0 +1,61 @@
+{
+    "info": {
+        "images": {
+            "normalname": {
+                "bg":   "/wizvera/veraport/siteui/normal_name_bg.gif",
+                "logo": "/wizvera/veraport/siteui/normal_name_logo.gif"
+            },
+            "normaldesc": {
+                "bg":   "/wizvera/veraport/siteui/normal_desc_bg.gif",
+                "logo": "/wizvera/veraport/siteui/normal_desc_logo.gif"
+            },
+            "common": {
+                "progress": "/wizvera/veraport/siteui/icon_download.gif"
+            }
+        }
+    },
+    "modules": [
+        {
+            "name": "Delfino",
+            "title": "공인인증서 보안 (WizIN-Delfino)",
+            "desc": "공인인증서 로그인과 거래내역에 대한 전자서명을 위한 프로그램입니다 .",
+            "icon": "/wizvera/veraport/siteui/3rdParty/delfino.gif"
+        },
+        {
+            "name": "DelfinoG3",
+            "title": "공인인증서 보안 (Delfino G3)",
+            "desc": "공인인증서 로그인과 거래내역에 대한 전자서명을 위한 프로그램입니다 .",
+            "icon": "/wizvera/veraport/siteui/3rdParty/delfino.gif"
+        },
+        {
+            "name": "TouchEnNxKey",
+            "title": "키보드 보안(TouchEn nxKey)",
+            "desc": "키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 프로그램입니다.",
+            "icon": "/wizvera/veraport/siteui/3rdParty/touchenkey.gif"
+        },
+        {
+            "name": "AStx",
+            "title": "개인PC방화벽(AhnLab Safe Transaction)",
+            "desc": "비인가된 접근을 차단하고 해킹툴 및 바이러스를 검색하고 치료해 주는 프로그램입니다. ",
+            "icon": "/wizvera/veraport/siteui/3rdParty/aosmgr.gif"
+        },
+        {
+            "name": "NOS",
+            "title": "개인PC방화벽(nProtect Online Security)",
+            "desc": "비인가된 접근을 차단하고 해킹툴 및 바이러스를 검색하고 치료해 주는 프로그램입니다. ",
+            "icon": "/wizvera/veraport/siteui/3rdParty/nprotect.gif"
+        },
+        {
+            "name": "SCSK4",
+            "title": "키보드 보안(Secure KeyStroke)",
+            "desc": "키보드를 통해 입력되는 정보가 유출되거나 변조되지 않도록 보호해 주는 프로그램입니다.",
+            "icon": "/wizvera/veraport/siteui/3rdParty/scsk4.gif"
+        },
+        {
+            "name": "SecuLog",
+            "title": "로그수집기(nProtect-SecuLog)",
+            "desc": "이용PC지정서비스 이용 및 로그수집기 소프트웨어입니다. ",
+            "icon": ""
+        }
+    ]
+}

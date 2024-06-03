@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>델피노 전자 서명</title>
+    <script>
+    var q = (function getQuery() {
+        var rval={};
+        var searchStr = window.location.search && window.location.search.substr(1) || '';
+        searchStr += window.name ? ((searchStr ? '&' : '') + window.name.slice(19)) : '';
+        searchStr = searchStr.split('&');
+
+        for(var i=0;i<searchStr.length;i++) {
+            var target = searchStr[i].split('=');
+            var key = target[0];
+            var value = decodeURIComponent(target[1]);
+
+            value = value.replace(/&/g, "&amp;");
+            value = value.replace(/</g, "&lt;");
+            value = value.replace(/>/g, "&gt;");
+            value = value.replace(/\"/g, "&qout;");
+            value = value.replace(/\'/g, "&#039;");
+            value = value.replace(/\r/g, "");
+            value = value.replace(/\n/g, "");
+            value = value.replace(/\\/g, "/");
+            rval[key] = value;
+        }
+
+        return rval
+    })();
+    var staticServer = null;
+    //staticServer = "https://oimg1.kbstar.com/js/common/wizvera/html5/";
+    //staticServer = "https://help.wizvera.com/wizvera/delfino4html/";
+    var serviceJsp = "../DelfinoG4Service";
+
+    var originUrl = q["origin"];
+    var enableOpencertServer = q["opencert"];
+    var encryptedParams = q["encryptedParams"];
+    if(!encryptedParams || !encryptedParams.match(/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/)) {
+        encryptedParams = undefined;
+    }
+    var enablePreload = q["preload"];
+    var profileOn = "false";
+    var logger = undefined;
+
+    var today = new Date();
+    var year = "" + today.getFullYear();
+    var month = "" + (today.getMonth()+1);
+    if(month.length == 1) month = '0' + month;
+    var date = "" + today.getDate();
+    if(date.length == 1) date = '0' + date;
+    today = year+month+date;
+
+    var opencertTest = "https://fidoweb.yessign.or.kr:3100/v2/opencert.js";
+    var opencertReal = "https://www.yessign.or.kr:3100/v2/opencert.js";
+    var opencertWizvera = "https://opencert.wizvera.com:3100/v2/opencert.js";
+
+    if("test" == enableOpencertServer) {
+        enableOpencertServer = opencertTest;
+    } else if("real" == enableOpencertServer) {
+        enableOpencertServer = opencertReal;
+    } else if("wizvera" == enableOpencertServer) {
+        enableOpencertServer = opencertWizvera;
+    } else {
+        enableOpencertServer = "off";
+    }
+
+    var onlyOpencert = q["useOnlyOpencert"];
+    var dynamicBaseURI = window.location.href.substring(0, window.location.href.lastIndexOf('/')+1);
+    var browserType = q["userAgent"] || window.navigator.userAgent; // Edge header could lie.
+
+    document.write("    <!-- " + browserType + " -->");
+
+    var releaseDate = "2023-05-12T06_37_44.790Z";
+    var releaseYYMMDD = "230512";
+    var delfino4htmlUrl = "delfino4html.compiled.js?" + releaseDate;
+    var delfino4htmlUIUrl = "delfino4html-ui.compiled.js?" + releaseDate;
+    var licenseDomainUrl = "domain.js?" + releaseDate;
+    var isSafari = false;
+    var isIE = false;
+
+    if (browserType.indexOf("Edge") > 0 ){
+        //delfino4htmlUrl = dynamicBaseURI + "delfino4html.compiled.js?" + releaseDate; // for KBSTAR
+        //delfino4htmlUrl = "delfino4html.min.int.js?" + releaseDate;                   // for SHINHAN
+    } else if (browserType.indexOf("MSIE") > 0 || browserType.indexOf("Trident") > 0) {
+        //delfino4htmlUrl = "delfino4html.min.int.js?" + releaseDate;
+        isIE = true;
+    }
+    if (browserType.indexOf("Safari") > 0 && browserType.indexOf("Version") > 0) {
+        isSafari = true;
+    }
+
+    //delfino4htmlUrl = "../build/delfino4html.min.js?" + releaseDate;
+    //delfino4htmlUIUrl = "../build/delfino4html-ui.min.js?" + releaseDate;
+    //licenseDomainUrl = "../domain_licensed/testDomain.js?" + releaseDate;
+
+	var vpcgUrl = "vpcg.js?" + releaseDate;
+	
+	//vpcgUrl = "../vpcg/vpcg.js?" + releaseDate;
+
+    if (staticServer != null) {
+        document.write("    <base href='"+ staticServer +  "'/>");
+    }
+
+    var mode= q["mode"];
+    if (mode == undefined) mode= "desktop";
+
+    document.write("    <!-- mode=" + mode+ " -->");
+
+    var staticBaseURI;
+    if(staticServer)
+        staticBaseURI = staticServer;
+    else
+        staticBaseURI = dynamicBaseURI;
+    var Delfino4HtmlConfig = {
+        dynamicBaseURI : dynamicBaseURI,
+        staticBaseURI : staticBaseURI
+    };
+    Delfino4HtmlConfig.serviceURI = serviceJsp;
+    Delfino4HtmlConfig.serviceJsp = serviceJsp;
+    Delfino4HtmlConfig.mode = mode;
+    Delfino4HtmlConfig.originURI = originUrl;
+    Delfino4HtmlConfig.enableOpencertServer = enableOpencertServer;
+    if(Delfino4HtmlConfig.enableOpencertServer == 'on') {
+        Delfino4HtmlConfig.enableOpencertServer = true;
+    } else if(Delfino4HtmlConfig.enableOpencertServer == 'off') {
+        Delfino4HtmlConfig.enableOpencertServer = false;
+    } else {
+        Delfino4HtmlConfig.encryptedParams = encryptedParams;
+        Delfino4HtmlConfig.useOpencertV2= true;
+        // Delfino4HtmlConfig.enableOpencertServer = false;
+    }
+    Delfino4HtmlConfig.useOnlyOpencert = onlyOpencert == "true";
+    Delfino4HtmlConfig.releaseYYMMDD = releaseYYMMDD;
+    Delfino4HtmlConfig.releaseDate = releaseDate;
+    var preload = enablePreload;
+    if(preload == "on") {
+        preload = true;
+    } else {
+        preload = false;
+    }
+    Delfino4HtmlConfig.profileOn = (profileOn=='true');
+// <%if(logger!=null){%>Delfino4HtmlConfig.logger = '<%=logger%>';<%}%>
+
+    Delfino4HtmlConfig.enablePreload = preload;
+    function authCodeValidator(e){ var k=e.keyCode,l=e.target.value.length;if(k<48||k>57||l>3){e.preventDefault()}; }
+    </script>
+    <!-- *************************************************************  -->
+
+    <!-- no favicon -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- dependency for jquery -->
+    <script type="text/javascript">
+    document.write('<link rel="stylesheet" href="jquery/ui-smoothness-1.11.2.css?'+releaseDate+'"/>');
+    document.write('<link rel="stylesheet" type="text/css" href="connected/Switch.css?'+releaseDate+'" />');
+    </script>
+    <script src="jquery/jquery-3.3.1.min.js?20151104"></script>
+    <!--[if IE 9]><script src="jquery/jquery.xdomainrequest.min.js?20190724"></script>
+    <script>window.isIE9 = true;</script><![endif]-->
+    <!-- dependency for Promise -->
+    <script src="bluebird/bluebird.min.js?20180413"></script>
+    <script>
+        if(enableOpencertServer != 'on' && enableOpencertServer != 'off')
+            document.write("<!--[if gt IE 10]><!--><script src='"+enableOpencertServer+"?dt="+today+"&corp=000' ></"+"script><!--<![endif]-->");
+        if(mode == 'serviceOnly') {} else if(mode == 'mobile') {
+            document.write('<!-- mobile -->')
+            document.write('<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width"/>')
+
+            document.write('<link id="coreCSS" type="text/css" rel="stylesheet" media="screen" href="web20touch/css/core.css?v2">')
+            document.write('<link id="mainCSS" type="text/css" rel="stylesheet" media="screen" href="web20touch/css/apple.css?v2">')
+
+            document.write('<script type="text/javascript" src="web20touch/includes/jsTouch.js?v3" ></'+'script>')
+            document.write('<script type="text/javascript" src="web20touch/includes/iscroll.js" ></'+'script>')
+
+            document.write('<link rel="stylesheet" type="text/css" href="mobile.css?'+releaseDate+'" />')
+        } else {
+            document.write('<link rel="stylesheet" type="text/css" href="w2ui/w2ui-1.4.2.css?'+releaseDate+'" />')
+            document.write('<script type="text/javascript" src="w2ui/w2ui-1.4.2.js?'+releaseDate+'"></'+'script>');
+            document.write('<script type="text/javascript" src="w2ui/w2ui-popup-multi.js?'+releaseDate+'"></'+'script>');
+
+            if(mode == 'desktop') {
+                document.write('<link rel="stylesheet" type="text/css" href="desktop.css?'+releaseDate+'" />');
+                document.write('<!-- dependency for downloadify -->');
+                if(isSafari) {
+                    document.write('<script type="text/javascript" src="downloadify/swfobject.js?'+releaseDate+'" ></'+'script>');
+                    document.write('<script type="text/javascript" src="downloadify/downloadify.js?'+releaseDate+'" ></'+'script>');
+
+                }
+                document.write('<script type="text/javascript" src="qrcode/qrcode.min.js" ></'+'script>');
+                document.write('<script type="text/javascript" src="qrcode/uuid.min.js" ></'+'script>');
+            } else if(mode == 'tablet') {
+                document.write('<link rel="stylesheet" type="text/css" href="tablet.css?'+releaseDate+'" />');
+            }
+        }
+		
+		<!-- VPCG script -->
+		var g10 = q["g10"];
+		if(g10 == "true") {
+			document.write('<script src="'+vpcgUrl+'" ></'+'script>');
+		}
+
+		document.write('<script src="delfino4html.cp949.min.js?'+releaseDate+'" ></'+'script>');
+        document.write('<script src="'+delfino4htmlUIUrl+'" ></'+'script>');
+        document.write('<script src="'+licenseDomainUrl+'" ></'+'script>');
+    </script>
+
+</head>
+<body>
+<script>
+(function(){
+    if(mode !== 'desktop' && mode !== 'tablet' && mode !== 'mobile' && mode !== 'serviceOnly')
+        mode = 'desktop';
+    $.ajax({
+        url: mode+"-body.xml?_="+Delfino4HtmlConfig.releaseYYMMDD,
+        dataType: "text",
+        async: false,
+        success: function(res) {
+            document.write(res);
+        },
+        error: function(res, a, b) {
+            alert('페이지 로딩 중 에러가 발생하였습니다.');
+        }
+    });
+    if(window.opener) {
+        document.body.style = "background-color: rgba(0,0,0,0.3);"
+    }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<style>
+body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-size: 14px;
+}
+div#background {
+	width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+	background: url('./sitelogo/delfinoApp.svg') center no-repeat;
+}
+
+</style>
+<!-- load delfino script files -->
+<script src="./jquery/jquery-1.6.4.min.js"></script>
+<script src="./delfino_config.js?20150603"></script>
+<script type="text/javascript">
+DelfinoConfig.module = "G10";
+DelfinoConfig.useRecentModule = false;
+var firstLoading = false;
+
+function configSetting() {
+	firstLoading = true;
+		
+/*	
+	// override할 설정이 있으면...
+	DelfinoConfig.g4.signServerUrl = window.location.origin + "/delfino4html/web";		
+	var certRelay = {"provider":"wizveraV2","providerUrl":window.location.origin + "/delfino4html/DelfinoCertRelay"};
+	DelfinoConfig.certRelay = certRelay;
+	
+	DelfinoConfig.g4.uiType = "default";
+	DelfinoConfig.g4.uiType = "smart";
+	DelfinoConfig.g4.manageButton = true;
+	DelfinoConfig.disableExpireFilter = true;
+*/	
+}
+	
+if(typeof window.DelfinoConfig == 'object') {
+    configSetting();
+} else {
+    $.ajaxSetup({
+        complete: function(xhr, status) {
+            if(!DelfinoConfig || firstLoading) {
+                return;
+            }
+            configSetting();
+        } 
+    });
+}
+var $j = jQuery;
+</script>
+<script src="./delfino_internal.min.js?20190111"></script>
+<script src="./delfino.js?20190729"></script>
+<script src="./delfino_site.js?20150603"></script>
+</head>
+<body>
+<script src="./delfinoApp.js?20220614"></script>
+<div id="background"></div>
+</body>
+</html>

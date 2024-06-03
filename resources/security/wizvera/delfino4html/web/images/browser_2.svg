@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="76px" viewBox="0 0 102 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>browser/hover</title>
+    <desc>Created with Sketch.</desc>
+    <g id="browser/hover" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#E4E4E4" fill="#FFFFFF" x="0.5" y="0.5" width="101" height="75"></rect>
+        <path d="M65.7,15 C68.2,15 69.9,16.7 69.9,19.1 L69.9,43.4 C69.9971429,45.9257143 68.2069388,47.8852245 65.9044548,47.9951347 L65.7,48 L65.7,48 L36.7,48 C34.2,48 32,45.9 32,43.4 L32,19.1 C32,16.4 34.4,15 36.7,15 L65.7,15 Z M42.7,16 L36.7,16 C34.9,16 33,17.1 33,19.1 L33,43.4 C33,45.3 34.7,47 36.7,47 L65.7,47 C67.6,47 68.9,45.5 68.9,43.4 L68.9,21.5 C68.9,19.9 68.8,19 66.4,19 L45.9,19 L45.9,18.1 C45.9,16.9 44.5,16 42.7,16 Z M65.7,16 L45.8799375,16.0002341 C46.5213927,16.5248082 46.9,17.2203366 46.9,18 L66.4,18 C67.5657666,18 68.3466568,18.2256172 68.8683773,18.5994936 C68.6582161,16.9913639 67.426949,16 65.7,16 Z M69,21 L69,22 L33,22 L33,21 L69,21 Z M54.8,15 C57.3,15 59,16.3 59,18.1 L59,19 L58,19 L58,18.1 C58,16.9 56.6,16 54.8,16 L43,16 L43,15 L54.8,15 Z M44,17 L44,18 L43,18 L43,17 L44,17 Z" id="browser" fill="#0266CC" fill-rule="nonzero"></path>
+    </g>
+</svg>

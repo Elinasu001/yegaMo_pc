@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Progma" content="no-cache" />
+    <title>WizIN-Delfino(통합보안 관리프로그램) 설치</title>
+    <link type="text/css" href="./images/install.css" rel="stylesheet" />
+    
+	<script type="text/javascript" src="../jquery/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="../delfino_config.js"></script>
+	<script type="text/javascript" src="../delfino_internal.min.js"></script>
+	<script type="text/javascript" src="../delfino.js"></script>
+	<script type="text/javascript" src="./install.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="main">
+
+        <div><img src="images/top_logo.gif" /></div>
+        <div class="progress"><img class="progress" src="images/install_ing.gif" /></div>
+        <div><img src="images/msg_01.gif" /></div>
+        <div>
+           <img src="images/msg_02.gif" border="0" usemap="#reload" />
+           <map name="reload">
+               <area shape="rect" coords="145,27,190,42" href="javascript:document.location.reload()" />
+           </map>
+        </div>
+        <div><img src="images/center_line.gif" /></div>
+        <br/>
+
+        <div class="text_01">
+            <div style="height:20px;">
+               <span style="font-size:14px; font-weight:bold; padding-left:13px; padding-bottom:3px;">
+                   <img src="images/dot_1.gif" />WizIN-Delfino 수동설치
+               </span>
+            </div>
+
+            <div ><ul>
+                <li style="letter-spacing:-1px;list-style:none;">
+                                                 ≫ 자동설치가 되지 않는 경우 하단의 버튼을 눌러 프로그램을 다운로드 받아 수동설치 하시기 바랍니다.<br/>
+                </li>
+                <li style="letter-spacing:-1px;list-style:none;">
+                                                 ≫ 수동설치후에 반드시  <b><a href="javascript:document.location.reload()">[새로고침]</a></b>을
+                                         하거나 해당사이트로 재 접속하여주시기 바랍니다.
+                </li>
+                <li style="letter-spacing:-1px;list-style:none;">
+                  <script>document.write("≫ 시스템정보 " + delfino_getSystemInfo());</script>
+                </li>
+            </ul></div>
+
+            <div align="center" >
+                <a href="javascript:delfino_download();"><img src="images/download.gif" /></a>
+            </div>
+        </div>
+        
+        <br/>
+        <div class="textbox">
+            <div class="text" >
+                <ul>
+                    <li><span class="style1">≫&nbsp;</span> 설치완료 후 장시간 화면이 멈춰있을 경우 우측의 
+                     <br/><span class="style1">[홈 페이지 접속하기]</span>를 선택하여 홈페이지로 접속 하여주십시오.</li>
+                </ul>
+            </div>
+            <div class="godirect"><a href="javascript:delfino_goHomePage();"><img src="images/go_direct.gif" /></a></div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- 델피토 설치확인 스크립트 시작  -->
+<script type="text/javascript">
+//<![CDATA[
+	delfino_createObjectActiveX();
+  	window.onload= function() { delfino_load(); }
+//]]>
+</script>
+<!-- 델피토 설치확인 스크립트 종료 -->
+
+</body>
+</html>
+

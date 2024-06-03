@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="25px" viewBox="0 0 41 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 61 (101010) - https://sketch.com -->
+    <title>D7539EEC-31CF-4F31-B543-DC237A7AC397</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="키보드-디자인" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="인증서이동1-키보드시안2" transform="translate(-306.000000, -621.000000)">
+            <g id="Group-7" transform="translate(-1.000000, 430.000000)">
+                <g id="Group-6" transform="translate(0.000000, 4.000000)">
+                    <g id="delete" transform="translate(306.000000, 187.000000)">
+                        <path d="M15.7859318,0 L39.6641085,0 C40.768678,3.72131305e-15 41.6641085,0.8954305 41.6641085,2 L41.6641085,22.75375 C41.6641085,23.8583195 40.768678,24.75375 39.6641085,24.75375 L15.7859318,24.75375 C15.3229674,24.75375 14.8743416,24.5931356 14.5165739,24.2993018 L1.88184146,13.9224268 C1.02825676,13.2213798 0.904600554,11.9611018 1.60564759,11.1075171 C1.68848011,11.0066614 1.78098578,10.9141557 1.88184146,10.8313232 L14.5165739,0.454448187 C14.8743416,0.160614413 15.3229674,1.41731281e-15 15.7859318,0 Z" id="Rectangle" fill="#EBEBEB"></path>
+                        <polygon id="Line" fill="#555555" fill-rule="nonzero" points="19.4869917 6.4022393 20.9553859 5.04436651 33.5731598 18.6891395 32.1047656 20.0470123"></polygon>
+                        <polygon id="Line" fill="#555555" fill-rule="nonzero" points="32.1047656 5.04436651 33.5731598 6.4022393 20.9553859 20.0470123 19.4869917 18.6891395"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

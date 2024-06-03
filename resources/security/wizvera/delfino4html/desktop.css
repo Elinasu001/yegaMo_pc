@@ -1,0 +1,2374 @@
+/*
+<!-- 전체 공통 CSS -->
+<style>
+*/
+    .w2ui-col-header { text-align:center }
+    .strongLabel { font-weight: bold; }
+    .w2ui-msg-close { background: url(images/close.png?20150817) no-repeat; }
+    .w2ui-grid-data > div > img {padding-right:3px; float:left; width:15px; height:13px;}
+    /* .w2ui-popup, .w2ui-popup div { overflow: hidden; } */
+     .w2ui-popup * { font-family: "Apple SD Gothic Neo", "Apple Gothic", "맑은 고딕", "Malgun Gothic", "Dotum"; } 
+/*
+</style>
+<!-- 전자 서명 작성 & 인증서 관리 공통 -->
+<style>
+*/
+    .passwordBlock .passwordBlockInner input {line-height: 18px;}
+    .storageBlock button { width:80px; height:76px; }
+    .storageButtonBlock { width: 446px; height: 76px; overflow:hidden;}
+    .storageBlock button { margin-right: -1px; margin-left: 0px;}
+    /* .storageButtonBlock { padding-left: 4px; } */
+    .storageBlock button { border:none; }
+    .storageBlock button { padding-top : 48px; padding-left:1px; padding-right:1px; line-height: 1em;}
+    .storageBlock button { font-size: 0.87em; }
+
+    .storageBlock { position : relative;  }
+/*    #selectDialogBody div.storageBlock, #selectDialogBody > .storageBlock > div,
+    #exportCertificateDialogBody div.storageBlock, #exportCertificateDialogBody > .storageBlock > div {
+        margin-bottom : 0px;
+    }
+    #selectDialogBody div.certificateBlock, #exportCertificateDialogBody div.certificateBlock,
+    #manageDialogBody > div.certificateBlock {
+        margin-top : 0px;
+    }
+    #selectDialogBody > .certificateBlock > div.opencertWarningLabel,
+    #exportCertificateDialogBody > .certificateBlock > div.opencertWarningLabel,
+    #manageDialogBody > .certificateBlock > div.opencertWarningLabel {
+        margin : 0px;
+    }*/
+    .storageBlock .need_g3_message {
+        width : 426px;
+        position: absolute;
+        font-size: 90%;
+        color :  #696969;
+    }
+    .storageBlock .need_g3_message span { margin-right:2px;}
+    div.certificateBlock {
+        margin-top: 0px;
+    }
+    div.opencertWarningLabel{
+        margin: 0px !important;
+        margin-top: 5px !important;
+        height: 11px;
+        line-height: 11px;
+        font-size: 11px;
+        color: #aaa;
+        float: right;
+    }
+
+    div.browserGuide {
+        position: fixed;
+        width: 334px; height: 655px;
+        z-index: 1600;
+        transition: -webkit-transform 0.3s ease 0s;
+        transform: scale(0.0);
+    }
+    div.browserGuideImage {
+        position: absolute;
+        left:0;
+        top:0;
+    }
+    div.closeGuide {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        width: 16px;
+        height: 16px;
+        background-image: url('images/certpin-close.png');
+        background-repeat: contain;
+        cursor: pointer;
+    }
+	
+	div.g10guide_area {
+		position: fixed;
+        z-index: 1600;
+        /*transition: -webkit-transform 0.3s ease 0s;*/
+        /*transform: scale(0.0);*/
+		width: 280px;
+		height: 555px;
+		background-color: white;
+		border-radius: 14px;
+		box-shadow: 5px 0px 8px -2px #555555 !important;
+		border: 0px !important;
+		padding: 12px 12px 34px 12px;
+		box-sizing: border-box;
+	}
+	
+	div.g10guide_area > div.g10guide {
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		text-align: center;
+	}
+	
+	div.g10guide_area > label {
+		font-size: 12px;
+		color: #7d7d7d;
+	}
+
+    #manageDialogBody .storageBlock .need_g3_message {
+        bottom: -17px;
+        right: 3px;
+    }
+    #selectDialogBody .storageBlock .need_g3_message,
+    #exportCertificateDialogBody .storageBlock .need_g3_message {
+        bottom: -22px;
+        right: 1px;
+    }
+    #copyTargetDialogBody .storageBlock .need_g3_message {
+        right: 1px;
+    }
+
+    .okButtonMsg{ background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600; vertical-align: top;}
+    .okButtonMsg:hover{ background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    .okButtonMsg:active{ background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+    .okButtonMsg:disabled{ background-color:#054d94; }
+
+    .createEasyPasswordButton{ background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600; vertical-align: top;}
+    .createEasyPasswordButton:hover{ background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    .createEasyPasswordButton:active{ background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+    .createEasyPasswordButton:disabled{ background-color:#054d94; }
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+    .okButtonMsg svg{
+        height: 22px;margin-top: 1px;
+        animation-name: spin;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    .createEasyPasswordButton svg{
+        height: 22px;margin-top: 1px;
+        animation-name: spin;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    .beforeButton{ background-color: #FFF; color:#333; border:solid 1px #bbbbbb; border-radius:2px; font-weight:600; vertical-align: top;}
+    .beforeButton:hover{ background-color: #EEE; color:#333; border:solid 1px  #999999; border-radius:2px; font-weight:600;}
+    .beforeButton:active{ background-color: #DFDFDF; color: #666; border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+
+    .cancelButtonMsg{ background-color: #FFF; color:#333; border:solid 1px #bbbbbb; border-radius:2px; font-weight:600; vertical-align: top;}
+    .cancelButtonMsg:hover{ background-color: #EEE; color:#333; border:solid 1px  #999999; border-radius:2px; font-weight:600;}
+    .cancelButtonMsg:active{ background-color: #DFDFDF; color: #666; border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+
+    .okButtonBlock button { width:80px; height:30px; }
+    .okButtonBlock { text-align: center; }
+
+    .certificateTable{ width: 430px; height: 150px; }
+    .float-right{float:right;}
+
+    div.passwordBlockInner input {width:150px;}
+
+    div.storageBlock button { vertical-align:text-bottom; float:left; margin:0px 7px 0px 0px;}
+    div.storageBlock button {width: 102px; background-size: 102px 76px; background-repeat: no-repeat;}
+    div.storageBlock button:hover,div.storageBlock button:active,div.storageBlock button:disabled{width: 102px; background-size: 102px 76px; background-repeat: no-repeat;}
+
+    div.storageBlock .browserButton { background-image: url(images/browser_1.png?20201127);}
+    div.storageBlock .browserButton:hover { background-image: url(images/browser_2.png?20201127);}
+    div.storageBlock .browserButton:active { background-image: url(images/browser_3.png?20201127);}
+    div.storageBlock .browserButton:disabled { background-image: url(images/browser_disabled.png?20201127);}
+
+    div.storageBlock .edge{ background-image: url(images/edge_1.png?20201127);}
+    div.storageBlock .edge:hover { background-image: url(images/edge_2.png?20201127);}
+    div.storageBlock .edge:active { background-image: url(images/edge_3.png?20201127);}
+    div.storageBlock .edge:disabled { background-image: url(images/edge_disabled.png?20201127);}
+
+    div.storageBlock .chrome { background-image: url(images/chrome_1.png?20201127); }
+    div.storageBlock .chrome:hover { background-image: url(images/chrome_2.png?20201127); }
+    div.storageBlock .chrome:active { background-image: url(images/chrome_3.png?20201127); }
+    div.storageBlock .chrome:disabled { background-image: url(images/chrome_disabled.png?20201127); }
+
+    div.storageBlock .firefox{ background-image: url(images/firefox_1.png?20201127);}
+    div.storageBlock .firefox:hover { background-image: url(images/firefox_2.png?20201127);}
+    div.storageBlock .firefox:active { background-image: url(images/firefox_3.png?20201127);}
+    div.storageBlock .firefox:disabled { background-image: url(images/firefox_disabled.png?20201127);}
+
+    div.storageBlock .opera{ background-image: url(images/opera_1.png?20201127);}
+    div.storageBlock .opera:hover { background-image: url(images/opera_2.png?20201127);}
+    div.storageBlock .opera:active { background-image: url(images/opera_3.png?20201127);}
+    div.storageBlock .opera:disabled { background-image: url(images/opera_disabled.png?20201127);}
+
+    div.storageBlock .ie{ background-image: url(images/ie_1.png?20201127);}
+    div.storageBlock .ie:hover { background-image: url(images/ie_2.png?20201127);}
+    div.storageBlock .ie:active { background-image: url(images/ie_3.png?20201127);}
+    div.storageBlock .ie:disabled { background-image: url(images/ie_disabled.png?20201127);}
+
+    div.storageBlock .safari{ background-image: url(images/safari_1.png?20201127);}
+    div.storageBlock .safari:hover { background-image: url(images/safari_2.png?20201127);}
+    div.storageBlock .safari:active { background-image: url(images/safari_3.png?20201127);}
+    div.storageBlock .safari:disabled { background-image: url(images/safari_disabled.png?20201127);}
+
+    div.storageBlock .cloudButton { background-image: url(images/cloud_1.png?20201127); }
+    div.storageBlock .cloudButton:hover { background-image: url(images/cloud_2.png?20201127); }
+    div.storageBlock .cloudButton:active { background-image: url(images/cloud_3.png?20201127); }
+    div.storageBlock .cloudButton:disabled { background-image: url(images/cloud_disabled.png?20201127); }
+
+    div.storageBlock .findP12Button { background-image: url(images/find_cert_1.png?20201127);}
+    div.storageBlock .findP12Button:hover { background-image: url(images/find_cert_2.png?20201127);}
+    div.storageBlock .findP12Button:active { background-image: url(images/find_cert_3.png?20201127);}
+    div.storageBlock .findP12Button:disabled { background-image: url(images/find_cert_disabled.png?20201127);}
+
+    div.storageBlock .bioButton { background-image: url(images/bio_1.png?20201127);}
+    div.storageBlock .bioButton:hover { background-image: url(images/bio_2.png?20201127);}
+    div.storageBlock .bioButton:active { background-image: url(images/bio_3.png?20201127);}
+    div.storageBlock .bioButton:disabled { background-image: url(images/bio_disabled.png?20201127);}
+
+    div.storageBlock .localDiskButton { background-image: url(images/localdisk_1.png?20201127);}
+    div.storageBlock .localDiskButton:hover { background-image: url(images/localdisk_2.png?20201127);}
+    div.storageBlock .localDiskButton:active { background-image: url(images/localdisk_3.png?20201127);}
+    div.storageBlock .localDiskButton:disabled { background-image: url(images/localdisk_disabled.png?20201127);}
+
+    div.storageBlock .extensionMediaButton { background-image: url(images/etc_1.png?20201127);}
+    div.storageBlock .extensionMediaButton:hover { background-image: url(images/etc_2.png?20201127);}
+    div.storageBlock .extensionMediaButton:active { background-image: url(images/etc_3.png?20201127);}
+    div.storageBlock .extensionMediaButton:disabled { background-image: url(images/etc_disabled.png?20201127);}
+
+    div.storageBlock .safeDiskButton { background-image: url(images/safedisk_1.png?20201127);}
+    div.storageBlock .safeDiskButton:hover { background-image: url(images/safedisk_2.png?20201127);}
+    div.storageBlock .safeDiskButton:active { background-image: url(images/safedisk_3.png?20201127);}
+    div.storageBlock .safeDiskButton:disabled { background-image: url(images/safedisk_disabled.png?20201127);}
+
+    div.storageBlock .secureTokenButton { background-image: url(images/token_1.png?20201127);}
+    div.storageBlock .secureTokenButton:hover { background-image: url(images/token_2.png?20201127);}
+    div.storageBlock .secureTokenButton:active { background-image: url(images/token_3.png?20201127);}
+    div.storageBlock .secureTokenButton:disabled { background-image: url(images/token_disabled.png?20201127);}
+
+    div.storageBlock .phoneButton { background-image: url(images/phone_1.png?20201127);}
+    div.storageBlock .phoneButton:hover { background-image: url(images/phone_2.png?20201127);}
+    div.storageBlock .phoneButton:active { background-image: url(images/phone_3.png?20201127);}
+    div.storageBlock .phoneButton:disabled { background-image: url(images/phone_disabled.png?20201127);}
+
+    div.storageBlock .smartAuthButton { background-image: url(images/smart_1.png?20201127);}
+    div.storageBlock .smartAuthButton:hover { background-image: url(images/smart_2.png?20201127);}
+    div.storageBlock .smartAuthButton:active { background-image: url(images/smart_3.png?20201127);}
+    div.storageBlock .smartAuthButton:disabled { background-image: url(images/smart_disabled.png?20201127);}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2) {
+    div.storageBlock .browserButton { background-image: url(images/browser_1@2x.png?20201127);}
+    div.storageBlock .browserButton:hover { background-image: url(images/browser_2@2x.png?20201127);}
+    div.storageBlock .browserButton:active { background-image: url(images/browser_3@2x.png?20201127);}
+    div.storageBlock .browserButton:disabled { background-image: url(images/browser_disabled@2x.png?20201127);}
+
+    div.storageBlock .edge{ background-image: url(images/edge_1@2x.png?20201127);}
+    div.storageBlock .edge:hover { background-image: url(images/edge_2@2x.png?20201127);}
+    div.storageBlock .edge:active { background-image: url(images/edge_3@2x.png?20201127);}
+    div.storageBlock .edge:disabled { background-image: url(images/edge_disabled@2x.png?20201127);}
+
+    div.storageBlock .chrome { background-image: url(images/chrome_1@2x.png?20201127); }
+    div.storageBlock .chrome:hover { background-image: url(images/chrome_2@2x.png?20201127); }
+    div.storageBlock .chrome:active { background-image: url(images/chrome_3@2x.png?20201127); }
+    div.storageBlock .chrome:disabled { background-image: url(images/chrome_disabled@2x.png?20201127); }
+
+    div.storageBlock .firefox{ background-image: url(images/firefox_1@2x.png?20201127);}
+    div.storageBlock .firefox:hover { background-image: url(images/firefox_2@2x.png?20201127);}
+    div.storageBlock .firefox:active { background-image: url(images/firefox_3@2x.png?20201127);}
+    div.storageBlock .firefox:disabled { background-image: url(images/firefox_disabled@2x.png?20201127);}
+
+    div.storageBlock .opera{ background-image: url(images/opera_1@2x.png?20201127);}
+    div.storageBlock .opera:hover { background-image: url(images/opera_2@2x.png?20201127);}
+    div.storageBlock .opera:active { background-image: url(images/opera_3@2x.png?20201127);}
+    div.storageBlock .opera:disabled { background-image: url(images/opera_disabled@2x.png?20201127);}
+
+    div.storageBlock .ie{ background-image: url(images/ie_1@2x.png?20201127);}
+    div.storageBlock .ie:hover { background-image: url(images/ie_2@2x.png?20201127);}
+    div.storageBlock .ie:active { background-image: url(images/ie_3@2x.png?20201127);}
+    div.storageBlock .ie:disabled { background-image: url(images/ie_disabled@2x.png?20201127);}
+
+    div.storageBlock .safari{ background-image: url(images/safari_1@2x.png?20201127);}
+    div.storageBlock .safari:hover { background-image: url(images/safari_2@2x.png?20201127);}
+    div.storageBlock .safari:active { background-image: url(images/safari_3@2x.png?20201127);}
+    div.storageBlock .safari:disabled { background-image: url(images/safari_disabled@2x.png?20201127);}
+
+    div.storageBlock .cloudButton { background-image: url(images/cloud_1@2x.png?20201127); }
+    div.storageBlock .cloudButton:hover { background-image: url(images/cloud_2@2x.png?20201127); }
+    div.storageBlock .cloudButton:active { background-image: url(images/cloud_3@2x.png?20201127); }
+    div.storageBlock .cloudButton:disabled { background-image: url(images/cloud_disabled@2x.png?20201127); }
+
+    div.storageBlock .findP12Button { background-image: url(images/find_cert_1@2x.png?20201127);}
+    div.storageBlock .findP12Button:hover { background-image: url(images/find_cert_2@2x.png?20201127);}
+    div.storageBlock .findP12Button:active { background-image: url(images/find_cert_3@2x.png?20201127);}
+    div.storageBlock .findP12Button:disabled { background-image: url(images/find_cert_disabled@2x.png?20201127);}
+
+    div.storageBlock .bioButton { background-image: url(images/bio_1@2x.png?20201127);}
+    div.storageBlock .bioButton:hover { background-image: url(images/bio_2@2x.png?20201127);}
+    div.storageBlock .bioButton:active { background-image: url(images/bio_3@2x.png?20201127);}
+    div.storageBlock .bioButton:disabled { background-image: url(images/bio_disabled@2x.png?20201127);}
+
+    div.storageBlock .localDiskButton { background-image: url(images/localdisk_1@2x.png?20201127);}
+    div.storageBlock .localDiskButton:hover { background-image: url(images/localdisk_2@2x.png?20201127);}
+    div.storageBlock .localDiskButton:active { background-image: url(images/localdisk_3@2x.png?20201127);}
+    div.storageBlock .localDiskButton:disabled { background-image: url(images/localdisk_disabled@2x.png?20201127);}
+
+    div.storageBlock .extensionMediaButton { background-image: url(images/etc_1@2x.png?20201127);}
+    div.storageBlock .extensionMediaButton:hover { background-image: url(images/etc_2@2x.png?20201127);}
+    div.storageBlock .extensionMediaButton:active { background-image: url(images/etc_3@2x.png?20201127);}
+    div.storageBlock .extensionMediaButton:disabled { background-image: url(images/etc_disabled@2x.png?20201127);}
+
+    div.storageBlock .safeDiskButton { background-image: url(images/safedisk_1@2x.png?20201127);}
+    div.storageBlock .safeDiskButton:hover { background-image: url(images/safedisk_2@2x.png?20201127);}
+    div.storageBlock .safeDiskButton:active { background-image: url(images/safedisk_3@2x.png?20201127);}
+    div.storageBlock .safeDiskButton:disabled { background-image: url(images/safedisk_disabled@2x.png?20201127);}
+
+    div.storageBlock .secureTokenButton { background-image: url(images/token_1@2x.png?20201127);}
+    div.storageBlock .secureTokenButton:hover { background-image: url(images/token_2@2x.png?20201127);}
+    div.storageBlock .secureTokenButton:active { background-image: url(images/token_3@2x.png?20201127);}
+    div.storageBlock .secureTokenButton:disabled { background-image: url(images/token_disabled@2x.png?20201127);}
+
+    div.storageBlock .phoneButton { background-image: url(images/phone_1@2x.png?20201127);}
+    div.storageBlock .phoneButton:hover { background-image: url(images/phone_2@2x.png?20201127);}
+    div.storageBlock .phoneButton:active { background-image: url(images/phone_3@2x.png?20201127);}
+    div.storageBlock .phoneButton:disabled { background-image: url(images/phone_disabled@2x.png?20201127);}
+
+    div.storageBlock .smartAuthButton { background-image: url(images/smart_1@2x.png?20201127);}
+    div.storageBlock .smartAuthButton:hover { background-image: url(images/smart_2@2x.png?20201127);}
+    div.storageBlock .smartAuthButton:active { background-image: url(images/smart_3@2x.png?20201127);}
+    div.storageBlock .smartAuthButton:disabled { background-image: url(images/smart_disabled@2x.png?20201127);}
+}
+
+    div.storageBlock.useSvg .browserButton { background-image: url(images/browser_1.svg?20201127);}
+    div.storageBlock.useSvg .browserButton:hover { background-image: url(images/browser_2.svg?20201127);}
+    div.storageBlock.useSvg .browserButton:active { background-image: url(images/browser_3.svg?20201127);}
+    div.storageBlock.useSvg .browserButton:disabled { background-image: url(images/browser_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .edge{ background-image: url(images/edge_1.svg?20201127);}
+    div.storageBlock.useSvg .edge:hover { background-image: url(images/edge_2.svg?20201127);}
+    div.storageBlock.useSvg .edge:active { background-image: url(images/edge_3.svg?20201127);}
+    div.storageBlock.useSvg .edge:disabled { background-image: url(images/edge_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .chrome { background-image: url(images/chrome_1.svg?20201127); }
+    div.storageBlock.useSvg .chrome:hover { background-image: url(images/chrome_2.svg?20201127); }
+    div.storageBlock.useSvg .chrome:active { background-image: url(images/chrome_3.svg?20201127); }
+    div.storageBlock.useSvg .chrome:disabled { background-image: url(images/chrome_disabled.svg?20201127); }
+
+    div.storageBlock.useSvg .firefox{ background-image: url(images/firefox_1.svg?20201127);}
+    div.storageBlock.useSvg .firefox:hover { background-image: url(images/firefox_2.svg?20201127);}
+    div.storageBlock.useSvg .firefox:active { background-image: url(images/firefox_3.svg?20201127);}
+    div.storageBlock.useSvg .firefox:disabled { background-image: url(images/firefox_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .opera{ background-image: url(images/opera_1.svg?20201127);}
+    div.storageBlock.useSvg .opera:hover { background-image: url(images/opera_2.svg?20201127);}
+    div.storageBlock.useSvg .opera:active { background-image: url(images/opera_3.svg?20201127);}
+    div.storageBlock.useSvg .opera:disabled { background-image: url(images/opera_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .ie{ background-image: url(images/ie_1.svg?20201127);}
+    div.storageBlock.useSvg .ie:hover { background-image: url(images/ie_2.svg?20201127);}
+    div.storageBlock.useSvg .ie:active { background-image: url(images/ie_3.svg?20201127);}
+    div.storageBlock.useSvg .ie:disabled { background-image: url(images/ie_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .safari{ background-image: url(images/safari_1.svg?20201127);}
+    div.storageBlock.useSvg .safari:hover { background-image: url(images/safari_2.svg?20201127);}
+    div.storageBlock.useSvg .safari:active { background-image: url(images/safari_3.svg?20201127);}
+    div.storageBlock.useSvg .safari:disabled { background-image: url(images/safari_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .cloudButton { background-image: url(images/cloud_1.svg?20201127); }
+    div.storageBlock.useSvg .cloudButton:hover { background-image: url(images/cloud_2.svg?20201127); }
+    div.storageBlock.useSvg .cloudButton:active { background-image: url(images/cloud_3.svg?20201127); }
+    div.storageBlock.useSvg .cloudButton:disabled { background-image: url(images/cloud_disabled.svg?20201127); }
+
+    div.storageBlock.useSvg .findP12Button { background-image: url(images/find_cert_1.svg?20201127);}
+    div.storageBlock.useSvg .findP12Button:hover { background-image: url(images/find_cert_2.svg?20201127);}
+    div.storageBlock.useSvg .findP12Button:active { background-image: url(images/find_cert_3.svg?20201127);}
+    div.storageBlock.useSvg .findP12Button:disabled { background-image: url(images/find_cert_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .biodButton { background-image: url(images/bio_1.svg?20201127);}
+    div.storageBlock.useSvg .biodButton:hover { background-image: url(images/bio_2.svg?20201127);}
+    div.storageBlock.useSvg .biodButton:active { background-image: url(images/bio_3.svg?20201127);}
+    div.storageBlock.useSvg .biodButton:disabled { background-image: url(images/bio_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .localDiskButton { background-image: url(images/localdisk_1.svg?20201127);}
+    div.storageBlock.useSvg .localDiskButton:hover { background-image: url(images/localdisk_2.svg?20201127);}
+    div.storageBlock.useSvg .localDiskButton:active { background-image: url(images/localdisk_3.svg?20201127);}
+    div.storageBlock.useSvg .localDiskButton:disabled { background-image: url(images/localdisk_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .extensionMediaButton { background-image: url(images/etc_1.svg?20201127);}
+    div.storageBlock.useSvg .extensionMediaButton:hover { background-image: url(images/etc_2.svg?20201127);}
+    div.storageBlock.useSvg .extensionMediaButton:active { background-image: url(images/etc_3.svg?20201127);}
+    div.storageBlock.useSvg .extensionMediaButton:disabled { background-image: url(images/etc_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .safeDiskButton { background-image: url(images/safedisk_1.svg?20201127);}
+    div.storageBlock.useSvg .safeDiskButton:hover { background-image: url(images/safedisk_2.svg?20201127);}
+    div.storageBlock.useSvg .safeDiskButton:active { background-image: url(images/safedisk_3.svg?20201127);}
+    div.storageBlock.useSvg .safeDiskButton:disabled { background-image: url(images/safedisk_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .secureTokenButton { background-image: url(images/token_1.svg?20201127);}
+    div.storageBlock.useSvg .secureTokenButton:hover { background-image: url(images/token_2.svg?20201127);}
+    div.storageBlock.useSvg .secureTokenButton:active { background-image: url(images/token_3.svg?20201127);}
+    div.storageBlock.useSvg .secureTokenButton:disabled { background-image: url(images/token_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .phoneButton { background-image: url(images/phone_1.svg?20201127);}
+    div.storageBlock.useSvg .phoneButton:hover { background-image: url(images/phone_2.svg?20201127);}
+    div.storageBlock.useSvg .phoneButton:active { background-image: url(images/phone_3.svg?20201127);}
+    div.storageBlock.useSvg .phoneButton:disabled { background-image: url(images/phone_disabled.svg?20201127);}
+
+    div.storageBlock.useSvg .smartAuthButton { background-image: url(images/smart_1.svg?20201127);}
+    div.storageBlock.useSvg .smartAuthButton:hover { background-image: url(images/smart_2.svg?20201127);}
+    div.storageBlock.useSvg .smartAuthButton:active { background-image: url(images/smart_3.svg?20201127);}
+    div.storageBlock.useSvg .smartAuthButton:disabled { background-image: url(images/smart_disabled.svg?20201127);}
+
+    div.storageBlock div.nativeStoreLoading {width: 102px;height:76px;float:left;padding-top:10px;margin-left:-109px;text-align:center;line-height:76px;background-color:rgba(0,0,0,0.154);}
+
+    div.storageBlock svg{
+        /*height: 22px;margin-top: 1px;*/
+        
+        animation-name: spin;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    input[type="text"][readonly], input[type="text"][readonly="readonly"], input[type="text"][readonly="true"], input[type="text"][readonly=true] {color: #000; background-color: #fff;}
+    input[type="password"][readonly], input[type="password"][readonly="readonly"], input[type="password"][readonly="true"], input[type="password"][readonly=true] {color: #000; background-color: #fff;}/*
+</style>
+<!-- 인증서 관리 -->
+<style>
+*/
+    /* dialog size */
+    #manageDialog { width:466px; height:552px;}
+    #manageDialogBody { width:459px; height:532px;  border-radius:10px; padding:14px; }
+    #manageDialogBody .titleBarBlock{margin-top:0px;}
+    #manageDialogBody .dialogTitle{font-size:18px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #manageDialogBody .float-right{ margin-top:-3px; margin-right:-2px;}
+    #manageDialogBody .selectCertStoreMsgTitleLine{height:11px;}
+    #manageDialogBody .jobsBox { width:430px; height: 103px;}
+
+    #manageDialogBody > div { margin-top: 16px; }
+    #manageDialogBody > div > div { margin-top: 5px; }
+
+    #manageDialogBody .jobsBox { border : 1px solid darkgray; background-color:white; }
+    #manageDialogBody .jobsBox button { border:none; }
+    #manageDialogBody .jobsBox button { width : 160px; height : 22px; font-size:12px; color:#333333; padding-left:25px;}
+
+    #manageDialogBody .jobsBox .left { margin-left:10px; }
+    #manageDialogBody .jobsBox .left { width : 200px; height : 80px;}
+    #manageDialogBody .jobsBox .right{ width : 200px; height : 80px;}
+    #manageDialogBody .jobsBox .line { height : 70px; padding-top: 10px;}
+
+    #manageDialogBody .jobsBox .left,
+    #manageDialogBody .jobsBox .center,
+    #manageDialogBody .jobsBox .right {
+        display : inline-block;
+    }
+
+    #manageDialogBody .jobsBox .center{
+        border-left : 1px solid darkgray;
+        position: relative;
+        top : -45px;
+    }
+
+    #manageDialogBody .jobsBox .left button {
+        margin-top : 8px;
+        margin-left: 20px;
+    }
+
+    #manageDialogBody .jobsBox .right button {
+        margin-top : 8px;
+        margin-left: 16px;
+    }
+
+    #manageDialogBody .closeButton {
+        background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600;
+        width: 87px;
+        height: 31px;
+        float : right;
+    }
+    #manageDialogBody .closeButton:hover{ background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    #manageDialogBody .closeButton:active{ background-color:#054d94; color: #CCC; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+
+
+    /* TODO: replace them to js ? */
+    #manageDialogBody .jobsBox .copyButton { background: url(images/btn/btn_copy_mgr.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .viewButton { background: url(images/btn/btn_view_mgr.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .deleteButton { background: url(images/btn/btn_delete_mgr.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .exportButton { background: url(images/btn/btn_export_mgr.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .importButton { background: url(images/btn/btn_import_mgr.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .changeButton { background: url(images/btn/btn_change_mgr.png?20150817) no-repeat;}
+
+    #manageDialogBody .jobsBox .copyButton:hover { background: url(images/btn/btn_copy_mgr_hover.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .viewButton:hover { background: url(images/btn/btn_view_mgr_hover.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .deleteButton:hover { background: url(images/btn/btn_delete_mgr_hover.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .exportButton:hover { background: url(images/btn/btn_export_mgr_hover.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .importButton:hover { background: url(images/btn/btn_import_mgr_hover.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .changeButton:hover { background: url(images/btn/btn_change_mgr_hover.png?20150817) no-repeat;}
+
+    #manageDialogBody .jobsBox .copyButton:active { background: url(images/btn/btn_copy_mgr_on.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .viewButton:active { background: url(images/btn/btn_view_mgr_on.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .deleteButton:active { background: url(images/btn/btn_delete_mgr_on.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .exportButton:active { background: url(images/btn/btn_export_mgr_on.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .importButton:active { background: url(images/btn/btn_import_mgr_on.png?20150817) no-repeat;}
+    #manageDialogBody .jobsBox .changeButton:active { background: url(images/btn/btn_change_mgr_on.png?20150817) no-repeat;}
+
+    #manageDialogBody .jobsBox .copyButton:disabled { background: url(images/btn/btn_copy_mgr_disabled.png?20150817) no-repeat; color: #b3b3b3;}
+    #manageDialogBody .jobsBox .deleteButton:disabled { background: url(images/btn/btn_delete_mgr_disabled.png?20150817) no-repeat; color: #b3b3b3;}
+    #manageDialogBody .jobsBox .exportButton:disabled { background: url(images/btn/btn_export_mgr_disabled.png?20150817) no-repeat; color: #b3b3b3;}
+    #manageDialogBody .jobsBox .importButton:disabled { background: url(images/btn/btn_import_mgr_disabled.png?20150817) no-repeat; color: #b3b3b3;}
+    #manageDialogBody .jobsBox .changeButton:disabled { background: url(images/btn/btn_change_mgr_disabled.png?20150817) no-repeat; color: #b3b3b3;}
+    #manageDialogBody .jobsBox .viewButton:disabled { color: #b3b3b3;}
+
+    #manageDialogBody .okButtonBlock { height: 31px; }
+    #manageDialogBody .version {float:left;position:relative;top:8px;left:5px;color: #6d6e71;}
+/*
+</style>
+<!-- 인증서 제출 -->
+<style>
+*/
+    /* dialog size */
+    #exportCertificateDialog { width:465px; height:560px; }
+    #exportCertificateDialogBody { /*width:459px;*/ height:550px;  }
+    #exportCertificateDialogBody .titleBarBlock{width:428px; height:30px; margin: 0px 0px; }
+    #exportCertificateDialogBody .logoBlock{ width: 428px; height: 96px /* kblog size */ }
+    #exportCertificateDialogBody .certificateTable{width: 430px; height: 150px}
+    #exportCertificateDialogBody .certButtonBlock { width:430px; }
+    #exportCertificateDialogBody .certButtonBlock button { width:84px; height:22px;}
+    #exportCertificateDialogBody .okButtonBlock button { width:87px; height:31px; }
+
+
+    #exportCertificateDialogBody .tableWrapperDiv {
+        border: 1px solid #0066CC;
+    }
+
+    /* style */
+    #exportCertificateDialogBody  .dialogTitle{font-size:18px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3;  padding: 0px 6px 4px 5px;}
+    #exportCertificateDialogBody  .float-right{ margin-top:-3px; margin-right:-2px;}
+    #exportCertificateDialogBody  .selectCertStoreMsgTitleLine{ height:11px;}
+    #exportCertificateDialogBody  .selectCertStoreMsg strongLabel{ font-size:15px; color: #4D4D4D;}
+
+    #exportCertificateDialogBody  { border-radius:10px; padding:14px; }
+    #exportCertificateDialogBody  > div { margin: 14px 0px; }
+    #exportCertificateDialogBody  > div > div { margin: 6px 0px; }
+    #exportCertificateDialogBody .certButtonBlock { overflow: hidden;   }
+    #exportCertificateDialogBody .certButtonBlock button { float:right; margin-left:2px; background-color: #FFF; color:#666666; border:solid 1px #bbbbbb; margin: 2px 0px 0px 4px; font-size:12px; }
+    #exportCertificateDialogBody .button a:hover{ color:#2484E4; }
+    #exportCertificateDialogBody  .okButtonBlock { text-align: center; }
+
+    /*button*/
+    #exportCertificateDialogBody .certViewMsg:hover{border:solid 1px #2484E4;}
+    #exportCertificateDialogBody .certDeleteMsg:hover{border:solid 1px #2484E4;}
+
+    #exportCertificateDialogBody .certViewMsg:active{background-color:#E6F6FF;}
+    #exportCertificateDialogBody .certDeleteMsg:active{background-color:#E6F6FF;}
+
+    #exportCertificateDialogBody .cancelButtonMsg{ background-color: #FFF; color:#333; border:solid 1px #bbbbbb; border-radius:2px; font-weight:600;}
+    #exportCertificateDialogBody .cancelButtonMsg:hover{ background-color: #EEE; color:#333; border:solid 1px  #999999; border-radius:2px; font-weight:600;}
+    #exportCertificateDialogBody .cancelButtonMsg:active{ background-color: #DFDFDF; color: #666; border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+
+/*
+</style>
+<!-- 전자 서명 작성 -->
+<style>
+*/
+
+
+    /* dialog size */
+    #selectDialog { width:465px; height:655px;}
+    #selectDialogBody { /*width:459px;*//* height:620px;*/}
+    #selectDialogBody .titleBarBlock{width:428px; height:24px; margin: 0px 0px; }
+    #selectDialogBody .logoBlock{ width: 428px; height: 81px /* kblog size */ }
+    #selectDialogBody .certificateTable{width: 430px; height: 150px}
+    #selectDialogBody .certButtonBlock { width:430px; }
+    #selectDialogBody .certButtonBlock button { width:84px; height:22px;}
+    #selectDialogBody .passwordBlock { width:430px; }
+    #selectDialogBody .passwordBlockInner input {width:260px;}
+    #selectDialogBody .okButtonBlock button { width:87px; height:31px; }
+    #selectDialogBody .confirmDataBlock .strongLabel { color: #0066CC; }
+    #selectDialogBody .confirmDataBlock .tableWrapperDiv { width: 428px; height: 127px; overflow: auto;}
+    #selectDialogBody .confirmDataBlock .confirmDataTable { width:100%; height:100%; }
+    #selectDialogBody .certExpireNotification {
+        position: absolute;
+        background-color: #F2F5A9;
+        padding:5px;
+        border: 1px solid lightgray;
+        line-height: 1.2em;
+    }
+    #selectDialogBody .certExpireNotification .header { margin-bottom: 10px; }
+    #selectDialogBody .certExpireNotification .header span { font-weight: bold; }
+    #selectDialogBody .certExpireNotification .header img { vertical-align:middle; padding-right:5px}
+    #selectDialogBody .certExpireNotification .body{ }
+
+    #selectDialogBody .tableWrapperDiv {
+        border: 1px solid #0066CC;
+    }
+
+    #selectDialogBody .confirmDataBlock .confirmDataTable { border-collapse: collapse; }
+    #selectDialogBody .confirmDataBlock .confirmDataTable tr:nth-child(odd) {background: white;}
+    #selectDialogBody .confirmDataBlock .confirmDataTable tr:nth-child(even) {background: #f3f6fa;}
+    #selectDialogBody .confirmDataBlock .confirmDataTable .formattedText { width: 100%; text-align:left; padding-left:10px;}
+    #selectDialogBody .confirmDataBlock .confirmDataTable .formattedText pre { margin: 0.2em 0; line-height:1.3em; }
+    #selectDialogBody .confirmDataBlock .confirmDataTable .label { width: 35%; text-align:left; padding-left:10px;}
+    #selectDialogBody .confirmDataBlock .confirmDataTable .value { width: 64%; text-align:left; }
+    #selectDialogBody .confirmSignLogoBlock {width:428px; height:50px; margin: 0px;}
+
+    /* style */
+    #selectDialogBody .dialogTitle{font-size:18px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #manageDialogBody .float-right{ margin-top:-3px; margin-right:-2px;}
+    #manageDialogBody .selectCertStoreMsgTitleLine{height:11px;}
+    #selectDialogBody .float-right{ margin-top:-3px; margin-right:-2px;}
+    #selectDialogBody .selectCertStoreMsgTitleLine{height:11px;}
+    #selectDialogBody .selectCertStoreMsg strongLabel{ font-size:15px; color: #4D4D4D;}
+
+    #selectDialogBody { border-radius:10px; padding:14px; }
+    #selectDialogBody .section { margin: 16px 0px; }
+    #selectDialogBody .section .section-title { margin: 6px 0px; }
+    #selectDialogBody .passwordBorder > div { margin: 10px 0px; }
+    #selectDialogBody .certButtonBlock { overflow: hidden;   }
+    #selectDialogBody .certButtonBlock button { float:right; margin-left:2px; background-color: #FFF; color:#666666; border:solid 1px #bbbbbb; margin: 2px 0px 0px 4px; font-size:12px; }
+    #selectDialogBody .certButtonBlock .manageButton { float:left; background-color: #FFF; color:#666666; border:solid 1px #bbbbbb; margin: 2px 0px 0px 0px; font-size:12px; min-width:84px; width: auto;}
+    #selectDialogBody .button a:hover{ color:#2484E4; }
+    #selectDialogBody .passwordBorder { text-align:center;}
+    #selectDialogBody .okButtonBlock { text-align: center; margin-bottom: 3px;}
+    #selectDialogBody .passwordPolicyMsg { font-size:0.95em; color:#666666; }
+
+    /* image & border */
+    #selectDialogBody .passwordBorder{ border: 1px solid lightgray; }
+
+    /*button*/
+    #selectDialogBody .certManageMsg:hover{border:solid 1px #2484E4;}
+    #selectDialogBody .certViewMsg:hover{border:solid 1px #2484E4;}
+    #selectDialogBody .certSearchMsg:hover{border:solid 1px #2484E4;}
+    #selectDialogBody .certDeleteMsg:hover{border:solid 1px #2484E4;}
+
+    #selectDialogBody .certManageMsg:active{background-color:#E6F6FF;}
+    #selectDialogBody .certViewMsg:active{background-color:#E6F6FF;}
+    #selectDialogBody .certSearchMsg:active{background-color:#E6F6FF;}
+    #selectDialogBody .certDeleteMsg:active{background-color:#E6F6FF;}
+
+    #selectDialogBody .certViewMsg:disabled { color: #b3b3b3;}
+    #selectDialogBody .certViewMsg:disabled:hover {border:solid 1px #bbbbbb}
+
+    #selectDialogBody .cancelButtonMsg{ background-color: #FFF; color:#333; border:solid 1px #bbbbbb; border-radius:2px; font-weight:600;}
+    #selectDialogBody .cancelButtonMsg:hover{ background-color: #EEE; color:#333; border:solid 1px  #999999; border-radius:2px; font-weight:600;}
+    #selectDialogBody .cancelButtonMsg:active{ background-color: #DFDFDF; color: #666; border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+
+	/* G10 styles */
+	#selectDialog.withG10 {width:632px; height:555px;}
+	
+	#certificateProviderList {position:absolute;display:inline-block;left:0;top:0px;bottom:0px;width:167px;background-color:#f6f6f6;margin:0;z-index: 2000;-webkit-transition: width 0.3s;-moz-transition: width 0.3s;}
+	/*#certificateProviderList:hover {width: 239px;box-shadow:0px 0px 3px 0px #000000;}*/
+	#certificateProviderList .g10_folding {
+		position: absolute;
+		left: 22px;
+		top: 8px;
+		width: 37px;
+		height: 37px;
+		background: transparent;
+		border-radius: 50%;
+	}
+	#certificateProviderList .g10_folding:hover {
+		background: #e9e9e9;
+	}
+	#certificateProviderList .g10_folding::before {
+		position: absolute;
+		left: 11px;
+		top: 18px;
+		right: 11px;
+		bottom: 0;
+		height: 1px;
+		content: ' ';
+		background: #333333;
+	}
+	#certificateProviderList .g10_folding::after {
+		position: absolute;
+		left: 18px;
+		top: 11px;
+		right: 0;
+		bottom: 11px;
+		width: 1px;
+		content: ' ';
+		background: #333333;
+		display: none;
+	}
+	#certificateProviderList.folding .g10_folding::after {display: block;}
+	
+	#certificateProviderList .g10_navMenu {position: relative; top: 55px;}
+
+	#certificateProviderList #g10_navMenu .login_side_menu {padding: 4px 0px;height: 42px; border-radius: 21px; text-align: center;cursor: pointer;margin:9px; -webkit-transition:background-color 0.3s;-moz-transition:background-color 0.3s;border: 1px solid #f6f6f6;}
+	#certificateProviderList #g10_navMenu .login_side_menu:hover, #certificateProviderList #g10_navMenu .login_side_menu.active {border: 1px solid #f0f0f0;}
+	#certificateProviderList #g10_navMenu .login_side_menu:not(.disabled):hover, #certificateProviderList #g10_navMenu .login_side_menu:not(.disabled).active {background-color: #fff !important;font-weight: bold;}
+	#certificateProviderList #g10_navMenu .login_side_menu .login_logo {float: left;padding: 4.5px 2px 3.5px 7px;}
+	#certificateProviderList #g10_navMenu .login_side_menu .login_logo > .img_logo {width: 48px; height: 24px;}
+	#certificateProviderList #g10_navMenu .login_side_menu:hover .login_logo, #certificateProviderList #g10_navMenu .login_side_menu.active .login_logo {}
+	
+	#certificateProviderList #g10_navMenu .login_side_menu .login_name {padding: 6px 0;margin: 0 0 0 -15px;font-size: 12px;line-height: 21px;letter-spacing: -1px;color: #282828;display:inline-block;overflow: hidden;white-space: nowrap;width:81px;-webkit-transition:width 0.3s;-moz-transition:width 0.3s;}
+	#certificateProviderList.folding #g10_navMenu .login_side_menu .login_name {width:0}
+	
+	#certificateProviderList #g10_navMenu .login_side_menu .login_name.multiline {line-height: 14px;padding: 2px 0;}
+	#certificateProviderList #g10_navMenu .login_side_menu .login_name.multiline > span {display: block;font-size: 10px;font-weight: normal;}
+	
+	#certificateProviderList .version_text {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		font-size: 10px;
+		color: #d3d3d3;
+		/*word-break: break-word;*/
+		width: calc(100% - 20px);
+	}
+	
+	/*#providerContent {display: none;}*/
+	#providerContent #delfino-section.rightContent {margin-left: 7px;}
+
+	#providerContent {position:absolute;right: 0;top:0px;bottom:0px;border:0;margin:0;left:167px;-moz-transition: left 0.3s;-webkit-transition: left 0.3s;}
+	#providerContent .rightContent {display:none;width:100%;height:100%;margin:0;border:0;}	
+	#providerContent .rightContent:disabled::after {position: absolute;display: inline-block;right: 0;content: ' ';top: 0;bottom: 0;left: 0;background-color: rgba(0,0,0,0.12);}
+	#providerContent .rightContent .logoBlock{display: none !important;}
+	
+	#providerContent .dialogTitle {
+		border-bottom-width: 0;
+	}
+	
+	#providerContent #g10-loading-section {
+		text-align: center;
+		display: none;
+		position: absolute;
+		left: -167px;
+		top: 0;
+		border: 0;
+		width: 632px;
+		/*background: rgb(255 255 255 / 70%);*/
+		background: white;
+		z-index: 3000;
+	}
+    
+    #providerContent #g10-loading-section.use {
+		display: inline-block !important;
+		background: rgba(255,255,255,0.5);
+		left: -84px;
+	}
+    	
+	#providerContent #g10-loading-section .vpcg_img_loading {
+		margin: 200px 210px;
+		padding: 25px 0px;
+		border: 1px solid #CBE5FF;
+		border-radius: 6px;
+		background: white;
+	}
+	
+	#providerContent #g10-loading-section .vpcg_img_loading > img {
+		width: 118px;
+	}
+	
+	#providerContent #g10-loading-section .vpcg_img_loading > span {
+		display: block;
+		color: #0266cc;
+		font-size: 15px;
+		line-height: 21px;
+	}
+	
+	#providerContent #g10-intro-section {
+		display: none;
+		position: absolute;
+		left: -167px;
+		top: 0;
+		width: 632px;
+		bottom: 0;
+		background: white;
+		z-index: 3000;
+		padding: 40px;
+	}
+	
+	#providerContent #g10-intro-section .intro_title_box {
+		text-align: center;
+		line-height: 21px;
+		font-size: 16px;
+		color: #252525;
+		font-weight: bold;
+		display: block;
+		position: relative;
+		top: 63px;
+	}
+	
+	#providerContent #g10-intro-section .intro_title_box > span.title {
+		z-index: 2;
+		display: inline-block;
+		position: relative;
+	}
+	
+	#providerContent #g10-intro-section .intro_title_box > span.title.name {
+		font-size: 18px;
+		padding: 0 3px;
+	}
+	
+	#providerContent #g10-intro-section .intro_title_box > span.title.name::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 17px;
+		background: #E6F6FF;
+		left: 0px;
+		top: 7px;
+		z-index: -1;
+		content: ' ';
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box {
+		display: block;
+		position: absolute;
+		top: 220px;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row {
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col {
+		display: inline-block;
+		width: 266px;
+		height: 63px;
+		margin: 0px 5px;
+		/*border-top: 1px solid #efefef;*/
+		border-bottom: 1px solid #efefef;
+		float: left;
+		text-align: center;
+		font-size: 14px;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col:hover {
+		cursor: pointer;
+		font-weight: bold;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col .img_logo {
+		float: left;
+		padding: 19.5px 4px 0px 15px;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col .img_logo > div {
+		width: 48px;
+		height: 24px;
+	}
+	
+	#providerContent #g10-intro-section .intro_provider_box .provider_row .provider_col > span {
+		display: block;
+		padding: 6px 0;
+		margin: 0;
+		font-size: 14px;
+		line-height: 48px;
+		letter-spacing: -0.9px;
+		color: #282828;
+	}
+
+	/* VPCG UI용 */
+	.vpcg_section_right_on {
+		margin-left: inherit !important;
+		min-width: inherit !important;
+		padding: 30px 75px !important;
+		margin-top: 40px !important;
+		width: 100% !important;
+		border: 0px !important;
+	}
+	
+	/*
+	.vpcg_section_right_on .vpcg_section_right_on_logo {
+		padding: 3px 0 !important;
+		line-height: 30px !important;
+	}
+	*/
+	.vpcg_section_right_on .vpcg_section_sign_logo {
+		border: none;
+		background-repeat: no-repeat;
+		background-position: left 0px bottom 0px;
+		margin-bottom: 26px;
+		width: 100%;
+		height: 30px;
+		text-align: center;
+	}
+	
+	.vpcg_section_right_on .vpcg_section_sign_logo.png {
+		background-size: auto 60%;
+	}
+	
+	.vpcg_sign_screen_body .vpcg_sign_screen_popup_open {
+		border-radius: 3px !important;
+		background-color: #1D79D3 !important;
+		
+	}
+	
+	.vpcg_sign_screen_body .vpcg_sign_screen_popup_open:hover {
+		background-color: #1D79D3 !important;
+	}
+	
+	.vpcg_sign_screen_body .vpcg_sign_screen_text_top p {
+		color: #1D79D3 !important;
+		font-size: 16px !important;
+	}
+	
+	.vpcg_sign_screen_body .vpcg_sign_screen_text_bottom {
+		font-size: 13px !important;
+	}
+	
+	.vpcg_info_screen_normal .vpcg_info_top_text {
+		color: #1D79D3 !important;
+	}
+	
+	.vpcg_inputfield {
+		
+	}
+	
+	.vpcg_inputfield label {
+		line-height: 15px;
+		height: 21px;
+		display: block;
+		color: red;
+		font-size: 12px;
+	}
+	
+	.vpcg_inputfield .vpcg_login_data {
+		height: 35px !important;
+		font-size: 16px;
+	}
+	
+	.vpcg_inputfield .vpcg_login_data:disabled {
+		background-color: white;
+	}
+	
+	.vpcg_inputfield .vpcg_login_data::placeholder {
+		font-size: 14px !important;
+	}
+	
+	.vpcg_inputfield .vpcg_login_data::-webkit-outer-spin-button,
+	.vpcg_inputfield .vpcg_login_data::-webkit-inner-spin-button,
+	.vpcg_inputfield input[type=number]	{
+		-webkit-appearance: none;
+		-moz-appearance: textfield;
+		margin: 0;
+	}
+	
+	.vpcg_btn_close {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		cursor: pointer;
+		width: 13px;
+		height: 13px;
+		background-image: url(images/g10/icon/vpcg_esc.png);
+	}
+	
+	.vpcg_btn_close.svg {
+		background-image: url(images/g10/icon/vpcg_esc.svg);
+	}
+	
+	.vpcg_btn_login {
+		margin-top: 45px !important;
+		color:#000;
+		cursor:pointer !important;
+		border: 0;
+	}
+	
+	.vpcg_btn_login:disabled {
+		background-color': #D6D6D6 !important;
+		color:#fff;
+		cursor:not-allowed !important;
+	}
+
+	.vpcg_info_screen_normal {
+		border: 0px !important;
+		width: 100% !important;
+	}
+	
+	.vpcg_img_loading .loading_gif {
+		width: 100px;
+		margin-left: 150px;
+	}
+	
+	.vpcg_sign_screen {
+		margin-left: inherit !important;
+		min-width: inherit !important;
+		margin-top: 50px !important;
+		width: 100% !important;
+		border: 0px !important;
+	}
+	
+	.vpcg_sign_title {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+	
+	.vpcg_section_pinsign {
+		display: none;
+	}
+	
+	.vpcg_section_popup {
+		display: none;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 {
+		position: relative;
+		display: block;
+		height: 135px;
+		/*padding: 48px 15px 28px 15px;*/
+		margin: 0 70px;
+		border-bottom: 1px solid #E2DDE3;
+		/*line-height: 84px;*/
+		background: url(images/g10/icon/img_confirm.png) no-repeat;
+		background-position: right 15px bottom 28px;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1.svg {
+		background-image: url(images/g10/icon/img_confirm.svg);
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box {
+		display: inline-block;
+		position: absolute;
+		bottom: 28px;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title {
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 21px;
+		text-align: center;
+		position: relative;
+		z-index: 2;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title > .l1 {
+		text-align: left;
+		z-index: 2;
+		position: relative;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title .name {
+		font-size: 16px;
+		padding: 0 3px;
+		display: inline-block;
+		text-align: center;
+		position: relative;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner1 .popup_banner1_box > .title .name::after {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 17px;
+		background: #E6F6FF;
+		left: 0px;
+		top: 7px;
+		z-index: -1;
+		content: ' ';
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner2 {
+		position: relative;
+		display: block;
+		height: 169px;
+		padding: 35px 10px;
+		margin: 0 70px;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > .title {
+		line-height: 23px;
+		font-size: 14px;
+		font-weight: bold;
+		letter-spacing: -1.1px;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > .title.name {
+		color: #7C49f6;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_banner2 .popup_banner2_box > div.desc {
+		font-size: 13px;
+		letter-spacing: -1px;
+		line-height: 19px;
+		word-break: keep-all;
+		margin-top: 10px;
+	}
+	
+	.vpcg_section_popup .vpcg_popup_open {
+		width: 146px;
+		height: 40px;
+		display: inline-block;
+		text-align: center;
+		margin: 0 148px;
+		padding: 8px 0;
+		border-radius: 3px;
+		background-color: #1D79D3;
+		color: #fff;
+		cursor: pointer;
+		font-size: 15px;
+		line-height: 26px;
+		text-align: center;
+		font-weight: bold;		
+	}
+	
+	#vpcg_content .vpcg_info_screen_normal.with_button {
+		padding: 21% 0;
+	}
+	
+	.vpcg_section_wait_btn .vpcg_wait_button {
+		width: 146px;
+		height: 40px;
+		display: inline-block;
+		text-align: center;
+		margin: 40px 148px 0;
+		padding: 8px 0;
+		border-radius: 3px;
+		background-color: #1D79D3;
+		color: #fff;
+		cursor: pointer;
+		font-size: 15px;
+		line-height: 26px;
+		text-align: center;
+		font-weight: bold;		
+	}
+	
+	
+	.vpcg_section_reauth {
+		width: 100%;
+		padding: 90px 80px;
+	}
+
+	/*	
+	.vpcg_reauth_logo {
+		padding: 3px 0;
+		margin-bottom: 26px;
+		width: 75px;
+		height: 30px;
+		border-radius: 18px;
+		text-align: center;
+		line-height: 30px;
+	}*/
+	
+	.vpcg_reauth_logo {
+		border: none;
+		background-repeat: no-repeat;
+		background-position: left 0px bottom 0px;
+		margin-bottom: 26px;
+		width: 100%;
+		height: 30px;
+		text-align: center;
+	}
+
+	.vpcg_sign_banner1 {
+		width: 100%;
+		height: 50px;
+		background: right 0 url(images/g10/icon/img_request.png) no-repeat;
+		padding-bottom: 21px;
+		border-bottom: 1px solid #e2dde3;
+		box-sizing: content-box;
+	}
+	
+	.vpcg_sign_banner1 > span {
+		display: block;
+		font-size: 15px;
+		line-height: 24px;
+		text-align: left;
+		color: #676767;
+		font-weight: bold;
+	}
+	
+	.vpcg_sign_banner1 > span .title {
+		font-size: 16px;
+		color: #000000;
+	}
+	
+	.vpcg_sign_banner1.svg {
+		background-image: url(images/g10/icon/img_request.svg);
+	}
+	
+	.vpcg_sign_banner2 {
+		margin-top: 25px;
+		font-size: 12px;
+		line-height: 23px;
+		letter-spacing: -0.92px;
+		color: #575757;
+		margin-bottom: 57px;
+	}
+	
+	.vpcg_btn_sign {
+		width: 100%;
+		height: 42px;
+		border-radius: 4px;
+		font-size: 15px;
+		line-height: 38px;
+		text-align: center;
+		border: 0px;
+	}
+
+/*
+</style>
+<!-- 간편 비밀번호 생성 -->
+<style>
+*/
+    #createEasyPasswordDialog { width:330px; height:316px; }
+    #createEasyPasswordDialogBody .createEasyPasswordTitle { display: inline-block; width: 80%; font-size:17px; font-weight:600; color:#222222; line-height:23px; padding: 7px 14px 29px 40px; text-align:left;}
+    #createEasyPasswordDialogBody .dialogPage { display: inline; }
+    #createEasyPasswordDialogBody { text-align:center; }
+    #createEasyPasswordDialogBody .titleBarBlock { border-bottom: solid 1px #eeeeee; }
+    #createEasyPasswordDialogBody .titleBarBlock .closeButton { padding: 10px 10px 0 0; text-align: right; }
+    #createEasyPasswordDialogBody .titleBarBlock .closeButton img { cursor: pointer; }
+    #createEasyPasswordDialogBody .titleBarBlock .dialogPage .dialogNowPage { display: inline-block; font-size: 19px; }
+    #createEasyPasswordDialogBody .titleBarBlock .dialogPage .dialogTotalPage { display: inline-block; font-size: 14px; }
+    #createEasyPasswordDialogBody .createEasyPasswordCancelLabel { margin: 0px !important; padding-top: 23px; padding-bottom: 8px; }
+    #createEasyPasswordDialogBody .createEasyPasswordCancelLabel b { color:#1D79D3; }
+    #createEasyPasswordDialogBody .passwordBorder .lastEasyPasswordTitle { padding-top: 50px; font-size: 14px; line-height: 17px }
+    #createEasyPasswordDialogBody .passwordBorder .createEasyPasswordDiv { padding: 5px 67px 13px 65px; }
+    #createEasyPasswordDialogBody div.passwordBlockInner { padding: 23px; }
+    #createEasyPasswordDialogBody input.passwordInput { width:250px; height: 38px; }
+    #createEasyPasswordDialogBody .okButtonBlock button { width:80px; height:30px; cursor: pointer;}
+    
+/*
+</style>
+<!-- 인증서 암호 -->
+<style>
+*/
+    #passwordDialog { width:340px; height:291px; }
+    #passwordDialogBody { display: inline-block; max-width: 380px; /*height:276px;*/ border-radius:10px; padding:4px;}
+    #passwordDialogBody .dialogTitle{font-size:16px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px;  text-align:left;}
+    #passwordDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+
+    #passwordDialogBody { text-align:center; }
+    #passwordDialogBody > div { padding: 10px 0px 0px 0px; }
+    #passwordDialogBody .passwordBorder{ border: 1px solid lightgray; }
+    #passwordDialogBody .passwordBorder div { margin: 15px; }
+    #passwordDialogBody .passwordBlockInner { padding-bottom: 10px; }
+    #passwordDialogBody .passwordBorder { background-color : #f3f6fa; }
+    #passwordDialogBody .passwordPolicyMsg { min-width: 324px;}
+
+    #passwordDialogBody .okButtonBlock button { width:80px; height:30px; }
+    #passwordDialogBody .passwordBlockInner span { margin-right:5px; }
+    #passwordDialogBody .passwordBlockInner span { color: #0066CC/*#2E9AFE*/; }
+    #passwordDialogBody .passwordPolicyMsg{ margin: 0px auto; }
+    #passwordDialogBody .passwordPolicyMsg{ padding: 10px 0px; }
+    #passwordDialogBody .passwordPolicyMsg { font-size:0.95em;}
+    #passwordDialogBody input.passwordInput { width:160px; }
+/*
+</style>
+<!-- 인증서 암호 변경 -->
+<style>
+*/
+    #passwordChangeDialog { width:350px; height:355px; }
+    #passwordChangeDialogBody { height:318px;border-radius:10px; padding:4px;}
+    #passwordChangeDialogBody .dialogTitle{font-size:16px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; text-align:left;}
+    #passwordChangeDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+
+    #passwordChangeDialogBody { text-align:center; }
+    #passwordChangeDialogBody .strongLabel{line-height:118%;}
+    #passwordChangeDialogBody > div { padding: 10px 0px 0px 0px; }
+    /*#passwordChangeDialogBody .inputCertPasswordMsg { padding: 0 25px ; }*/
+    #passwordChangeDialogBody .passwordBorder{ border: 1px solid lightgray; }
+    #passwordChangeDialogBody .passwordBorder div { margin: 10px; }
+    #passwordChangeDialogBody .passwordBorder { background-color : #f3f6fa; }
+    #passwordChangeDialogBody .passwordPolicyMsg { width: 310px; letter-spacing: -1px;}
+
+    #passwordChangeDialogBody .okButtonBlock button { width:80px; height:30px; }
+    #passwordChangeDialogBody .passwordBlockInner form {text-align: right;}
+    #passwordChangeDialogBody .passwordBlockInner span { display: block; float: left;margin-top: 3px;/*width : 80px;*/ letter-spacing: -1px;}
+    #passwordChangeDialogBody .passwordBlockInner span { text-align:left; }
+    #passwordChangeDialogBody .passwordBlockInner span { color: #0066CC; }
+    #passwordChangeDialogBody .passwordPolicyMsg{ margin: 0px auto; }
+    #passwordChangeDialogBody .passwordPolicyMsg{ padding: 10px 0px; }
+    #passwordChangeDialogBody .passwordPolicyMsg { font-size:0.95em;}
+/*
+</style>
+<!-- 인증서 자세히 보기 -->
+<style>
+*/
+    #certDetailDialog { width:398px; height: 568px }
+    #certDetailDialogBody { border: 1px solid  #FFF; border-radius:10px; padding:7px; }
+    #certDetailDialogBody .dialogTitle{font-size:16px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+
+    #certDetailDialogBody .selectCertStoreMsgTitleLine{ height:11px; margin-bottom:16px;}
+    #certDetailDialogBody .tabBody, #certDetailDialogBody .tabHead { width: 385; }
+    #certDetailDialogBody .tab2 .moreDetail { width: 350px; height: 78px; border: 1px solid lightgray; background-color:#FFFFFF; color:#333;}
+    #certDetailDialogBody .tab1 > div { height : 410px; }
+    #certDetailDialogBody .tab1  {padding:10px;}
+    #certDetailDialogBody .tab1 .tab1_block{ width: 350px; height: 400px; border: 1px solid lightgray; background-color: #f3f6fa;}
+
+    #certDetailDialogBody .tab2 .tableWrapperDiv { width: 350px; height: 287px; overflow: auto; background-color: #FFF;}
+    #certDetailDialogBody .tab2 .header { width: 350px; }
+    #certDetailDialogBody .tab2 .body { width: 352px; }
+
+    #certDetailDialogBody .tabBody { width: 373px; height:422px; border: 1px solid lightgray; border-top-style: none; background-color: #ffffff; }
+
+    #certDetailDialogBody .tab1 > div {
+        /*border: 2px inset #F1F1F1;*/
+        border-top: none;
+        border-left: none;
+        padding : 10px;
+    }
+    #certDetailDialogBody .tab1 > div > div {
+        padding-top : 12px; padding-bottom:12px; line-height:150%;
+    }
+    #certDetailDialogBody .tab1 > div > div > span {
+
+    }
+
+    #certDetailDialogBody .tab2 > div { padding: 10px }
+
+    #certDetailDialogBody .tab2 table {
+        table-layout:fixed;
+        border-collapse: collapse;
+        word-break:break-all;
+    }
+
+    #certDetailDialogBody .tab2 .header .name { width : 110px }
+    #certDetailDialogBody .tab2 .body .name { width : 109px; background-color:#F3F6FA; border-bottom:1px solid #FFFFFF; }
+    #certDetailDialogBody .tab2 .header td {
+        background-color : #F6F6F6 ;
+        text-align : center;
+    }
+
+    #certDetailDialogBody .tab2 .header td {
+        border: 1px solid lightgray;
+        font-weight: bold;
+    }
+    #certDetailDialogBody .tab2 table td {
+        border-right: 1px solid #F3F6FA;
+        border-bottom: 1px solid #E8EDF5;
+        padding-left: 3px;
+        background-color:#FFFFFF;
+        padding:5px;
+    }
+    #certDetailDialogBody .tab2 .tableWrapperDiv {
+        border-right: 1px solid lightgray;
+        border-left: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+    }
+    #certDetailDialogBody .moreDetail {
+
+        margin-top:10px;
+        overflow: auto;
+        border: 2px inset #F1F1F1;
+        padding : 5px;
+    }
+
+    #certDetailDialogBody .okButtonBlock { margin-top : 15px; }
+
+    #certDetailDialogBody .okButtonBlock button {width:80px; height:30px;
+        /* height:20px; */
+        float:right;
+        margin-right:0px;
+    }
+/*
+</style>
+<!-- 인증서 저장 -->
+<style>
+*/
+    #saveToDiskDialog { width:302px; height:164px}
+    #saveToDiskDialogBody { height:143px; border: 1px solid #fff; border-radius:10px; padding:4px;}
+    #saveToDiskDialogBody .dialogTitle{font-size:16px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #saveToDiskDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+    #saveToDiskDialogBody button { width : 80px; height : 30px; background-color: #FFF; color:#333; border:solid 1px #bbbbbb; border-radius:2px; font-weight:600; position:relative; top:-10px;  }
+    #saveToDiskDialogBody button:hover { width : 80px; height : 30px; background-color: #EEE; color:#333; border:solid 1px  #999999; border-radius:2px; font-weight:600;}
+    #saveToDiskDialogBody button:active{ background-color: #DFDFDF; color: #666; border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+    #saveToDiskDialogBody > div { margin-top : 5px; }
+    #saveToDiskDialogBody .saveToDiskDialogBlock { font-size:14px; text-align:center; padding:10px 0px; border: 1px solid lightgray;  background-color: #f3f6fa; margin:15px 0px 0px 0px; }
+    #saveToDiskDialogBody .saveToDiskDialogBlockButton{ margin-top:15px;}
+    #saveToDiskDialogBody .saveToDiskDialogBlockButton { text-align:center; }
+
+/*
+</style>
+<!-- 발급후 인증서 저장 -->
+<style>
+*/
+    #oneMoreSaveToDiskDialog { width:440px; height:185px}
+    #oneMoreSaveToDiskDialogBody { height:143px; border: 1px solid #fff; border-radius:10px; padding:4px;}
+    #oneMoreSaveToDiskDialogBody .dialogTitle{font-size:16px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #oneMoreSaveToDiskDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+    #oneMoreSaveToDiskDialogBody button { width : 80px; height : 30px; font-weight:600; position:relative; top:-10px;  }
+    #oneMoreSaveToDiskDialogBody button:hover { width : 80px; height : 30px; font-weight:600;}
+    #oneMoreSaveToDiskDialogBody button:active{ border:solid 1px  #666666; border-radius:2px; font-weight:600;}
+    #oneMoreSaveToDiskDialogBody > div { margin-top : 5px; }
+    #oneMoreSaveToDiskDialogBody .saveToDiskDialogBlock { font-size:14px; line-height : 1.5em; text-align:center; padding:10px 0px; border: 1px solid lightgray;  background-color: #f3f6fa; margin:15px 0px 0px 0px; }
+    #oneMoreSaveToDiskDialogBody .saveToDiskDialogBlockButton{ margin-top:25px;}
+    #oneMoreSaveToDiskDialogBody .saveToDiskDialogBlockButton { text-align:center; }
+/*
+</style>
+<!-- 인증서 암호 생성 -->
+<style>
+*/
+    #passwordCreateDialog { width:350px; height:310px }
+    #passwordCreateDialogBody { border-radius:10px; padding:4px;}
+    #passwordCreateDialogBody .passwordCreateTitle{font-size:16px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 5px 4px 5px;  text-align:left;}
+    #passwordCreateDialogBody .passwordCreateTitleLine{ height:11px;}
+
+    #passwordCreateDialogBody { text-align:center; }
+    #passwordCreateDialogBody .strongLabel{line-height:118%;}
+    #passwordCreateDialogBody > div { padding: 10px 0px 0px 0px; }
+    #passwordCreateDialogBody .inputCertPasswordMsg { padding: 0 25px ; }
+    #passwordCreateDialogBody .passwordBorder{ border: 1px solid lightgray; }
+    #passwordCreateDialogBody .passwordBorder div { margin: 10px; }
+    #passwordCreateDialogBody .passwordBorder { background-color : #f3f6fa; }
+    #passwordCreateDialogBody .passwordPolicyMsg { width: 300px;}
+
+    #passwordCreateDialogBody .okButtonBlock button { width:80px; height:30px; }
+    #passwordCreateDialogBody .passwordBlockInner { text-align:right; }
+    #passwordCreateDialogBody .passwordBlockInner form {text-align: right;}
+    #passwordCreateDialogBody .passwordBlockInner span { display: block; float: left;margin-top: 3px;}
+    #passwordCreateDialogBody .passwordBlockInner span { text-align:left; }
+    #passwordCreateDialogBody .passwordBlockInner input:disable {display: inline-block;}
+
+/*    #passwordCreateDialogBody .passwordBlockInner span { display: inline-block; width : 80px; }
+    #passwordCreateDialogBody .passwordBlockInner span { text-align:right; }*/
+    #passwordCreateDialogBody .passwordBlockInner span { color: #0066CC; }
+    #passwordCreateDialogBody .passwordPolicyMsg{ margin: 0px auto; }
+    #passwordCreateDialogBody .passwordPolicyMsg{ padding: 10px 0px; }
+    #passwordCreateDialogBody .passwordPolicyMsg { font-size:0.95em;}
+/*
+</style>
+<!-- 가상키보드 토글 버튼 -->
+<style>
+*/
+    .passwordBlockInner input.passwordInput::-webkit-input-placeholder { font-size: 11px; letter-spacing: -1px; height: 28px; color: #ccc;}
+    .passwordBlockInner input.passwordInput:-moz-placeholder { font-size: 11px; letter-spacing: -1px; height: 28px; color: #ccc;}
+    .passwordBlockInner input.passwordInput::-moz-placeholder { font-size: 11px; letter-spacing: -1px; height: 28px; color: #ccc;}
+    .passwordBlockInner input.passwordInput:-ms-input-placeholder { font-size: 11px; letter-spacing: -1px; height: 28px; color: #ccc;}
+    .passwordBlockInner input.passwordInput::placeholder { font-size: 11px; letter-spacing: -1px; height: 28px; color: #ccc;}
+    .passwordBlockInner input.passwordInput.touchenkeyKeyboard, .passwordBlockInner input.passwordInput.astx, .passwordBlockInner input.passwordInput.nativeKeyboard {
+        padding-right: 36px;
+    }
+
+    .keyboardButton {border: none; width: 33px; height: 28px; padding: 8px; margin-left: -36px; margin-right: 3px; background: url(images/btn/btn_kbd_on_noline.png?20150817) no-repeat;vertical-align: top; background-position: 5px 8px; /*outline: none;*/}
+    /*.keyboardButton:hover { background: url(images/btn/btn_mouse_hover.png?20150817) no-repeat;}*/
+    /*.keyboardButton { display:none; }  /* for debug */*/
+    .qrPasswordButton {border: none; width: 33px; height: 25px; padding: 8px; margin-left: 5px; background: url(images/btn/btn_qrcode.png?20150817) no-repeat;}
+    .qrPasswordButton:hover { background: url(images/btn/btn_qrcode_hover.png?20171010) no-repeat;}
+    .qrPasswordButton:active { background: url(images/btn/btn_qrcode_active.png?20171010) no-repeat;}
+    .qrPasswordButton.buttonOn{ background: url(images/btn/btn_qrcode_on.png?20171010) no-repeat;}
+/*
+</style>
+<!-- 가상키보드 -->
+<style>
+*/
+    #keyboardDialog { width:624px; height:234px; }
+    #keyboardDialogBody { border-radius:10px; padding:11px;}
+    #keyboardDialogBody .titleBarBlock{height:12px;}
+    .keyboardLoading {padding:0; margin:0; position:relative; background-image: url(images/keyboard_loading.png); width:594px; height:190px;}
+    .keybaordLoadingProgress {position:absolute;left:282px;top:69px;}
+
+    #keyboardDialog.withQrcode { width:746px; height:234px; }
+
+    #keyboardDialog.addEasyPasswordTab { height:263px;}
+    #keyboardDialogBody.withQrcode {font-size: 0px;}
+    #keyboardDialogBody.withQrcode .keyboard, #keyboardDialogBody.withQrcode .qrArea{float: left;}
+    #keyboardDialogBody.withQrcode .qrArea { width: 116px; height: 190px; border-radius: 4px; border: 1px solid #bcbec0; margin-left: 5px;
+        vertical-align: top; font-size: 11px; color: #58595b; text-align: center;}
+    #keyboardDialogBody.withQrcode .qrArea .qrDialogTitle{
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        /*background: linear-gradient(to bottom, #ffffff, #e6e7e8);*/
+        height: 32px;
+        padding: 5px;
+    }
+    #keyboardDialogBody.withQrcode .qrArea .qrDialogTitle .qrDialogTitleWrapper{
+        border: 0px none;
+    }
+    #keyboardDialogBody.withQrcode .qrArea .qrDialogTitle .qrDialogTitleWrapper img{
+        margin-right: 3px;
+        border: 0px solid;
+    }
+    #keyboardDialogBody.withQrcode .qrArea .qrDialogTitle .qrDialogTitleWrapper div{
+        display: block;
+        float: right;
+        font-size: 13px;
+        font-weight: bold;
+        color: #58595b;
+        letter-spacing: -0.5px;
+        vertical-align: top;
+        margin-top: 7px;
+    }
+
+    #keyboardDialogBody.withQrcode .qrArea .qrcode{ margin: 38px auto 19px auto; width:66px; height:66px; display: inline-block; position: relative; border: 0px none;}
+    #keyboardDialogBody.withQrcode .qrArea .qrcode img{border: 0px solid;}
+    #keyboardDialogBody.withQrcode .qrArea .qrcode img.loading{ position: absolute;left: 21px; top: 21px;border: 0px solid;}
+    #keyboardDialogBody.withQrcode .qrArea .qrcodeDetail{ font-size: 12px; color: #58595b; }
+/*
+</style>
+*/
+    #qrDialog { width:329px; height:168px; }
+    #qrDialogBody { border-radius:10px; padding:8px;}
+    #qrDialogBody .titleBarBlock{height:26px; line-height: 26px; font-size: 12px; color: #58595b; vertical-align: middle; text-align: center; margin-bottom: 12px;}
+    #qrDialogBody .qrDialogTitle{display: inline-block;}
+    #qrDialogBody .keyboard{ width:305px; height:106px; background-image: url(images/qr_keyboard.png); text-align: center; padding-top: 11px;}
+    #qrDialogBody .keyboard .qrcode{ margin-top: 11px; width:65px; height:65px; display: inline-block; position: relative;}
+    #qrDialogBody .keyboard .qrcode img.loading{ position: absolute;left: 21px; top: 21px;}
+/*
+<!-- 로딩중 -->
+<style>
+*/
+    div.progress {
+      position: absolute;
+      margin-left: -50px ;
+      left: 50%;
+      top: 30%;
+      text-align: center;
+      padding: 30px 40px;
+      background: rgba(40,40,40,0.6);
+      font-family: "Apple SD Gothic Neo", "Apple Gothic", "맑은 고딕", "Malgun Gothic", "Dotum";
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      border: 2px solid rgba(230,230,230,0.7);
+      z-index: 2000;
+    }
+/*
+</style>
+<!-- 인증소 저장 팝업 -->
+<style>
+*/
+    #certStorePopupBody ul {
+        padding:0px;
+    }
+    #certStorePopupBody ul li {
+        cursor: hand; cursor: pointer;
+        list-style-type: none;
+        padding-left: 10px;
+        height:23px;
+    }
+    #certStorePopupBody ul li button {
+        background: none;
+        width: auto;
+        height: auto;
+    }
+/*
+</style>
+<!-- 확장 매체 팝업 -->
+<style>
+*/
+    #extensionCertStoreDialog { width: 357px; height: 100px; }
+    /*#extensionCertStoreDialogBody .storageButtonBlock { width: 352px; height: inherit;}*/
+    #extensionCertStoreDialogBody .storageButtonBlock { padding-left: 2.5px; }
+    #extensionCertStoreDialogBody img { padding-right:4px; padding-bottom:2px; }
+/*
+</style>
+<!-- 복사 대상 다이얼로그 -->
+<style>
+*/
+    #copyTargetDialog { width: 338px; height: 197px; }
+    #copyTargetDialogBody .storageButtonBlock { width: auto; height: auto;}
+    #copyTargetDialogBody .storageButtonBlock button { margin: 0px 4px 8px 4px; }
+    #copyTargetDialogBody div.storageBlock div.nativeStoreLoading {margin-left:-106px;}
+    #copyTargetDialogBody div.title { height: 25px; text-align:center; padding-top:5px;}
+    #copyTargetDialogBody img { float:right; padding-right:10px; }
+/*
+</style>
+<!-- 인증 코드 다이얼로그 -->
+<style>
+*/
+    #authCodeDialog {width: 423px; height: 527px; }
+    #authCodeDialogBody {border-radius:10px; padding:14px; }
+    #authCodeDialogBody .dialogTitle{font-size:18px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #authCodeDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+    #authCodeDialogBody .authCodeContent { height: 405px; }
+    #authCodeDialogBody div.title { height: 80px; font-size:120%; padding:25px 40px 15px 40px; line-height:130%; word-break:keep-all; }
+
+    #authCodeDialogBody div input { width : 100px; height:35px; font-size : 200%; text-align:center}
+    #authCodeDialogBody div input[readonly] {background-color: #fff; color: #000;}
+
+    #authCodeDialogBody div button { margin-top: 10px; margin-bottom: 10px;}
+    #authCodeDialogBody div.notification { height: 35px; padding:15px 0px; font-size:90%; margin-top:10px; }
+    #authCodeDialogBody div.notification img { position:relative; top: 3px; }
+
+    #authCodeDialogBody div.labels {
+        padding: 20px 0px;
+        font-size:120%;
+    }
+    #authCodeDialogBody div.authCodeContent {
+        text-align:center;
+        margin-top:10px;
+    }
+
+    div.authCodeContent div.upBlock {
+        height: 27%;
+        border: solid 1px #CCC;
+        background-color:#FFF;
+    }
+
+    div.authCodeContent div.downBlock {
+        margin: 10px 0 10px 0;
+        height: 69%;
+        border: solid 1px #CCC;
+        background-color:#F0F8FF;
+    }
+	#authCodeDialogBody .footer .okButtonBlock {
+        margin-top:5px;
+		height:30px;
+    }
+
+
+
+/*
+<!-- 인증서 열기 다이얼로그-->
+*/
+    #certificateOpenDialog {width: 376px; height:252px; }
+    #certificateOpenDialogBody {text-align:center; margin:6px 5px;}
+    #certificateOpenDialogBody .message{margin:auto; line-height:140%;}
+    #certificateOpenDialogBody a{ text-decoration:none; color:#0066CC;}
+    #certificateOpenDialogBody .gray_line{margin-top:16px;margin-bottom:14px; width:356px; border-bottom:solid 1px #d3d3d3; text-decoration:none;}
+
+    #certificateOpenDialogBody button { margin:30px 0px 15px 0px; padding: 1px 19px;/*width:215px;*/height:30px;background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; /*font-weight:600;*/}
+    #certificateOpenDialogBody button:hover {/*width:215px;*/height:30px;background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; /*font-weight:600;*/}
+    #certificateOpenDialogBody button:active{ background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; /*font-weight:600;*/}
+    
+    #certificateOpenDialogBody div.dragArea {
+        display:inline-block;
+        text-align:left;
+        /*width: 352px;*/
+        height: 53px;
+        border: dotted 1px #d3d3d3;
+        padding-top:12px;
+        margin-top:16px;
+    }
+    #certificateOpenDialogBody div.dragArea div.dragImage {
+        margin-left:9px;
+    }
+    #certificateOpenDialogBody div.dragArea div.dragDetail {
+        margin-left:4px;
+        width:290px;
+    }
+    #certificateOpenDialogBody .close {float:right }
+    /*div.dragImage{
+        display:inline-block;
+        width:31px;
+        height:28px;
+        background-image: url(icons/drag_cert_info.png);
+        margin-left: 42px;
+    }
+    div.dragImage.over{
+        background-image: url(icons/drag_cert_on.png);
+        margin-left: 41px;
+    }
+    div.dragDetail {
+        display:inline-block;
+        line-height: 16px;
+        font-size: 11px;
+        font-family: initial;
+        color: #a7a9ac;
+        margin-left: 8px;
+        width:320px;
+    }
+    
+    div.dragDetail.hover {
+        color: #66fffe;
+    }*/
+/*
+</style>
+*/
+    /* bioDialog */
+    #bioDialog {width : 324px; height:316px; }
+    #bioDialogBody  { border-radius:10px; padding:6px;}
+    #bioDialogBody  .titleBarBlock{margin-top:0px;}
+    #bioDialogBody .dialogTitle{font-size:13px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px; }
+    #bioDialogBody .selectCertStoreMsgTitleLine{height:11px;}
+    #bioDialogBody .codeBlock {
+        background-color : #f3f6fa;
+        border : solid 1px #e6e6e6;
+        width: 300px;
+        height:141px;
+        margin: 18px auto 0px auto;
+    }
+    #bioDialogBody .textBlock {
+        display: block;
+        margin-top:11px;
+        font-size:11px;
+        font-weight: 600;
+        line-height: 18px;
+        color:#333333;
+        text-align: center;
+    }
+    #bioDialogBody .textBlock img { position: relative; top:3px; }
+    #bioDialogBody .textBlock b { color: #0066cc;}
+
+    #bioDialogBody .authCode, #bioDialogBody .signMsg {
+        position:relative;
+        width: 100%;
+    }
+
+    /*#bioDialogBody .upperDot { position: absolute; top: 6px; left: 20px; }*/
+    #bioDialogBody .numberBlock {
+        position: absolute;
+        display: block;
+        margin-left: 16px;
+        top: 0px;
+        left: 0px;
+        width: 110px;
+        height: 141px;
+        text-align: center;
+    }
+    #bioDialogBody .leftLabel { position: relative; }
+    #bioDialogBody .leftNumber { position: relative; }
+
+    #bioDialogBody .orText {
+        position: relative;
+        display: table-cell;
+        margin: auto;
+        text-align: center;
+        vertical-align: middle;
+        font: 12px;
+        color: #4d4d4d;
+    }
+    #bioDialogBody .centerCodeBlock {
+        position: relative;
+        display: table;
+        height:141px;
+        margin: auto;
+    }
+    #bioDialogBody .qrcodeBlock {
+        position: absolute;
+        display: block;
+        margin-right: 16px;
+        top: 0px;
+        right: 0px;
+        width: 110px;
+        height: 141px;
+        text-align: center;
+    }
+    #bioDialogBody .rightLabel { position: relative; }
+    #bioDialogBody .rightQrcode{ position: relative; }
+
+/*
+    #bioDialogBody .appIcon { position:absolute; top:70px; left:100px; width:75px; height:75px; }
+    #bioDialogBody .appTitle {  position:absolute; top:55px; left:85px;}
+    #bioDialogBody .appMsg {  position:absolute; top:70px; left:85px;}
+    #bioDialogBody .appWaiting {  position:absolute; top:20px; left:100px;}
+*/
+    #bioDialogBody .signMsg > div  { width: 50%; margin: 5px auto; text-align:center; vertical-align:middle; }
+    #bioDialogBody .appIcon { width:50px; height:50px; }
+
+    #bioDialogBody .appTitle { font-size:13px; color:#4d4d4d }
+    #bioDialogBody .appMsg{ font-size:13px; color:#0066cc; font-weight:bold;}
+
+    #bioDialogBody .leftNumber {
+        display: table-cell;
+        background-color: white;
+        color: #4d4d4d;
+        border : solid 1px #2484e4;
+        width: 110px;
+        height: 98px;
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #bioDialogBody .rightQrcode {
+        background-color: white;
+        padding: 7px;
+        border : solid 1px #2484e4;
+    }
+    #bioDialogBody .rightQrcode img { margin: auto; }
+
+    #bioDialogBody .bottomBlock{
+        position: relative;
+        bottom: 0px;
+        margin:auto;
+        margin-bottom: 2px;
+        font-size: 10px;
+        text-align:center;
+    }
+
+    #bioDialogBody .bottomBlock .cancel{
+        font-size: 13px;
+        color: #666666;
+        background-color: white;
+        border : solid 1px #bbbbbb;
+        border-radius: 2px;
+        width: 68px;
+        height: 31px;
+    }
+
+    #bioDialogBody .label4d {
+        margin-top: 10px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #0066cc;
+    }
+    #bioDialogBody .label66 {  }
+
+    #bioDialogBody .infoMsg {
+        position: relative;
+        margin: 1px 0px 12px 4px;
+        cursor: hand; cursor: pointer;
+        text-align: left;
+    }
+
+    #bioDialogBody .infoMsg img{
+        position:relative;
+        top:2px;
+    }
+
+    #bioDialogBody .infoMsg .subject { color: #0066cc; }
+
+/*
+</style>
+*/
+    #w2ui-alert-dialog {width:365px; height:auto; background-color:#fff; padding:10px 18px;}
+    #w2ui-alert-dialog .w2ui-alert-dialog-body {height:80px; border: 1px solid #fff; border-radius:10px; padding:4px; text-align : center;}
+    #w2ui-alert-dialog .w2ui-alert-dialog-title {font-size:18px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px;}
+    #w2ui-alert-dialog .w2ui-alert-dialog-title-bar{height:11px;}
+    #w2ui-alert-dialog .w2ui-alert-dialog-body-block{width:348px; height:auto; text-align:left; padding:13px 18px; border:1px solid lightgray;  background-color:#f3f6fa; display:inline-block; position:relative;}
+    #w2ui-alert-dialog .w2ui-alert-dialog-body-block img {position:absolute; top:0; bottom:0; margin: auto 8px; }
+    #w2ui-alert-dialog .w2ui-alert-dialog-body-block p {width:240px; height:inherit; font-size:14px; float:right; text-align:left; margin:15px 0px 15px 10px; padding:0px 0px 3px 0px;  }
+
+    #w2ui-alert-dialog button { width:80px;height:30px;background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600; float:right;}
+    #w2ui-alert-dialog button:hover {width:80px;height:30px;background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    #w2ui-alert-dialog button:active{ background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+    #w2ui-alert-dialog > div {margin-top : 5px; }
+    #w2ui-alert-dialog .w2ui-alert-dialog-buttons button{margin:9px 0px 7px 7px;}
+
+    /* 숫자 키보드 */
+    #numKeyboard{
+        overflow: hidden;
+        padding: 0;
+        /*margin: 0 0 -4px -15px;*/
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+        height: 0px;
+        width: 0px;
+        transition: width 0.25s, height 0.25s;
+        z-index: 2;
+    }
+    #numKeyboard.shown{
+        height: 282px;
+    }
+
+    .numKeyboardBox{
+        background-color: #fff;
+    }
+
+    .numKeyboardBox div.button{
+        width: 100%;
+        height: 80px;
+        text-align: center;
+        border: none;
+        /*border-radius: 4px;*/
+        background-color: initial;
+        font-size: 30px;
+        line-height: 80px;
+        font-weight: normal;
+        padding:0;
+        color: #494949;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        outline: none;
+        transition: background-color 0.25s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .numKeyboardBox div.button:focus, .numKeyboardBox .numKeyboardClose:focus {
+        background-color: #eee;
+    }
+    .numKeyboardBox div.button:active{
+        background-color: #ddd;
+    }
+
+    .numKeyboardBox div.button.back-button{
+        background-image: url(images/mobile_numkb_backspace_black@2x.png);
+        background-size: 42px 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .numKeyboardBox table{
+        width:100%;
+        height: 200px;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        margin: auto;
+    }
+
+    .numKeyboardBox td{
+        vertical-align: top;
+        text-overflow: clip;
+        border: none;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .numKeyboardBox .numKeyboardCloseDiv{
+        height: 42px;
+        background-color: #f9f9f9;
+    }
+
+    .numKeyboardBox .numKeyboardClose{
+        width: 56px;
+        height: 40px;
+        background-image: url(images/kb_close_black@2x.png);
+        background-size: 30px 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 2px;
+        float: right;
+        outline: none;
+    }
+
+    /* for dark keyboard */
+    #numKeyboard.dark.shown {height: 286px;}
+    #numKeyboard.dark .numKeyboardCloseDiv {background-color: unset;}
+    #numKeyboard.dark .numKeyboardBox {background-color: #555;}
+    #numKeyboard.dark .numKeyboardBox div.button.back-button{background-image: url(images/mobile_numkb_backspace@2x.png);}
+    #numKeyboard.dark .numKeyboardBox .numKeyboardClose{background-image: url(images/kb_close_white@2x.png);}
+    #numKeyboard.dark .numKeyboardBox div.button:active{background-color: #ddd;}
+    #numKeyboard.dark .numKeyboardBox div.button:focus, #numKeyboard.dark .numKeyboardBox .numKeyboardClose:focus {background-color: #888;}
+    #numKeyboard.dark .numKeyboardBox td{border: 1px solid #4e4e4e;}
+    #numKeyboard.dark .numKeyboardBox div.button{color: #ebebeb;}
+
+    span.html5Intro {
+        cursor: pointer; cursor: hand;
+        color: #696969;
+        font-size:90%;
+        position: relative;
+    }
+    span.html5Intro img {
+        position: relative;
+        padding-left:2px;
+        top: 1px;
+    }
+    #dragOverEffect {
+        transform: scale(1);
+        display: none;
+        transition: opacity 0.3s, -webkit-transform 0.3s;
+        border: 1px solid #6d6e71;
+    }
+    #dragOverEffect.hover{
+        z-index: 3000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: scale(1);
+        transition: opacity 0.3s, -webkit-transform 0.3s;
+    }
+    #dragOverEffect.hover div.dragWrapper {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        border: 1px;
+        border-color: #66fffe;
+        border-style: dashed;
+    }
+    div.dragImage{
+        /*display:inline-block;*/
+        float: left;
+        width:31px;
+        height:28px;
+        background-image: url(icons/drag_cert_info.png);
+        border:0px;
+        margin-left: 42px;
+    }
+    div.dragImage.over{
+        background-image: url(icons/drag_cert_on.png);
+        margin-left: 41px;
+    }
+    div.dragDetail {
+        display:inline-block;
+        line-height: 16px;
+        font-size: 11px;
+        font-family:  "Apple SD Gothic Neo", "Apple Gothic", "맑은 고딕", "Malgun Gothic", "Dotum", Verdana, Arial, sans-serif;
+        text-overflow: ellipsis;
+        color: #a7a9ac;
+        margin-left: 8px;
+        width:320px;
+    }
+    
+    div.dragDetail.hover {
+        color: #66fffe;
+    }
+    #dragOverNoCert {
+        z-index: 1500;
+    }
+
+    .certificateBlock #certLoading div.certLoadingWrapper {
+        width: 260px; height: 50px;
+        border-radius: 7px;
+        margin-left: auto; margin-right: auto;
+        text-align: center; line-height: 50px;
+        background-color: #fff;
+    }
+    .certificateBlock #certLoading .certLoadingWrapper img{
+        margin-right: 7px;
+        vertical-align: middle;
+        width: 30px; height: 30px;
+    }
+    .certificateBlock #certLoading .certLoadingWrapper div{
+        display: inline-block;
+        line-height: 30px;
+        color: #000;
+        font-size: 12px;
+    }
+
+    #connectedBar {
+        position: absolute;
+        bottom: 0px;
+        width: 428px !important; height: 24px !important;
+        padding: 4px 120px 3px 120px;
+        background-image: url('images/connected_bar_desktop.png');
+        text-align: center;
+    }
+    #connectedBar div { display: inline-block; vertical-align: top;}
+    #connectedBar div.connectedLabel {
+        font-size: 11px;
+        margin-right: 6px;
+        color: #231f20;
+        height: 17px;
+        line-height: 17px;
+    }
+    #connectedBar div.g5_switch {
+        margin-right: 3px;
+    }
+    #connectedBar button.functionButton {
+        width: 17px; height:17px; margin-right: 5px;
+    }
+
+    #connectedBar div.connectedTurnedOnButton { background-image: url('images/btn/icon_connected_on.png'); }
+    #connectedBar div.connectedTurnedOffButton { background-image: url('images/btn/icon_connected_off.png'); }
+
+    #connectedBar button {width: 17px; height: 17px; border: 0; background: none;}
+
+    #connectedBar button.functionButton {
+        background-size: 17px;
+    }
+    #connectedBar button.connectedUploadButton { background-image: url('images/btn/icon_connected_upload.png'); }
+    #connectedBar button.connectedChangeButton { background-image: url('images/btn/icon_connected_change.png'); }
+    #connectedBar button.connectedDeleteButton { background-image: url('images/btn/icon_connected_delete.png'); }
+
+    #connectedBar button.connectedUploadButton:hover { background-image: url('images/btn/icon_connected_upload_hover.png'); }
+    #connectedBar button.connectedChangeButton:hover { background-image: url('images/btn/icon_connected_change_hover.png'); }
+    #connectedBar button.connectedDeleteButton:hover { background-image: url('images/btn/icon_connected_delete_hover.png'); }
+
+    #connectedBar button.connectedUploadButton:disabled { background-image: url('images/btn/icon_connected_upload_disabled.png'); }
+    #connectedBar button.connectedChangeButton:disabled { background-image: url('images/btn/icon_connected_change_disabled.png'); }
+    #connectedBar button.connectedDeleteButton:disabled { background-image: url('images/btn/icon_connected_delete_disabled.png'); }
+
+    #connectedBar .g5_switch .g5_switch_main { top: -1px; }
+
+    #connectedStartDialog { width:382px; height:385px }
+    #connectedStartDialogBody { border-radius:10px; padding:13px;}
+    #connectedStartDialogBody .connectedStartTitle{font-size:16px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 5px 4px 5px;  text-align:left;}
+    #connectedStartDialogBody .connectedStartTitleLine{ height:11px;}
+
+    #connectedStartDialogBody .strongLabel{line-height:118%;}
+    /*#connectedStartDialogBody > div { padding: 8px 0px 0px 0px; }*/
+    #connectedStartDialogBody .inputBorder{ border: 1px solid lightgray; padding: 24px 0px 16px 18px; width: 348px; height: 194px; margin-top: 8px; }
+    #connectedStartDialogBody .inputBorder div {}
+    #connectedStartDialogBody .inputBorder { background-color : #f3f6fa; }
+
+    #connectedStartDialogBody .needDisappear .inputBorder .inputBlockInner { text-align:left; margin-bottom: 10px; }
+    #connectedStartDialogBody .needDisappear .inputBorder .inputBlockInner span { display: inline-block; width : 80px; color: #0066CC; font-size: 13px; margin-right: 20px;}
+    #connectedStartDialogBody .needDisappear .inputBorder .inputBlockInner input { width: 189px; height: 25px; border: 1px solid #2484e4; }
+    #connectedStartDialogBody .needDisappear .inputBorder .inputBlockInner.phoneNumber { margin-bottom: 14px;}
+    #connectedStartDialogBody .needDisappear .inputBorder .checkAgree { margin-bottom: 4px; }
+    #connectedStartDialogBody .needDisappear .inputBorder .checkAgree input { width: 11px; height: 11px; border: 1px solid #bcbec0; background-color: #fff; }
+    #connectedStartDialogBody .needDisappear .inputBorder .checkAgree label { font-size: 12px; color: #58595b; }
+    #connectedStartDialogBody .needDisappear .inputBorder .checkAgree label a {color: #414042;}
+
+    #connectedStartDialogBody .infoBorder { width: 348px; height: 54px; border: 1px dotted #d3d3d3; background-color: #fff; padding: 8px 15px; line-height: 17px; margin-top: 6px; }
+    #connectedStartDialogBody .infoBorder .seeDetailButton {color: #2484e4; font-size: 11px; float: right;}
+    #connectedStartDialogBody .infoBorder .seeDetailButton img {margin-right: 4px;width: 11px;height:11px;}
+
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder { padding-top: 75px; height: 249px; text-align: center; }
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder.confirmInputBorder{}
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder .inputBlockInner {margin-bottom: 27px; }
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder .inputBlockInner span { display: inline-block; color: #0066CC; font-size: 13px; margin-right: 21px;}
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder .inputBlockInner input:disabled { width: 121px; height: 37px; border: 1px solid #2484e4; background-color: #fff; font-size: 23px; font-weight: bold; color: #000; text-align: center; }
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder div.confirmCodeMsg { font-size: 12px; color: #58595b; }
+    #connectedStartDialogBody .confirmCodeBlock .inputBorder img.connectedLoading { margin-top: 18px; }
+
+
+    #connectedStartDialogBody .saveWarningMsg { /*width: 280px;*/ font-size: 11px; color: #939598;margin-left: 20px;}
+
+    #connectedStartDialogBody .okButtonBlock {padding-top: 28px;}
+    #connectedStartDialogBody .okButtonBlock button { width:80px; height:30px; }
+    #connectedStartDialogBody .okButtonBlock button:disabled {font-size: 13px; color: #d1d3d4; background-color: #f1f1f1; border-color: #e6e7e8; }
+
+    #connectedStartCompleteDialog {width: 350px; height: 330px;}
+    #connectedStartCompleteDialogBody { border-radius:10px; padding:13px;}
+    #connectedStartCompleteDialogBody .connectedStartTitle{font-size:16px; font-weight:600; color:#333;margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 5px 4px 5px;  text-align:left;}
+    #connectedStartCompleteDialogBody .connectedStartTitleLine{ height:11px;}
+    #connectedStartCompleteDialogBody .inputBlock {width: 318px; height: 149px; border: 1px solid #b3b3b3; background-color: #f3f6fa; line-height: 149px; text-align: center; margin-top: 16px;}
+    #connectedStartCompleteDialogBody .inputBlockWrapper {vertical-align: middle; display: inline-block;}
+    #connectedStartCompleteDialogBody .inputBlockWrapper .connectedComplete { font-size: 16px; font-weight: bold; color: #06c; line-height: 16px; margin-bottom: 14px;}
+    #connectedStartCompleteDialogBody .inputBlockWrapper .connectedCompleteLabel { font-size: 12px; color: #231f20; line-height: 16px;}
+    #connectedStartCompleteDialogBody .canSaveLabel {width: 298px; font-size: 12px; color: #58595b; margin-top: 15px; margin-left: 20px; text-indent: -10px;}
+    #connectedStartCompleteDialogBody .canSaveLabel img {width: 11px;height: 14px;}
+    #connectedStartCompleteDialogBody .okButtonBlock {padding-top: 28px;}
+    #connectedStartCompleteDialogBody .okButtonBlock button { width:80px; height:30px; }
+    /*#connectedStartCompleteDialogBody .okButtonBlock button:disabled {font-size: 13px; color: #d1d3d4; background-color: #f1f1f1; border-color: #e6e7e8; }*/
+
+
+    #connectedUploadDialog { width:340px; height:291px }
+    #connectedUploadDialogBody { height:276px; border-radius:10px; padding:4px;}
+    #connectedUploadDialogBody .dialogTitle{ text-align:center; font-size:16px; font-weight:600; color:#333; margin:0px; display:inline; border-bottom:solid 2px #b3b3b3; padding: 0px 6px 4px 5px;  text-align:left;}
+    #connectedUploadDialogBody .selectCertStoreMsgTitleLine{ height:11px; }
+
+    #connectedUploadDialogBody { text-align:center; }
+    #connectedUploadDialogBody > div { padding: 10px 0px 0px 0px; }
+
+    #connectedUploadDialogBody .passwordBorder .certificateArea {font-size: 12px; color: #06c; margin-bottom: 10px; margin-top: 20px; }
+    #connectedUploadDialogBody .passwordBorder .certificateArea img { margin-bottom: 10px; }
+    #connectedUploadDialogBody .passwordBorder{ border: 1px solid lightgray; }
+    #connectedUploadDialogBody .passwordBorder div { margin: 15px; }
+    #connectedUploadDialogBody .passwordBlockInner { padding-bottom: 10px; }
+    #connectedUploadDialogBody .passwordBorder { background-color : #f3f6fa; }
+    #connectedUploadDialogBody .passwordPolicyMsg { width: 300px;}
+
+    #connectedUploadDialogBody .okButtonBlock { padding-top: 28px; }
+    #connectedUploadDialogBody .okButtonBlock button { width:80px; height:30px; }
+    #connectedUploadDialogBody .passwordBlockInner span { margin-right:5px; }
+    #connectedUploadDialogBody .passwordBlockInner span { color: #0066CC/*#2E9AFE*/; }
+    #connectedUploadDialogBody .passwordPolicyMsg{ margin: 0px auto; }
+    #connectedUploadDialogBody .passwordPolicyMsg{ padding: 10px 0px; }
+    #connectedUploadDialogBody .passwordPolicyMsg { font-size:0.95em;}
+
+    #connectedUploadDialogBody input.passwordInput { width:240px; text-align: center; }
+
+    #connectedUploadDialogBody input.passwordInput::-webkit-input-placeholder { font-size: 12px; font-color: #eee; }
+    #connectedUploadDialogBody input.passwordInput:-moz-placeholder { font-size: 12px; font-color: #eee; }
+    #connectedUploadDialogBody input.passwordInput::-moz-placeholder { font-size: 12px; font-color: #eee; }
+    #connectedUploadDialogBody input.passwordInput:-ms-input-placeholder { font-size: 12px; font-color: #eee; }
+    #connectedUploadDialogBody input.passwordInput::placeholder { font-size: 12px; font-color: #eee; }
+
+    .titleBarBlock {text-align:left;}
+
+    .certpinInputBlock .certpin input.certpinInput { border: none; background-color: #d8d8d8; width: 24px; height: 24px; border-radius: 12px; padding: 0px; font-size: 0px; margin-right: 6px; transition: background-color 0.3s; }
+    .certpinInputBlock .certpin input.desktop { width: 21px; height: 21px; }
+    .certpinInputBlock .certpin input.createEasyPasswordInput { width: 18px; height: 18px; }
+    .certpinInputBlock { text-align: center; padding: 5px 0; }
+    .easyPassword .easyPasswordTitle img { size: 24px; vertical-align: middle; }
+    .easyPassword .easyPasswordTitle span { height: 18px; width: 215px; color: #333333; font-size: 14px; letter-spacing: -0.34px; line-height: 18px; text-align: left; vertical-align: middle; }
+    .certpinInputBlock .certpin label { display: block; color: #2484E4; font-size: 15px; letter-spacing: -1.2px; line-height: 20px; text-align: center; padding-bottom: 15px; }
+    .certpinInputBlock .certpin input.certpinInput:last-child { margin-right: 0px; }
+    .certpinInputBlock .certpin input.certpinInput.fill { background-color: #2484E4; }
+    .certpinInputBlock .certpin { padding-bottom: 23px; font-size: 0px; }
+    .easyPassword { padding: 26px; }
+    .easyPassword .easyPasswordTitle { margin: 0 0 10px 7px; }
+    .easyPassword .passwordContainer { height: 151px; border: 1px solid #cccccc; border-radius: 4px; padding: 20px 0; }
+    .easyPassword .passwordContainer .content { width: 40%; display: inline-block; }
+    .easyPassword .loadingBackground { position: absolute; width: 92%; height: 57%; background:#b3b3b396; border: 4px; z-index: 98; }
+    .easyPassword .loadingBackground .loadingContainer { height: 35px; margin: 58px 200px; background-color: #fff; border-radius: 6px; }
+    .easyPassword .loadingBackground .loadingContainer .loadingImg { display:inline-block; width:15%; height:100%; background-image: url(images/tablet.keyboard_loading_progress.gif); background-repeat: no-repeat; background-position: left; border-radius: 6px; }
+    .easyPassword .loadingBackground .loadingContainer .loadingText { display:inline-block; width:83%; height:110%; vertical-align:middle; text-align : center; font-size: 15px; font-weight: bold; }
+
+    .passwordContainer .createPasswordContainer { padding: 14px 160px; font-size: 15px; line-height: 21px; letter-spacing: -0.36px; text-align: center; color: #5f5f5f; }
+    .passwordContainer .createPasswordContainer .createPasswordTitle { display: inline-block; padding-bottom: 21px; }
+    .passwordContainer .createPasswordContainer button {width:168px;height:40px;background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600; cursor: pointer;}
+    .passwordContainer .createPasswordContainer button:hover {width:168px;height:40px;background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    .passwordContainer .createPasswordContainer button:active { background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+    
+    .passwordContainer .nonecloudContainer { padding: 14px 137px; font-size: 15px; line-height: 21px; letter-spacing: -0.36px; text-align: center; color: #5f5f5f; }
+    .passwordContainer .nonecloudContainer .createPasswordTitle { display: inline-block; padding-bottom: 21px; }
+    .passwordContainer .nonecloudContainer button {width:180px;height:40px;background-color:#1d79d3; color:#FFFFFF; border:solid 1px #075fb5; border-radius:2px; font-weight:600;}
+    .passwordContainer .nonecloudContainer button:hover {width:180px;height:40px;background-color:#075fb5; color:#FFFFFF; border:solid 1px  #003399; border-radius:2px; font-weight:600;}
+    .passwordContainer .nonecloudContainer button:active { background-color:#054d94; color: #FFFFFF; border:solid 1px #003399;  border-radius:2px; font-weight:600;}
+    
+    .certpinInputBlock .changeCertpin {height: 16px;width: 100px; color: #6C6C6C; font-size: 12px;letter-spacing: -0.85px; line-height: 16px; text-align: center; cursor: pointer; }
+
+
+    /* kbtam 다이얼로그 */
+    #kbtamDialog { width:453px; height:368px }
+    #kbtamDialogBody { border-radius:10px; padding:26px;}
+
+    #kbtamDialogBody .dialogTitle {margin-top: 20px;margin-bottom: 40px;line-height: 20px;letter-spacing: -1px;white-space: pre-wrap;color: #000;}
+    #kbtamDialogBody .certInfoArea {
+        padding: 15px 20px;
+        border: 1px solid #aaa;
+        line-height: 68px;
+        margin-bottom: 25px;
+    }
+
+    #kbtamDialogBody .certInfoArea * {
+        display: inline-block;
+    }
+    #kbtamDialogBody .certImage {
+        background-image: url("icons/mobile_cert_x1.png");
+        background-size: 52px 60px;
+        width: 52px;
+        height: 60px;
+        vertical-align: middle;
+    }
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2) {
+        #kbtamDialogBody .certImage { background-image: url("icons/mobile_cert_x2.png"); }
+    }
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (   min--moz-device-pixel-ratio: 3),
+    only screen and (     -o-min-device-pixel-ratio: 3/1),
+    only screen and (        min-device-pixel-ratio: 3) {
+        #kbtamDialogBody .certImage { background-image: url("icons/mobile_cert_x3.png"); }
+    }
+
+    #kbtamDialogBody .kbtamPasswordTitle {
+        font-size: 15px;
+    }
+    #kbtamDialogBody .certInfo {
+        vertical-align: top;
+        width: calc(100% - 60px);
+        line-height: normal;
+    }
+    #kbtamDialogBody .certInfo .certInfoSubject {
+        display: block;
+        font-size: 15px;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: 15px;
+    }
+    #kbtamDialogBody .certInfo .certInfoType, #kbtamDialogBody .certInfo .certInfoIssuerAndExpire {
+        display: block;
+        font-size: 12px;
+        color: #686868;
+    }
+
+    #kbtamDialogBody .createEasyPasswordCancelInput {margin-bottom: 40px;}
+    #kbtamDialogBody .createEasyPasswordCancelInput label{display: inline-block;width: 120px;}
+    #kbtamDialogBody .createEasyPasswordCancelInput input{width: calc(100% - 120px);}
+    #kbtamDialogBody .certpinContainer.pinConfirm label {display: none;}
+    #kbtamDialogBody .certpinContainer.pinConfirm .certpinInputBlock .certpin {float: initial;text-align: center;}
+    #kbtamDialogBody .certpinInputBlock {text-align: left;}
+    #kbtamDialogBody .certpinInputBlock label { font-size: 15px; line-height: 30px; float: left; padding-bottom: 23px;color: #888;}
+    #kbtamDialogBody .certpinInputBlock .certpin {float: right;}
+    #kbtamDialogBody .certpinInputBlock .certpin input.certpinInput {width: 30px; height: 30px; border-radius: 15px; margin-right: 10px;}
+    #kbtamDialogBody .certpinInputBlock .certpin input.certpinInput:last-child { margin-right: 0px; }
+    #kbtamDialogBody .certpinInputBlock .certpin input.certpinInput.fill { background-color: #2484E4; }
+    #kbtamDialogBody .certpinInputBlock .certpin { padding-bottom: 23px; font-size: 0px; }
+
+    #kbtamDialogBody #pinKeypad {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    #kbtamDialogBody #pinKeypad .pinKeypadBox{
+        padding: 0;
+    }
+    #kbtamDialogBody #pinKeypad .pinKeypadBox table {
+        border-spacing: 1px;
+        border-collapse: unset;
+    }
+    #kbtamDialogBody .kbtamPassword td {
+    }
+    #kbtamDialogBody .kbtamPassword .pinKeypadBox div.button{
+        height: 48px;
+        width: 64px;
+        background-color: #e5e5e5;
+    }
+    #kbtamDialogBody .kbtamPassword .pinKeypadBox div.button:active{
+        background-color: #ccc;
+    }
+
+    #kbtamDialogBody .kbtamPassword .pinKeypadBox div.button.re-order{
+        /*vertical-align: middle;*/
+        line-height: 40px;
+    }
+    #kbtamDialogBody .kbtamPassword .pinKeypadBox div.button.back-button{
+        height: 48px;
+    }
+
+    /* pin 키보드 */
+    #pinKeypad{
+        z-index: 10;
+        overflow: hidden;
+        padding: 0 30px;
+        /*margin: 0 -11px 0 -11px;*/
+        position: relative;
+        display: inline-block;
+        width: 59%;
+        height: 100%;
+        bottom: 0px;
+        /* transition: height 0.25s; */
+    }
+    #pinKeypad.shown{
+        height: 0px;
+    }
+
+    #pinKeypad hr{
+        height:0;
+        border:0;
+        padding:0;
+        margin: 0;
+    }
+
+    .pinKeypadBox{
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+        background-color: #F7F6F6;
+        padding: 20px 32px;
+    }
+
+    .pinKeypadBox div.button{
+        width: 100%;
+        height: 25px;
+        /* height: 71px; */
+        text-align: center;
+        border: none;
+        /*border-radius: 4px;*/
+        background-color: initial;
+        /* font-size: 30px; */
+        line-height: 30px;
+        font-weight: normal;
+        padding:0;
+        color: #494949;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        outline: none;
+        transition: background-color 0.25s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .pinKeypadBox div.button:active{
+        background-color: #ddd;
+    }
+
+    .pinKeypadBox div.button.re-order{
+        color: #555555;
+        font-size: 16px;
+        letter-spacing: -0.39px;
+        text-align: center;
+    }
+
+    .pinKeypadBox div.button.back-button{
+        background-image: url(images/mobile_pinkb_backspace@2x.png);
+        background-size: 30px 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .reorder {
+        color: #555555;
+        font-size: 16px;
+        letter-spacing: -0.39px;
+        line-height: 21px;
+        text-align: center;
+    }
+
+    .pinKeypadBox table{
+        width:100%;
+        height: 100%;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        margin: auto;
+    }
+    .pinKeypadBox .pinKeypadArea .trLine {
+        height: 15px;
+    }
+    .pinKeypadBox td{
+        /* vertical-align: top; */ 
+        text-overflow: clip;
+        border: none;
+        padding: 0px;
+    }
+
+    .content .certWrapper img, .content .keyWrapper img {
+        width: 18px;
+        height: 18px;
+        display: none;
+        position:absolute;
+        left:300px;
+        /*bottom:6px;*/
+        top: 6px;
+    }

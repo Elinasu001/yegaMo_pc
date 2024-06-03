@@ -1,0 +1,8 @@
+.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-odd:focus,
+.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-even:focus,
+div.browserGuide:focus,
+div.closeGuide:focus
+ {
+    outline: 2px dashed;
+    outline-offset: 0px;
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="fincert.svg"
+   id="svg12"
+   version="1.1"
+   viewBox="0 0 62.4 31.2"
+   height="24"
+   width="48">
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>3DF9E71D-F714-435B-A9EB-AD5325BC17C0</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg12"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="-8"
+     inkscape:cy="15"
+     inkscape:cx="22"
+     inkscape:zoom="24.272727"
+     inkscape:snap-grids="true"
+     scale-x="1.3"
+     showgrid="false"
+     id="namedview14"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+  <title
+     id="title2">3DF9E71D-F714-435B-A9EB-AD5325BC17C0</title>
+  <desc
+     id="desc4">Created with sketchtool.</desc>
+  <g
+     transform="matrix(1.0219101,0,0,1.0374906,8.9441948,0.05355805)"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-width="1"
+     stroke="none"
+     id="도움말">
+    <g
+       fill-rule="nonzero"
+       transform="translate(-943,-130)"
+       id="main/금융인증서/도움말">
+      <g
+         transform="translate(943,130)"
+         id="img_userguide_k">
+        <path
+           fill="#4b4b4b"
+           id="Combined-Shape"
+           d="M 22,0 C 28.856418,0 33.325124,4.1266 34.212357,9.5594332 39.664014,9.8296082 44,14.298991 44,19.772727 44,25.421094 39.382936,30 33.6875,30 H 10.3125 C 4.6170635,30 0,25.421094 0,19.772727 0,14.298991 4.3359859,9.8296082 9.7874406,9.5584812 10.674876,4.1266 15.143582,0 22,0 Z m 0,2.7272727 c -5.111635,0 -8.607287,2.7629471 -9.439236,6.9430849 L 12.50204,9.9946792 12.146342,12.171862 9.925178,12.282331 C 5.9158739,12.481733 2.75,15.77318 2.75,19.772727 c 0,4.041108 3.2226975,7.335736 7.25834,7.494045 l 0.30416,0.006 h 23.375 c 4.176653,0 7.5625,-3.357864 7.5625,-7.5 0,-3.897043 -3.00556,-7.121495 -6.868206,-7.468077 L 34.075107,12.283307 31.853375,12.173202 31.49773,9.9954597 C 30.785432,5.6338099 27.242832,2.7272727 22,2.7272727 Z" />
+        <g
+           fill="#eaad00"
+           transform="translate(15,8)"
+           id="Group-193">
+          <path
+             id="Shape"
+             d="M 6.9521484,0.00885265 7.3689846,0.01962879 C 10.5,0 14.000103,2.7788462 14.000103,6.5196006 v 0 8.9778104 c 0.004,0.604022 -0.713091,1.291562 -1.463677,1.291562 v 0 H 1.3617188 C 0.61113281,16.788973 0,16.101433 0,15.497411 v 0 L 0.00205078,8.2980693 c 0,-0.387152 -5.3474e-4,0.1327542 -0.00105811,0.2362314 L 0,6.5196006 C 0,2.7788462 3.4042969,0.01803578 6.9521484,0.00885265 Z M 7.4,9.7259615 H 6.6 c -0.5522847,0 -1,0.4477155 -1,1.0000005 v 0 2.168269 c 0,0.552285 0.4477153,1 1,1 v 0 h 0.8 c 0.5522847,0 1,-0.447715 1,-1 v 0 -2.168269 C 8.4,10.173677 7.9522847,9.7259615 7.4,9.7259615 Z M 7,2.7788462 c -1.9307734,0 -4.2,1.4963017 -4.2,2.7788461 v 0 1.3894231 h 8.4 v 0 -1.3894231 C 11.2,4.2751479 9.1010681,2.7788462 7,2.7788462 Z" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
