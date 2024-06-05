@@ -1,0 +1,86 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script type="text/javascript">
+function check_step1_validation() {
+	var result = {validation : true, index : []};
+	
+	// 1로 끝나는 항목(Y)
+	$('input[id$=1]').each(function(idx, b) {
+		if(idx >= 0 && idx <=4) {
+			if(!b.checked) {
+				result.validation = false;
+				result.index.push(idx);
+			}
+		}
+	});
+	// 2로 끝나는 항목(N)
+	$('input[id$=2]').each(function(idx, b) {
+		if(idx >= 5 && idx <=6) {
+			if(!b.checked) {
+				result.validation = false;
+				result.index.push(idx);
+			}
+		}
+	});
+	
+	if($('#name').val() != '${sDsrUser.NAME }') {
+		result.validation = false;
+		result.index.push(7);
+	}
+	
+	return result;
+}
+
+function loading() {
+	addLoading(Math.round(Math.random() + 1));
+}
+
+function next() {
+	
+	loading();
+	$('.warning').removeClass('warning');
+	var result = check_step1_validation();
+	
+	if(!result.validation) {
+		// 실패.
+		removeLoading();
+		// radio 체크해제.
+		result.index.forEach(function(value, idx) {
+			var temp = $('.question-wrap').eq(value);
+			temp.addClass('warning');
+			temp.find('label').removeClass('r-on');
+			temp.find('input').removeProp('checked');
+			temp.find('input').val('');
+		});
+		
+		// 메시지 팝업.
+		var index = result.index[0];
+		var message = '질문내용을 정확히 확인 후 체크해주세요.';
+		deleteBlock();
+		customAlert({title : '안내', message : message}, function() {
+			location.href = '#con' + (index);
+			return false;
+		});
+		
+		return;
+	}else {
+		// 성공.
+		location.href = '<c:url value="${next}" />';
+	}
+}
+
+$(document).ready(function() {
+	// 다음 버튼에 대한 클레스처리.
+	function check() {
+		// 정상적으로 작성되었는지 확인
+		var result = check_step1_validation();
+		if(result.validation){
+			$('#btn_next').addClass('pink');
+		}else {
+			$('#btn_next').removeClass('pink');
+		}
+	}
+	$('input').change(check);
+	$('#name').keyup(check);
+});
+</script>

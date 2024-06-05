@@ -1,0 +1,986 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="co.kr.yegaramsb.common.util.DateUtil"%>
+<c:set var="date" value="<%= DateUtil.getCurrentDateFormat8() %>" />
+<style>
+.class_line_box{margin-top:20px;padding-top:20px;}
+.class_terms_box .radio-area{margin-top:5px;}
+.cust_terms_accent {color:#ec008c; font-weight:bold;}
+.class_line_box .sub_1{padding-left:20px;}
+.radio-wrap {margin-right:10px;}
+</style>
+
+<script type="text/javascript">
+
+	var currentDate = new String(${date});
+$(function(){	
+
+	$("input:radio[name='cust_term_radio3']").unbind("change").bind("change",function(){
+		if($("input:radio[name='cust_term_radio3']:checked").val()=="C008900007"){
+			$("#LOAN_AIM_TEXT_CUST").attr("disabled",false);
+		}else if ($("input:radio[name='cust_term_radio3']:checked").val()=="C009800003"){
+			$("#LOAN_AIM_TEXT_CORP").attr("disabled",false);
+		}else{
+			$("#LOAN_AIM_TEXT_CUST").val("");
+			$("#LOAN_AIM_TEXT_CUST").attr("disabled",true);
+			$("#LOAN_AIM_TEXT_CORP").val("");
+			$("#LOAN_AIM_TEXT_CORP").attr("disabled",true);
+		}
+	});
+	
+	$("input:radio[name='cust_term_radio4']").unbind("change").bind("change",function(){
+		if($("input:radio[name='cust_term_radio4']:checked").val()=="C009000004"){
+			$("#INCOM_ANNUAL_TEXT_CUST").attr("disabled",false);
+		}else if ($("input:radio[name='cust_term_radio4']:checked").val()=="C009900004"){
+			$("#INCOM_ANNUAL_TEXT_CORP").attr("disabled",false);
+		}else{
+			$("#INCOM_ANNUAL_TEXT_CUST").val("");
+			$("#INCOM_ANNUAL_TEXT_CUST").attr("disabled",true);
+			$("#INCOM_ANNUAL_TEXT_CORP").val("");
+			$("#INCOM_ANNUAL_TEXT_CORP").attr("disabled",true);
+		}
+	});
+	
+	$("input:radio[name='cust_term_radio8']").unbind("change").bind("change",function(){
+		if($("input:radio[name='cust_term_radio8']:checked").val()=="C009400005"){
+			$("#LOAN_RM_TEXT_CUST").attr("disabled",false);
+		}else if ($("input:radio[name='cust_term_radio8']:checked").val()=="C010300004"){
+			$("#LOAN_RM_TEXT_CORP").attr("disabled",false);
+		}else{
+			$("#LOAN_RM_TEXT_CUST").val("");
+			$("#LOAN_RM_TEXT_CUST").attr("disabled",true);
+			$("#LOAN_RM_TEXT_CORP").val("");
+			$("#LOAN_RM_TEXT_CORP").attr("disabled",true);
+		}
+	});
+	$(".date").text("" + currentDate.substring(0,4) + "년 " + new Number(currentDate.substring(4,6)) +"월 " + new Number(currentDate.substring(6,8)) +"일");
+	$("#cust_term_radio16_2").attr('disabled', true);
+	$("#cust_term_radio16_3").attr('disabled', true);
+	$("input:radio[name=cust_term_radio15]").click(function(){
+		
+		if($("input:radio[name=cust_term_radio15]:checked").val() == 'Y'){
+			$("#cust_term_radio16_1").prop('checked',true);
+			$("#cust_term_radio16_1").parent().addClass('r-on');
+				
+			$("#cust_term_radio16_2").attr('disabled', true);
+			$("#cust_term_radio16_3").attr('disabled', true);
+		}else{
+			$("#cust_term_radio16_1").prop('checked',false);
+			$("#cust_term_radio16_1").parent().removeClass('r-on');
+			
+			$("#cust_term_radio16_1").attr('disabled', true);
+			$("#cust_term_radio16_2").attr('disabled', true);
+			$("#cust_term_radio16_3").attr('disabled', true);
+		}
+	});
+	
+});
+
+function setCustTermsFormData(){
+	
+	for(var i=0; i<15; i++){
+	var value;
+	
+		if(i==0||i==2||i==7||i==9||i==10||i==12||i==13)continue;
+		if(i==14){
+			if($("input:radio[name='cust_term_radio14']:checked").val()!='Y'){
+				customAlert({title : "알림" , message : "적합성·적정성 항목에서 개인(신용)정보 수집, 이용, 제공에 동의해 주세요." }, function() {
+					$("#cust_term_radio14_1").focus();
+					return false;
+				});
+				return false;
+			}
+		}
+		if(typeof($("input:radio[name='cust_term_radio"+i+"']:checked").val())=="undefined"){
+			customAlert({title : "알림" , message : "적합성·적정성 항목을 선택해주세요." }, function() {
+// 				if(is(":visible")
+				$("input:radio[name='cust_term_radio"+i+"']").each(function( index, element ){
+					if($(this).is(":visible")){
+						$(this).focus();
+						return false;
+					}
+				});
+			});
+			return false;
+		}else{
+			value = $("input:radio[name='cust_term_radio"+i+"']:checked").val();
+			if(((value == 'C008900007') && ($("#LOAN_AIM_TEXT_CUST").val() == '')) || (value == 'C009400005') && ($("#LOAN_RM_TEXT_CUST").val() == '')){
+					if(value == 'C008900007'){
+						customAlert({title : "알림" , message : "대출계약 체결의 목적을 입력해 주세요." }, function() {});
+						$("#cust_term_radio3_7").focus();
+						return false;
+					}else{
+						customAlert({title : "알림" , message : "체결할 대출금의 변제방법을 입력해 주세요." }, function() {});
+						$("#cust_term_radio8_5").focus();
+						return false;
+					}
+					
+			}else if((value == 'C009000004') && ($("#INCOM_ANNUAL_TEXT_CUST").val() == '')){
+				customAlert({title : "알림" , message : "연간소득 내용을 입력해 주세요." }, function() {});
+				$("#cust_term_radio4_4").focus();
+				return false;
+			}
+		}
+		
+	}
+	
+	if(typeof($("input:radio[name='cust_term_radio15']:checked").val())=="undefined" || $("input:radio[name='cust_term_radio15']:checked").val() =='N'){
+		customAlert({title : "알림" , message : "적합성원칙 확인 동의를 해주세요." }, function() {
+			$("#cust_term_radio15_1").focus();
+			return false;
+		});
+		return false;
+	}
+	
+	if($("input:radio[name='cust_term_radio14']:checked").val()!='Y'){
+		customAlert({title : "알림" , message : "적합성·적정성 항목에서 개인(신용)정보 수집, 이용, 제공에 동의해 주세요." }, function() {
+			$("#cust_term_radio14_1").focus();
+			return false;
+		});
+		return false;
+	}
+	
+
+	
+	$("#CON_CD").val($("input:radio[name='cust_term_radio1']:checked").val());
+	$("#CUST_TYPE").val($("input:radio[name='cust_term_radio0']:checked").val());
+// 	$("#CUST_AGE").val($("input:radio[name='cust_term_radio2']:checked").val());
+	$("#CUST_AGE").val('');
+	$("#LOAN_AIM").val($("input:radio[name='cust_term_radio3']:checked").val());
+	$("#INCOM_ANNUAL_RANGE").val($("input:radio[name='cust_term_radio4']:checked").val());
+	$("#WORTH_NET").val($("input:radio[name='cust_term_radio5']:checked").val());
+	$("#DEPT_MT").val($("input:radio[name='cust_term_radio6']:checked").val());
+// 	$("#CREDIT_SCORE").val($("input:radio[name='cust_term_radio7']:checked").val());
+	$("#CREDIT_SCORE").val('');
+	$("#LOAN_RM").val($("input:radio[name='cust_term_radio8']:checked").val());
+// 	$("#LOAN_PR_EX").val($("input:radio[name='cust_term_radio9']:checked").val());
+	$("#LOAN_PR_EX").val('');
+// 	$("#LOAN_UD").val($("input:radio[name='cust_term_radio10']:checked").val());
+	$("#LOAN_UD").val('');	
+	$("#COST_FIX").val($("input:radio[name='cust_term_radio11']:checked").val());
+// 	$("#ADE_REC").val($("input:radio[name='cust_term_radio12']:checked").val());
+///	$("#ADE_REC").val('');
+// 	$("#ADE_REC_MT").val($("input:radio[name='cust_term_radio13']:checked").val());
+	$("#ADE_REC").val($("input:radio[name='cust_term_radio15']:checked").val());
+	$("#ADE_REC_MT").val($("input:radio[name='cust_term_radio16']:checked").val());
+
+	$("#REG_DT").val(currentDate);
+	$("#TERM_AGREE_YN").val($("input:radio[name='cust_term_radio14']:checked").val());
+	
+// 	if($("input:radio[name='cust_term_radio0']:checked").val()=="C008700001"){
+	$("#LOAN_AIM_TEXT").val($("#LOAN_AIM_TEXT_CUST").val());
+	$("#INCOM_ANNUAL_TEXT").val($("#INCOM_ANNUAL_TEXT_CUST").val());
+	$("#LOAN_RM_TEXT").val($("#LOAN_RM_TEXT_CUST").val());
+// 	}else{
+// 		$("#LOAN_AIM_TEXT").val($("#LOAN_AIM_TEXT_CORP").val());
+// 		$("#INCOM_ANNUAL_TEXT").val($("#INCOM_ANNUAL_TEXT_CORP").val());
+// 		$("#LOAN_RM_TEXT").val($("#LOAN_RM_TEXT_CORP").val());
+// 	}
+	return true;	
+}
+
+
+</script>
+
+
+<div class="class_cust_terms">
+	<div class="sign-area">
+		<p>본 확인서는 금융소비자 보호에 대한 법률 제 17조(적합성원칙) 및 제 18조(적정성원칙)에 따라 <span class="area_cust">귀하의 연령</span><span class="area_corp" style="display:none;">귀 법인의 업력</span>, 재산상황, 대출계약의 목적 등을 파악하여 대출계약자에게 가장 적합한 대출계약 체결을 권유하기
+		위한 기초자료로 활용됩니다. 허위 또는 불성실한 답변을 하시는 경우 부적합한 대출계약을 권유하게 될 수 있으며, 이로 인해 발생하는 모든 손해는 계약자 본인에게 귀속되오니 유념하여 주시기 바랍니다.</p>
+	</div>
+	
+<!-- 	<div class="class_line_box"> -->
+		
+<!-- 		<span class="cont">개인, 법인 선택해주세요.</span> -->
+<!-- 		<div class="sub_1"> -->
+<!-- 			<span class="radio-area"> -->
+<!-- 				<span class="radio-wrap"> -->
+<!-- 					<input type="radio" name="cust_term_radio0" id="cust_term_radio0_1" value="C008700001"> -->
+<!-- 					<label for="cust_term_radio0_1">개인</label> -->
+<!-- 				</span> -->
+<!-- 				<span class="radio-wrap"> -->
+<!-- 					<input type="radio" name="cust_term_radio0" id="cust_term_radio0_2" value="C008700002"> -->
+<!-- 					<label for="cust_term_radio0_2">법인</label> -->
+<!-- 				</span> -->
+<!-- 			</span> -->
+<!-- 		</div> -->
+		
+<!-- 	</div> -->
+		<table class="table-style td-r" id="table_title" style="margin-top: 20px;">
+			<!-- <caption>통신·공공요금 성실납부정보 등 개인신용평가 반영 안내</caption> -->
+			<colgroup>
+				<col style="width:25%;">
+				<col style="width:*;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>소비자 구분</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<span class="radio-area">
+							<span class="radio-wrap">
+								<label for="cust_term_radio1_1" class = "radio">
+								<input type="radio" name="cust_term_radio1" id="cust_term_radio1_1" value="C008600001">일반금융소비자</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio1_2" class = "radio">
+								<input type="radio" name="cust_term_radio1" id="cust_term_radio1_2" value="C008600002" disabled="disabled">전문금융소비자</label>
+							</span>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>대출용도</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<!-- <span class="radio-area"> -->
+							<div class="radio-area">
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_1" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_1" value="C008900001">가계자금</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_2" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_2" value="C008900002">사업자금</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_3" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_3" value="C008900003">주택자금</label>
+							</span>
+							</div>
+							<div class="mt10">
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_4" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_4" value="C008900004">타 기관 대출금 상환</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_5" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_5" value="C008900005">의료비</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio3_6" class = "radio">
+								<input type="radio" name="cust_term_radio3" id="cust_term_radio3_6" value="C008900006">교육비</label>
+							</span>
+							</div>
+						<!-- </span> -->
+						<div class="mt10">
+						<span class="radio-wrap">
+							<label for="cust_term_radio3_7" class = "radio">
+							<input type="radio" name="cust_term_radio3" id="cust_term_radio3_7" value="C008900007">기타</label>
+						</span>
+						<!-- 2021.08.20 웹접근성 수정(title 추가) -->
+						<input type="text" id="LOAN_AIM_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled" title="기타">
+					</div>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>연간소득</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<!-- <span class="radio-area"> -->
+							<span class="radio-wrap">
+								<label for="cust_term_radio4_1" class = "radio">
+								<input type="radio" name="cust_term_radio4" id="cust_term_radio4_1" value="C009000001">6백만원 이상 5천만원 미만</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio4_2" class = "radio">
+								<input type="radio" name="cust_term_radio4" id="cust_term_radio4_2" value="C009000002">5천만원 이상 1억원 미만</label>
+							</span>
+							
+						<!-- </span> -->
+						<div class="mt10">
+							<span class="radio-wrap">
+								<label for="cust_term_radio4_3" class = "radio">
+								<input type="radio" name="cust_term_radio4" id="cust_term_radio4_3" value="C009000003">1억원 이상 </label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio4_4" class = "radio">
+								<input type="radio" name="cust_term_radio4" id="cust_term_radio4_4" value="C009000004">해당없음</label>
+							</span>
+							<!-- 2021.08.20 웹접근성 수정(title 추가) -->
+							<input type="text" id="INCOM_ANNUAL_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled" title="해당없음">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>총 자산규모(순자산)</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<!-- <span class="radio-area"> -->
+						<div class="">
+							<span class="radio-wrap">
+								<label for="cust_term_radio5_1" class = "radio">
+								<input type="radio" name="cust_term_radio5" id="cust_term_radio5_1" value="C009100001">1억원 미만</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio5_2" class = "radio">
+								<input type="radio" name="cust_term_radio5" id="cust_term_radio5_2" value="C009100002">1억원 이상 5억원 미만</label>
+							</span>
+						</div>
+						<div class="mt10">
+							<span class="radio-wrap">
+								<label for="cust_term_radio5_3" class = "radio">
+								<input type="radio" name="cust_term_radio5" id="cust_term_radio5_3" value="C009100003">5억원 이상 10억원 미만</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio5_4" class = "radio">
+								<input type="radio" name="cust_term_radio5" id="cust_term_radio5_4" value="C009100004">10억원 이상</label>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>총부채</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<span class="radio-area">
+							<span class="radio-wrap">
+								<label for="cust_term_radio6_1" class = "radio">
+								<input type="radio" name="cust_term_radio6" id="cust_term_radio6_1" value="C009200001">1천만원 미만</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio6_2" class = "radio">
+								<input type="radio" name="cust_term_radio6" id="cust_term_radio6_2" value="C009200002">1천만원 이상 1억원 미만</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio6_3" class = "radio">
+								<input type="radio" name="cust_term_radio6" id="cust_term_radio6_3" value="C009200003">1억원 이상</label>
+							</span>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>대출상환소득</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<span class="radio-area">
+							<span class="radio-wrap">
+								<label for="cust_term_radio8_1" class = "radio">
+								<input type="radio" name="cust_term_radio8" id="cust_term_radio8_1" value="C009400001">근로소득</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio8_2" class = "radio">
+								<input type="radio" name="cust_term_radio8" id="cust_term_radio8_2" value="C009400002">사업소득</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio8_3" class = "radio">
+								<input type="radio" name="cust_term_radio8" id="cust_term_radio8_3" value="C009400003">임대소득</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio8_4" class = "radio">
+								<input type="radio" name="cust_term_radio8" id="cust_term_radio8_4" value="C009400004">연금소득</label>
+							</span>
+						</span>
+						<div class="mt10">
+							<span class="radio-wrap">
+								<label for="cust_term_radio8_5" class = "radio">
+								<input type="radio" name="cust_term_radio8" id="cust_term_radio8_5" value="C009400005">기타</label>
+							</span>
+							<!-- 2021.08.20 웹접근성 수정(title 추가) -->
+							<input type="text" id="LOAN_RM_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled" title="기타">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="cust_terms_accent">Q </span>고정지출</th>
+					<td scope="row" style="text-align: left;padding: 20px;">
+						<span class="radio-area">
+							<span class="radio-wrap">
+								<label for="cust_term_radio11_1" class = "radio">
+								<input type="radio" name="cust_term_radio11" id="cust_term_radio11_1" value="C009500001">연간 소득을 초과하지 않음</label>
+							</span>
+							<span class="radio-wrap">
+								<label for="cust_term_radio11_2" class = "radio">
+								<input type="radio" name="cust_term_radio11" id="cust_term_radio11_2" value="C009500002">연간 소득을 초과</label>
+							</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+<!-- 	<div class="class_line_box" id="div_redio_area"> -->
+<!-- 		<div class="class_terms_box"> -->
+<!-- 			<span class="cont">귀하는 다음 중 어디에 해당하십니까?</span> -->
+<!-- 			<div class="sub_1"> -->
+<!-- 				<span class="radio-area"> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<label for="cust_term_radio1_1" class="radio"><input type="radio" name="cust_term_radio1" id="cust_term_radio1_1" value="C008600001">일반금융소비자</label> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+						
+<!-- 						<label for="cust_term_radio1_2" class="radio"><input type="radio" name="cust_term_radio1" id="cust_term_radio1_2" value="C008600002" disabled="disabled">전문금융소비자</label> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+						
+<!-- 						<label for="cust_term_radio1_3" class="radio"><input type="radio" name="cust_term_radio1" id="cust_term_radio1_3" value="C008600003">5인미만 법인·조함 등, 기타</label> -->
+<!-- 					</span> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
+			
+<!-- 		</div> -->
+		
+<!-- 		<div class="area_cust"> -->
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont">1. 귀하의 <font class="cust_terms_accent">연령</font>은 어떻게 되십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio2_1" class="radio"><input type="radio" name="cust_term_radio2" id="cust_term_radio2_1" value="C008800001">20대 이하</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio2_2" class="radio"><input type="radio" name="cust_term_radio2" id="cust_term_radio2_2" value="C008800002">30대</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio2_3" class="radio"><input type="radio" name="cust_term_radio2" id="cust_term_radio2_3" value="C008800003">40대</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio2_4" class="radio"><input type="radio" name="cust_term_radio2" id="cust_term_radio2_4" value="C008800004">50대</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio2_5" class="radio"><input type="radio" name="cust_term_radio2" id="cust_term_radio2_5" value="C008800005">60대 이상</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">2. 귀하의 <font class="cust_terms_accent">대출계약 체결의 목적</font>은 무엇입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_1" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_1" value="C008900001">가계자금</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_2" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_2" value="C008900002">사업자금</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_3" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_3" value="C008900003">주택자금</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_4" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_4" value="C008900004">타 기관 대출금 상환</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_5" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_5" value="C008900005">의료비</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_6" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_6" value="C008900006">교육비</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio3_7" class="radio"><input type="radio" name="cust_term_radio3" id="cust_term_radio3_7" value="C008900007">기타</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="LOAN_AIM_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">3. 귀하의 <font class="cust_terms_accent">연간 소득</font>은 어느 정도입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio4_1" class="radio"><input type="radio" name="cust_term_radio4" id="cust_term_radio4_1" value="C009000001">6백만원 이상 5천만원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio4_2" class="radio"><input type="radio" name="cust_term_radio4" id="cust_term_radio4_2" value="C009000002">5천만원 이상 1억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio4_3" class="radio"><input type="radio" name="cust_term_radio4" id="cust_term_radio4_3" value="C009000003">1억원 이상 </label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio4_4" class="radio"><input type="radio" name="cust_term_radio4" id="cust_term_radio4_4" value="C009000004">해당없음</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="INCOM_ANNUAL_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">4. 귀하의 <font class="cust_terms_accent">총 자산규모(순자산)</font>는 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio5_1" class="radio"><input type="radio" name="cust_term_radio5" id="cust_term_radio5_1" value="C009100001">1억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio5_2" class="radio"><input type="radio" name="cust_term_radio5" id="cust_term_radio5_2" value="C009100002">1억원 이상 5억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio5_3" class="radio"><input type="radio" name="cust_term_radio5" id="cust_term_radio5_3" value="C009100003">5억원 이상 10억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+						
+<!-- 						<label for="cust_term_radio5_4" class="radio"><input type="radio" name="cust_term_radio5" id="cust_term_radio5_4" value="C009100004">10억원 이상</label> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">5. 귀하의 <font class="cust_terms_accent">부채</font>는 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio6_1" class="radio"><input type="radio" name="cust_term_radio6" id="cust_term_radio6_1" value="C009200001">1천만원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio6_2" class="radio"><input type="radio" name="cust_term_radio6" id="cust_term_radio6_2" value="C009200002">1천만원 이상 1억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio6_3" class="radio"><input type="radio" name="cust_term_radio6" id="cust_term_radio6_3" value="C009200003">1억원 이상</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">6. 귀하의 <font class="cust_terms_accent">신용점수</font>는 어떻게 되십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio7_1" class="radio"><input type="radio" name="cust_term_radio7" id="cust_term_radio7_1" value="C009300001">600점 이하</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio7_2" class="radio"><input type="radio" name="cust_term_radio7" id="cust_term_radio7_2" value="C009300002">600점 초과</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio7_3" class="radio"><input type="radio" name="cust_term_radio7" id="cust_term_radio7_3" value="C009300003">모름</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">7. 귀하가 <font class="cust_terms_accent">체결할 대출금의 변제방법</font>은 무엇입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio8_1" class="radio"><input type="radio" name="cust_term_radio8" id="cust_term_radio8_1" value="C009400001">근로소득</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio8_2" class="radio"><input type="radio" name="cust_term_radio8" id="cust_term_radio8_2" value="C009400002">사업소득</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio8_3" class="radio"><input type="radio" name="cust_term_radio8" id="cust_term_radio8_3" value="C009400003">임대소득</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio8_4" class="radio"><input type="radio" name="cust_term_radio8" id="cust_term_radio8_4" value="C009400004">연금소득</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio8_5" class="radio"><input type="radio" name="cust_term_radio8" id="cust_term_radio8_5" value="C009400005">기타</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="LOAN_RM_TEXT_CUST" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">8. 귀하는 대출상품에 대해  <font class="cust_terms_accent">얼마나 이해</font>하고 계십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<div> -->
+<!-- 						<span class="cont">1) 본인은 대출을 이용한 적이 </span> -->
+<!-- 						<div class="sub_1"> -->
+<!-- 							<span class="radio-area"> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio9" id="cust_term_radio9_1" value="Y"> -->
+<!-- 									<label for="cust_term_radio9_1">있다</label> -->
+<!-- 								</span> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio9" id="cust_term_radio9_2" value="N"> -->
+<!-- 									<label for="cust_term_radio9_2">없다</label> -->
+<!-- 								</span> -->
+<!-- 							</span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+<!-- 					<div> -->
+<!-- 						<span class="cont">2) 본인은 대출상품에 대해 </span> -->
+<!-- 						<div class="sub_1"> -->
+<!-- 							<span class="radio-area"> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio10" id="cust_term_radio10_1" value="Y"> -->
+<!-- 									<label for="cust_term_radio10_1">이해하고 있다</label> -->
+<!-- 								</span> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio10" id="cust_term_radio10_2" value="N"> -->
+<!-- 									<label for="cust_term_radio10_2">잘 이해하지 못한다</label> -->
+<!-- 								</span> -->
+<!-- 							</span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">8. 귀하의 연간소득 대비 <font class="cust_terms_accent">고정 지출비용</font>은 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio11_1" class="radio"><input type="radio" name="cust_term_radio11" id="cust_term_radio11_1" value="C009500001">연간 소득을 초과하지 않음</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+							
+<!-- 							<label for="cust_term_radio11_2" class="radio"><input type="radio" name="cust_term_radio11" id="cust_term_radio11_2" value="C009500002">연간 소득을 초과</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+		
+		
+<!-- 		<div class="area_corp" style="display:none;"> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont">1. 귀 법인의 <font class="cust_terms_accent">업력</font>은 어떻게 되십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio2" id="cust_term_radio2_6" value="C009700001"> -->
+<!-- 							<label for="cust_term_radio2_6">20년 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio2" id="cust_term_radio2_7" value="C009700002"> -->
+<!-- 							<label for="cust_term_radio2_7">20년 ~ 30년 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio2" id="cust_term_radio2_8" value="C009700003"> -->
+<!-- 							<label for="cust_term_radio2_8">30년 이상</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">2. 귀 법인의 <font class="cust_terms_accent">대출계약 체결의 목적</font>은 무엇입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio3" id="cust_term_radio3_8" value="C009800001"> -->
+<!-- 							<label for="cust_term_radio3_8">운전자금</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio3" id="cust_term_radio3_9" value="C009800002"> -->
+<!-- 							<label for="cust_term_radio3_9">시설자금</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio3" id="cust_term_radio3_10" value="C009800003"> -->
+<!-- 							<label for="cust_term_radio3_10">기타</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="LOAN_AIM_TEXT_CORP" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">3. 귀 법인의 <font class="cust_terms_accent">매출액</font>은 어느 정도입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio4" id="cust_term_radio4_5" value="C009900001"> -->
+<!-- 							<label for="cust_term_radio4_5">1억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio4" id="cust_term_radio4_6" value="C009900002"> -->
+<!-- 							<label for="cust_term_radio4_6">1억원 이상 10억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio4" id="cust_term_radio4_7" value="C009900003"> -->
+<!-- 							<label for="cust_term_radio4_7">10억원 이상 </label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio4" id="cust_term_radio4_8" value="C009900004"> -->
+<!-- 							<label for="cust_term_radio4_8">해당없음</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="INCOM_ANNUAL_TEXT_CORP" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">4. 귀 법인의 <font class="cust_terms_accent">총 자산규모(순자산)</font>는 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio5" id="cust_term_radio5_5" value="C010000001"> -->
+<!-- 							<label for="cust_term_radio5_5">100억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio5" id="cust_term_radio5_6" value="C010000002"> -->
+<!-- 							<label for="cust_term_radio5_6">100억원 이상 1,000억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio5" id="cust_term_radio5_7" value="C010000003"> -->
+<!-- 							<label for="cust_term_radio5_7">1,000억원 이상</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">5. 귀 법인의 <font class="cust_terms_accent">부채</font>는 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio6" id="cust_term_radio6_4" value="C010100001"> -->
+<!-- 							<label for="cust_term_radio6_4">50억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio6" id="cust_term_radio6_5" value="C010100002"> -->
+<!-- 							<label for="cust_term_radio6_5">50억원 이상 100억원 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio6" id="cust_term_radio6_6" value="C010100003"> -->
+<!-- 							<label for="cust_term_radio6_6">100억원 이상</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">6. 귀 법인의 <font class="cust_terms_accent">신용등급</font>는 어떻게 되십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio7" id="cust_term_radio7_4" value="C010200001"> -->
+<!-- 							<label for="cust_term_radio7_4">BBB+ 미만</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio7" id="cust_term_radio7_5" value="C010200002"> -->
+<!-- 							<label for="cust_term_radio7_5">BBB+ 이상</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio7" id="cust_term_radio7_6" value="C010200003"> -->
+<!-- 							<label for="cust_term_radio7_6">모름</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">7. 귀 법인이 <font class="cust_terms_accent">체결할 대출금의 변제방법</font>은 무엇입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio8" id="cust_term_radio8_6" value="C010300001"> -->
+<!-- 							<label for="cust_term_radio8_6">사업소득</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio8" id="cust_term_radio8_7" value="C010300002"> -->
+<!-- 							<label for="cust_term_radio8_7">임대소득</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio8" id="cust_term_radio8_8" value="C010300003"> -->
+<!-- 							<label for="cust_term_radio8_8">금융소득</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 					<div class="mt10"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio8" id="cust_term_radio8_9" value="C010300004"> -->
+<!-- 							<label for="cust_term_radio8_9">기타</label> -->
+<!-- 						</span> -->
+<!-- 						<input type="text" id="LOAN_RM_TEXT_CORP" style="width:250px;min-height:28px;" maxlength="30" disabled="disabled"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">8. 귀 법인은 대출상품에 대해  <font class="cust_terms_accent">얼마나 이해</font>하고 계십니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<div> -->
+<!-- 						<span class="cont">1) 본인은 대출을 이용한 적이 </span> -->
+<!-- 						<div class="sub_1"> -->
+<!-- 							<span class="radio-area"> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio9" id="cust_term_radio9_3" value="Y"> -->
+<!-- 									<label for="cust_term_radio9_3">있다</label> -->
+<!-- 								</span> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio9" id="cust_term_radio9_4" value="N"> -->
+<!-- 									<label for="cust_term_radio9_4">없다</label> -->
+<!-- 								</span> -->
+<!-- 							</span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+<!-- 					<div> -->
+<!-- 						<span class="cont">2) 본인은 대출상품에 대해 </span> -->
+<!-- 						<div class="sub_1"> -->
+<!-- 							<span class="radio-area"> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio10" id="cust_term_radio10_3" value="Y"> -->
+<!-- 									<label for="cust_term_radio10_3">이해하고 있다</label> -->
+<!-- 								</span> -->
+<!-- 								<span class="radio-wrap"> -->
+<!-- 									<input type="radio" name="cust_term_radio10" id="cust_term_radio10_4" value="N"> -->
+<!-- 									<label for="cust_term_radio10_4">잘 이해하지 못한다</label> -->
+<!-- 								</span> -->
+<!-- 							</span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+			
+<!-- 			<div class="mt10 class_terms_box"> -->
+<!-- 				<span class="cont mt10">8. 귀 법인의 연간소득 대비 <font class="cust_terms_accent">고정 지출비용</font>은 어느 정도 입니까?</span> -->
+<!-- 				<div class="sub_1"> -->
+<!-- 					<span class="radio-area"> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio11" id="cust_term_radio11_3" value="C009500001"> -->
+<!-- 							<label for="cust_term_radio11_3">연간 소득을 초과하지 않음</label> -->
+<!-- 						</span> -->
+<!-- 						<span class="radio-wrap"> -->
+<!-- 							<input type="radio" name="cust_term_radio11" id="cust_term_radio11_4" value="C009500002"> -->
+<!-- 							<label for="cust_term_radio11_4">연간 소득을 초과</label> -->
+<!-- 						</span> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	
+<!-- 	<div class="class_line_box" id="div_retail" style="display:none;"> -->
+<!-- 		<div>※ 다음은 신청 대출이 주택담보대출 또는 증권등담보대출인 경우 선택하시기 바랍니다. 적정성 판단 보고서는 적정하다고 판단되는 경우 제공되지 않습니다.</div> -->
+<!-- 		<div class="mt10 class_terms_box"> -->
+<!-- 			<span class="cont mt10">1. 귀하는 적정성 판단보고서 수취를 희망하십니까?</span> -->
+<!-- 			<div class="sub_1"> -->
+<!-- 				<span class="radio-area"> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<input type="radio" name="cust_term_radio12" id="cust_term_radio12_1" value="Y"> -->
+<!-- 						<label for="cust_term_radio12_1">네</label> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<input type="radio" name="cust_term_radio12" id="cust_term_radio12_2" value="N"> -->
+<!-- 						<label for="cust_term_radio12_2">아니오</label> -->
+<!-- 					</span> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div class="mt10 class_terms_box"> -->
+<!-- 			<span class="cont mt10">2. ("1"에서 희망 시) 수취방식을 선택해주시기 바랍니다.</span> -->
+<!-- 			<div class="sub_1"> -->
+<!-- 				<span class="radio-area"> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<input type="radio" name="cust_term_radio13" id="cust_term_radio13_1" value="C010400001"> -->
+<!-- 						<label for="cust_term_radio13_1">문자메세지</label> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<input type="radio" name="cust_term_radio13" id="cust_term_radio13_2" value="C010400002"> -->
+<!-- 						<label for="cust_term_radio13_2">모바일앱</label> -->
+<!-- 					</span> -->
+<!-- 					<span class="radio-wrap"> -->
+<!-- 						<input type="radio" name="cust_term_radio13" id="cust_term_radio13_3" value="C010400003"> -->
+<!-- 						<label for="cust_term_radio13_3">E-mail</label> -->
+<!-- 					</span> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="class_line_box" id="retailOnly">
+		<div>
+		♣ 다음은 '금융소비자보호법'에 따른 '적합성원칙' 확인을 위해 필요한 정보입니다.<br>
+		1. 귀하가 당행에 직접 신청한 대출상품이 "주택 또는 증권 등(주식) 담보대출"이 맞으십니까?
+			<div class="sub_1">
+				<span class="radio-area">
+					<span class="radio-wrap">
+						<label for="cust_term_radio15_1" class="radio"><input type="radio" name="cust_term_radio15" id="cust_term_radio15_1" value="Y">네</label>
+					</span>
+					<span class="radio-wrap">
+						<label for="cust_term_radio15_2" class="radio"><input type="radio" name="cust_term_radio15" id="cust_term_radio15_2" value="N">아니오</label>
+					</span>
+				</span>
+			</div>
+		</div>
+		("1" "네" 선택 시) 상품이 귀하에게 부적정한 경우 제공하는 '부적정 결과 안내서'의 수취방식을 선택해주시기 바랍니다. (적정하다고 판단되는 경우에는 제공되지 않습니다.)
+			<div class="sub_1">
+				<span class="radio-area">
+					<span class="radio-wrap">
+						<label for="cust_term_radio16_1" class="radio"><input type="radio" name="cust_term_radio16" id="cust_term_radio16_1" value="C010400001">문자메시지</label>
+					</span>
+					<span class="radio-wrap">
+						<label for="cust_term_radio16_2" class="radio"><input type="radio" name="cust_term_radio16" id="cust_term_radio16_2" value="C010400002">모바일앱</label>
+					</span>
+					<span class="radio-wrap">
+						<label for="cust_term_radio16_3" class="radio"><input type="radio" name="cust_term_radio16" id="cust_term_radio16_3" value="C010400003">E-mail</label>
+					</span>
+				</span>
+			</div>
+	</div>
+	<div class="class_line_box">
+		<div>
+			♣ 본인은 상기와 같이 제공한 정보의 내용이 정확한 것임을 확인합니다.<br>
+			1. 본인이 귀행에 제공한 적합성·적정성 관련 정보는 본인의 재산상황, 용도 등의 정보를 정확히 알려드린 것입니다.<br>
+			2. 본인이 제공한 정보가 정확하지 않거나, 정보에 변경사항이 발생한 경우에는 적합성·적정성 판단이 달라질수 있으며, 이 경우 대출계약 체결이 어려울 수 있음을 설명받았습니다.<br>
+			3. 상기 목적을 위해 본인의 개인(신용)정보 수집, 이용, 제공 및 귀행을 통한 신용정보 점수를 조회하는 것에 동의합니다.<br>
+			<div class="sub_1">
+				<span class="radio-area">
+					<span class="radio-wrap">
+						
+						<label for="cust_term_radio14_1" class="radio"><input type="radio" name="cust_term_radio14" id="cust_term_radio14_1" value="Y">동의</label>
+					</span>
+					<span class="radio-wrap">
+						
+						<label for="cust_term_radio14_2" class="radio"><input type="radio" name="cust_term_radio14" id="cust_term_radio14_2" value="N">동의하지 않음</label>
+					</span>
+				</span>
+			</div>
+			<div class="fl-r">
+				<span class="date" style="font-weight:bold;font-size:28px;"></span>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+</div>

@@ -1,0 +1,73 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    <!-- ********** Include ********** -->
+    <!-- s footerWrap -->
+    <div id="footerWrap">
+        <div class="top-wrap">
+            <div class="default-wrap">
+                <div class="fl-l">
+                    <span class="counselor">대출상담사 <c:out value="${sDsrUser.NAME}"/></span>
+                    <span class="hp color-EC008C"><c:out value="${sDsrUser.REP_TEL_NO}"/></span>
+                    <span class="time">( 평일 09:00 ~ 18:00 상담가능. 국경일 및 토,일요일은 휴무 )</span>
+                </div>
+                <!-- s:family-site-wrap -->
+                <%@ include file="../include/inc_body_family_site.jspf" %>
+                <!-- //e:family-site-wrap -->
+            </div>
+        </div>
+        <div class="footer default-wrap">
+            <%@ include file="../include/inc_body_copyright.jspf" %>
+            <div class="footer-logo">
+				<img style="width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
+                <img style="margin-top:17px;" src="<c:url value="/resources/normal/images/common/img_footer_logo_20191119.png"/>" alt="Yegaram Savings Bank 예가람저축은행">
+            </div>
+        </div>
+    </div>
+    <!-- //e:footerWrap -->
+    <!-- s:sitemapWrap -->
+    <div id="sitemapWrap" class="layerpopup sitemap-layer" tabindex="0" data-tooltip-con="sitemap-layer" data-focus="sitemap-layer" data-focus-prev="btn-menu-close">
+        <!-- s:all-menu-con -->
+        <div class="all-menu-con">
+            <div class="tit color-612885 font40 mb30">사이트맵</div>
+            <!-- s:all-menu-col -->
+            <div class="all-menu-col menu1">
+                <h3><a class="loading" href="<c:url value="/${dsrId}/introduce"/>">법인 및 상담사 소개</a></h3>
+            </div>
+            <!-- //e:all-menu-col -->
+            <!-- s:all-menu-col -->
+            <div class="all-menu-col menu2">
+                <h3><a href="<c:url value="/${dsrId}/cs/protection"/>">고객센터</a></h3>
+                <ul class="all-depth2">
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/protection"/>">- 금융소비자보호</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/branchInfo"/>">- 지점안내</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/unfair"/>">- 부당행위 신고안내</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/pds"/>">- 약관&#47;서식 자료실</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/faqs"/>">- FAQ</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/calculator"/>">- 대출계산기</a></li>
+                    <li><a class="loading" href="<c:url value="/${dsrId}/cs/certification"/>">- 인증센터</a></li>
+                </ul>
+            </div>
+            <!-- //e:all-menu-col -->
+            <!-- s:all-menu-col -->
+            <div class="all-menu-col menu3">
+                <%-- <h3><a class="loading" href="<c:url value="/${dsrId}/loan/01_loan_step2"/>">대출신청</a></h3> --%>
+                 <c:choose>
+                	<c:when test="${retailYn eq 'Y'}">
+                		<h3><a class="loading" href="<c:url value="/${dsrId}/loan/02_loan_step2"/>">대출신청</a></h3>
+                	</c:when>
+                	<c:otherwise>
+                		<h3><a class="loading" href="<c:url value="/${dsrId}/loan/01_loan_step2"/>">대출신청</a></h3>
+                	</c:otherwise>
+                </c:choose>
+            </div>
+            <!-- //e:all-menu-col -->
+        </div>
+        <!-- //e:all-menu-con -->
+        <button type="button" name="button" class="btn-menu-close tooltip-close" data-focus="btn-menu-close" data-focus-next="sitemap-layer">전체메뉴 닫기</button>
+    </div>
+    <!-- //e:sitemapWrap -->
+    <!-- ********** //Include ********** -->
+    </div>
+    <!-- //e:wrap -->
+</body>

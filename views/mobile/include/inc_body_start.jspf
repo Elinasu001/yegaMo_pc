@@ -1,0 +1,93 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${_PROPS.CSS_CD.VALUE eq 'D000500001'}">
+<body class="color-type1">
+</c:if>
+<c:if test="${_PROPS.CSS_CD.VALUE eq 'D000500002'}">
+<body class="color-type2">
+</c:if>
+<!-- ********** Include ********** -->
+<!-- s:skipnavi -->
+<ul id="skipnavi">
+	<li><a href="#contentsWrap">본문 바로가기</a></li>
+	<li><a href="#footerWrap">하단 바로가기</a></li>
+</ul>
+<!-- ********** //Include ********** -->
+<!-- //e:skipnavi -->
+<!-- s:wrap -->
+<div id="wrap">
+	<!-- ********** Include ********** -->
+	<!-- s:header -->
+	<div id="headerWrap">
+		<c:if test="${pageTitle eq '메인'}">
+		<div class="header">
+				<h1><a class="loading" href="<c:url value="/${dsrId}"/>">
+				<img src="/resources/mobile/images/common/img_logo_20191119.png"alt="Yegaram Savings Bank 예가람저축은행"/></a></h1>
+		</div>
+		</c:if>
+		<c:if test="${pageTitle ne '메인'}">
+		<div class="header sub-shadow">
+			<h2><a class="btn-back loading" href="#">이전페이지 이동하기</a><span><c:out value="${pageTitle}"/></span></h2>
+		</div>
+		</c:if>
+		<div class="menu-wrap">
+			<a class="btn-menu" href="#">메뉴보기</a>
+			</div>
+			<c:if test="${depth1 eq '2'}">
+			<div class="sub-menu swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
+					<a href="<c:url value="/${dsrId}/cs/protection"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'protection')}">active</c:if>">금융소비자보호</a>
+					<a href="<c:url value="/${dsrId}/cs/branchInfo"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'branchInfo')}">active</c:if>">지점안내</a>
+					<a href="<c:url value="/${dsrId}/cs/unfair"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'unfair')}">active</c:if>">부당행위 신고안내</a>
+					<a href="<c:url value="/${dsrId}/cs/pds"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'pds')}">active</c:if>">약관&#47;서식 자료실</a>
+					<a href="<c:url value="/${dsrId}/cs/faqs"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'faqs')}">active</c:if>">FAQ</a>
+					<a href="<c:url value="/${dsrId}/cs/calculator"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'calculator')}">active</c:if>">대출계산기</a>
+					<a href="<c:url value="/${dsrId}/cs/certification"/>" class="loading swiper-slide <c:if test="${fn:contains(path, 'certification')}">active</c:if>">인증센터</a>
+				</div>
+			</div>
+			</c:if>
+	</div>
+	<div id="menuRight">
+		<div class="menu-header">
+			<p class="topmenu">
+				<a href="<c:url value="/${dsrId}"/>" class="menu1 loading">메인화면</a>
+				<a href="<c:url value="/${dsrId}/introduce"/>" class="menu2 loading">상담사소개</a>
+				<a href="<c:url value="/${dsrId}/loan/02_realname"/>" class="menu3 loading">대출신청</a>
+			</p>
+			<a href="#none" class="menu-close">닫기</a>
+		</div>
+		<ul id="accordion">
+			<li class="depth1">
+				<a href="<c:url value="/${dsrId}/introduce"/>" class="menu01 loading"><span>법인 및 상담사 소개</span></a>
+			</li>
+			<li class="depth1">
+				<a href="#none" class="menu02"><span>고객센터</span></a>
+				<ul class="depth2-wrap">
+					<li class="col1">
+						<ul class="depth2">
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/protection"/>">금융소비자보호</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/branchInfo"/>">지점안내</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/unfair"/>">부당행위 신고안내</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/pds"/>">약관&#47;서식 자료실</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/faqs"/>">FAQ</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/calculator"/>">대출계산기</a></li>
+							<li><a class="loading" href="<c:url value="/${dsrId}/cs/certification"/>">인증센터</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="depth1">
+				<a href="<c:url value="/${dsrId}/loan/02_realname"/>" class="menu03 loading">
+					<span>대출신청</span>
+				</a>
+			</li>
+		</ul>
+		<p class="nav-noti ta-c"><img src="<c:url value="/resources/mobile/images/common/img_nav.png"/>" alt="예가람저축은행 모집인상담사 사이트를 안내해드립니다."/></p>
+	</div>
+	<!-- //e:header -->
+	<!-- ********** //Include ********** -->

@@ -1,0 +1,167 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="co.kr.yegaramsb.dsr.core.common.Constraints.RequestMappingUri" %>
+<c:set var="getAuthNicePhoneNumRest" value="<%= RequestMappingUri.getAuthNicePhoneNumRest %>" />
+<c:set var="confirmAuthNicePhoneNumSession" value="<%= RequestMappingUri.confirmAuthNicePhoneNumSession %>" />
+<style>
+.nice-auth-num-area input[type="text"] {float: left; width: 120px;}
+.nice-auth-num-area .btn-nice-auth-num {margin-left: 10px; width: 145px; padding: 0px 15px !important;}
+</style>
+<script>
+	$(function(){
+		NiceAuthNumUtil.addEvent();
+	});
+	
+	var niceAuthNumFormValidate = [
+			{id : 'phone_no1',			fieldName : '핸드폰번호 앞자리',				validate : [ 'NotNull', 'Number'] 			,authType : ['auth4']}
+		,	{id : 'phone_no2', 				fieldName : '핸드폰번호 가운데자리',			validate : [ 'NotNull', 'Number']			,authType : ['auth4']}
+		,	{id : 'phone_no3', 				fieldName : '핸드폰번호 뒷자리',				validate : [ 'NotNull', 'Number'] 			,authType : ['auth4']}
+	];
+	
+	//인증유틸
+	var NiceAuthNumUtil = ({
+		sendNiceAuthNumCheck : false,
+		confirmNiceAuthNumCheck : false,
+		
+		validateForm: function() {
+			var cloneValidate = $.extend( [], niceAuthNumFormValidate );
+			var validate = PageValidate.validate( cloneValidate );
+			if(!validate.result) {
+				validate.alert();
+				return false;
+			}
+			return true;
+		},
+	
+		addEvent : function(){
+			$( "#niceAuthNum" ).unbind("keyup").bind("keyup", function( e ){
+				$( this ).val(UtilFunc.getOnlyNumber($( this ).val()));
+			});
+			$(".nice-auth-num-area #sendBtn, .nice-auth-num-area #reSendBtn").unbind("click").bind("click", function(){
+				NiceAuthNumUtil.sendNiceAuthNum();
+			});
+			$(".nice-auth-num-area #confirmBtn").unbind("click").bind("click", function(){
+				NiceAuthNumUtil.confirmNiceAushNumAndSession();
+			});
+		},
+		
+		sendNiceAuthNum : function(){
+			if(!NiceAuthNumUtil.validateForm()) {
+				return false;
+			}
+			$('#niceAuthNum').val('');
+
+			var url = '<c:url value="${ getAuthNicePhoneNumRest }" />';
+			var	param = {
+				  "phone_no1" : $('#phone_no1').val()
+				, "phone_no2" : $('#phone_no2').val()
+				, "phone_no3" : $('#phone_no3').val()
+				, "phone_no" : $('#phone_no1').val()+$('#phone_no2').val()+$('#phone_no3').val()
+			}
+			AjaxFunc.ajaxAsyncWithProcess( url, param, function( data ){
+				if (data.result && data.resultCode == 0) {
+					NiceAuthNumUtil.sendNiceAuthNumCheck = true;
+					$('#sendBtn').hide();
+					$('#reSendBtn').show();
+					initTimer();
+					customAlert({title : "알림" , message : "인증 번호가 발송되었습니다.", btn_txt1:"확인"}, function() {$('#niceAuthNum').focus()});
+				} else {
+					customAlert({title : "알림" , message : data.resultMessage }, function() {});
+				}
+			},function(){});
+		},
+		
+		confirmNiceAushNumAndSession : function() {
+			if (!NiceAuthNumUtil.sendNiceAuthNumCheck) {
+				customAlert({title: "알림", message: '인증번호를 요청 해주세요.', btn_txt1: '확인'}, '', function () {
+					$('#niceAuthNum').focus();
+				});
+				return;
+			}
+			var niceAuthNum = $('#niceAuthNum').val();
+			if (niceAuthNum.length < 5) {
+				customAlert({title:"알림", message:"인증번호를 5자리 입력해주세요.", btn_txt1:"확인"}, '', function(){});
+				return;
+			}
+			if (NiceAuthNumUtil.validateForm()) {
+				var url = '<c:url value="${ confirmAuthNicePhoneNumSession }" />';
+				var	param = {
+					"authNum" : $('#niceAuthNum').val()
+				}
+				AjaxFunc.ajaxAsyncWithProcess( url, param, function( data ){
+					if(data.result && data.resultCode == 0) {
+						var intervalId = $('#niceAuthNumIntervalId').val();
+						if(intervalId != ''){
+							window.clearInterval(intervalId);
+						}
+						NiceAuthNumUtil.niceAuthResultCallBack();
+					} else {
+						customAlert({title : "알림" , message : data.resultMessage }, function() {});
+					}
+				},function(){});
+			}
+		}
+		
+		, niceAuthResultCallBack : function() {
+			NiceAuthNumUtil.confirmNiceAuthNumCheck = true;
+			$('#phone_no1, #phone_no2, #phone_no3, #niceAuthNum').css('opacity', '0.7');
+			$('#phone_no1, #phone_no2, #phone_no3, #niceAuthNum, #confirmBtn').attr('disabled', 'disabled');
+			$('#phone_no1').selectmenu('disable');
+			$('#sendBtn, #reSendBtn, #confirmBtn').hide();
+// 			$('#confirmBtn').text("확인완료");
+			customAlert({title:"알림", message:"확인되었습니다.", btn_txt1:"확인"}, '', function() {});
+		}
+		
+		, getConfirmNiceAuthNumCheck : function() {
+			if (NiceAuthNumUtil.confirmNiceAuthNumCheck) {
+				return true;
+			} else {
+				customAlert({title : "알림" , message : "휴대폰 인증번호 확인을 완료해 주세요." }, function() {
+					$("#niceAuthNum").focus();
+				});
+				return false;
+			}
+		}
+	});
+	
+	function initTimer() {
+		//타이머 초기화
+		var intervalId = $('#niceAuthNumIntervalId').val();
+		if(intervalId != ''){
+			window.clearInterval(intervalId);
+		}
+		dailyMissionTimer(2.99);
+	}
+	
+	function dailyMissionTimer(duration) {
+	    var timer = duration * 60;
+	    var minutes, seconds;
+	    var interval = setInterval(function(){
+	    	$('#niceAuthNumIntervalId').val(interval);
+	        minutes = parseInt(timer / 60 % 60, 10);
+	        seconds = parseInt(timer % 60, 10);
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+			$('#confirmBtn').text("확인 (" + minutes + ":" + seconds + ")");
+			
+	        if (--timer < 0) {
+	            timer = 0;
+	            clearInterval(interval);
+	            $('#confirmBtn').text("확인");
+	            NiceAuthNumUtil.sendNiceAuthNumCheck = false;
+				$('#sendBtn').show();
+				$('#reSendBtn').hide();	
+	            customAlert({title:"알림", message:"인증번호 입력 가능한 시간이 지났습니다.\n인증번호를 다시 요청해주세요.", btn_txt1:"확인"}, '', function() {});	            
+	        }
+	    }, 1000);
+	}
+</script>
+<div class="form-wrap">
+<label for="niceAuthNum" class="input-tit font13 color-351B6F">인증번호</label>
+	<div class="nice-auth-num-area">
+		<input type="hidden" id="niceAuthNumIntervalId"/>
+		<input type="text" id="niceAuthNum" value="" numberOnly placeholder=""  maxlength="5">
+		<button type="button" class="btn-normal form btn-nice-auth-num" id="sendBtn">인증번호요청</button>
+		<button type="button" class="btn-normal form btn-nice-auth-num" id="reSendBtn" style="display:none">재요청</button>
+		<button type="button" class="btn-normal form btn-nice-auth-num" id="confirmBtn">확인</button>
+	</div>
+</div>

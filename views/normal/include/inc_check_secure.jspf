@@ -1,0 +1,143 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<!--델피노 보안 솔루션-->
+<script src="<c:url value="/resources/security/wizvera/delfino/delfino_config.js?20200313"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/resources/security/wizvera/delfino/delfino_internal.min.js?20170417"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/resources/security/wizvera/delfino/delfino.js?20170417"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/security/wizvera/delfino/delfino_site.js?20160912"/>"
+        type="text/javascript"></script>
+
+<!--안랩 보안 솔루션-->
+<script src="<c:url value="/resources/security/ahnlab/astx2/astx2.min.js?r=13284"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/security/ahnlab/astx2/astx2_custom.js?r=13284"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/security/ahnlab/astx2/astx2_jq.min.js?r=13284"/>" type="text/javascript"></script>
+
+
+<!-- 베라포트: 공통 -->
+<script type="text/javascript">_SITE_CreateObject = false;</script>
+<!-- script type="text/javascript" src="../jquery/json_parse.js"></script -->
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/veraport20.js?v=20190226"/>"></script>
+<!-- 베라포트공통JS -->
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/veraport20_multi.js?v=20190226"/>"></script>
+<!-- 베라포트공통JS -->
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/veraport20_handler.js"/>"></script>
+<!-- 베라포트공통JS -->
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/install20/install_internal.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/install20/install_internal.js"/>"></script>
+<!-- 베라포트공통JS -->
+<!-- 베라포트공통JS -->
+<script type="text/javascript" src="<c:url value="/resources/security/wizvera/veraport/install20/install_config.js"/>"></script>
+<!-- 베라포트공통JS -->
+
+
+<!--설치 확인-->
+<script>
+	function SITE_vpInstalCheckResult(isInstall) {
+	    //if (!isInstall) alert("통합설치프로그램이 설치되지 않았습니다.\n'통합설치프로그램다운로드'를 클릭하여 설치하시기 바랍니다.");
+	    if (!isInstall && !(VP_platformInfo.Linux && !VP_platformInfo.Fedora && !VP_platformInfo.Ubuntu)) {
+	    	securityCheckFunc.securityModuleLoadCount += 1;
+	    	securityCheckFunc.unInstallNames += "VP,";
+	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+	            securityCheckFunc.onCheckFinished();
+	        }
+	    }else{
+	    	securityCheckFunc.securityModuleLoadCount += 1;
+	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+	            securityCheckFunc.onCheckFinished();
+	        }
+	    }
+	}
+    var securityCheckFunc = {
+        unifiedInstallationUrl: '/${dsrId}/cs/install?url=' + encodeURIComponent(window.location.href),
+        securityModuleCount: 3,
+        securityModuleLoadCount: 0,
+        unInstallNames: '',
+        checkASTxInstall: function () {
+            $ASTX2.init(
+                function onSuccess() {
+                    securityCheckFunc.securityModuleLoadCount += 1;
+                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+                       securityCheckFunc.onCheckFinished();
+                    }
+                    //키보드 보안이 필요한 부분만
+                    $ASTX2.initE2E();
+                },
+                function onFailure() {
+                    var errno = $ASTX2.getLastError();
+                    if (errno != $ASTX2_CONST.ERROR_NOTINST) {
+                        alert("ASTX2에서 에러 발생 페이지를 새로고침해주세요.");
+                    }
+                    securityCheckFunc.securityModuleLoadCount += 1;
+                    securityCheckFunc.unInstallNames += "ASTx,";
+                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+                        securityCheckFunc.onCheckFinished();
+                    }
+
+                },
+                750
+            );
+        },
+        checkDelfino: function () {
+            Delfino.isInstall(false, function onResult(result) {
+                if (result) {
+                    securityCheckFunc.securityModuleLoadCount += 1;
+                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+                        securityCheckFunc.onCheckFinished();
+                    }
+                } else {
+                    securityCheckFunc.securityModuleLoadCount += 1;
+                    securityCheckFunc.unInstallNames += "DelfinoG3,";
+                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
+                       securityCheckFunc.onCheckFinished();
+                    }
+                }
+            });
+        },
+        checkAll: function () {
+            this.securityModuleLoadCount = 0;
+            if (typeof isInstallCheck === 'undefined' || isInstallCheck === null) {
+                isInstallCheck = true;
+            }
+            if (!isInstallCheck || !this.isWindowsOS()) {
+                return;
+            }
+            this.checkASTxInstall();
+            this.checkDelfino();
+        },
+        onCheckFinished: function () {
+            if (securityCheckFunc.unInstallNames.length === 0) {
+                setTimeout(function () {
+                }, 0)
+            } else {
+                var redirectLocation = securityCheckFunc.unInstallNames.substr(0, securityCheckFunc.unInstallNames.length - 1);
+                window.location.href = securityCheckFunc.unifiedInstallationUrl + "&P_name=" + redirectLocation;
+            }
+        },
+        isWindowsOS: function () {
+            return navigator.userAgent.toLowerCase().indexOf('windows') > 0;
+        }
+    };
+    $(function () {
+        $(window).ready(function () {
+            securityCheckFunc.checkAll();
+        });
+    });
+</script>
+	<!-- [필수]베라포트: non-Plugin 설치 확인/START-->
+	<script type="text/javascript">if (VP_config.useHandler) execVP_isInstall(timer_vpHandlerLoad);</script>
+	<!-- [필수]베라포트: non-Plugin 설치 확인/END -->
+	<div style="display: none">
+	    <div id="VP_msg_installed" style="display:block;"> <!-- VeraPort 설치완료 -->
+	    </div>
+	    <div id="VP_msg_notinstall" style="display:none;"> <!-- VeraPort 미설치 -->
+	    </div>
+	    <div id="VP_msg_unsupported" style="display:none;"> <!-- VeraPort 미지원 -->
+	    </div>
+	    <div id="VP_btn_download" style="display:none;">
+	    </div>
+	    <div id="VP_btn_install" style="display:none;"></div>
+	</div>

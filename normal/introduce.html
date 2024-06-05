@@ -33,10 +33,11 @@
 <!-- //e:depth setting -->
 <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico">
 <link href="/resources/normal/css/jquery.bxslider.css" rel="stylesheet">
-<link href="/resources/normal/css/default.css" rel="stylesheet">
-<link href="/resources/normal/css/layout.css?v=20190409" rel="stylesheet">
-<link href="/resources/normal/css/contents.css?v=20201013" rel="stylesheet">
 <link href="/resources/normal/css/jquery-ui.css" rel="stylesheet"><!-- 180424 추가 -->
+<!-- 기존 css <link href="/resources/normal/css/default.css" rel="stylesheet">
+<link href="/resources/normal/css/layout.css" rel="stylesheet">
+<link href="/resources/normal/css/contents.css" rel="stylesheet">-->
+
 <script src="/resources/normal/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="/resources/normal/js/TweenMax.min.js" type="text/javascript"></script>
 <script src="/resources/normal/js/jquery.bxslider.min.js" type="text/javascript"></script>
@@ -55,6 +56,12 @@
 <script type="text/javascript" src="/resources/normal/js/placeholders.js"></script> <!-- 180430 플러그인추가 -->
 <script type="text/javascript" src="/resources/normal/js/jquery.animateSprite.min.js"></script> <!-- 180430 플러그인추가 -->
 <script src="/resources/normal/js/streamdocs/adapter.js"></script>
+
+
+<link href="/resources/normal/css/default_new.css" rel="stylesheet">
+<link href="/resources/normal/css/layout_new.css" rel="stylesheet">
+<link href="/resources/normal/css/contents_new.css" rel="stylesheet">
+
 
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -107,99 +114,7 @@
 <!-- 베라포트공통JS -->
 
 
-<!--설치 확인-->
-<script>
-	function SITE_vpInstalCheckResult(isInstall) {
-	    //if (!isInstall) alert("통합설치프로그램이 설치되지 않았습니다.\n'통합설치프로그램다운로드'를 클릭하여 설치하시기 바랍니다.");
-	    if (!isInstall && !(VP_platformInfo.Linux && !VP_platformInfo.Fedora && !VP_platformInfo.Ubuntu)) {
-	    	securityCheckFunc.securityModuleLoadCount += 1;
-	    	securityCheckFunc.unInstallNames += "VP,";
-	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-	            securityCheckFunc.onCheckFinished();
-	        }
-	    }else{
-	    	securityCheckFunc.securityModuleLoadCount += 1;
-	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-	            securityCheckFunc.onCheckFinished();
-	        }
-	    }
-	}
-    var securityCheckFunc = {
-        unifiedInstallationUrl: '/5959797913231323/cs/install?url=' + encodeURIComponent(window.location.href),
-        securityModuleCount: 3,
-        securityModuleLoadCount: 0,
-        unInstallNames: '',
-        checkASTxInstall: function () {
-            $ASTX2.init(
-                function onSuccess() {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                       securityCheckFunc.onCheckFinished();
-                    }
-                    //키보드 보안이 필요한 부분만
-                    $ASTX2.initE2E();
-                },
-                function onFailure() {
-                    var errno = $ASTX2.getLastError();
-                    if (errno != $ASTX2_CONST.ERROR_NOTINST) {
-                        alert("ASTX2에서 에러 발생 페이지를 새로고침해주세요.");
-                    }
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    securityCheckFunc.unInstallNames += "ASTx,";
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                        securityCheckFunc.onCheckFinished();
-                    }
 
-                },
-                750
-            );
-        },
-        checkDelfino: function () {
-            Delfino.isInstall(false, function onResult(result) {
-                if (result) {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                        securityCheckFunc.onCheckFinished();
-                    }
-                } else {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    securityCheckFunc.unInstallNames += "DelfinoG3,";
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                       securityCheckFunc.onCheckFinished();
-                    }
-                }
-            });
-        },
-        checkAll: function () {
-            this.securityModuleLoadCount = 0;
-            if (typeof isInstallCheck === 'undefined' || isInstallCheck === null) {
-                isInstallCheck = true;
-            }
-            if (!isInstallCheck || !this.isWindowsOS()) {
-                return;
-            }
-            this.checkASTxInstall();
-            this.checkDelfino();
-        },
-        onCheckFinished: function () {
-            if (securityCheckFunc.unInstallNames.length === 0) {
-                setTimeout(function () {
-                }, 0)
-            } else {
-                var redirectLocation = securityCheckFunc.unInstallNames.substr(0, securityCheckFunc.unInstallNames.length - 1);
-                window.location.href = securityCheckFunc.unifiedInstallationUrl + "&P_name=" + redirectLocation;
-            }
-        },
-        isWindowsOS: function () {
-            return navigator.userAgent.toLowerCase().indexOf('windows') > 0;
-        }
-    };
-    $(function () {
-        $(window).ready(function () {
-            securityCheckFunc.checkAll();
-        });
-    });
-</script>
 	<!-- [필수]베라포트: non-Plugin 설치 확인/START-->
 	<script type="text/javascript">if (VP_config.useHandler) execVP_isInstall(timer_vpHandlerLoad);</script>
 	<!-- [필수]베라포트: non-Plugin 설치 확인/END -->
@@ -221,21 +136,6 @@
 
 
 
-
-
-
-
-<!-- ********** Include ********** -->
-<!-- s:bg -->
-<div class="bg1">
-    <img src="../../../resources/normal/images/common/bg1.gif">
-</div>
-<div class="bg2">
-    <img src="../../../resources/normal/images/common/bg2.gif">
-</div>
-<!-- //e:bg -->
-<!-- ********** //Include ********** -->
-<!-- ********** Include ********** -->
 <!-- s:skipnavi -->
 <ul id="skipnavi">
     <li><a href="#gnb">메뉴 바로가기</a></li>
@@ -250,11 +150,15 @@
     <!-- s:header -->
     <div id="headerWrap">
         <div class="header">
-            <h1><a class="loading" href="/5959797913231323">
-                <img src="/resources/normal/images/common/img_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행"></a></h1>
-            <div class="fl-l corporate-info">
-                <span>대출모집법인 테스트법인<span class="divide"></span>대출상담사 김도형</span>
-            </div>
+             <!--D : h1 위치 변경 및 corporate-info 구조 ul, li로 변경 - 대출상담사 김도형 부분 em으로 한번 더 감싸기-->
+             <ul class="fl-l corporate-info">
+                <li>대출모집법인 테스트법인</li>
+                <li><em>대출상담사 김도형</em></li>
+             </ul>
+            <h1>
+                <a class="loading" href="/5959797913231323">
+                <img src="/resources/normal/images/common/img_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행"></a>
+            </h1>
             <div class="menu-wrap">
                 <div class="menu-top fl-r">
                     <ul>
@@ -263,7 +167,7 @@
                     </ul>
                 </div>
                 <div class="clear"></div>
-                <ul id="gnb" style="height: auto;">
+                <ul id="gnb" style="height:auto;">
                     <li class="depth1">
                         <a href="/5959797913231323/introduce" class="menu01 loading active"><span>법인 및 상담사 소개</span></a>
                     </li>
@@ -284,15 +188,8 @@
                         </ul>
                     </li>
                     <li class="depth1">
-                        
-                        
-                        	
-                        	
-                        		<a href="/5959797913231323/loan/01_loan_step2" class="menu03 loading">
-                        	
-                        
-                            <div class="blob"></div>
-                            <div class="blob2"></div>
+                        <a href="/5959797913231323/loan/01_loan_step2" class="menu03 loading">
+                            <!--D : blob, blob2 태그 삭제-->
                             <span>대출신청</span>
                         </a>
                     </li>
@@ -307,11 +204,18 @@
     <div id="contentsWrap">
         <!-- s:subVisualWrap -->
         <div id="subVisualWrap" class="sub1-1">
-            <div class="breadcrumb">
-                <a href="" class="home ir loading">홈</a>
-                <a href="/5959797913231323/introduce" class="depth1 loading">법인 및 상담사 소개</a>
-                
+            <!--D : div breadcrumb 구조변경 -->
+            <div id="breadcrumb" class="breadcrumb-renewal">
+                <div class="container">
+                    <div class="home-box"><a href="#" class="home ir">홈</a></div>
+                    <div class="depth-box">
+                        <a href="#">법인 및 상담사 소개</a>
+                    </div>
+                </div>
             </div>
+
+
+
             <div class="tit-wrap ta-c">
                 <h2 class="font50 mb10">법인 및 상담사 소개</h2>
                 <p class="desc">고객님께 딴딴한 약속을 드리는<br> 흥국금융가족 예가람저축은행이 되겠습니다.</p>
@@ -323,74 +227,117 @@
         <div class="contents default-wrap">
             <div class="introduce-wrap">
                 <div class="content1 of-hi mb80">
-                    <div class="fl-l">
-                        <p class="font26 mb45">안녕하세요? 항상 최선을 다하는 자세로
-                            <br>상담해 드리도록 노력하겠습니다.
-                            <br>예가람저축은행과 대출모집위탁계약을 체결한
-                            <br>
-                            <span class="color-EC008C">대출모집법인 테스트법인 소속
-                                <br> 대출상담사 김도형입니다.
-                            </span>
-                        </p>
-                        <div class="info-wrap of-hi">
-                            <div class="info">
-                                <span class="tit font13 color-351B6F">전화번호</span>
-                                <span>010-1234-1234</span>
-                            </div>
-                            <div class="info">
-                                <span class="tit color-351B6F">저축은행중앙회 등록번호</span>
-                                <span>10-13231323</span>
-                            </div>
+                     <!--D : 전체 구조 변경 필요 -->
+                     <div class="introduce_top">
+                        <div class="fl-l">
+                            <div class="photo"><img src="/resources/normal/images/common/ico_character01.png" alt="상담사 사진"></div>
                         </div>
-                    </div>
-                    <div class="fl-r">
-                        <div class="photo">
-                            
-                                <img src="/5959797913231323/attach/hO1iqVEvWs9l0XuzINd1QQ%3D%3D" alt="상담사 사진">
-                            
-                            
+                        <div class="fl-r">
+                            <p class="big_tit">
+                                <em>안녕하세요?</em>
+                                항상 최선을 다하는 자세로
+                                <br>상담해 드리도록 노력하겠습니다.
+                            </p>
                         </div>
+                     </div>
+
+                     <div class="txt-box">
+                        <p> 예가람저축은행과 대출모집위탁계약을 체결한 대출모집법인 <c:out value="${dsrUser.CORP_NM}"/> 소속 대출상담사 <c:out value="${dsrUser.NAME}"/>입니다.</p>
                     </div>
+
+                   
+
+                    <div class="prod-info">
+                        <div class="prod-cts">
+                            <ul class="define-list">
+                                <li>
+                                    <span class="de-tit">전화번호</span>
+                                    <div class="de-cts ta-l"><c:out value="${dsrUser.REP_TEL_NO}"/></div>
+                                </li>
+                                <li>
+                                    <span class="de-tit">저축은행중앙회<br>등록번호</span>
+                                    <div class="de-cts ta-l"><c:out value="${dsrUser.FSB_REG_NO}"/></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="prod-cts">
+                            <h3 class="tit">위탁사</h3>
+                            <ul class="define-list">
+                            <li>
+                                <span class="de-tit">예가람저축은행</span>
+                                <div class="de-cts ta-l">
+                                    <span class="telNum"><c:out value="${dsrUser.REP_TEL_NO}"/></span>
+                                </div>
+                                <script>
+                                    var telNum = "${dsrUser.CORP_NM}" == "(주)준민파트너스"? "02-6906-7072 / 02-6906-7054" :  "${dsrUser.CORP_NM}" == "상승플러스(DSR)" ? "02-6906-7072 / 02-6906-7054" : "070-4570-5017";
+                                    $('.telNum').html("관리담당자" + " " + telNum);
+                                </script>
+                            </li>
+                            </ul>
+                        </div>
+
+                        <div class="prod-cts">
+                            <h3 class="tit">대출모집위탁법인(수탁사)</h3>
+                            <ul class="define-list">
+                                <li>
+                                    <span class="de-tit">법인명</span>
+                                    <div class="de-cts ta-l">
+                                        <c:out value="${corpUser.NAME}"/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="de-tit">등록번호</span>
+                                    <div class="de-cts ta-l">
+                                        <c:out value="${corpUser.FSB_REG_NO}"/> (저축은행중앙회 등록번호)
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="de-tit">주소</span>
+                                    <div class="de-cts ta-l"> <c:out value="${corpUser.ADDR}"/> <c:out value="${corpUser.ADDR_DETAIL}"/></div>
+                                </li>
+                                <li>
+                                    <span class="de-tit">전화번호</span>
+                                    <div class="de-cts ta-l"><c:out value="${corpUser.REP_TEL_NO}"/></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="prod-cts">
+                            <h3 class="tit">주의사항</h3>
+                            <ul class="define-list">
+                                <li>
+                                    <span class="de-tit">주의사항</span>
+                                    <div class="de-cts ta-l">
+                                        <ul class="bar-list">
+                                            <li>상기인은 저축은행중앙회에 등록된 대출상담사 입니다.</li>
+                                            <li>대출진행시 대출모집인은 고객에게 별도의 수수료를 요구하거나 수취할수 없습니다. 요구 시 위탁사(예가람저축은행 <c:out value="${_PROPS.SRVC_CNTR.VALUE}"/> 또는 <c:out value="${_PROPS.CALL_CENTER.VALUE}"/>)로 연락주시기 바랍니다.</li>
+                                            <li>대출 취급에 대한 결정은 위탁사(예가람저축은행 대출심사자)의 고유권한으로 대출모집상담사는 취급여부를 결정할 수 없습니다.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div><!--//prod-info-->
+                <div class="prod-date">
+                    <span class="date"></span>
+                    <span class="compliance complianceBank">준법감시인 심의필 <c:out value="${_PROPS.DELIBERATION.VALUE}"/></span>
                 </div>
-                <div class="content2 of-hi">
-                    <div class="fl-l">
-                        <div class="list-tit mb10">위탁사</div>
-                        <ul class="list type1 mb40">
-                            <li><span class="bar">예가람저축은행</span><span class="telNum">관리담당자 070-4570-5017</span></li>
-                            <script>
-                           		var telNum = "테스트법인" == "(주)준민파트너스"? "02-6906-7072 / 02-6906-7054" :  "테스트법인" == "상승플러스(DSR)" ? "02-6906-7072 / 02-6906-7054" : "070-4570-5017";
-                            	$('.telNum').html("관리담당자" + " " + telNum);
-                            </script>
-                        </ul>
-                        <div class="list-tit mb10">대출모집위탁법인(수탁사)</div>
-                        <ul class="list type1 mb40">
-                            <li><span class="bar">법인명</span>테스트법인</li>
-                            <li><span class="bar">등록번호</span>20-59597979 (저축은행중앙회 등록번호)</li>
-                            <li><span class="bar">주소</span>서울특별시 서초구 서초대로50길 84-10(서초동) 305호</li>
-                            <li><span class="bar">전화번호</span>010-1234-1234</li>
-                        </ul>
-                    </div>
+                <div class="btn-wrap">
+                    <a class="btn-big navy" href="http://www.loanconsultant.or.kr" title="새창으로" target="_blank">대출모집법인 및 대출상담사 조회</a>
                 </div>
-                <hr class="mb5">
-                <p class="font12">
-                    ※ 주의사항<br>
-                    - 상기인은 저축은행중앙회에 등록된 대출상담사 입니다.<br>
-                    - 대출진행시 대출모집인은 고객에게 별도의 수수료를 요구하거나 수취할수 없습니다. 요구 시 위탁사(예가람저축은행 1877-7788 또는 (02)3978-600,800)로 연락주시기 바랍니다.<br>
-                    - 대출 취급에 대한 결정은 위탁사(예가람저축은행 대출심사자)의 고유권한으로 대출모집상담사는 취급여부를 결정할 수 없습니다.
-                </p>
-                <p class="font13 mt20 mb40">준법감시인 심의필 제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18)</p>
-                <p class="ta-c"><a href="http://www.loanconsultant.or.kr" class="btn-big pink" title="새창으로" target="_blank">대출모집법인 및 대출상담사 조회</a></p>
             </div>
+            <!------------>
         </div>
         <!-- //e:contents -->
-        <button type="button" name="button" class="btn-circle top ir btn-top" style="display: none;">위로</button>
+        <button type="button" name="button" class="btn-circle top ir btn-top">위로</button>
     </div>
     <!-- //e: contentsWrap -->
     
 
 
     <!-- ********** Include ********** -->
-    <!-- s footerWrap -->
     <div id="footerWrap">
         <div class="top-wrap">
             <div class="default-wrap">
@@ -400,111 +347,65 @@
                     <span class="time">( 평일 09:00 ~ 18:00 상담가능. 국경일 및 토,일요일은 휴무 )</span>
                 </div>
                 <!-- s:family-site-wrap -->
-                
-
-
-<div class="family-site-wrap of-hi fl-r">
-    <label class="blind" for="family-site-button">관련사이트</label>
-    <div class="select-wrap fl-l">
-        <select name="" id="family-site" style="display: none;">
-            <option selected="selected" value="">관련사이트</option>
-            <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
-            <option value="http://www.fss.or.kr">금융감독원</option>
-            <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
-            <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
-        </select><span tabindex="0" id="family-site-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-haspopup="true" class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget"><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span><span class="ui-selectmenu-text">관련사이트</span></span>
-    </div>
-    <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
-</div>
+                <div class="family-site-wrap of-hi fl-r">
+                    <label class="blind" for="family-site">관련사이트</label>
+                    <div class="select-wrap fl-l">
+                        <select name="" id="family-site">
+                            <option selected="selected" value="">관련사이트</option>
+                            <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
+                            <option value="http://www.fss.or.kr">금융감독원</option>
+                            <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
+                            <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
+                        </select>
+                    </div>
+                    <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
+                </div>
                 <!-- //e:family-site-wrap -->
             </div>
         </div>
         <div class="footer default-wrap">
-            
-
-
-<div class="copyright">
-    <p class="mb15">상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 테스트법인 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다.<br>
-        또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
-        대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
-        예가람저축은행 소비자보호 담당자 : 02)6906-7065<br>
-	대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실&gt;모집인수수료율)<br>     
-      신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr </a> <br> 
-      금융소비자는 방문판매 목적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
-       두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
-        </p>
-    <p class="mb15">
-	    - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
-- 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
-- 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
-- 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
-- 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
-- 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
-- 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
-- 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
-- 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
-- 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.<br>
-	</p>
-	<p>예가람저축은행&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호 : 107-86-66267 &nbsp;&nbsp;|&nbsp;&nbsp;주소 : 서울특별시 중구 세종대로 50&nbsp;&nbsp;|&nbsp;&nbsp;대표번호 : 1877-7788&nbsp;&nbsp;|&nbsp;&nbsp;금융사기 야간콜센터 : (02)3978-600,800<br>
-        
-        	
-        	
-        		예가람저축은행 준법감시인 심의필 제 2024-086호(2024.04.23 ~2025.04.22)
-        	
-       	
-        &nbsp;&nbsp;|&nbsp;&nbsp;Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!-- 예가람저축은행 준법감시인 심의필제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18) -->
-</div>
+            <div class="copyright">
+                <p class="mb15">상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 테스트법인 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다.<br>
+                    또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
+                    대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
+                    예가람저축은행 소비자보호 담당자 : 02)6906-7065<br>
+                대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실&gt;모집인수수료율)<br>     
+                신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr </a> <br> 
+                금융소비자는 방문판매 목적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
+                두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
+                    </p>
+                <p class="mb15">
+                    - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
+            - 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
+            - 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
+            - 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
+            - 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
+            - 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
+            - 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
+            - 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
+            - 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
+            - 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.<br>
+                </p>
+                <p>예가람저축은행&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호 : 107-86-66267 &nbsp;&nbsp;|&nbsp;&nbsp;주소 : 서울특별시 중구 세종대로 50&nbsp;&nbsp;|&nbsp;&nbsp;대표번호 : 1877-7788&nbsp;&nbsp;|&nbsp;&nbsp;금융사기 야간콜센터 : (02)3978-600,800<br>
+                    
+                            
+                            예가람저축은행 준법감시인 심의필 제 2024-097호(2024.05.20 ~2025.05.19)
+                        
+                        
+                    
+                    &nbsp;&nbsp;|&nbsp;&nbsp;Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!-- 예가람저축은행 준법감시인 심의필제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18) -->
+            </div>
             <div class="footer-logo">
-				<img style="width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
-                <img style="margin-top:17px;" src="/resources/normal/images/common/img_footer_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행">
+                <!--D:이미지 위치 아래 위 변경-->
+                <img src="/resources/normal/images/common/img_footer_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행">
+				<img style="margin-top:25px; width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
             </div>
         </div>
-    </div>
-    <!-- //e:footerWrap -->
-    <!-- s:sitemapWrap -->
-    <div id="sitemapWrap" class="layerpopup sitemap-layer" tabindex="0" data-tooltip-con="sitemap-layer" data-focus="sitemap-layer" data-focus-prev="btn-menu-close" style="max-height: 853px;">
-        <!-- s:all-menu-con -->
-        <div class="all-menu-con">
-            <div class="tit color-612885 font40 mb30">사이트맵</div>
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu1">
-                <h3><a class="loading" href="/5959797913231323/introduce">법인 및 상담사 소개</a></h3>
-            </div>
-            <!-- //e:all-menu-col -->
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu2">
-                <h3><a href="/5959797913231323/cs/protection">고객센터</a></h3>
-                <ul class="all-depth2">
-                    <li><a class="loading" href="/5959797913231323/cs/protection">- 금융소비자보호</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/branchInfo">- 지점안내</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/unfair">- 부당행위 신고안내</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/pds">- 약관/서식 자료실</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/faqs">- FAQ</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/calculator">- 대출계산기</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/certification">- 인증센터</a></li>
-                </ul>
-            </div>
-            <!-- //e:all-menu-col -->
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu3">
-                
-                 
-                	
-                	
-                		<h3><a class="loading" href="/5959797913231323/loan/01_loan_step2">대출신청</a></h3>
-                	
-                
-            </div>
-            <!-- //e:all-menu-col -->
-        </div>
-        <!-- //e:all-menu-con -->
-        <button type="button" name="button" class="btn-menu-close tooltip-close" data-focus="btn-menu-close" data-focus-next="sitemap-layer">전체메뉴 닫기</button>
     </div>
     <!-- //e:sitemapWrap -->
     <!-- ********** //Include ********** -->
     </div>
     <!-- //e:wrap -->
 
-
-
-<div class="ui-selectmenu-menu ui-front"><ul aria-hidden="true" aria-labelledby="family-site-button" id="family-site-menu" role="listbox" tabindex="0" class="ui-menu ui-corner-bottom ui-widget ui-widget-content"></ul></div></body></html>
+</body>
+</html>

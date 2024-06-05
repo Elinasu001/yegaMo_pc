@@ -1,0 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<div class="family-site-wrap of-hi fl-r">
+    <label class="blind" for="family-site">관련사이트</label>
+    <div class="select-wrap fl-l">
+        <select name="" id="family-site">
+            <option selected="selected" value="">관련사이트</option>
+            <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
+            <option value="http://www.fss.or.kr">금융감독원</option>
+            <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
+            <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
+        </select>
+    </div>
+    <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
+</div>

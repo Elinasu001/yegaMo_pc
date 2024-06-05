@@ -1,0 +1,66 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- ********** Include ********** -->
+<!-- s footerWrap -->
+    <div id="footerWrap">
+        <div class="default-wrap">
+            <div class="counselor">
+                <div class="thumb-wrap">
+                    <div class="thumb">
+                        <c:if test="${not empty sDsrUser.PHOTO_SEQ}">
+                            <img src="<c:url value="/${dsrId}/images/${sDsrUser.PHOTO_SEQ}"/>" class="max" alt="상담사 사진">
+                        </c:if>
+                        <c:if test="${empty sDsrUser.PHOTO_SEQ}">
+                            <img src="<c:url value="/resources/normal/images/common/ico_woman.png"/>" class="max" alt="상담사 사진">
+                        </c:if>
+                    </div>
+                </div>
+                <div class="info">
+                    <span class="name"><c:out value="${sDsrUser.CORP_NM}"/> 대출상담사 <c:out value="${sDsrUser.NAME}"/></span>
+                    <span class="phone"><a href="tel:${sDsrUser.REP_TEL_NO}"><c:out value="${sDsrUser.REP_TEL_NO}"/></a></span>
+                    <span class="time">평일 09:00~18:00 상담가능 (국경일 및 토,일요일 휴무)</span>
+                </div>
+            </div>
+            <%@ include file="../include/inc_body_copyright.jspf" %>
+
+            <!-- s:family-site-wrap -->
+            <%@ include file="../include/inc_body_family_site.jspf" %>
+            <!-- //e:family-site-wrap -->
+        </div>
+    </div>
+    <!-- //e:footerWrap -->
+    <!-- ********** //Include ********** -->
+    </div>
+    <!-- //e:wrap -->
+
+    <!-- s:선택알림 -->
+    <div id="alertPop" class="layerpopup alert-layer">
+        <!-- s:layer-con -->
+        <div class="layer-con">
+            <div class="tit">선택알림</div>
+            <p class="font14">확인하시겠습니까?</p>
+            <p class="font14">취소하시겠습니까?</p>
+            <div class="btn-wrap mt25">
+                <button type="button" class="btn-normal form">확인</a>
+                    <button type="button" class="btn-normal form tooltip-close">취소</a>
+            </div>
+        </div>
+        <!-- //e:layer-con -->
+    </div>
+    <!-- //e:선택알림 -->
+
+    <!-- s:입력오류알림 -->
+    <div id="errorPop" class="layerpopup alert-layer">
+        <!-- s:layer-con -->
+        <div class="layer-con">
+            <div class="tit">입력오류 알림</div>
+            <p class="font14">질문내용을 정확하게 확인 후 체크해주세요.</p>
+            <div class="btn-wrap mt20">
+                <button type="button" class="btn-normal form tooltip-close"">확인</a>
+            </div>
+        </div>
+        <!-- //e:layer-con -->
+    </div>
+    <!-- //e:입력오류알림 -->
+</body>
