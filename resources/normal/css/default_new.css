@@ -293,7 +293,8 @@ button { padding:0; border:none; cursor:pointer; font-family:inherit; background
 .ctm-check input:focus + label { }
 .ctm-radio input:focus + label:before { top:50%; left:-1px; margin-top:-14px; line-height:14px; }
 .ctm-radio label:before { content: ''; position:absolute; top:0; left:0; display: inline-block; float: left; width:25px; height:25px; margin: 0 5px 0 0; background: url('../images/common/btn_radio_off.png') no-repeat center/100%;  }
-.ctm-radio.checked label:before { background: url('../images/common/btn_radio_on.png') no-repeat 100%/25px auto;}
+.ctm-radio.checked label:before,
+.ctm-radio input:checked + label:before { background: url('../images/common/btn_radio_on.png') no-repeat 100%/25px auto;}
 
 .prod-select span:first-child label { padding-right:0!important;}
 .check-line { content:""; display:inline-block; width:12px; height:1px; background:1px #999999; vertical-align:middle; margin-right:12px; }
@@ -364,7 +365,7 @@ label.r-on { background:url('../images/common/btn_radio_on.png') no-repeat  left
 html:first-child select{} /* Opera 9 & Below Fix */
 
 .ui-menu.ui-corner-bottom.ui-widget.ui-widget-content { max-height:200px; }
-.select-wrap .ui-selectmenu-button[aria-expanded="false"] span:last-child { font-weight:600; color:#111111; } /* 07 14*/
+.select-wrap .ui-selectmenu-button[aria-expanded="false"] span:last-child { font-weight:500; color:#111111; } /* 07 14*/
 
 /* selectbox 디자인만 */
 select:not(.no-style) {
