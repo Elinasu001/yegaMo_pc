@@ -1,0 +1,33 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- ********** //Include ********** -->
+<script type="text/javascript">
+    function showProduct(_num){
+    	$('#mainbannerLayer .layer-con').hide();
+        $("#mainbannerLayer .goods"+_num).show();
+        openPopup("mainbannerLayer");
+    }
+</script>
+<!-- s:prodPop -->
+<div id="mainbannerLayer" class="layerpopup prod-layer" tabindex="0" data-tooltip-con="prod-layer" data-focus="prod-layer" data-focus-prev="btn-menu-close">
+    <!-- s:layer-con goods1 -->
+    <c:forEach var="product" items="${productList}">
+    <div class="layer-con goods${product.CODE}">
+        <div class="tit color-612885 font26 mb10"><c:out value="${product.NAME}"/></div>
+        <p class="font14 mb20"><c:out value="${product.DESC_ABBR}"/></p>
+        <div><img src="<c:url value="/resources/mobile/images/temp/img_prod_20201014.png"/>" alt="" /></div>
+        <hr class="mt20 mb30">
+        <div class="list-tit mb10">상품소개</div>
+        <ul class="list type1 mb30">
+            <c:out value="${product.DESC_DSR_MOBILE}" escapeXml="false"/>
+        </ul>
+        <div class="btn-wrap mt30">
+            <button type="button" name="button" class="btn-normal tooltip-close">닫기</button>
+        </div>
+    </div>
+    </c:forEach>
+    <!-- //e:layer-con goods1 -->
+    <button type="button" name="button" class="btn-menu-close tooltip-close" data-focus="btn-menu-close" data-focus-next="prod-layer">닫기</button>
+</div>
+<!-- //e:prodPop -->

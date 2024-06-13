@@ -1,0 +1,266 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="co.kr.yegaramsb.common.util.DateUtil"%>
+<c:set var="date" value="<%= DateUtil.getCurrentDateFormat8() %>" />
+<style>
+.class_line_box{margin-top:20px;padding-top:20px;border-top: 1px solid #ccc;}
+.class_terms_box .radio-area{margin-top:5px;}
+.cust_terms_accent {color:#ec008c; font-weight:bold;}
+.class_line_box .sub_1{padding-left:20px;margin-top:10px;}
+.radio-wrap {margin-right:5px;}
+.radio{margin-top:5px;}
+</style>
+
+<script type="text/javascript">
+var currentDate = new String(${date});
+$(function(){ 
+
+		$("#cust_term_radio3").unbind("change").bind("change",function(){
+			if($(this).val()=="C008900007"){
+				$("#LOAN_AIM_TEXT_CUST").show();
+			}else{
+				$("#LOAN_AIM_TEXT_CUST").hide();
+				$("#LOAN_AIM_TEXT_CUST").val("");
+			}
+		});
+	
+		$("#cust_term_radio4").unbind("change").bind("change",function(){
+			if($(this).val()=="C009000004"){
+				$("#INCOM_ANNUAL_TEXT_CUST").show();
+			}else{
+				$("#INCOM_ANNUAL_TEXT_CUST").hide();
+				$("#INCOM_ANNUAL_TEXT_CUST").val("");
+			}
+		});
+		
+		$("#cust_term_radio8").unbind("change").bind("change",function(){
+			if($(this).val()=="C009400005"){
+				$("#LOAN_RM_TEXT_CUST").show();
+			}else{
+				$("#LOAN_RM_TEXT_CUST").hide();
+				$("#LOAN_RM_TEXT_CUST").val("");
+			}
+		});
+	
+	$(".date").text("" + currentDate.substring(0,4) + "년 " + new Number(currentDate.substring(4,6)) +"월 " + new Number(currentDate.substring(6,8)) +"일");
+
+	$("#cust_term_radio16_2").attr('disabled', true);
+	$("#cust_term_radio16_3").attr('disabled', true);
+});
+
+function setCustTermsFormData(){
+	
+	var flag = true;
+	$("#div_combo_area").find(".select-wrap").find("select").each(function(index, element){
+		
+		if($(this).is(":visible")){
+			var value = $("option:selected",this).val();
+			 
+			if(value == ""){
+				customAlert({title : "알림" , message : "적합성·적정성 항목을 선택해주세요." }, function() {});
+				$(this).focus();
+				flag = false;
+				return false;
+			}else{
+				
+				if(((value == 'C008900007') && ($("#LOAN_AIM_TEXT_CUST").val() == '')) || (value == 'C009400005') && ($("#LOAN_RM_TEXT_CUST").val() == '')){
+					if(value == 'C008900007'){
+						$(this).focus();
+						customAlert({title : "알림" , message : "대출용도를 입력해 주세요." }, function() {});
+						flag = false;
+						return false;
+					}else{
+						$(this).focus();
+						customAlert({title : "알림" , message : "대출상환소득을 입력해 주세요." }, function() {});
+						flag = false;
+						return false;
+					}
+				}else if((value == 'C009000004') && ($("#INCOM_ANNUAL_TEXT_CUST").val() == '')){
+					$(this).focus();
+					customAlert({title : "알림" , message : "연간소득을 입력해 주세요." }, function() { });
+					flag = false;
+					return false;
+				}
+			}
+		}
+		
+	});
+	
+	if($("input:radio[name='cust_term_radio14']:checked").val()!='Y'){
+		customAlert({title : "알림" , message : "적합성·적정성 항목에서 개인(신용)정보 수집, 이용, 제공에 동의해 주세요." }, function() {
+			$("#cust_term_radio14_1").focus();
+			flag = false;
+		});
+		flag = false;
+	}
+	
+	
+	$("#CON_CD").val($("#cust_term_radio1").val());
+	$("#CUST_TYPE").val('');
+// 	$("#CUST_TYPE").val($("input:radio[name='cust_term_radio0']:checked").val());
+// 	$("#CUST_AGE").val($("input:radio[name='cust_term_radio2']:checked").val());
+	$("#CUST_AGE").val('');
+	$("#LOAN_AIM").val($("#cust_term_radio3").val());
+	$("#INCOM_ANNUAL_RANGE").val($("#cust_term_radio4").val());
+	$("#WORTH_NET").val($("#cust_term_radio5").val());
+	$("#DEPT_MT").val($("#cust_term_radio6").val());
+// 	$("#CREDIT_SCORE").val($("input:radio[name='cust_term_radio7']:checked").val());
+	$("#CREDIT_SCORE").val('');
+// 	$("#LOAN_RM").val($("input:radio[name='cust_term_radio8']:checked").val());
+	$("#LOAN_RM").val($("#cust_term_radio8").val());
+	
+// 	$("#LOAN_PR_EX").val($("input:radio[name='cust_term_radio9']:checked").val());
+	$("#LOAN_PR_EX").val('');
+// 	$("#LOAN_UD").val($("input:radio[name='cust_term_radio10']:checked").val());
+	$("#LOAN_UD").val('');	
+	$("#COST_FIX").val($("#cust_term_radio11").val());
+// 	$("#ADE_REC").val($("input:radio[name='cust_term_radio12']:checked").val());
+// 	$("#ADE_REC").val('');
+// 	$("#ADE_REC_MT").val($("input:radio[name='cust_term_radio13']:checked").val());
+// 	$("#ADE_REC_MT").val('');
+	$("#ADE_REC").val($("input:radio[name='cust_term_radio15']:checked").val());
+	$("#ADE_REC_MT").val($("input:radio[name='cust_term_radio16']:checked").val());
+
+	$("#REG_DT").val(currentDate);
+	$("#TERM_AGREE_YN").val($("input:radio[name='cust_term_radio14']:checked").val());
+
+// 	if($("input:radio[name='cust_term_radio0']:checked").val()=="C008700001"){
+	$("#LOAN_AIM_TEXT").val($("#LOAN_AIM_TEXT_CUST").val());
+	$("#INCOM_ANNUAL_TEXT").val($("#INCOM_ANNUAL_TEXT_CUST").val());
+	$("#LOAN_RM_TEXT").val($("#LOAN_RM_TEXT_CUST").val());
+	return flag;	
+	
+}
+
+
+</script>
+
+
+<div class="class_cust_terms">
+	<div class="sign-area" style="margin-bottom: 10px">
+		<p>본 확인서는 금융소비자 보호에 대한 법률 제 17조(적합성원칙) 및 제 18조(적정성원칙)에 따라 <span class="area_cust">귀하의 연령</span><span class="area_corp" style="display:none;">귀 법인의 업력</span>, 재산상황, 대출계약의 목적 등을 파악하여 대출계약자에게 가장 적합한 대출계약 체결을 권유하기
+		위한 기초자료로 활용됩니다. 허위 또는 불성실한 답변을 하시는 경우 부적합한 대출계약을 권유하게 될 수 있으며, 이로 인해 발생하는 모든 손해는 계약자 본인에게 귀속되오니 유념하여 주시기 바랍니다.</p>
+	</div>
+	
+	<div class="class_line_box" id="div_combo_area">
+		<div class="class_terms_box">
+			<label for="cust_term_radio1" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent">Q </span>소비자 구분</label>
+			<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+                <select name="cust_term_radio1" class="" id="cust_term_radio1" style="border-radius: 6px;margin-top: 8px;">
+                    <option selected="selected" value="C008600001">일반금융소비자</option>
+                    <!-- <option value="C008600002">전문금융소비자</option> -->
+                </select>
+            </div>
+		</div>
+		
+		<div class="area_cust">
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;">
+				<label for="cust_term_radio3" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent">Q </span>대출용도</label>
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio3" class="" id="cust_term_radio3" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C008900001">가계자금</option>
+	                    <option value="C008900002">사업자금</option>
+	                    <option value="C008900003">주택자금</option>
+	                    <option value="C008900004">타 기관 대출금 상환</option>
+	                    <option value="C008900005">의료비</option>
+	                    <option value="C008900006">교육비</option>
+	                    <option value="C008900007">기타</option>
+	                </select>
+	            </div>
+	            <input type="text" id="LOAN_AIM_TEXT_CUST" style="width:100%;padding:3px 3px 3px; display: none;border-radius: 6px;" maxlength="30">
+			</div>
+			
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;">
+				<label for="cust_term_radio4" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent" >Q </span>연간소득</label><!-- style="margin-bottom: 5px;" -->
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio4" class="" id="cust_term_radio4" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C009000001">6백만원 이상 5천만원 미만</option>
+	                    <option value="C009000002">5천만원 이상 1억원 미만</option>
+	                    <option value="C009000003">1억원 이상</option>
+	                    <option value="C009000004">해당없음</option>
+	                </select>
+	            </div>
+	            <input type="text" id="INCOM_ANNUAL_TEXT_CUST" style="width:100%;padding:3px 3px 3px; display: none;border-radius: 6px;" maxlength="30">
+			</div>
+			
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;">
+				<label for="cust_term_radio5" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent" >Q </span>총 자산규모(순자산)</label>
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio5" class="" id="cust_term_radio5" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C009100001">1억원 미만</option>
+	                    <option value="C009100002">1억원 이상 5억원 미만</option>
+	                    <option value="C009100003">5억원 이상 10억원 미만</option>
+	                    <option value="C009100004">10억원 이상</option>
+	                </select>
+	            </div>
+			</div>
+			
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;">
+				<label for="cust_term_radio6" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent" >Q </span>총부채</label>
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio6" class="" id="cust_term_radio6" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C009200001">1천만원 미만</option>
+	                    <option value="C009200002">1천만원 이상 1억원 미만</option>
+	                    <option value="C009200003">1억원 이상</option>
+	                </select>
+	            </div>
+			</div>
+			
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;">
+				<label for="cust_term_radio8" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent" >Q </span>대출상환소득</label>
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio8" class="" id="cust_term_radio8" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C009400001">근로소득</option>
+	                    <option value="C009400002">사업소득</option>
+	                    <option value="C009400003">임대소득</option>
+	                    <option value="C009400004">연금소득</option>
+	                    <option value="C009400005">기타</option>
+	                </select>
+	            </div>
+	            <input type="text" id="LOAN_RM_TEXT_CUST" style="width:100%;padding:3px 3px 3px; display: none;border-radius: 6px;" maxlength="30">
+			</div>
+						
+			<div class="mt10 class_terms_box" style="margin-bottom: 15px;" style="margin-bottom: 5px;">
+				<label for="cust_term_radio11" class="" style="margin-bottom: 5px; font-weight: bold;"><span class="cust_terms_accent" >Q </span>고정지출</label>
+				<div class="select-wrap " style="border-bottom: 2px solid #efefef;">
+	                <select name="cust_term_radio11" class="" id="cust_term_radio11" style="border-radius: 6px;margin-top: 8px;">
+	                	<option selected="selected" value="">선택하세요</option>
+	                    <option value="C009500001">연간 소득을 초과하지 않음</option>
+	                    <option value="C009500002">연간 소득을 초과</option>
+	                </select>
+	            </div>
+	            
+			</div>
+		</div>
+	</div>
+	<div class="class_line_box">
+		<div>
+			♣ 본인은 상기와 같이 제공한 정보의 내용이 정확한 것임을 확인합니다.<br>
+			1. 본인이 귀행에 제공한 적합성·적정성 관련 정보는 본인의 재산상황, 용도 등의 정보를 정확히 알려드린 것입니다.<br>
+			2. 본인이 제공한 정보가 정확하지 않거나, 정보에 변경사항이 발생한 경우에는 적합성·적정성 판단이 달라질수 있으며, 이 경우 대출계약 체결이 어려울 수 있음을 설명받았습니다.<br>
+			3. 상기 목적을 위해 본인의 개인(신용)정보 수집, 이용, 제공 및 귀행을 통한 신용정보 점수를 조회하는 것에 동의합니다.<br>
+			<div class="sub_1">
+				<span class="radio-area">
+					<span class="radio-wrap">
+						
+						<label for="cust_term_radio14_1" class="radio"><input type="radio" name="cust_term_radio14" id="cust_term_radio14_1" value="Y">동의</label>
+					</span>
+					<span class="radio-wrap">
+						
+						<label for="cust_term_radio14_2" class="radio"><input type="radio" name="cust_term_radio14" id="cust_term_radio14_2" value="N">동의하지 않음</label>
+					</span>
+				</span>
+			</div>
+			<div class="fl-r">
+				<span class="date" style="font-weight:bold;font-size:28px;"></span>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+</div>

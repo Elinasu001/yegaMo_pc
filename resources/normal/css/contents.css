@@ -12,50 +12,87 @@
 #subVisualWrap.sub4-2 { background-image:url(../images/page/bg_4_2.png); }
 #subVisualWrap.sub4-3 { background-image:url(../images/page/bg_4_3.png); }
 /*main*/
-.main-wrap { position:relative; width:100%; max-width:1140px; margin-left:auto; margin-right:auto; }
-.main-wrap .top { overflow:hidden; }
-.main-wrap .banner-wrap { position:absolute; left:0; top:0; width:677px; height:610px; }
-.main-wrap .banner-wrap li img { width:678px; height:auto; }
+.main-wrap { position:relative; width:100%; }
+.main-wrap::before { content:""; display:block; position:absolute; left:0; width:100%; height:749px; background:#F7F9FC;  }
+.main-wrap .top { overflow:hidden; position:relative; width:100%; height:749px; max-width:1200px; margin:0 auto;  }
+.main-wrap .banner-wrap { width:610px; height:749px; }
+.main-wrap .banner-wrap li img { width:610px; height:auto; }
 .main-wrap .banner-wrap li a { display:block; }
-.main-wrap .right { float:right; width:523px; }
-.vertical-tab { position:relative; float:left; height:600px; }
+.main-wrap .right { position:absolute; right:0; top:0; width:650px; }
+.vertical-tab { float:left; height:600px; }
 .vertical-tab li button { display:block; background-color:#B3BBC0; background-position:center; background-repeat:no-repeat; }
 .vertical-tab li.active button { background-color:#EC008C; }
 .color-type2 .vertical-tab li.active button { background-color:#351B6F; }
 .vertical-tab li.counselor button { width:60px; height:60px; background-image:url('../images/main/ico_counselor.png');  }
 .vertical-tab li.quickloan button { width:60px; height:160px; background-image:url('../images/main/ico_quickloan.png'); }
-.vertical-tab-content { float:left; width:463px; height:600px; border:1px solid #ccc; background-color:#fff; }
+.vertical-tab-content { float:left; width:590px; border:1px solid #ccc; background-color:#fff; }
 .color-type2 .vertical-tab-content { background-color:#ECEDFB; }
-.vertical-tab-content .con-wrap { position:relative; height:600px; }
-.vertical-tab-content .con-wrap .con { position:relative; padding:40px 40px 0px 40px; }
-.vertical-tab-content .con .name-wrap hr { height:2px; width:48px; }
+.vertical-tab-content .con-wrap { position:relative; height:749px; }
+.vertical-tab-content .con-wrap .con { position:relative; width:530px; margin:0 auto; padding:50px 0 40px; }
+.vertical-tab-content .con .name-wrap hr { height:2px; width:48px; display:none; }
+.vertical-tab-content .con .name-wrap p.font12 { font-size:var(--font20); font-weight:600; line-height:20px; }
+.vertical-tab-content .con .name-wrap p.font12 > span { color:var(--primary); }
+.vertical-tab-content .con .name-wrap p.font18 { margin-top:7px; font-size:var(--font21); line-height:21px; }
+.vertical-tab-content .con .name-wrap p.font40 { margin-top:12px; font-size:50px; font-weight:400; }
 .vertical-tab-content .con .name-wrap { max-width:270px; overflow:hidden; }
-.vertical-tab-content .con-wrap + .con-wrap .con .name-wrap p { line-height:28px; }
-.vertical-tab-content .con .number-wrap > div { width:50%; float:left; }
-.vertical-tab-content .con .photo-wrap .photo { overflow:hidden; width:110px; height:110px; background:url(../images/common/ico_woman.png); background-size:100%; border:1px solid #dadada; border-radius:50%;}
+
+
+
+.vertical-tab-content .con-wrap + .con-wrap .con .name-wrap p { width:100%; line-height:28px; }
+.vertical-tab-content .con .photo-wrap .photo { overflow:hidden; width:137px; height:137px; background:#ECF1F4 url(../images/common/ico_character01.png); background-size:100%; border:0; border-radius:50%;}
 .vertical-tab-content .con .photo-wrap .photo img { width:100%; height:auto; }
-.vertical-tab-content .con .step-wrap { overflow:hidden; }
-.vertical-tab-content .con .step-wrap ul li { position:relative; float:left; width:33.33%; font-size:12px; color:#4F575E; text-align:center; padding-top:55px; background-repeat:no-repeat; }
+.vertical-tab-content .con .number-wrap { display:flex; margin-bottom:16px !important; }
+.vertical-tab-content .con .number-wrap > div {  width:100%; color:var(--normal); }
+.vertical-tab-content .con .number-wrap > .hp-num > p.font13,
+.vertical-tab-content .con .number-wrap > .reg-num > p.font13 { font-size:var(--font16); color:var(--normal-66); line-height:16px; }
+.vertical-tab-content .con .number-wrap > .hp-num > p.font20,
+.vertical-tab-content .con .number-wrap > .reg-num > p.font20 { margin-top:4px; font-size:var(--font26); font-weight:500; line-height:26px; }
+.vertical-tab-content .con .number-wrap > .reg-num a {  margin-top:35px; float:right; }
+.vertical-tab-content .con .number-wrap > .reg-num a > button { font-size:var(--font18); font-weight:500;  letter-spacing:normal; line-height:18px; }
+.vertical-tab-content .con .number-wrap + hr { display:none; }
+
+
+/**빠른 대출신청 추가**/
+.vertical-tab-content .con-wrap > form .name-wrap { max-width:100% !important; }
+.vertical-tab-content .con-wrap > form .name-wrap p { line-height:30; }
+.vertical-tab-content .con-wrap > form .font20 { color:var(--normal); font-size:30px; font-weight:600; }
+.vertical-tab-content .con-wrap > form .form-wrap.mb20 { margin-bottom:25px !important; }
+.vertical-tab-content .con-wrap > form  .form-wrap .input-tit {   margin-bottom:10px; font-size:var(--font16); color:#7A8294; }
+.vertical-tab-content .con-wrap > form input,
+.vertical-tab-content .con-wrap > form .ui-selectmenu-button { height:52px; line-height:52px !important; border-radius:5px; font-size:Var(--font16); font-weight:500 !important; }
+.vertical-tab-content .con-wrap > form .ui-selectmenu-button { width:100%; padding:0 12px; color:#7A8294; }
+
+.vertical-tab-content .con .step-wrap { overflow:hidden; padding:30px 30px 20px; background:var(--background-fa); border-radius:30px; }
+.vertical-tab-content .con .step-wrap p.tit em { display:block; font-size:var(--font28); font-weight:600; }
+.vertical-tab-content .con .step-wrap p.tit span { margin-top:10px; display:block; }
+.vertical-tab-content .con .step-wrap ul { display:flex; margin-top:30px; }
+.vertical-tab-content .con .step-wrap ul li {  position:relative; float:left; width:calc(100% / 3); font-size:12px; color:#4F575E; text-align:center; padding-top:80px; background-repeat:no-repeat; font-size:var(--font17); }
 .vertical-tab-content .con .step-wrap ul li.step1 { background-image:url('../images/main/ico_step1.png'); background-position:center top; }
 .vertical-tab-content .con .step-wrap ul li.step2 { background-image:url('../images/main/ico_step2.png'); background-position:center 7px ; }
 .vertical-tab-content .con .step-wrap ul li.step3 { background-image:url('../images/main/ico_step3.png'); background-position:center 7px ; }
-.vertical-tab-content .con .step-wrap ul li::before { position:absolute; left:-8px; top:12px; content:''; width:14px; height:22px; background-image:url('../images/main/img_step_arrow.png'
-); background-repeat:no-repeat; }
+.vertical-tab-content .con .step-wrap ul li::before { position:absolute; left:-8px; top:50%; transform:translate(0 , -50%); content:''; width:32px; height:32px; background-image:url('../images/main/img_step_arrow.png'); background-repeat:no-repeat; }
 .vertical-tab-content .con .step-wrap ul li:first-child::before { display:none; }
-.vertical-tab-content .con-wrap .btn-wrap { position:absolute; width:100%; bottom:0px; margin:0;}
-.vertical-tab-content .con-wrap .btn-wrap .btn { width:100%; height:100px; line-height:100px; text-align:center; }
-.vertical-tab-content .con-wrap .btn-wrap .btn > span { font-size:30px; color:#fff; padding-right:42px; background-image:url('../images/main/ico_pencil.png'); background-repeat:no-repeat; background-position:right center;  }
-.vertical-tab-content .hp1 { width:103px; margin-right:5px; }
-.vertical-tab-content .hp2 { width:78px; }
-.vertical-tab-content .hp3 { width:78px; }
-.vertical-tab-content .hp4 { width:78px; }
-.vertical-tab-content .idn1 { width:180px; }
-.vertical-tab-content .idn2 { width:180px; }
-.main-wrap .bottom { position:relative; overflow:hidden; margin:60px 0 50px; }
-.main-wrap .bottom ul { position:relative; width:100%; }
-.main-wrap .bottom ul li { position:relative; float:left; height:44px; line-height:44px; margin-left:75px; }
-.main-wrap .bottom ul li:first-child { margin-left:0px; }
-.main-wrap .bottom ul li a { display:block; padding-left:53px; background-repeat:no-repeat; background-position:left top; font-size:18px; color:#495057; }
+.vertical-tab-content .con .step-wrap p.btn-wrap { margin-top:40px; }
+.vertical-tab-content .con .step-wrap p.btn-wrap button { width:100%; height:70px; background:var(--primary); border-radius:50px; text-align:center; font-size:Var(--font25); font-weight:600; color:#fff; }
+
+.vertical-tab-content .con-wrap > form + p.btn-wrap { position:absolute; bottom:20px; }
+.vertical-tab-content .con-wrap > form + p.btn-wrap button { width:530px; height:70px; margin:0 auto; background:var(--primary); border-radius:50px; text-align:center; font-size:Var(--font25); font-weight:600; color:#fff; }
+
+
+.vertical-tab-content .hyphen { width:20px; height:52px; line-height:52px; color:#B1B1B1;  }
+.vertical-tab-content .hp1 { width:155px; margin-right:10px; }
+.vertical-tab-content .hp2 { width:108px; }
+.vertical-tab-content .hp3 { width:108px; }
+.vertical-tab-content .hp4 { width:109px; }
+
+.vertical-tab-content .idn1,
+.vertical-tab-content .idn2 { width:255px; }
+.vertical-tab-content .idn2 ~ p.font12  { margin-top:5px; font-size:var(--font13); color:var(--normal-99); }
+
+.main-wrap .bottom { position:relative; overflow:hidden; margin:39px 0 80px; }
+.main-wrap .bottom ul { position:relative; width:100%; max-width:1200px; margin:0 auto; display:flex; gap:20px; }
+.main-wrap .bottom ul li { position:relative; width:100%; height:100px; background:#F9F9FB; border-radius:20px; }
+.main-wrap .bottom ul li a { display:block; padding:37px 11px 37px 64px; background-repeat:no-repeat; background-position:10px center; font-size:18px; }
 .main-wrap .bottom ul li.etc1 a { background-image:url('../images/main/ico_etc1.png'); }
 .main-wrap .bottom ul li.etc2 a { background-image:url('../images/main/ico_etc2.png'); }
 .main-wrap .bottom ul li.etc3 a { background-image:url('../images/main/ico_etc3.png'); }

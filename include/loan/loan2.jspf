@@ -1,0 +1,1588 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="co.kr.yegaramsb.dsr.core.common.Message"%>
+<%@page import="co.kr.yegaramsb.common.util.DateUtil"%>
+<c:set var="date" value="<%= DateUtil.getCurrentDateFormat8() %>" />
+<%-- 페이징 홈 --%>
+<c:set var="home" value="/${dsrId }"/>
+<%-- 대출상품카테고리 코드 --%>
+<c:set var="hetsal_loan" value="PC00000001"/>
+<c:set var="jungguemri_loan" value="PC00000002"/>
+<c:set var="goguemri_loan" value="PC00000003"/>
+<c:set var="theca_loan" value="PC00000004"/>
+<c:set var="saitdol_loan" value="PC00000005"/>
+<c:set var="credit_saitdol_loan" value="PC00000005"/>
+<c:set var="daebu_deawhan_loan" value="PC00000017"/>
+<c:set var="retail_loan" value="PC00000021"/>
+<c:set var="default_category" value="" />
+<%-- NTree 상품 코드 --%>
+<%-- 햇살자영12(비노출) --%>
+<c:set var="ntree_prod1" value="GL018"/>
+<%-- 햇살근로12(비노출) --%>
+<c:set var="ntree_prod2" value="GL021"/>
+<%-- 빅머니M균등 --%>
+<c:set var="ntree_prod3" value="GL077"/>
+<%-- 라이브T론(균등) - 대부대환 --%>
+<c:set var="ntree_prod4" value="GL046"/>
+<%-- 라이브A론(균등) - 고금리 --%>
+<c:set var="ntree_prod5" value="GL048"/>
+<%-- 더카론(균등) --%>
+<c:set var="ntree_prod6" value="GL062"/>
+<%-- 사잇돌2 --%>
+<c:set var="ntree_prod7" value="GL056"/>
+<%-- 사잇돌2 --%>
+<c:set var="ntree_prod8" value="GL090"/>
+<%-- 사잇돌2 --%>
+<c:set var="ntree_prod9" value="GL091"/>
+<%-- 값없음(기본) --%>
+
+<c:set var="ntree_prod7" value="GL093"/>
+
+<c:set var="ntree_prod8" value="GL094"/>
+
+
+<c:set var="ntree_null" value="NULL"/>
+<c:set var="prod_cd_hetsal" value="P000000008"/>
+<%-- 공통코드 인증 --%>
+<c:set var="auth_code_phone" value="S000700001"/>
+<c:set var="auth_code_cert" value="S000700002"/>
+<c:set var="auth_code_ipin" value="S000700003"/>
+<c:set var="auth_code_kakao" value="S000700004"/>
+<c:set var="auth_code_credit_card" value="S000700005"/>
+
+<%-- 인증 요청 카카오 --%>
+<c:set var="kakao" value="/${dsrId }${kakao }" />
+<%-- 인증 팝업 Ipin  --%>
+<c:set var="ipin" value="/${dsrId }${ipin }" />
+<%-- 인증 팝업 Nice  --%>
+<c:set var="nice" value="/${dsrId }${nice }" />
+<%-- 인증 팝업 Kcb 휴대폰  --%>
+<c:set var="kcbPhone" value="/${dsrId }${KcbPhone }" />
+<%-- 인증 팝업 Kcb 신용카드  --%>
+<c:set var="kcbCredit" value="/${dsrId }${KcbCredit }" />
+<%-- Ajax 공동인증 인증결과 --%>
+<c:set var="wizveraResult" value="/${dsrId }/auth/certResult" />
+<%-- Ajax 카카오 인증결과 --%>
+<c:set var="kakaoResult" value="/${dsrId }/auth/kakaoResult" />
+
+<%-- Ajax 대출신청정보 등록(실명인증) --%>
+<c:set var="loan_retail_request_form" value="/${dsrId }/loan/ajaxRetailLoanRequestForm"/>
+
+<%-- Ajax 대출신청약관 조회 --%>
+<c:set var="ajaxTermsList" value="/${dsrId }/loan/ajaxTermsList"/>
+
+<%-- Ajax 대출신청약관 동의 등록 --%>
+<c:set var="loan_request_terms" value="/${dsrId }/loan/ajaxLoanRequestTerms"/>
+
+<%-- Ajax 대출신청 (요청)--%>
+<%-- <c:set var="loan_request" value="/${dsrId }/loan/request"/> --%>
+<%-- Ajax 대출신청 --%>
+<%-- <c:set var="loan_request_proc" value="/${dsrId }/loan/requestProc"/> --%>
+
+<%-- Ajax 대출신청 --%>
+<c:set var="loan_request_retail_proc" value="/${dsrId }/loan/requestRetailProc"/>
+<%-- 에러 메시지.(나이제한) --%>
+<c:set var="message_error_age" value="<%= Message.MSG_FAIL_AGE %>" />
+
+<script type="text/javascript">
+	var currentDate = ${date};
+	var test = false;
+	var termsListForValue;
+	var PageFunc = ({
+		/**
+		 * 1. 주소 팝업창 오픈.
+		 * 2. 팝업창에서 주소 결과 리턴.
+		 * 3. 결과값에 대한 처리.
+		 */
+		jusoCallBack : function(res) {
+			if (res == undefined) {
+				window.open('<c:url value="${jusoPopup}" />', "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+				return;
+			}
+			var juso = JSON.parse(res);
+			$('#zip_code').val(juso.zipNo);
+			$('#address_detail').val(juso.roadAddrPart1.toString().replace("&middot;",".") );
+			$('#address_detail1').val(juso.addrDetail);
+		},
+	});
+	
+var JusoUtil = ({
+		
+		successJusoCallBack : function(){}, 
+		failJusoCallBack : function(){},
+		
+		openJusoPopup : function( param , successFunc, failFunc , isMobile ){
+			
+			if( typeof param === "undefined" ){
+				param = {};
+			}
+			
+			if( typeof successFunc === "function" ){
+				JusoUtil.successJusoCallBack = successFunc;
+			}
+			
+			if( typeof failFunc === "function" ){
+				JusoUtil.failJusoCallBack = failFunc;
+			}
+			
+			var isMobile = isMobile;
+			
+			//window.open('?step=1', "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+			var url = '/${dsrId }/juso_popup?step=1&isMobile=' + isMobile;
+			UtilFunc.popupWindow(url, "주소찾기", "570", "420" );
+			
+		},
+		
+	});
+	
+	<%-- 카카오 메시지 전송 후 시간체크 --%>
+	function timer(id) { // layer id.
+		// 제한시간.
+		var timelimit = 300;
+		// 시간 표기 초기화.
+		var $span = $('#kakao_timelimit');
+		$span.css('color', 'black');
+		var min = '0' + parseInt(timelimit / 60);
+		var sec = timelimit % 60;
+		sec = sec < 10 ? '0' + sec : sec;
+		$span.text(min + ':' + sec);
+		
+		// 1초에 1초씩.
+		var intervalTime = 1000;
+		var intervalId = setInterval(
+				function(){
+					// 숨겨진상태일 경우, interval 종료. 
+					var display = document.getElementById(id).style.display != 'none';
+					if(!display) {
+						clearInterval(intervalId);
+						return;
+					}
+					
+					var min = '0' + parseInt(timelimit / 60);
+					var sec = timelimit % 60;
+					sec = sec < 10 ? '0' + sec : sec;
+					$span.text(min + ':' + sec);
+					
+					if(timelimit >= 0) {
+						if(timelimit < 30) {
+							$span.css('color', 'red');
+						}else {
+							$span.css('color', 'black');
+						};
+						timelimit--;
+					}else {
+						clearInterval(intervalId);
+						closePopup(id);
+						customAlert({title : '안내', message : '인증 시간이 만료되었습니다.'});
+					}
+				}, intervalTime);
+	}
+	
+	<%-- 모바일페이지에서는 selectWidth가 없음. --%>
+	if(!window.selectWidth) window.selectWidth = function(){}
+	
+	<%-- addLoading을 wrapping한 함수. 남자/여자 이미지 랜덤 표시. --%>
+	function loading() {
+		addLoading(Math.round(Math.random() + 1));
+	}
+	
+	<%-- 상품목록 조회. --%>
+	var product_list = ${productListJson};
+	
+	<%-- 카테고리목록(상담사의 법인으로 등록된), NtreeCode() 로  조회 --%>
+	function getCategoryCode(productList, ntreeCode) {
+		var categoryCode;
+		if(ntreeCode == '${ntree_prod1}' || ntreeCode == '${ntree_prod2}'){
+			categoryCode = '${hetsal_loan}';
+		}else if(ntreeCode =='${ntree_null}'){
+			categoryCode = '${default_category}';
+		}else {
+			productList.forEach(function(item) {
+	        	// 햇살론 예외처리.
+	        	if(ntreeCode == item.NTREE_PROD_CODE) {
+	        		categoryCode = item.CATEGORY_CODE;
+	        		return false;
+	            }
+	        });
+		}
+		return categoryCode;
+	}
+	
+	<%-- 
+		prod_cd항목에 설정하는 이벤트에 사용.
+		this : #prod_cd
+	--%>
+	function prod_change() {
+		var ntree_code = $("#prod_cd").val();//"GL999";
+		$("#terms_prod_cd").val(ntree_code);
+	
+	    var category_code = getCategoryCode(product_list, ntree_code);
+	    
+	    if(ntree_code=="GL999"){
+	    	category_code="GL999";
+		}
+	    // 입력항목, 약관항목 보여주기 설정.
+	    forms_by_product_code(category_code, ntree_code);
+	    $('.agree-wrap').find('button').removeClass('done');
+	    $('.prod_terms_section_info').hide();
+	    /* if(ntree_code=='GL093'){
+			$('.retail1_info').show();
+			$('#prodImage').attr('src', '/resources/normal/images/common/img_variable_rate1.png');
+		}else if(ntree_code=='GL094'){
+			$('.retail1_info').show();
+			$('#prodImage').attr('src', '/resources/normal/images/common/img_variable_rate2.png');
+		}else{
+			$('.retail2_info').show();
+			$('#prodImage').attr('src', '/resources/normal/images/common/img_variable_rate.png');
+		} */
+	    
+	    //2021-12-22 대출상품 변경 시 기억대출상품설명서 id값, pdf value 변경
+	    if(termsListForValue != null){
+		    var retaildetail = $('#retaildetail').parent().parent();
+		    if(ntree_code=='GL091'){
+			    for(var i = 0; i < termsListForValue.length; i++){
+			    	if(termsListForValue[i].TERMS_CODE == 'N000805001'){
+			    		$(retaildetail).find('button').val(termsListForValue[i].STREAM_DOC_ID);
+			    	}
+			    }
+			    $(retaildetail).attr('id', 'N000805001')
+			}else if(ntree_code=='GL093'){
+			    for(var i = 0; i < termsListForValue.length; i++){
+			    	if(termsListForValue[i].TERMS_CODE == 'T000800005'){
+			    		$(retaildetail).find('button').val(termsListForValue[i].STREAM_DOC_ID);
+			    	}
+			    }
+			    $(retaildetail).attr('id', 'T000800005')
+			}else if(ntree_code=='GL094'){
+				 for(var i = 0; i < termsListForValue.length; i++){
+			    	if(termsListForValue[i].TERMS_CODE == 'N000805002'){
+			    		$(retaildetail).find('button').val(termsListForValue[i].STREAM_DOC_ID);
+			    	}
+			    }
+				 $(retaildetail).attr('id', 'N000805002')
+			}
+	    }
+	    
+	    /* if(ntree_code != "GL091"){
+			$("#THIRD_AGR_DTL_YN").val("");
+		} */
+		
+	}
+	
+
+	
+	
+	<%-- 이벤트 초기화. --%>
+	$(function() {
+		
+		$("#find_zip_code").unbind("click").bind("click", function(e){
+			e.preventDefault();
+			JusoUtil.openJusoPopup({},function(result){
+				var juso = JSON.parse(result);
+				$(".address-area").find("input:text").eq(0).val( juso.zipNo );
+				$(".grid2.address-detail").find("input:text").eq(0).val( juso.roadAddrPart1.toString().replace("&middot;",".") );
+				$(".grid2.address-detail").find("input:text").eq(1).val( juso.addrDetail );
+			},function(){}, "${isMobile}" ); 
+		});
+		
+		
+		ajaxTermsList();
+		$( "#ssn1" ).unbind("keyup").bind("keyup", function( e ){
+			$( this ).val(UtilFunc.getOnlyNumber($( this ).val()));
+			var temp = $(this).attr("maxlength");
+			if(this.value.length>=temp){
+				$( "#ssn2" ).focus();
+				return false;
+			}
+		});
+		$( "#phone_no2" ).unbind("keyup").bind("keyup", function( e ){
+			var temp = $(this).attr("maxlength");
+			if(this.value.length>=temp){
+				$( "#phone_no3" ).focus();
+				return false;
+			}
+		});
+		// select 모듈에 대한 예외처리(화면초기화시 작게보이는 현상).
+		selectWidth();
+		
+		
+		$("#agree-check10").click(function() {
+			if(!$("input:checkbox[id='agree-check10']").is(":checked")){
+				$("#agree10_sub").show();
+			}else{
+				$("#agree10_sub").hide();
+			}
+			
+		});
+		
+		<%-- 전체 약관 버튼 다음, 이전 추가. --%>
+		$('.btn-prev').click(function() {
+			var id1 = $(this).parent().parent().parent().attr("id");
+			var id2 = $(this).parent().parent().attr("id");
+			if((id1 == "agreementallLayer") || (id2 == "agreementallLayer") ){
+				allTermsHandler.back();
+			}else{
+				allChTermsHandler.back1();
+			}
+			
+		});
+		$('.btn-next').click(function() {
+			var id1 = $(this).parent().parent().parent().attr("id");
+			var id2 = $(this).parent().parent().attr("id");
+			if((id1 == "agreementallLayer") || (id2 == "agreementallLayer") ){
+				allTermsHandler.next();
+			}else{
+				allChTermsHandler.next1();
+			}
+			
+		});
+
+		$('#prod_cd').change(prod_change);
+		$('#prod_cd').on('selectmenuchange', prod_change);
+		
+		
+        // 숫자 입력시 콤마 삽입 및 파라미터 설정. 
+        function numberFormatEvent() {
+        	var numberFormat = UtilFunc.gridFormatterThousandNumber(this.value);
+        	var id = this.id;
+        	$('#' + id).val(numberFormat);
+        	$('#' + id.replace(/_format/, '')).val(numberFormat.replace(/,/g, ''));
+        }
+        
+        $('.incom_annual_format').keyup(numberFormatEvent);
+        $('#req_amt_format').keyup(numberFormatEvent);
+        
+        // 카카오 인증 완료 버튼.
+        $('#kakaoLayer #btn_complete').click(function() {
+        	// 인증완료 클릭시 대출신청으로 넘어가기 때문에, 여러번 요청되는 것을 방지하기 위함.
+        	$('#kakaoLayer #btn_complete').prop('disabled', true);
+        	AjaxFunc.ajaxAsync('<c:url value="${kakaoResult}" />', null, function(res) {
+            	
+        		if(res.result) {
+            		// 인증 미완료.
+            		if(res.data.prepare) {
+            			on_error(res);
+            			addBlock();
+            		}else {
+            			//인증 성공
+            			closePopup('kakaoLayer');
+            			addBlock();
+	        			auth_result(res.data);
+	        			return;
+            		}
+            	}else {
+            		// 인증실패.
+            		closePopup('kakaoLayer')
+            		on_error(res);
+            	}
+        		// 인증완료 버튼 재활성.
+            	$('#kakaoLayer #btn_complete').prop('disabled', false);            	
+            }, on_error);
+        });
+        // 모두보기 선택시 모든 자세히보기 class 적용
+        $('#all-check-lb').click(function(){ 
+        	//$('.agree-wrap-btn').addClass('done'); 
+        });
+        // 자세히보기 클릭시 class 적용.
+        $('.agree-wrap button,a').click(function(event){
+        	$(this).addClass('done');
+        	
+        	$('#agreeBtn').hide();
+        	//$(this).siblings('.check').find('input').prop('checked', true);
+            //$(this).siblings('.check').addClass('c-on');
+            //$(this).siblings('input').prop('checked', true);
+        });
+        // 카카오 닫기버튼 클릭시 창닫기.
+        $('#kakaoLayer .close').click(function() {
+        	$('#kakaoLayer .tooltip-close').click();
+        });
+        
+       //2021-12-22 필수약관 전체보기 관련
+       $("#all-check").on("click", function(){
+    		var _terms = config.terms[$("#prod_cd").val()];
+    		allTermsHandler = new AllTermsHandler(_terms.show);
+    		allTermsHandler.openAllTermsPdf();
+       });
+     //2021-12-22 선택약관 전체보기 관련
+       $("#all-ch-check").on("click", function(){
+    		var _terms = config.terms[$("#prod_cd").val()];
+    		allChTermsHandler = new AllChTermsHandler(_terms.show);
+    		allChTermsHandler.openAllTermsPdf();
+       });
+     
+     	
+		//2021-12-22 요약동의서/상세동의서 설정
+       $('input:radio[name=detailSumAgree]').on('change',function(){
+    	 //2022-03-31 약관 리셋
+			$('.agree-wrap').find('dl label').not('.radio').each(function(){
+				$(this).removeClass('c-on');
+				$(this).find('input').attr('checked', false);
+			}); 
+    	 
+			//중요사항안내 리셋
+// 			$.each($('.check1'), (index) => {
+			$.each($('.check1'), function (index) {	//IE 때문에 람다 변경....
+				checkArray[index] = false;
+				$('.check1').eq(index).hide();
+				$('.subDiv').eq(index).hide();
+				$('.class_cust_terms2').hide();
+				isImportant = false;
+				showIndex=1;
+			})
+			
+	   		$(".add_class1").hide();
+	   		$(".add_class2").hide();
+	   		$(".add_class3").hide();
+	   		$(".add_class4").hide();
+	   		$(".add_class5").hide();
+				
+			if($(this).val() == 'Y'){
+				$('#sumAgree').attr('checked', true);
+				$('#detailAgree').attr('checked', false);
+				$('#SRVC_PRVD_AGR_DTL_YN').val('Y');	//2022-03-31 개인(신용)정보 수집·이용·제공 동의서 (맞춤형 정보제공) 상세여부 변경
+				$('.agree-box').find('dl').find('dd').each(function(idx, item) {
+					if($(this).attr('id') == 'T000800001'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800019'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800002'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800020'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800003'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800021'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800022'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800023'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+				});
+			}else{
+				$('#detailAgree').attr('checked', true);
+				$('#sumAgree').attr('checked', false);
+				$('#SRVC_PRVD_AGR_DTL_YN').val('N');	//2022-03-31 개인(신용)정보 수집·이용·제공 동의서 (맞춤형 정보제공) 상세여부 변경
+				$('.agree-box').find('dl').find('dd').each(function(idx, item) {
+					if($(this).attr('id') == 'T000800001'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800001'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800002'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800002'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800003'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800003'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+					if($(this).attr('id') == 'T000800022'){
+						for(var i = 0; i < termsListForValue.length; i++){
+							if(termsListForValue[i].TERMS_CODE == 'T000800022'){
+								$(this).find('button').attr('value', termsListForValue[i].STREAM_DOC_ID);
+							}
+						}
+					}
+				});
+			}
+		});
+       
+       
+	});
+	
+	
+	// 전체약관보기 항목에 대한 컨트롤을 위한 객체.
+	var allTermsHandler;
+	var allChTermsHandler;
+	function AllTermsHandler(configTermShowIdArray) {
+		var termsCode = [];
+		var _this = this;
+		this.show = function(id) {
+			$('#agreementallLayer .con').hide();
+			var $temp = $('#all-' + id);
+			if($temp.size() == 0) {
+				return;
+			}
+			$temp.show();
+		};
+		
+		this.add = function(id) {
+			terms.push(id);
+		};
+		this.setTotal = function(value) {
+			$('span.total').text(value);
+		};
+		this.setView = function(value) {
+			$('.view').text(value);
+		}
+		this.next = function() {
+			if(index + 1 >= max_size) return;
+// 			$("#viewerAllL"+index).attr("src","");
+			this.show(terms[++index]);
+			this.setView(index+1);
+			var value = $('#'+termsCode[index]).find('button').val();
+			var viewerElement = document.getElementById("viewerAllL"+index); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerAllL"+index).attr("src", streamdocsAdd);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+			this.change();
+		};
+		this.back = function() {
+			if(index == 0) return;
+// 			$("#allViewer").attr("src","");
+			this.setView(index--);
+			var value = $('#'+termsCode[index]).find('button').val();
+			var viewerElement = document.getElementById("viewerAllL"+index); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerAllL"+index).attr("src", streamdocsAdd);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+			this.show(terms[index]);
+			this.change();
+		}
+		
+		this.change = function() {
+			if(index == 0) {
+				$('.ctrl-box .btn-next').css('visibility', 'visible');
+				$('.ctrl-box .btn-prev').css('visibility', 'hidden');
+				
+			}else if(index + 1 >= max_size) {
+				$('.ctrl-box .btn-next').css('visibility', 'hidden');
+				$('.ctrl-box .btn-prev').css('visibility', 'visible');
+			}else {
+				$('.ctrl-box .btn-next').css('visibility', 'visible');
+				$('.ctrl-box .btn-prev').css('visibility', 'visible');
+			}
+		}
+		
+		this.openAllTermsPdf = function(){
+			termsCode = [];			
+			for(var i = 0; i < terms.length; i++){
+				var code = $('#' + terms[i]).parent().parent().attr('id');
+				termsCode.push(code);	
+			}
+			var value = $('#'+termsCode[0]).find('button').val();
+			var viewerElement = document.getElementById("viewerAllL0"); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerAllL0").attr("src", streamdocsAdd + ";" +value);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+		}
+		
+		// init.
+		$('#agreementallLayer .con').hide();
+		var terms = [];
+		var index = 0;
+		configTermShowIdArray.forEach(function(id) {
+			if(id != "agree-check5" && id != "agree-check14"){
+				terms.push(id);
+			}
+		});
+		var max_size = terms.length;
+		this.setTotal(terms.length);
+		this.setView(1);
+		this.show(terms[0]);
+		this.change();
+		return this;
+	}
+	
+	function AllChTermsHandler(configTermShowIdArray) {
+		var termsCode = [];
+		var _this1 = this;
+		this.show1 = function(id) {
+			$('#agreementChallLayer .con').hide();
+			var $temp1 = $('#all-' + id);
+			if($temp1.size() == 0) {
+				return;
+			}
+			$temp1.show();
+		};
+		
+		this.add1 = function(id) {
+			terms1.push(id);
+		};
+		this.setTotal1 = function(value) {
+			$('span.total1').text(value);
+		};
+		this.setView1 = function(value) {
+			$('.view1').text(value);
+		}
+		this.next1 = function() {
+			if(index1 + 1 >= max_size1) return;
+// 			$("#viewerAllL"+index).attr("src","");
+			this.show1(terms1[++index1]);
+			this.setView1(index1+1);
+			var value = $('#'+termsCode[index1]).find('button').val();
+			var viewerElement = document.getElementById("viewerChallL"+index1); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerChallL"+index1).attr("src", streamdocsAdd);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+			this.change1();
+		};
+		this.back1 = function() {
+			if(index1 == 0) return;
+// 			$("#allViewer").attr("src","");
+			this.setView1(index1--);
+			var value = $('#'+termsCode[index1]).find('button').val();
+			var viewerElement = document.getElementById("viewerChallL"+index1); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerChallL"+index1).attr("src", streamdocsAdd);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+			this.show1(terms1[index1]);
+			this.change1();
+		}
+		
+		this.change1 = function() {
+			if(index1 == 0) {
+				$('.ctrl-box .btn-next').css('visibility', 'visible');
+				$('.ctrl-box .btn-prev').css('visibility', 'hidden');
+				
+			}else if(index1 + 1 >= max_size1) {
+				$('.ctrl-box .btn-next').css('visibility', 'hidden');
+				$('.ctrl-box .btn-prev').css('visibility', 'visible');
+			}else {
+				$('.ctrl-box .btn-next').css('visibility', 'visible');
+				$('.ctrl-box .btn-prev').css('visibility', 'visible');
+			}
+		}
+		
+		this.openAllTermsPdf = function(){
+			termsCode = [];			
+			for(var i = 0; i < terms1.length; i++){
+				var code = $('#' + terms1[i]).parent().parent().attr('id');
+				termsCode.push(code);	
+			}
+			var value = $('#'+termsCode[0]).find('button').val();
+			var viewerElement = document.getElementById("viewerChallL0"); 
+			var streamdocs = new StreamDocs({
+				element : viewerElement,
+			});
+			$("#viewerChallL0").attr("src", streamdocsAdd + ";" +value);
+			streamdocs.document.open({ streamdocsId : value});
+			streamdocs.viewer.setScale({scale:100});
+		}
+		
+		// init.
+		$('#agreementChallLayer .con').hide();
+		var terms1 = [];
+		var index1 = 0;
+		configTermShowIdArray.forEach(function(id) {
+			if(id == "agree-check5" || id == "agree-check14"){
+				terms1.push(id);
+			}
+		});
+		var max_size1 = terms1.length;
+		this.setTotal1(terms1.length);
+		this.setView1(1);
+		this.show1(terms1[0]);
+		this.change1();
+		return this;
+	}
+	
+	function makeSelectBox (){
+		var selectBox = $("#job_cd");
+		var defaultOption = '<option value="">선택</option>';
+		
+		$( selectBox ).empty();
+		
+   		var list = new Array();
+   		<c:forEach var="item" items="${jobCodeList }">
+   			list.push({
+   				code:"${item.code }",
+   				name:"${item.name }"
+   			});
+	    </c:forEach>
+   		
+   		$( selectBox ).append(defaultOption);
+   		
+   		 var tempProdCd = $('#prod_cd').val();
+   		for (var i = 0; i < list.length; i++) {
+   			var dataObj = list[i];
+			var value = dataObj.code;
+			var name = dataObj.name;
+   			if(tempProdCd == "GL056"||tempProdCd == "GL998"){
+   				if(dataObj.code!='C002000004'){
+   					$( selectBox ).append("<option value=\"" +value+ "\">"+name+"</option>");	
+   				}
+   			}else{
+   				$( selectBox ).append("<option value=\"" +value+ "\">"+name+"</option>");
+   			}
+		}
+   		if(!isMobile){
+	   		$( selectBox ).selectmenu('refresh');
+   		}
+	}
+	
+	// 카테고리, 상품코드에 따른 페이지 view설정.
+	function forms_by_product_code(category_code, ntree_code) {
+		makeSelectBox();
+		//console.log(category_code +' /// ' + ntree_code)
+		$('#prod_category_cd').val(category_code);
+        
+		<%-- select박스 module에 대한 예외처리(select에 대한 input 항목에 값을 보여준다.) --%>
+		$('.article-con input:not([type=radio])').val('');
+        var temp = $('.article-con select').val('');
+        if(!isMobile){
+	        if(temp.selectmenu) temp.selectmenu('refresh');
+        }
+		// 상품 및 기타 셀렉트 초기화.
+		$('select option:selected').each(function() {
+			var $text = $(this).parents('.select-wrap').find('.ui-selectmenu-text');
+			$text.text(this.text);
+			if(this.value != '')
+				$text.css('color', 'black');
+			else
+				$text.css('color', 'gray');
+		});
+		$('.article-con select').trigger('selectmenuchange');
+		
+		// 약관 항목.
+		$('.article-con').hide();
+		// 선택하위항목 숨김처리.
+		$('.subcheck-area').hide();
+		
+		// 사용자입력항목. 숨김처리.
+		$('.article-con select').parents('.form-wrap').hide();
+		$('.article-con select').parents('.grid2').removeClass('mb30');
+		$('.article-con input').parents('.form-wrap').hide();
+		$('.article-con input').parents('.grid2').removeClass('mb30');
+		$('.article-con textarea').parents('.form-wrap').hide();
+		$('.article-con textarea').parents('.grid2').removeClass('mb30');
+		
+		// 약관 숨김처리.
+		$('#frm_terms').hide();
+		if(ntree_code=='GL091' || ntree_code=='GL093' || ntree_code=='GL094'){
+			var _form = config.form[ntree_code];
+		}else{
+			var _form = config.form[category_code];	
+		}
+		
+		
+		if(ntree_code == undefined || ntree_code == '' || ntree_code == null || !_form) {
+			return;
+		}
+		
+		// 약관 체크 초기화.
+		if($('#all-check').prop('checked')) { $('#all-check').prop('checked',false) };
+		
+		$('input').each(function(){ 
+				if(this.checked) {
+					//$(this).click();
+					//$(this).prop('checked',false);
+					//$(this).parent().removeClass("c-on");
+				}
+		});
+		
+		// 
+		$('#frm_terms').show();
+		$('.article-con').show();
+		
+		
+		var tempProdCd = $('#prod_cd').val();
+		
+		var _terms = config.terms[ntree_code];
+		if(!_terms) _terms = config.terms['${ntree_null}'];
+		
+		// 보여줄 약관 설정.
+		_terms.show.forEach(function(_item) {
+			$('#' + _item).parents('dd').show();
+		});
+		// 숨길 약관 설정.
+		_terms.hide.forEach(function(_item) {
+			$('#' + _item).parents('dd').hide();
+		});
+		// 전체약관보기 화면 핸들링.
+		allTermsHandler = new AllTermsHandler(_terms.show);
+		// 선택약관보기 화면 핸들링.
+		allChTermsHandler = new AllChTermsHandler(_terms.show);
+		//console.log(_form);
+		// 사용자 입력 항목 설정.
+		_form.forEach(function(_item){
+			form_input_show(_item.id);
+		});
+		
+		if(ntree_code=='GL093' || ntree_code=='GL094'){
+			$("#div_mrgg_tp_cd").addClass("mb30");
+			$("#div_mrgg_tp_cd").fadeIn();
+			form_input_show('div_mrgg_tp_cd');
+			form_input_hide('loan_tp_cd');
+			form_input_hide('mod_tp_cd');
+		}else if(ntree_code=='GL091'){
+			form_input_hide('div_mrgg_tp_cd');
+			form_input_show('loan_tp_cd');
+			form_input_show('mod_tp_cd');
+			form_input_show('qnt');
+			
+		}
+		form_input_show('loan_zip_code');
+        form_input_show('address_detail');
+        form_input_show('address_detail1');
+		// select 모듈에 대한 예외처리.
+		selectWidth();
+		
+		//if(tempProdCd!='GL091' || tempProdCd !='GL093' || tempProdCd !='GL094'){
+		//	$("#req_amt_format").attr("placeholder","만원 단위로 입력하세요");
+		//	$("#req_amt_unit").text("만원");
+		//}else{
+			$("#req_amt_format").attr("placeholder","백만원 단위로 입력하세요");
+			$("#req_amt_unit").text("백만원");
+		//}
+	}
+	
+	/**
+	 * 사용자 입력항목 보여줌 처리
+	 */
+	function form_input_show(id) {
+		var $item = $('#' + id);
+		if(id!='mrgg_tp_cd'){
+			$item.val('');
+		}
+		$item.parents('.grid2').addClass('mb30');
+		$item.parents('.form-wrap').fadeIn();
+	}
+	
+	/**
+	 * 사용자 입력항목 숨김 처리
+	 */	
+	function form_input_hide(id) {
+		var $item = $('#' + id);
+		if(id!='mrgg_tp_cd'){
+			$item.val('');
+		}
+		$item.parents('.form-wrap').fadeOut();
+		$item.parents('.grid2').removeClass('mb30');
+	}
+    
+	<%-- 대출정보 전달 전 파라미터 설정. --%>
+    function init_form_data() {
+    	// 휴대폰번호 조합 설정.
+    	$('#phone_no').val([$('#phone_no1').val(), $('#phone_no2').val(), $('#phone_no3').val()].join('-'));
+    	// 대출신청 완료 후 노출할 대출상품명 설정.
+	   
+		$('#prod_nm').val($('#prod_cd option:selected').text());
+    	
+    }
+    
+    <%-- 대출신청페이지 Validation 체크 --%>
+	var commonProductForm = [
+		{id : 'telecom',			fieldName : '통신사',		validate : [ 'NotNull' ],			message : '를 선택해주세요.', click : 'telecom-button', focus : 'telecom_fc'},
+		{id : 'phone_no2',			fieldName : '핸드폰 번호',	validate : [ 'Number' ],			message : '를 입력해주세요.', length : '3-4'},
+		{id : 'phone_no3',			fieldName : '핸드폰 번호',	validate : [ 'Number' ],			message : '를 입력해주세요.', length : '4'},
+		{id : 'cust_nm',			fieldName : '이름',			validate : [ 'Char', 'NotNull'],	message : '을 입력해주세요.(한글, 영문)'},
+		{id : 'ssn1',				fieldName : '주민등록번호',	validate : [ 'Number' ],			message : '를 입력해주세요.'},
+		{id : 'ssn1',				fieldName : '주민등록번호',	message : ' 를 확인해주세요.', date : ['YYMMDD']},
+	];
+	
+	<%-- 모바일 대출신청페이지 Validation 체크 --%>
+	var mobileProductForm = [
+		{id : 'cust_nm',			fieldName : '이름',			validate : [ 'Char', 'NotNull'],	message : '을 입력해주세요.(한글, 영문)'},
+		{id : 'telecom',			fieldName : '통신사',		validate : [ 'NotNull' ],			message : '를 선택해주세요.'},
+		{id : 'phone_no2',			fieldName : '핸드폰 번호',	validate : [ 'Number' ],			message : '를 입력해주세요.', length : '3-4'},
+		{id : 'phone_no3',			fieldName : '핸드폰 번호',	validate : [ 'Number' ],			message : '를 입력해주세요.',  length : '4'},
+		{id : 'ssn1',				fieldName : '주민등록번호',	validate : [ 'Number' ],			message : '를 입력해주세요.'},
+		{id : 'ssn1',				fieldName : '주민등록번호',	message : ' 를 확인해주세요.', date : ['YYMMDD']},
+		{id : 'ssn2',				fieldName : '주민등록번호',	validate : [ 'NotNull' ], message : '를 입력해주세요.', length : '7'}
+	];
+	
+	
+	<%-- 
+		메인화면에서 사용자 정보가 전달 되지 않을 경우, 주민등록번호 유효성을 체크한다.
+		사용자 정보가 있을 경우, 서버에서 갖고 있는것으로 처리하고 유효성 검사를 하지 않는다.
+	 --%>
+	if(${userInfo eq null}) {
+		commonProductForm.push(
+				{id : 'ssn2',				fieldName : '주민등록번호',	validate : [ 'NotNull' ], message : '를 입력해주세요.', length : '7'}
+		);
+	}
+	
+	<%-- (공통) 유효성 체크. --%>
+    function validate_form(form) {
+    	
+   		validate = PageValidate.validate(form);
+   		
+		if(!validate.result) {
+			removeLoading();
+			validate.alert();
+			return false;
+		}
+		
+		var age = calcAge($('#ssn1').val());
+		
+		if(age < 20) {
+			removeLoading();
+			if(isMobile){
+				customAlert({title : '안내', message : "대출신청은 만 20세 이상부터 <br>가능합니다."});	
+			}else{
+				customAlert({title : '안내', message : "대출신청은 만 20세 이상부터 가능합니다."});
+			}
+			
+			return false;
+		}
+		
+		
+		return true;
+    }
+    
+	
+	function check_req_amt(success, onfail) {
+		// 대출신청금액
+		var req_amt = $('#req_amt').val();
+		if(req_amt != '' && req_amt.length >= 6) {
+			removeLoading();
+			// var message = '대출신청금액(' + $('#req_amt_format').val() + '만원)으로 진행하시겠습니까?'
+			var message = '대출신청 금액을 만원 단위로 입력해주세요.';
+    		customAlert({title : '안내', message : message}, function() {
+    			focus_to('#req_amt_format');
+    			onfail();
+    		});
+    	}else {
+    		success();
+    	}
+	}
+	
+	function check_validate(success, fail) {
+		var categoryCd = $('#prod_category_cd').val();
+		
+		if($('#prod_cd').val()=="GL999"){
+			categoryCd=categoryCd + '_EMP';
+		}
+		if($('#prod_cd').val()=="GL091"||$('#prod_cd').val()=="GL093" ||$('#prod_cd').val()=="GL094"){
+			var validate = PageValidate.validate(config.form[$('#prod_cd').val()]);
+		}else{
+			var validate = PageValidate.validate(config.form[categoryCd]);
+		}
+		
+		if(!validate.result) {
+			removeLoading();
+			validate.alert();
+			fail();
+		}else {
+			success();
+		}
+	}
+    
+    <%-- 상품 유효성 체크. --%>
+    function validate_product(onsuccess, onfail) {
+    	
+   		// 대출신청금액 체크
+   		check_req_amt(function() {
+   			// 유효성체크
+   			check_validate(onsuccess, onfail);
+   		}, onfail);
+    	
+    }
+    
+    <%-- 약관항목 유효성 체크. --%>
+    function validate_terms() {
+    	$('input[type=checkbox]:hidden').prop('checked', false);
+    	$('input[type=checkbox]').not(':hidden').filter(':checked').val('Y');
+    	$('input[type=checkbox]').not(':hidden').not(':checked').val('N');
+       	
+    	
+    	var tempProdCd = $('#prod_cd').val();
+
+    	//console.log("@@"+tempProdCd);
+    	var terms_prod_item = config.terms[tempProdCd];
+    	
+    	if(!terms_prod_item) {
+    		terms_prod_item = config.terms['${ntree_null}'];
+    	}
+    	var result = true;
+    	// show 항목이 필수값인지 확인 후 동의여부를 확인한다..
+    	terms_prod_item.show.forEach(function(_id) {
+    		if(result && config.terms['items'][_id].mandatory && !$('#' + _id).prop('checked')) {
+    			try{
+    				removeLoading();
+    				var title = config.terms['items'][_id].title;
+    				var message = config.terms['items'][_id].message;
+    				if(!message) message = '에 대한 동의가 필요합니다.';
+    				message = title + message;
+    				customAlert({title : '안내', message : message}, function() {
+    					location.href = '#terms_focus';
+    				});
+    			}catch(e) {}
+    			result = false;
+    		}
+    	});
+		return result;
+    }
+    
+    
+    <%-- 사용자 기본정보 및 상품정보 등록.(안랩, nfilter) --%>
+    function loan_request_form(onSuccess, onFail) {//실명인증
+    	
+    	var nfilter = ${nfilter eq true};
+    	if(nfilter) {
+			encryptedNFilter();
+	    	var frmData = $('#frm1').serialize();
+	    	frmData = frmData+"&dsrName="+$("#name").val();
+			AjaxFunc.ajaxAsync('<c:url value="${loan_retail_request_form}" />', frmData, function(res) {
+				if(res.result) {
+					onSuccess(res);
+				}else {
+					onFail(res);
+				}
+			}, onFail);
+		}else {
+	    	$ASTX2.getE2EData(
+	            document.frm1,
+	            function (data) {
+	                $ASTX2.setE2EData(document.frm1, data);
+	            	var frmData = $('#frm1').serialize();
+	            	
+	            	frmData = frmData+"&dsrName="+$("#name").val();
+	                AjaxFunc.ajaxAsync('<c:url value="${loan_retail_request_form}" />', frmData, function(res) {
+	        			if(res.result) {
+	        				onSuccess(res);
+	        			}else {
+	        				onFail(res);
+	        			}
+		                $ASTX2.clearE2EText( document.getElementById('ssn2') );
+	        		}, onFail);
+	            },
+	            onFail
+	        );
+		}
+    }
+    
+    <%-- 약관정보 등록. --%>
+    function loan_request_terms(onSuccess) {
+    	//$('input[type=checkbox]:hidden').val('');
+    	//$('input[type=checkbox]:visible').val('N');
+    	$('input[type=checkbox]:checked').val('Y');
+		AjaxFunc.ajaxAsync('<c:url value="${loan_request_terms}" />', $('#frm_terms').serialize(), function(res){
+			if(res.result) {
+				onSuccess(res);
+			}else {
+				on_error(res);
+			}
+		}, on_error);
+    }
+    
+    <%-- 약관정보 등록. --%>
+    function ajaxTermsList() {
+    	var prdCd = $("#prod_cd").val();
+    	var param ={"upperCode":"T000800000"}
+		AjaxFunc.ajaxAsync('<c:url value="${ajaxTermsList}" />', param, function(res){
+			if(res.result) {
+				var termsArray = res.data.list;
+				if(termsArray.length > 0){
+					for(var i=0; i < termsArray.length; i++){
+// 						console.log(termsArray[i]);
+						//console.log(termsArray[i].TERMS_CODE + "//" + termsArray[i].TERMS_NAME + "//" + termsArray[i].DISP_YN);
+						$('.' + termsArray[i].TERMS_CODE).find('.pop-cts').append(termsArray[i].CONTENTS);
+						if(termsArray[i].TERMS_CODE == 'N000805001'){
+							$(".N000805001").find(".tit").text( '(필수) 기업가계대출상품설명서' );
+						}
+					}
+				}
+				$('.prod_terms_section_info').hide();
+				//$('.retail2_info').show();
+				if(prdCd=='GL093'){
+					$('.retail1_info').show();
+				}else if(prdCd=='GL094'){
+					$('.retail1_info').show();
+				}else{
+					$('.retail2_info').show();
+				}
+				termsListForValue = termsArray;
+				createLoanTermsArea(termsArray);
+				setDocIDBtnValue(termsArray);
+			}else {
+				on_error(res);
+			}
+		}, on_error);
+    }
+    
+    <%-- 오류응답에 대한 공통처리 --%>
+    function on_error(err) {
+    	if(!err) err = {};
+    	if(!err.message) {
+    		err.message = err.resultMessage;
+    		if(!err.message) err.message = "서비스중 장애발생.";
+    	}
+    	removeLoading();
+		customAlert({title : '안내', message: err.message}, function() {
+			if(!!err && !!err.message && err.message.indexOf('세션') > -1) { // 세션만료
+				
+				location.href = '<c:url value="${home}" />'
+			}
+			if(!!err && !!err.message && err.message.indexOf('월 접수건') > -1) {
+				
+				location.href = '<c:url value="${home}" />'
+			}
+		});
+    }
+    
+    <%-- 인증완료 후 대출신청 및 화면전환. --%>
+    function request_loan() {
+    	loading();
+    	var url = '<c:url value="${ loan_request_retail_proc }" />';
+		var form = document.frm1;
+		var param = $( form ).serialize();
+	    	
+		AjaxFunc.ajaxAsync( url , param, function(data) {
+			removeLoading();
+			try{
+				if(data.data.RES_CODE == 1000){
+					location.href = '<c:url value="${complete}"/>';	
+				}else{
+					if(data.data.DUPLICATE_LOAN_YN=='Y'){
+						customAlert({title : "알림" , message : "고객님께서는<br> <font style='font-weight:bold'>대출신청 진행 중</font>에 있습니다. <br>현재 대출 신청중으로 입력하신 연락처로<br> 상담원이 빠르게 연락드리겠습니다." }, function() {});
+					}else{
+						customAlert({title : "알림" , message : data.data.RES_MESSAGE }, function() {});
+					}
+				}
+					
+			}catch(e){
+				customAlert({title : "알림" , message : "대출신청에 실패했습니다." }, function() {});
+			}
+		},function(){});
+		
+    }
+    
+    
+    <%-- 인증완료 버튼 클릭. --%>
+	$('#btn_complete').click(function() {
+		request_loan();
+	});
+	
+    
+	<%-- 카테고리 항목에 대한 Validation 및 입력 Form Show/Hide 설정을 위한 Object. --%>
+    var config = {};
+    config.form = {
+    		'${ntree_prod7}':[
+				{id : 'mrgg_tp_cd',			fieldName : '담보종류',	validate : [ 'NotNull' ], message : '을 선택해주세요.', type:'radio',	focus : 'mrgg_tp_cd_fc'},
+				{id : 'req_amt',				fieldName : '대출신청금액',	validate : [ 'Number' ], message : '을 입력해주세요.(숫자)', focus : 'req_amt_format'},
+				{id : 'zip_code',				fieldName : '우편번호',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail',			fieldName : '주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail1',		fieldName : '상세주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+			],
+    
+    		'${ntree_prod8}':[
+				{id : 'mrgg_tp_cd',			fieldName : '담보종류',	validate : [ 'NotNull' ], message : '을 선택해주세요.', type:'radio',	focus : 'mrgg_tp_cd_fc'},
+				{id : 'req_amt',				fieldName : '대출신청금액',	validate : [ 'Number' ], message : '을 입력해주세요.(숫자)', focus : 'req_amt_format'},
+				{id : 'zip_code',				fieldName : '우편번호',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail',			fieldName : '주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail1',		fieldName : '상세주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+			],
+			
+			'${ntree_prod9}':[
+				{id : 'loan_tp_cd',				fieldName : '대출구분',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'mod_tp_cd',			fieldName : '기기모델',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'qnt',					fieldName : '수량',		validate : [ 'Number' ], message : '을 입력해주세요.(숫자)', focus : 'mrgg_tp_cd_fc'},
+				{id : 'req_amt',				fieldName : '대출신청금액',	validate : [ 'Number' ], message : '을 입력해주세요.(숫자)', focus : 'req_amt_format'},
+				{id : 'zip_code',				fieldName : '우편번호',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail',			fieldName : '주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'address_detail1',		fieldName : '상세주소',		validate : [ 'NotNull' ], message : '을 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+				{id : 'comnt',					fieldName : '비고',		validate : [ 'NotNull' ], message : '를 입력해주세요.', focus : 'mrgg_tp_cd_fc'},
+			],
+	};
+    
+    config.terms = {
+    		// ID별 약관정보.
+    		items : {
+    			'agree-check1' : { title : '개인(신용)정보 조회동의서', mandatory : true },
+    			'agree-check2' : { title : '개인(신용)정보 조회동의서(서민금융진흥원)', mandatory : true },
+    			'agree-check3' : { title : '개인(신용)정보 수집ㆍ이용ㆍ제공 동의서(서민금융진흥원)', mandatory : true },
+//     			'agree-check12' : { title : '개인(신용)정보 수집ㆍ이용ㆍ제공 동의서(서민금융진흥원)'},
+    			'agree-check4' : { title : '개인(신용)정보 및 기업(신용)정보 조회ㆍ수집ㆍ이용ㆍ제공과 행정정보공동이용, 전자금융거래확인서 발급을 위한 동의서', mandatory : true },
+    			'agree-check5' : { title : '개인(신용)정보 수집ㆍ이용ㆍ제공 동의서(상품서비스 안내)', mandatory : false },
+    			'agree-check6' : { title : '개인(신용)정보 수집ㆍ이용ㆍ제공 동의서(여신금융거래)', mandatory : true },
+    			'agree-check8' : { title : '계약 체결·이행 등을 위한 필수 동의서 (개인금융성 신용보험용)', mandatory : true },
+    			'agree-check9' : { title : '대출거절사유 고지에 관한 사항', mandatory : false },
+//     			'agree-check10' : { title : '개인(신용)정보 선택적 동의서(통신정보 활용 동의)', mandatory : false },
+    			'agree-check11' : { title : 'CMS 출금이체 동의', mandatory : true },
+    			'agree-check13' : { title : '개인(신용)정보 제3자 제공동의서(추가동의사항)', mandatory : true },
+    			'sunshinedetail' : { title : '가계대출상품설명서', message : '에 대한 확인이 필요합니다.', mandatory : true},
+    			'productdetail' : { title : '가계대출상품설명서', message : '에 대한 확인이 필요합니다.', mandatory : true},
+    			'saitdoldetail' : { title : '가계대출상품설명서', message : '에 대한 확인이 필요합니다.', mandatory : true},
+    			'retaildetail' : { title : '기업대출상품설명서', message : '에 대한 확인이 필요합니다.', mandatory : true},
+    			'agree-check14' : { title : '개인(신용)정보 수집ㆍ이용ㆍ제공 동의서(맟춤형 상품 제공)', message : '에 대한 확인이 필요합니다.', mandatory : false},
+    		},
+    		// 상품코드별 코드정보 및 노출,필수약관정보.
+    		'${ntree_prod7}' : {
+    			title : '부동산담보대출',
+    			show : ['agree-check1', 'agree-check4', 'agree-check6', 'agree-check13','agree-check5','agree-check14'],//'retaildetail',
+    			hide : ['agree-check2', 'agree-check3', 'agree-check8', 'agree-check9','agree-check11',
+    				'saitdoldetail' , 'sunshinedetail', 'agree-check12', 'agree-check10'],
+    		},
+    		'${ntree_prod8}' : {
+    			title : '아파트담보대출',
+    			show : ['agree-check1', 'agree-check4', 'agree-check6', 'agree-check13','agree-check5','agree-check14'],//'retaildetail',
+    			hide : ['agree-check2', 'agree-check3', 'agree-check8', 'agree-check9','agree-check11',
+    				'saitdoldetail' , 'sunshinedetail', 'agree-check12', 'agree-check10'],
+    		},
+    		'${ntree_prod9}' : {
+    			title : '스크린골프담보대출',
+    			show : ['agree-check1', 'agree-check4', 'agree-check6','agree-check13','agree-check5','agree-check14'],//'retaildetail',
+    			hide : ['agree-check2', 'agree-check3', 'agree-check8', 'agree-check9','agree-check11',
+    				'saitdoldetail' , 'sunshinedetail', 'agree-check12', 'agree-check10'],
+    		}
+    }
+    
+	function checkFailPopup(popup) {
+    	var isFirefoxBrowser = navigator.userAgent.indexOf('Firefox') > -1;
+    	var fail = false;
+    	// 파이어폭스 확인.
+		if(popup == null) {
+			fail = true;
+		}else if(isFirefoxBrowser && typeof(popup) == 'undefined') { // 파이어폭스 브라우저
+			fail = true;
+		}
+// 		else if(!isFirefoxBrowser && !popup.screenLeft || popup.screenLeft == 0){
+// 			fail = true;
+// 		}
+    	
+    	if(fail) {
+			customAlert({title : '안내', message : '팝업을 허용해주세요.'});
+    	}
+	}
+	<%-- 나이스 모바일 인증 --%>
+	function auth_nice_mobile() {
+		
+		if(test) { auth_result({ success:true, match:true }); return; }
+		
+		var popup = window.open('<c:url value="${kcbPhone}?authType=M" />', '', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+		setTimeout(function(){ 
+			checkFailPopup(popup);
+		}, 1000);
+	}
+	
+	<%-- 공동인증 --%>
+	function auth_cert(type) {
+		if(test) { auth_result({ success:true, match:true }); return; }
+		$('#certType').val(type);
+		Delfino.login("login=certLogin", {provider: type},function(result) {
+            var SUCCESS = 1;
+            var CANCEL = 0;
+            if(result.status != SUCCESS){
+            	// customAlert({title : '안내', message : result.message }, function() {});
+            	//사용자 취소
+            	// if(result.status == CANCEL) {
+            	// 	return; 
+            	// }
+            	// 구동프로그램 설치를 위해 창을 닫을 경우
+                // if(result.status == -10301) {
+                // 	return;
+                // }
+                // if (Delfino.isPasswordError(result.status)) {
+                // 	customAlert({title : '안내', message : '비밀번호 오류 횟수 초과' }, function() {});
+                // 	return;
+                // }
+                return;
+            }
+            document.delfinoForm.PKCS7.value = result.signData;
+            document.delfinoForm.VID_RANDOM.value = result.vidRandom;
+            
+            AjaxFunc.ajaxAsync('<c:url value="${wizveraResult}" />', $('#delfinoForm').serialize(), function(res) {
+            	auth_result(res.data);
+            }, on_error);
+        });
+	}
+		
+	<%-- IPIN 인증 --%>
+	function auth_ipin() {
+		if(test) { auth_result({ success:true, match:true }); return; }
+		
+		var popup = window.open('<c:url value="${ipin}" />', 'popupIPIN2', 'width=450, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+		setTimeout(function(){ 
+			checkFailPopup(popup);
+		}, 1000);
+	}
+	
+	<%-- 카카오 페이 인증 요청 --%>
+	function auth_kakao(id) {
+        var startTime = '20230917010000';
+		var endTime   = '20230917070000';
+		var message = "시스템 점검으로 인한 카카오페이 본인인증 서비스 일시중단 안내\n(중단시간 : 2023.09.17 (일) 01:00 ~ 07:00 약 6시간)\n\n * 서버점검 일정에 따라 시간이 변동될 수 있습니다";
+		if (UtilFunc.getCurrentDttm() > startTime && UtilFunc.getCurrentDttm() < endTime){
+			customAlert({title:"알림", message:message, btn_txt1:"확인"}, '', function(){});
+			return false;
+		}
+		
+		if(test) { auth_result({ success:true, match:true }); return; }
+		 
+		AjaxFunc.ajaxAsync('<c:url value="${kakao}" />', null, function(res) {
+			if(res.result) {
+           		closePopup('authLayer');
+				timer(id);
+				openPopup(id);
+			}else {
+				on_error(res);
+				closePopup('authLayer');
+			}
+		}, function(res) {
+			on_error(res);
+			closePopup('authLayer');
+		});
+	}
+	
+	<%-- 나이스 신용카드 인증 --%>
+	function auth_nice_credit_card() {
+		if(test) { auth_result({ success:true, match:true }); return; }
+		
+		var popup = window.open('<c:url value="${kcbCredit}?authType=C" />', '', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+		setTimeout(function(){ 
+			checkFailPopup(popup);
+		}, 1000);
+	}
+	
+	<%-- 휴대폰인증, 신용카드 인증, 공동인증 완료 콜백  --%>
+	/**
+	 * res AuthResult
+	 */
+	function auth_result(res) {
+		// 비정상 응답
+		if(!res) {
+			customAlert({title : '안내', message : "인증 실패."});
+			addBlock();
+			return;
+		}
+		
+		if(res.prepare){
+			// 카카오톡 인증되지 않은 상태.
+			removeLoading();
+			on_error(res);
+			addBlock();
+			return;
+		}
+		
+		// 인증실패.
+		if(!res.success) {
+			// 에러 표시 후 인증창을 닫고 블럭생성.
+			removeLoading();
+			on_error(res);
+			addBlock();
+			return;
+		}else {
+// 			if(!res.match) {
+// 				// 인증성공이지만 정보불일치일 경우
+// 				removeLoading();
+// 				closePopup('authLayer');
+// 				customAlert({title : '안내', message : res.message});
+// 				return;
+// 			}else {
+				// 성공
+				closePopup('authLayer');
+		    	request_loan();
+		    	return;
+// 			}
+		}
+	}
+	
+	function calcAge(birthDay) {
+		if(!birthDay || birthDay.length != 6) {
+			return -1;
+		}
+		var today = new Date();
+		
+		var year = birthDay.substr(0, 2);
+		if(year <= new Date().getFullYear() % 100) {
+			year = '20' + year;
+		}else {
+			year = '19' + year;
+		}
+		var date = new Date([year, birthDay.substr(2, 2), birthDay.substr(4)].join('/'));
+		var age = today.getFullYear() - date.getFullYear();
+		
+		if(today < date.setFullYear(today.getFullYear())) age--;
+		return age;
+	}
+	
+	function focus_to(focusid) {
+		var offset = $(focusid).offset();
+		if(offset) {
+			$('html, body').animate({scrollTop: offset.top - 80}, 400, function(){
+				$(focusid).focus();
+			});
+		}else {
+			$(focusid).focus();
+		}
+	}
+	
+	//2021.09.14	가계대출상품설명서 필수약관 체크
+	function checkReqTerms(){
+		//pc화면인지 모바일화면인지 체크하여 li개수 조회
+		var questionLength = 0;
+		var layer = "";
+		if($('#retailDetailLayer').length){
+			questionLength = $('#retailDetailLayer').find('.pop-cts').find('.question-list').find('li').length;	//체크해야하는 약관 개수
+			layer = "retailDetailLayer";
+		}else if($('#retailDetail-layer').length){
+			questionLength = $('#retailDetail-layer').find('.pop-cts').find('.question-list').find('li').length;	//체크해야하는 약관 개수
+			layer = "retailDetail-layer";
+		}
+		
+		//가계대출상품설명서 상세약관 개수 조회(0 이상(체크안된 약관 있음)이면 가계대출삼품설명서 열어서 체크하게 함)
+		var chkCnt = 0;
+		for(var i = 1; i <= questionLength; i ++){	//라디오박스 Y/N 체크
+			if($('input:radio[name="pop_radio0' + i + '"]:checked').val() == "N" 
+					|| $('input:radio[name="pop_radio0' + i + '"]:checked').val() == "undefined"
+						|| $('input:radio[name="pop_radio0' + i + '"]:checked').val() == null){
+				chkCnt ++;
+			}
+		}
+		if(!chkCnt == 0){
+			customAlert({title : "알림" , message : "가계대출 상품설명서의  <br>계약체결 전 중요사항 안내여부 확인 해 주세요." }, function() {
+				removeLoading();
+				openPopup(layer, 1);	//가계대출상품설명서 팝업 띄우기
+			});
+		}
+		else{
+			return true;
+		}
+	}
+	
+	//2021-12-22 StreamDocId 버튼에 value 추가
+	function setDocIDBtnValue(list){
+		var termsCode;
+		
+		for(var i=0; i < list.length; i++){ 
+			
+			termsCode = list[i].TERMS_CODE;
+			
+			$(".agree-box").find("dl").find("dd").each(function( index, element ){
+				var id = $(element).attr("id");
+				if( termsCode == id ){
+					
+					$("#"+termsCode+"").find("button").val(list[i].STREAM_DOC_ID);
+					
+				}
+			});
+		}
+	}
+	function createLoanTermsArea(list){
+		var itemsIdAry=['T000800003','T000800011','T000800014','T000800013','T000800016','T000800017', 'T000800022'];
+		
+		var termsCode = getTermsCode();
+		
+		var allTermsCnt=0;//20211203 약관 PDF 적용
+		var chTermsCnt=0;//20211203 약관 PDF 적용
+		$("#agreementallLayer").find(".con").remove();
+		$("#agreementChallLayer").find(".con").remove();
+		for (var i = 0; i < termsCode.length; i++) {
+			var con = $("#agreementallLayer").find(".con").last();
+			var con2 = $("#agreementChallLayer").find(".con").last();
+			if(itemsIdAry.indexOf(termsCode[i]) == -1){
+				var viewerAllL="viewerAllL"+allTermsCnt;//20211203 약관 PDF 적용
+				if(con.length == 0){
+					$("#agreementallLayer").find(".all-agree").after("<iframe style='width: 100%;height: 75vh;margin-top:15px;' class='con' id='"+viewerAllL+"'></iframe>");
+				}else{
+					$( con ).after("<iframe style='width: 100%;height: 75vh;margin-top:15px;' class='con' id='"+viewerAllL+"'></iframe>");
+				}
+				allTermsCnt++;
+				
+			}else{
+				var viewerChallL="viewerChallL"+chTermsCnt;//20211203 약관 PDF 적용
+				
+				if(con2.length == 0){//선택약관 전체선택 추가 20210621
+					$("#agreementChallLayer").find(".all-agree").after("<iframe style='width: 100%;height: 75vh;margin-top:15px;' class='con' id='"+viewerChallL+"'></iframe>");
+				}else{
+					$( con2 ).after("<iframe style='width: 100%;height: 75vh;margin-top:15px;' class='con' id='"+viewerChallL+"'></iframe>");
+				}
+				chTermsCnt++;
+			}
+		}
+		
+	}
+	
+	function getTermsCode(){
+		var terms = config.terms[$("#prod_cd").val()];
+		var termsCode = [];
+		
+		if(terms != '' && terms != null){
+			for(var i = 0; i < terms.show.length; i++){
+				var code = $('#' + terms.show[i]).parent().parent().attr('id');
+				termsCode.push(code);	
+			}
+		}
+		return termsCode;
+	}
+	
+	//2022-03-31 파라미터 설정
+	function valueSetting(){
+		//2021.09.28 상품설명서 상세약관 설정
+		var agree1 = "Y";	//금리인하요구권(항상 Y)
+		var agree2 = $('input:radio[name="prod_terms_agree4"]:checked').val();	//대출거절사유 고지신청서(Y/N)
+		//만나이 기준 31세이하 설명받았음(Y), 그 외 해당없음으로 설정(N), 고객이 선택 불가
+		var agree3 = $('input:radio[name="prod_terms_agree5"]:checked').val();	//대학생,청년층확인서(Y/N)
+		
+		var totalAgree = agree1 + "|" + agree2 + "|" + agree3;
+		$('#PRODUCT_DESC_YN').val(totalAgree);
+		
+		if($("#agree-check1").parent().hasClass("c-on")){
+    		$("#CRDT_AGR_DTL_YN").val("Y");
+    	}else{
+    		$("#CRDT_AGR_DTL_YN").val("N");
+    	}
+		if($("#agree-check6").parent().hasClass("c-on")){
+    		$("#PROD_AGR_DTL_YN").val("Y");
+    	}else{
+    		$("#PROD_AGR_DTL_YN").val("N");
+    	}
+		if($("#agree-check5").parent().hasClass("c-on")){
+    		$("#SRVC_AGR_DTL_YN").val("Y");
+    	}else{
+    		$("#SRVC_AGR_DTL_YN").val("N");
+    	}
+		if($("#agree-check16").parent().hasClass("c-on")){
+    		$("#GUARANTEE_SERVICE_YN").val("Y");
+    	}else{
+    		$("#GUARANTEE_SERVICE_YN").val("N");
+    	}
+    	if($("#agree-check17").parent().hasClass("c-on")){
+    		$("#PRODUCT_SERVICE_YN").val("Y");
+    	}else{
+    		$("#PRODUCT_SERVICE_YN").val("N");
+    	}
+    	if($("#agree-check14").parent().hasClass("c-on")){
+    		$("#PRODUCT_SERVICE_PROVIDE_YN").val("Y");
+    	}else{
+    		$("#PRODUCT_SERVICE_PROVIDE_YN").val("N");
+    	}
+	}
+	
+	//중요사항안내 및 상품설명서 확인
+	function validate_topTerms(){
+		if(!isProdCheck){
+			removeLoading();
+			customAlert({title : '안내', message : "기업대출상품설명서는 필수 약관입니다."});
+			return false;
+		}
+		return true;
+	}
+	</script>

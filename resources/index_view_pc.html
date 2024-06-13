@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>예가람 저축은행 금융플랫폼 개편 | pc worklist</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="keywords" content="예가람저축은행" />
+	<meta name="description" content="" />
+    <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:image" content="https://www.yegaramsb.co.kr/resources/images/main/meta-img-square_new.jpg">
+	<link rel="stylesheet" type="text/css" href="/resources/pub_css/pub-worklist.css"/>
+    <script src="/resources/normal/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/jquery.form.min.js"></script> 
+	<style>
+		/* 2023-05-21 가이드 추가 */
+	.cont table {
+		display: none;
+	}
+
+	.cont .tit {
+		cursor: pointer;
+	}
+
+	.cont .tit.on ~ table {
+		display: table;
+	}
+	.container .header { top:0; }
+	.wrapper .container { padding-top:200px; }
+	</style>
+</head>
+<body>
+	<div class="wrapper pc">
+		<section class="ifr_view">
+			<iframe id="iframe" width="100%" height="100%" src="./button.html"></iframe>
+		</section>
+		<section class="container">
+
+			<div class="header">
+				<h1>예가람저축은행 - WEB 리뉴얼 IA(Information Architecture)</h1>
+				<ul class="stateArea">
+					<li><strong>진행상테 :</strong></li>
+					<li class="typeConfirm"><span>기</span>기획확인필요</li>
+					<li class="typeIng"><span>진</span>xd 현행화진행중</li>
+					<li class="typeComp"><span>완</span>완료</li>
+					<li class="typeCommon"><span>공</span>공통</li>
+					<li class="typeNon"><span>삭</span>삭제</li>
+				</ul>
+				<ul><!-- 
+					<li>프로젝트 기간 : 2023.05</li>
+					
+					<li><span id="delCnt"></span> / <span id="compCnt"></span> (loan / renewal)</li>
+					<li><span id="wipCnt"></span> (남은 화면 수)</li>
+					<li><span id="totCnt"></span> (총 본수)</li>
+					-->
+					<li><span id="compCnt"></span> / <span id="totCnt"></span>  (완료 / 총 본수) ※ 기획확인필요 : <span id="confirmCnt"></span> 건 ※ 디자인확인필요 : <span id="ingCnt"></span> 건</li>
+					<li>종합 진척률 : <span id="totPer"></span> </li>
+					<!--
+					<li>총 <span id="totCnt"></span>개</li>
+					<li>작업중 <span id="wipCnt"></span>개</li>
+					<li>완료 <span id="compCnt"></span>개</li>
+					-->
+				</ul>
+				<!--
+				<div class="progressArea"><span></span></div>-->
+				<!--
+				<ul>
+					<li><a href="#none" data-url="#none">dd</a></li>
+				</ul>
+				-->
+			</div>
+
+			<div class="cont page">
+				<h3 class="tit">메인</h3>
+				<table>
+					<summary></summary>
+					<caption></caption>
+					<colgroup>
+						<col width="8%"><col width="8%"><col width="8%"><col width="6%">
+						<col width="6%"><col width="10%"><col width="8%"><col width="4%">
+						<col width="6%"><col width="6%"><col width="4%"><col width="*">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">Level1</th>
+							<th scope="col">Level2</th>
+							<th scope="col">Level3</th>
+							<th scope="col">Level4</th>
+							<th scope="col">Level5</th>
+							<th scope="col" class="fileName">화면ID</th>
+							<th scope="col">형태</th>
+							<th scope="col">담당</th>
+							<th scope="col">시작일자</th>
+							<th scope="col">종료일자</th>
+							<th scope="col">상태</th>
+							<th scope="col">비고</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>공통</td>
+							<td>메인</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/main.html" data-url="./normal/main.html" target="_blank">main.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>공통</td>
+							<td>상품소개</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/proudct_popup.html" data-url="/normal/proudct_popup.html" target="_blank">proudct_popup.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td>관리자단에서 뿌려지는 팝업? 확인 필요</td>
+						</tr>
+						<tr>
+							<td>공통</td>
+							<td>헤더</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/include/inc_body_start.html" data-url="./mobile/main.html" target="_blank">mobile/include/inc_body_start.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>공통</td>
+							<td>헤더</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/include/inc_body_end.html" data-url="/mobile/include/inc_body_end.html" target="_blank">include/inc_body_end.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>공통</td>
+							<td>사아트맵</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/include/sitemap.html" data-url="/normal/include/sitemap.html" target="_blank">include/sitemap.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="cont page">
+				<h3 class="tit">법인 및 상담사 소개</h3>
+				<table>
+					<summary></summary>
+					<caption></caption>
+					<colgroup>
+						<col width="8%"><col width="8%"><col width="8%"><col width="6%">
+						<col width="6%"><col width="10%"><col width="8%"><col width="4%">
+						<col width="6%"><col width="6%"><col width="4%"><col width="*">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">Level1</th>
+							<th scope="col">Level2</th>
+							<th scope="col">Level3</th>
+							<th scope="col">Level4</th>
+							<th scope="col">Level5</th>
+							<th scope="col" class="fileName">화면ID</th>
+							<th scope="col">형태</th>
+							<th scope="col">담당</th>
+							<th scope="col">시작일자</th>
+							<th scope="col">종료일자</th>
+							<th scope="col">상태</th>
+							<th scope="col">비고</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>공통</td>
+							<td>법인 및 상담사 소개</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/introduce.html" data-url="/normal/introduce.html" target="_blank">introduce.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="cont page">
+				<h3 class="tit">고객센터</h3>
+				<table>
+					<summary></summary>
+					<caption></caption>
+					<colgroup>
+						<col width="8%"><col width="8%"><col width="8%"><col width="6%">
+						<col width="6%"><col width="10%"><col width="8%"><col width="4%">
+						<col width="6%"><col width="6%"><col width="4%"><col width="*">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">Level1</th>
+							<th scope="col">Level2</th>
+							<th scope="col">Level3</th>
+							<th scope="col">Level4</th>
+							<th scope="col">Level5</th>
+							<th scope="col" class="fileName">화면ID</th>
+							<th scope="col">형태</th>
+							<th scope="col">담당</th>
+							<th scope="col">시작일자</th>
+							<th scope="col">종료일자</th>
+							<th scope="col">상태</th>
+							<th scope="col">비고</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>금융소비자 보호</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/protection.html" data-url="/normal/protection.html" target="_blank">protection</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>부당행위 신고안내</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/unfair.html" data-url=/normal/unfair.html" target="_blank">unfair</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td>지점안내</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/branchInfo.html" data-url="/normal/branchInfo.html" target="_blank">/normal/branchInfo.html</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>대출계산기</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/calculator.html" data-url="/normal/calculator.html" target="_blank">calculator</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>약관/서식 자료실</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/pds.html" data-url="/normal/pds.html" target="_blank">pds</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>인증센터</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/certification.html" data-url="/normal/certification.html" target="_blank">certification</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>faq</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/faqs.html" data-url="/normal/faqs.html" target="_blank">faqs</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="cont page">
+				<h3 class="tit">대출신청</h3>
+				<table>
+					<summary></summary>
+					<caption></caption>
+					<colgroup>
+						<col width="8%"><col width="8%"><col width="8%"><col width="6%">
+						<col width="6%"><col width="10%"><col width="8%"><col width="4%">
+						<col width="6%"><col width="6%"><col width="4%"><col width="*">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">Level1</th>
+							<th scope="col">Level2</th>
+							<th scope="col">Level3</th>
+							<th scope="col">Level4</th>
+							<th scope="col">Level5</th>
+							<th scope="col" class="fileName">화면ID</th>
+							<th scope="col">형태</th>
+							<th scope="col">담당</th>
+							<th scope="col">시작일자</th>
+							<th scope="col">종료일자</th>
+							<th scope="col">상태</th>
+							<th scope="col">비고</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>대출신청_정보입력</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/01_loan_step2.html" data-url="/normal/01_loan_step2.html" target="_blank">01_loan_step2</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state">대출신청금액, 직장의료보험구분 jsp단에서 none 처리 되어있음. 사용여부 확인 필요</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>(1)_대출신청_공공마이데이터 조회중 </td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/01_loan_step2_popup.html" data-url=/normal/01_loan_step2_popup.html" target="_blank">01_loan_step2_popup</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>빠른서비스</td>
+							<td>대출신청_정보입력</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/02_loan_step2.html" data-url="/normal/02_loan_step2.html" target="_blank">02_loan_step2</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state">컨텐츠영역 화인 필요</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>상품선택</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="/normal/01_loan_step2_2.html" data-url="/normal/01_loan_step2_2.html" target="_blank">01_loan_step2_2</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>신청완료</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="fileName"><a href="//normal/01_loan_comp.html" data-url="//normal/01_loan_comp.html" target="_blank">01_loan_comp</a></td>
+							<td>싱글(S)</td>
+							<td></td>
+							<td class="fromDate"></td>
+							<td class="toDate"></td>
+							<td class="state"></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+
+
+		
+
+
+
+		</section>
+	</div>
+
+<script>
+
+$(document).ready(function(){
+
+	var fromDate = [],
+		toDate = [],
+		dateGap = [];
+
+	var wipCnt = 0, compCnt = 0;
+
+	pjState();
+
+	var headerH = $(".container .header").outerHeight();
+
+	//alert(headerH);
+	$(".container .cont.guide").css("margin-top", headerH + "px");
+
+
+
+function pjState(){
+
+		$(".page table tbody tr").each(function(i, e){
+			fromDate[i] = new Date( $(".fromDate").eq(i).text() );
+			toDate[i] = new Date( $(".toDate").eq(i).text() );
+			dateGap[i] = Math.ceil( (toDate[i].getTime() - fromDate[i].getTime()) / (1000 * 3600 * 24 ));
+
+			dateGap[i] >= 0 ? $(".state").eq(i).html("<span>완</span>").closest("tr").addClass("comp") : $("table .state").eq(i).text("");
+			
+			/* 진행중 
+			if( $(".toDate").eq(i).text() == 0 ){
+				$(".state").eq(i).html("<span>진</span>").closest("tr").addClass("ing");
+				console.log( $(this) );
+			}
+			*/
+
+			($(".state").eq(i).text() == "완") ? compCnt++ : wipCnt++;
+
+			if( $(this).hasClass("Non") ){
+				$(".state").eq(i).html("<span>삭</span>");
+			}else if( $(this).hasClass("confirm") ){
+				$(".state").eq(i).html("<span>기</span>");
+			}else if( $(this).hasClass("ing") ){
+				$(".state").eq(i).html("<span>진</span>");
+			}
+
+		});
+	
+		var totCnt = $(".page table tbody tr").length; 
+
+		var nonCnt = $('.page .Non').length; // 삭제
+		var comCnt = $('.page .common').length; // 공통
+
+		// 완료 + 삭제 + 공통
+		var sumCnt = compCnt + nonCnt + comCnt;
+		
+		$("#confirmCnt").text( $(".page .confirm").length ); // 기획
+		$("#ingCnt").text( $(".page .ing").length ); // 디자인
+				
+
+		$("#compCnt").text(sumCnt); // 합계
+		$("#totCnt").text(totCnt); // 전체
+	
+		$("#totPer").text( Math.floor((sumCnt / totCnt) * 100) + " %");
+		
+		//$(".progressArea > span").animate({ "width" : (test / totCnt) * 100 + "%" }, 1500);
+		//$(".progressArea > span").after("종합 진척률 : " + Math.floor((test / totCnt) * 100) + "%");
+
+	}
+
+	/* list toggle */
+	$('.cont .tit').addClass('on');
+	$('.cont .tit').on('click', function () {
+		$(this).toggleClass('on');
+	})
+
+	
+
+});
+</script>
+</body>
+</html>

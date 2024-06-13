@@ -1,5 +1,107 @@
 @charset "utf-8";
 /* font */
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 600;
+  src: local('Spoqa Han Sans Neo Bold'),
+  url('/resources/font/SpoqaHanSansNeo-Bold.woff2') format('woff2'),
+  url('/resources/font/SpoqaHanSansNeo-Bold.woff') format('woff'),
+  url('/resources/font/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: local('Spoqa Han Sans Neo Medium'),
+  url('/resources/font/SpoqaHanSansNeo-Medium.woff2') format('woff2'),
+  url('/resources/font/SpoqaHanSansNeo-Medium.woff') format('woff'),
+  url('/resources/font/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: local('Spoqa Han Sans Neo Regular'),
+  url('/resources/font/SpoqaHanSansNeo-Regular.woff2') format('woff2'),
+  url('/resources/font/SpoqaHanSansNeo-Regular.woff') format('woff'),
+  url('/resources/font/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: local('Spoqa Han Sans Neo Light'),
+  url('/resources/font/SpoqaHanSansNeo-Light.woff2') format('woff2'),
+  url('/resources/font/SpoqaHanSansNeo-Light.woff') format('woff'),
+  url('/resources/font/SpoqaHanSansNeo-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Heungkukseed';
+  font-weight: 600;
+  src: local('HeungkukseedB'),
+  url('/resources/font/HeungkukseedB.woff2') format('woff2'),
+  url('/resources/font/HeungkukseedB.woff') format('woff'),
+  url('/resources/font/HeungkukseedB.eot') format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Heungkukseed';
+  font-weight: 500;
+  src: local('HeungkukseedM'),
+  url('/resources/font/HeungkukseedM.woff2') format('woff2'),
+  url('/resources/font/HeungkukseedM.woff') format('woff'),
+  url('/resources/font/HeungkukseedM.eot') format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'Heungkukseed';
+  font-weight: 300;
+  src: local('HeungkukseedL'),
+  url('/resources/font/HeungkukseedL.woff2') format('woff2'),
+  url('/resources/font/HeungkukseedL.woff') format('woff'),
+  url('/resources/font/HeungkukseedL.eot') format('embedded-opentype');
+}
+
+
+
+
+
+
+
+:root {
+  --primary:#4E32A5;
+  --primary2:#F1108E;
+  --red:#FF0000;
+  --disabled:#EEEEEE;
+  --background-f8:#F8F8F8;
+  --background-fa:#FAFAFA;
+  --background-f7:#F7F9FC;
+  --title:#333333;
+  --normal:#111111;
+  --normal-91:#999999;
+  --normal-99:#999999;
+  --normal-66:#666666;
+  --white: #fff;
+  --border-91:#919191;
+  --border-e1:#E1E1E1;
+  --border-bb:#bbbbbb;
+  --border-dd:#dddddd;
+  --font50:50px;
+  --font30:30px;
+  --font28:28px;
+  --font27:27px;
+  --font26:26px;
+  --font25:25px;
+  --font21:22px;
+  --font22:22px;
+  --font18:18px;
+  --font17:16px;
+  --font16:16px;
+  --font14:14px;
+  --font13:13px;
+  --font12:12px;
+}  
 
 /*base*/
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
@@ -11,7 +113,7 @@ table{border-collapse:collapse; border-spacing:0; width:100%}
 fieldset{border:0}
 legend, caption{width:0; height:0; text-indent:-10000px; font-size:0px; line-height:0; position:absolute; left:-99999px; }
 textarea{border:2px solid #dbdbdc; padding:8px 10px !important; line-height:18px; resize:none; }
-input, textarea { vertical-align:middle; font-size:14px; color:#292929; font-family: "맑은 고딕", "Malgun Gothic","Apple SD Gothic Neo", sans-serif; padding:0; margin:0; }
+input, textarea { vertical-align:middle; font-size:14px; color:var(--normal); padding:0; margin:0; }
 input[type="checkbox"] { width:12px; height:12px; margin-right:7px;}
 input[type="radio"] { width:13px; height:13px; border:none; }
 input[type="file"]{height:22px; color:#666; border:1px solid #d4d4d4; line-height:22px; vertical-align:middle; background:#fff}
@@ -138,6 +240,7 @@ button { padding:0; border:none; cursor:pointer; font-family:inherit; background
 
 /******** UI ********/
 [class*='btn'] { display:inline-block;}
+.ui-widget { font-family:'Spoqa Han Sans Neo' !important;}
 
 /*radio, checkbox custom style*/
 .check { display:inline-block; padding:0px; height:18px; /*line-height:18px;*/ line-height:1; padding-left:25px;}
@@ -152,97 +255,13 @@ label{ margin:0;line-height:1.5em; letter-spacing: -1px; }
 .check.focus:before, .radio.focus:before { display:block; content:''; width:18px; height:18px; border:2px solid #a1c3fa; position:absolute; top:50%; left:-2px; margin-top:-11px; line-height:14px; box-sizing:content-box;}
 .radio.focus:before { width:20px; height:20px; margin-top:-12px; }
 
-/* selectbox */
-.select-wrap { display:block; width:100%; }
-.select-wrap:after { display:block; content:''; clear:both; }
-.select-wrap .ui-selectmenu-button { float:none !important; padding:9px 12px 9px 12px; width:100% !important; height:44px; letter-spacing:-0.8px; font-size:16px; line-height:1.45 !important; color:#888 !important; font-weight:normal !important; display:block; cursor:pointer; border:none; border:1px solid #b3bbc0 !important; background:#fff url('../images/common/bg_select_arrow_up.png') no-repeat right 10px center !important; }
-.select-wrap .ui-selectmenu-button:focus { border:2px solid #EC008C !important; outline:none;}
-.select-wrap .ui-selectmenu-button.in-value { color: #000 !important; }
-.select-wrap .ui-corner-all, .ui-corner-bottom,
-.select-wrap .ui-corner-right, .ui-corner-br { border-radius:0; }
-.select-wrap .ui-state-hover .ui-icon,
-.select-wrap .ui-state-focus .ui-icon,
-.select-wrap .ui-button:hover .ui-icon,
-.select-wrap .ui-button:focus .ui-icon,
-.select-wrap .ui-state-active .ui-icon,
-.select-wrap .ui-button:active .ui-icon,
-.select-wrap .ui-button .ui-icon { display:none;}
-.select-wrap input.selectbox:focus { outline:none; }
-.select-wrap div.selectbox-wrapper { position:absolute; background-color:white; border:1px solid #cbcbcb; margin:0; padding:0; text-align:left; *height:60px; /*IE6 fix */ overflow-y:auto; z-index:1; max-height:300px; }
-.select-wrap div.selectbox-wrapper ul { display:block; }
-.select-wrap div.selectbox-wrapper ul li.selected{background-color:#fff}
-.select-wrap div.selectbox-wrapper ul li.current{background-color:#ddd}
-.select-wrap div.selectbox-wrapper ul li.selectbg{background-color:#ddd}
-.ui-selectmenu-menu .ui-menu-item .ui-state-active { background-color:#ddd; border:none; color:#000; margin:0;}
-.select-wrap div.selectbox-wrapper ul li{list-style-type:none; display:block; margin:0; padding:2px 5px 2px 10px; cursor:pointer; font-size:14px; line-height:28px; }
-html:first-child select{} /* Opera 9 & Below Fix */
 
-
-/* selectbox 디자인만 */
-select:not(.no-style) {
-  font-family:inherit;  /* 폰트 상속 */
-  border-radius:0px; /* iOS 둥근모서리 제거 */
-  -webkit-appearance:none; /* 네이티브 외형 감추기 */
-  -moz-appearance:none;
-  appearance:none;
-}
 /*file custom*/
 .file-wrap { position:relative;}
 .file-wrap .btn.file { display:inline-block; padding:5px 17px; margin-left:6px; margin-top:8px; border:1px solid #545454; border-radius:0; text-align:center; color:#252525; font-size:12px; font-weight:500; background:#fff; }
 .file-wrap .input-file-hidden { position:absolute; left:0; top:0; width:100%; height:100%; opacity:0; cursor:pointer; }
 
-/* IE 10, 11의 네이티브 화살표 숨기기 */
-select::-ms-expand {
-  display:none;
-}
-.input-box { position:relative; }
-.input-box label {
-  position:absolute;
-  top:1px;  /* input 요소의 border-top 설정값 만큼 */
-  left:1px;  /* input 요소의 border-left 설정값 만큼 */
-  padding:7px 11px;  /* input 요소의 padding 값 만큼 */
-  color:#999;
-  cursor:text;
-}
-/*input*/
-input[type="text"],
-input[type="password"],
-input[type="tel"] {
-  height:auto;  /* 높이 초기화 */
-  line-height:normal;  /* line-height 초기화 */
-  padding:0px 12px;  /* 여백 설정 */
-  box-sizing:border-box;
-  width:auto;
-  background:#fff;
-  border:1px solid #B3BBC0;
-  font-size:16px;
-  font-family:inherit;
-  border-radius:0;  /* iSO 둥근모서리 제거 */
-  -webkit-appearance:none;  /* 브라우저별 기본 스타일링 제거 */
-  -moz-appearance:none;
-  appearance:none;
-}
-input[type="text"][placeholder] { color:#888 !important; }
-input[type="text"]::-ms-clear, input[type="password"]::-ms-clear, input[type="tel"]::-ms-clear { display:none; }
-input[type="text"]:focus,input[type="password"]:focus,input[type="tel"]:focus { border:none; border:2px solid #EC008C; outline:none;}
-::-webkit-input-placeholder {
-   color:#888;
-}
-:-moz-placeholder { /* Firefox 18- */
-   color:#888;
-}
-::-moz-placeholder {  /* Firefox 19+ */
-   color:#888;
-}
-:-ms-input-placeholder {
-   color:#888;
-}
-input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder { /* WebKit browsers */ color:transparent;  }
-input:focus:-moz-placeholder, textarea:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color:transparent; }
-input:focus::-moz-placeholder, textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ */ color:transparent; }
-input:focus:-ms-input-placeholder, textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+ */ color:transparent; }
-/*textarea*/
-textarea { width:100%; border:1px solid #dfdfdf; }
+
 
 /* blind */
 .blind{width:0; height:0; text-indent:-10000px; font-size:0px; line-height:0px; position:absolute; left:-99999px; }

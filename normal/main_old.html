@@ -1,0 +1,473 @@
+<html lang="ko" style=""><head>
+    <title>법인 및 상담사 소개 &lt; 예가람저축은행</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="keywords" content="예가람저축은행 모집인 상담사">
+    <meta name="description" content="법인 및 상담사 소개, 고객센터, 대출신청">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:image" content="https://dsr-next.yegaramsb.co.kr/resources/normal/images/temp/meta-img-square.jpg">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico">
+    <link href="/resources/normal/css/jquery.bxslider.css" rel="stylesheet">
+    <link href="/resources/normal/css/default.css" rel="stylesheet">
+    <link href="/resources/normal/css/layout.css" rel="stylesheet">
+    <link href="/resources/normal/css/contents.css" rel="stylesheet">
+
+    <link href="/resources/normal/css/jquery-ui.css" rel="stylesheet"><!-- 180424 추가 -->
+    <script src="/resources/normal/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/resources/normal/js/TweenMax.min.js" type="text/javascript"></script>
+    <script src="/resources/normal/js/jquery.bxslider.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="/resources/normal/js/respond.min.js"></script>
+    <script src="/resources/normal/js/html5.js"></script>
+    <![endif]-->
+    <script src="/resources/normal/js/jquery-ui.js" type="text/javascript"></script><!-- 180424 추가 -->
+    <script src="/resources/normal/js/default.js?v=20210209" type="text/javascript"></script>
+    <script src="/resources/normal/js/ui.js?v=20210326" type="text/javascript"></script>
+    <script src="/resources/normal/js/iscroll.js" type="text/javascript"></script><!-- 180504 추가 -->
+    <script type="text/javascript" src="/resources/normal/js/common_ajax.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/common_pagevalidate.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/common_util.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/placeholders.js"></script> <!-- 180430 플러그인추가 -->
+    <script type="text/javascript" src="/resources/normal/js/jquery.animateSprite.min.js"></script> <!-- 180430 플러그인추가 -->
+    <script src="/resources/normal/js/streamdocs/adapter.js"></script>
+
+    </head>
+<script type="text/javascript">
+$(function() {
+	PageFunc.ajaxPopupList();
+});
+
+var PageFunc = ({
+	
+	
+	ajaxPopupList : function() {
+		AjaxFunc.ajaxAsync('<c:url value="${ajaxPopupList}" />', "", function(res){
+			removeLoading();
+			if(res.result) {
+				if(res.data.length>0){
+					PageFunc.checkCookie(res.data);
+				}
+			}else {
+				console.log(res);
+				
+			}
+		}, on_error);
+    },
+	
+	
+    checkCookie : function (data) {
+		if(document.cookie.indexOf("popupList=done") === -1) {
+        	PageFuncPopup.init(data);
+        } 
+    },
+    
+    setCookie : function (name) {
+        var todayDate = new Date();
+        var value = "done";
+        var expiredays = 1;
+        todayDate.setDate(todayDate.getDate()+expiredays);
+        document.cookie = name +"=" +escape(value) + "; path=/; expires="+todayDate.toGMTString() + ";";
+        closePopup("popupLayer");
+		$("#popup_btn").hide();
+   },
+});
+
+
+function on_error() {
+	removeLoading();
+}
+
+function retailYn(){
+	var retailYn = "${retailYn}";
+	if(retailYn == 'N'){
+		location.href =  "<c:url value="${loanRequest }"/>"+"?retailYn=N";
+	}else{
+		location.href =  "<c:url value="${retailLoanRequest }"/>"+"?retailYn=Y";
+	}
+}
+
+</script>
+<style type="text/css">
+/* notice */
+.noti-wrap { margin:25px 0; }
+.noti-wrap .noti-area{ position:relative; }
+.noti-wrap .tit { position:relative; height:20px; }
+.noti-wrap .tit img { width:auto; height:100%; vertical-align:top; }
+.noti-wrap .noti-area .more { position:absolute; top:3px; right:0; width:14px; height:14px; background:url('../images/common/btn_more.png') no-repeat 0 0; background-size:auto 14px;; }
+.noti-wrap .noti-banner {  margin-top:5px; line-height:1.4; }
+.noti-wrap a span { display:inline-block; vertical-align:middle; }
+.noti-wrap a .title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:calc(100% - 80px); font-size:14px; }
+.noti-wrap a .date { margin-left:10px; font-size:14px;}
+.noti-banner .bx-wrapper { margin: 0; width:calc(100% - 35px);}
+.noti-banner .bx-viewport { background:transparent; }
+.noti-banner .bx-wrapper .bx-controls.bx-has-controls-auto { width:35px; height:12px; position:absolute; top:50%; right:0; /*margin-top:-6px;*/ }
+.noti-banner .bx-controls-auto { right:-35px; bottom: 0; left:inherit; }
+.noti-wrap .app-info { margin-top:25px; }
+.noti-wrap .app-info .btn-popup { display:block; padding-right:0; }
+.noti-wrap .customer { margin-top:25px; }
+.noti-wrap .info-cts { display:table; width:100%; margin-top:10px; }
+.noti-wrap .info-num, .noti-wrap .info-txt { display:table-cell; width:52%; vertical-align:middle; }
+.noti-wrap .info-txt { padding-left:10px; font-size:12px; line-height:18px; }
+
+#popup_btn { height:45px; margin-top:0; background:#464646; display:none;}
+#popup_btn button { position:relative; width:49%; margin:0; color:#fff; font-size:12px; text-align:center; line-height:45px; }
+#popup_btn button + button:before { display:block; content:""; position:absolute; top:50%; left:0; width:1px; height:20px; margin-top:-10px; background:#787878; }
+
+/* 공지사항 팝업 */
+.noti-layer { width:90%; padding:0; border-width:2px; outline:none;}
+.noti-layer .btn-menu-close { background-size:90% auto; }
+.noti-layer .bx-wrapper .bx-has-pager { bottom:3%; }
+.noti-layer .bx-wrapper .bx-pager.bx-default-pager a,
+.noti-layer .bx-wrapper .bx-controls-auto .bx-start,
+.noti-layer .bx-wrapper .bx-controls-auto .bx-stop { width:10px; height:10px; background-size:100% auto; }
+.noti-layer .bx-wrapper .bx-pager.bx-default-pager a:hover, .noti-layer .bx-wrapper .bx-pager.bx-default-pager a.active { background:#787878; }
+.noti-layer .btn-wrap { height:45px; margin-top:0; background:#464646; }
+.noti-layer .btn-wrap button { position:relative; width:50%; margin:0; color:#fff; font-size:12px; text-align:center; line-height:45px; }
+.noti-layer .btn-wrap button + button:before { display:block; content:""; position:absolute; top:50%; left:0; width:1px; height:20px; margin-top:-10px; background:#787878; }
+
+
+
+/******** button ********/
+.btn-wrap { width:100%; margin-top:30px; text-align:center; }
+.btn-wrap a, .btn-wrap button { position:relative; display:inline-block; }
+.btn-wrap a+a, .btn-wrap a+button, .btn-wrap button+a, .btn-wrap button+button { margin-left:5px; }
+.btn-wrap.full a, .btn-wrap.full button { display:block; width:100%; }
+.btn-wrap.full a+a, .btn-wrap.full a+button, .btn-wrap.full button+a, .btn-wrap.full button+button { margin-left:0; margin-top:10px; }
+
+
+/******** layerpopup ********/
+.layerpopup_noti { position:absolute; display:none; overflow-y:auto; width:90%;z-index:20; background:#fff; border-top:2px solid #EC008C; -webkit-overflow-scrolling:touch; }
+.layerpopup_noti .pop-wrap { /*padding:70px 80px;*/ }
+.layerpopup_noti .pop-tit {  }
+.layerpopup_noti .tit { color:#612885; font-size:2.5rem; line-height:3rem; letter-spacing:-2px; }
+.layerpopup_noti .desc { margin-top:20px; }
+.layerpopup_noti .pop-tit + .pop-cts { margin-top:20px; padding-top:20px; border-top:1px solid #ccc; }
+.layerpopup_noti .pop-cts .tit-txt { margin-top:40px; padding-bottom:10px; color:#333; font-size:2rem; line-height:2.8rem; letter-spacing:-1.8px; }
+.layerpopup_noti .btn-menu-close { position:absolute; top:15px; right:20px; z-index:25; width:35px; height:35px; background-image:url(../images/common/btn_close.png); background-repeat:no-repeat; background-size:100% auto; text-indent:-9999px; }
+
+
+/* bx 공통 */
+.bx-wrapper { margin:0; }
+.bx-wrapper .bx-viewport { background:transparent; }
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto { display:inline-block; position:relative; bottom:auto; right:auto; width:auto; }
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager { position:relative; bottom:auto; width:auto; text-align:center; }
+.bx-wrapper .bx-pager { display:inline-block; padding:0; margin-left:10px; height:12px; vertical-align:top; }
+.bx-wrapper .bx-pager.bx-default-pager a { background:#b3bbc0; width:12px; height:12px; margin:0 4px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; }
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active { background:#ec008c; }
+.bx-wrapper .bx-controls-auto .bx-start { width:12px; height:12px; background:url(../resources/mobile/images/main/ico_play.png) no-repeat; margin:0; }
+.bx-wrapper .bx-controls-auto .bx-stop { width:12px; height:12px; background:url(../resources/mobile/images/main/ico_pause.png) no-repeat; margin:0; }
+.bx-wrapper li a { display: block; }
+.bx-wrapper .bx-controls-auto .bx-start, .bx-wrapper .bx-controls-auto .bx-stop { display:block; }
+.bx-wrapper .bx-controls-auto .bx-start.active, .bx-wrapper .bx-controls-auto .bx-stop.active { display:none; }
+.bx-wrapper .bx-has-pager { position:absolute; width:100%;  left:0; bottom:5%; text-align:center; }
+
+</style>
+
+<!-- s:header -->
+    <div id="headerWrap">
+    <div class="header">
+            <!--D : h1 위치 변경 및 corporate-info 구조 ul, li로 변경 - 대출상담사 김도형 부분 em으로 한번 더 감싸기-->
+            <ul class="fl-l corporate-info">
+            <li>대출모집법인 테스트법인</li>
+            <li><em>대출상담사 김도형</em></li>
+            </ul>
+        <h1>
+            <a class="loading" href="/5959797913231323">
+            <img src="/resources/normal/images/common/img_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행"></a>
+        </h1>
+        <div class="menu-wrap">
+            <div class="menu-top fl-r">
+                <ul>
+                    <li><a href="#none" class="menu01 btn-sitemap" data-tooltip="sitemap-layer">사이트맵</a></li>
+                    <li><a href="http://www.yegaramsb.co.kr" class="menu02" target="_blank" title="새창으로">예가람저축은행 바로가기</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <ul id="gnb" style="height:auto;">
+                <li class="depth1">
+                    <a href="/5959797913231323/introduce" class="menu01 loading active"><span>법인 및 상담사 소개</span></a>
+                </li>
+                <li class="depth1">
+                    <a href="/5959797913231323/cs/protection" class="menu02 loading"><span>고객센터</span></a>
+                    <ul class="depth2-wrap" style="display: none;">
+                        <li class="col1">
+                            <ul class="depth2">
+                                <li><a class="loading" href="/5959797913231323/cs/protection">금융소비자보호</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/branchInfo">지점안내</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/unfair">부당행위 신고안내</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/pds">약관/서식 자료실</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/faqs">FAQ</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/calculator">대출계산기</a></li>
+                                <li><a class="loading" href="/5959797913231323/cs/certification">인증센터</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="depth1">
+                    <a href="/5959797913231323/loan/01_loan_step2" class="menu03 loading">
+                        <!--D : blob, blob2 태그 삭제-->
+                        <span>대출신청</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+<!-- //e:header -->
+	    <!-- s contentsWrap -->
+        <div id="contentsWrap">
+            <div class="main-wrap">
+                <div class="top">
+                    <div class="banner-wrap">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <img src="/resources/normal/images/temp/img_main_banner1.png" alt="더 나은 미래를 창조하는 예가람저축은행">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <img src="/resources/normal/images/temp/img_main_banner2.png" alt="더 나은 미래를 창조하는 예가람저축은행">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script type="text/javascript">
+                        $('.banner-wrap ul').bxSlider({
+                            mode: 'fade',
+                            speed:600,
+                            auto:true,
+                            pager: true,
+                            controls: false,
+                            autoControls: true,
+                            autoHover: true, 
+                            touchEnabled : false
+                        });
+                    </script>
+                    <div class="right">
+                        <ul class="vertical-tab">
+                            <li class="counselor active">
+                                <button type="button" name="button" class="ir">상담사정보</button>
+                            </li>
+                            <li class="quickloan">
+                                <button type="button" name="button" class="ir">빠른대출신청</button>
+                            </li>
+                        </ul>
+                        <div class="vertical-tab-content">
+                            <div class="con-wrap" style="display:block;">
+                                <div class="con mb30">
+                                    <div class="name-wrap mb25 fl-l">
+                                        <hr class="bg-EC008C mb15">
+                                        <p class="font12 color-333333">예가람저축은행 <span style="font-size:20px;">대출모집법인</span></p>
+                                        <p class="font18 color-333333">테스트법인 대출상담사</p>
+                                        <p class="font40 color-333333">김도형</p>
+                                    </div>
+                                    <div class="photo-wrap mb25 fl-r">
+                                        <div class="photo">
+                                            <img src="/5959797913231323/images/hO1iqVEvWs9l0XuzINd1QQ%3D%3D" alt="상담사 사진" style="display:none;">
+                                        </div>
+                                    </div>
+                                    <div class="number-wrap clear mb30">
+                                        <div class="hp-num">
+                                            <p class="font13 color-351B6F mb5">전화번호</p>
+                                            <p class="font20 color-333333 mb5">010-1234-1234 </p>
+                                        </div>
+                                        <div class="reg-num">
+                                            <p class="font13 color-351B6F mb5">저축은행중앙회등록번호 </p>
+                                            <p class="font20 color-333333 mb5">10-13231323 </p>
+                                            <a href="http://www.loanconsultant.or.kr/" target="_blank"><button type="button" name="button" class="btn-popup has-bg">저축은행 상담사 조회</button></a>
+                                        </div>
+                                    </div>
+                                    <hr class="mb20">
+                                    <div class="step-wrap">
+                                        <!-- D : p태그 이미지 삭제 및 텍스트로 변경, 클래스 변경-->
+                                        <p class="tit">
+                                            <em>예가람저축은행 대출절차</em>
+                                            <span>신속하고 간편하게!</span>
+                                        </p>
+                                        <ul>
+                                            <li class="step1"><p>온라인대출신청</p></li>
+                                            <li class="step2"><p>대출심사</p></li>
+                                            <li class="step3"><p>대출송금</p></li>
+                                        </ul>
+                                        <!--D : 버튼 영역 step 안으로 집어 넣기-->
+                                        <p class="btn-wrap">
+                                            <button class="btn bg-EC008C loanBtn" onclick="retailYn()"><span>빠른 대출 신청하기</span></button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="con-wrap" style="display:none;">
+                                <form name="frm1" id="frm1">
+                                    <input type="hidden" id="phone_no" name="phone_no">
+                                    <input type="hidden" name="prod_category_cd" id="prod_category_cd" value="">
+                                    <input type="hidden" id="prod_nm" name="prod_nm" value="">
+                                    <input type="hidden" name="ntree_auth" value="false">
+                                    <input type="hidden" name="encData" id="encData">
+                                    <div class="con mb30">
+                                        <div class="name-wrap mb25">
+                                            <hr class="bg-EC008C mb15">
+                                            <!--D : 문구추가 -->
+                                            <p class="font20">예가람저축은행<br>빠른 대출신청 간단정보 입력</p>
+                                        </div>
+                                        <div class="form-wrap mb20">
+                                            <p class="input-tit font13 color-351B6F">대출상품</p>
+                                            <div class="select-wrap">
+                                                <select name="prod_cd" id="prod_cd" style="display: none;">
+                                                    <option selected="selected" value="">대출상품을 선택하세요</option>
+                                                    <option value="GL018">근로자햇살론</option>
+                                                    <option value="GL077">빅머니A</option>
+                                                    <option value="GL048">라이브A론</option>
+                                                    <option value="GL056">사잇돌II(+두배론)</option>
+                                                    <option value="GL046">라이브T</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-wrap mb20">
+                                            <p class="input-tit font13 color-351B6F">이름</p>
+                                            <input type="text" name="cust_nm" id="cust_nm" class="ko-txt" placeholder="고객실명입력">
+                                        </div>
+                                        <div class="form-wrap mb20">
+                                            <p class="input-tit font13 color-351B6F">핸드폰번호 *</p>
+                                            <div class="hp1 fl-l">
+                                                <div class="select-wrap">
+                                                    <select name="telecom" id="telecom" style="display: none;">
+                                                        <option selected="selected" value="">통신사</option>
+                                                        <option value="S000500001">SKT</option>
+                                                        <option value="S000500002">KT</option>
+                                                        <option value="S000500003">LGU+</option>
+                                                        <option value="S000500004">알뜰폰(SKT)</option>
+                                                        <option value="S000500005">알뜰폰(KT)</option>
+                                                        <option value="S000500006">알뜰폰(LGU+)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="hp2 fl-l">
+                                                <div class="select-wrap">
+                                                    <select id="phone_no1" style="display: none;">
+                                                        <option value="010">010</option>
+                                                        <option value="011">011</option>
+                                                        <option value="016">016</option>
+                                                        <option value="017">017</option>
+                                                        <option value="018">018</option>
+                                                        <option value="019">019</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <span class="fl-l hyphen">-</span>
+                                            <div class="hp3 fl-l">
+                                                <input type="text" value="" id="phone_no2" placeholder="" title="핸드폰 두번째 자리" maxlength="4">
+                                            </div>
+                                            <span class="fl-l hyphen">-</span>
+                                            <div class="hp4 fl-l">
+                                                <input type="text" value="" id="phone_no3" placeholder="" title="핸드폰 세번째 자리" maxlength="4">
+                                            </div>
+                                        </div>
+                                        <div class="form-wrap">
+                                            <p class="input-tit font13 color-351B6F">주민등록번호 *</p>
+                                            <div class="idn1 fl-l mb5">
+                                                <input type="text" name="ssn1" value="" id="ssn1" placeholder="" title="주민등록번호 앞번호" maxlength="6">
+                                            </div>
+                                            <span class="fl-l hyphen">-</span>
+                                            <div class="idn2 fl-l mb5">
+                                                <input type="password" name="ssn2" value="" id="ssn2" placeholder="" title="주민등록번호 뒷번호" maxlength="7" e2e_type="1">
+                                            </div>
+                                            <p class="font12 color-626C74 clear rice">당 저축은행은 신용정보의 이용 및 보호에 관한 법률 시행령 제37조의2에 의거하여 주민등록번호를 수집합니다.</p>
+                                            <p class="font12 color-626C74 rice">고객님께서 입력하신 개인정보는 대출신청 완료 후 수집됩니다.</p>
+                                        </div>
+                                    </div>
+                                </form>
+                                    <p class="btn-wrap">
+                                        <button onclick="loan_request()" class="btn bg-EC008C"><span>추가정보 입력하기</span></button>
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <ul>
+                        <li class="etc1"><a class="loading" href="/5959797913231323/cs/protection">상품판매준칙</a></li>
+                        <li class="etc2"><a href="http://www.yegaramsb.co.kr/center/privacy_info_policy" target="_blank" title="새창으로">개인정보처리방침</a></li>
+                        <li class="etc3"><a class="loading" href="/5959797913231323/cs/branchInfo">지점안내</a></li>
+                        <li class="etc4"><a class="loading" href="/5959797913231323/cs/unfair">부당행위 신고안내</a></li>
+                        <li class="etc5"><a class="loading" href="/5959797913231323/cs/pds">약관/서식자료실</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	    <!-- //e: contentsWrap -->
+
+		<!-- ********** //Include ********** -->
+
+	 <!-- s footerWrap -->
+     <div id="footerWrap">
+        <div class="top-wrap">
+            <div class="default-wrap">
+                <div class="fl-l">
+                    <span class="counselor">대출상담사 김도형</span>
+                    <span class="hp color-EC008C">010-1234-1234</span>
+                    <span class="time">( 평일 09:00 ~ 18:00 상담가능. 국경일 및 토,일요일은 휴무 )</span>
+                </div>
+                <!-- s:family-site-wrap -->
+                <div class="family-site-wrap of-hi fl-r">
+                    <label class="blind" for="family-site">관련사이트</label>
+                    <div class="select-wrap fl-l">
+                        <select name="" id="family-site">
+                            <option selected="selected" value="">관련사이트</option>
+                            <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
+                            <option value="http://www.fss.or.kr">금융감독원</option>
+                            <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
+                            <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
+                        </select>
+                    </div>
+                    <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
+                </div>
+                <!-- //e:family-site-wrap -->
+            </div>
+        </div>
+        <div class="footer default-wrap">
+            <div class="copyright">
+                <p class="mb15">상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 테스트법인 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다.<br>
+                    또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
+                    대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
+                    예가람저축은행 소비자보호 담당자 : 02)6906-7065<br>
+                대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실&gt;모집인수수료율)<br>     
+                신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr </a> <br> 
+                금융소비자는 방문판매 목적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
+                두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
+                    </p>
+                <p class="mb15">
+                    - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
+            - 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
+            - 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
+            - 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
+            - 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
+            - 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
+            - 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
+            - 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
+            - 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
+            - 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.<br>
+                </p>
+                <p>예가람저축은행&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호 : 107-86-66267 &nbsp;&nbsp;|&nbsp;&nbsp;주소 : 서울특별시 중구 세종대로 50&nbsp;&nbsp;|&nbsp;&nbsp;대표번호 : 1877-7788&nbsp;&nbsp;|&nbsp;&nbsp;금융사기 야간콜센터 : (02)3978-600,800<br>
+                    
+                            
+                            예가람저축은행 준법감시인 심의필 제 2024-097호(2024.05.20 ~2025.05.19)
+                        
+                        
+                    
+                    &nbsp;&nbsp;|&nbsp;&nbsp;Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!-- 예가람저축은행 준법감시인 심의필제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18) -->
+            </div>
+            <div class="footer-logo">
+                <!--D:이미지 위치 아래 위 변경-->
+                <img src="/resources/normal/images/common/img_footer_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행">
+				<img style="margin-top:25px; width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
+            </div>
+        </div>
+    </div>
+    <!-- //e:footerWrap -->
+</html>

@@ -1,0 +1,41 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<div class="copyright">
+	<p>상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 <c:out value="${sDsrUser.CORP_NM}"/> 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다. <br>
+        또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
+        대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
+        예가람저축은행 소비자보호 담당자 : 02)6906-7065 <br>
+        대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실>모집인수수료율)<br>
+   	 신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr</a> <br> 
+         금융소비자는 방문판매 복적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
+         두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
+        
+        </p>
+	<p class="mt10">
+	    - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
+- 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
+- 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
+- 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
+- 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
+- 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
+- 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
+- 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
+- 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
+- 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.
+	</p>
+	<p class="mt10" style="width:calc(100% - 100px);float:left;">예가람저축은행 | 사업자등록번호 : <c:out value="${_PROPS.BIZ_NO.VALUE}"/> | 주소 : <c:out value="${_PROPS.ADDR.VALUE}"/> | 대표번호 : <a href="tel:${_PROPS.SRVC_CNTR.VALUE}"><c:out value="${_PROPS.SRVC_CNTR.VALUE}"/></a> | 금융사기 야간콜센터 <c:out value="${_PROPS.CALL_CENTER.VALUE}"/>
+       	<c:choose>
+        	<c:when test="${retailYn eq 'N'}">	
+        		예가람저축은행 준법감시인 심의필 제 2024-097호(2024.05.20 ~2025.05.19)
+        	</c:when>
+        	<c:otherwise>
+        		예가람저축은행 준법감시인 심의필 제 2024-086호(2024.04.23 ~2025.04.22)
+        	</c:otherwise>
+       	</c:choose>
+       | Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!--  예가람저축은행 준법감시인 심의필 <c:out value="${_PROPS.DELIBERATION.VALUE}"/> -->
+	<div style="float:right;margin-top:10px;">
+		<img class="img-kisa" src="/resources/mobile/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
+	</div>
+       
+</div>

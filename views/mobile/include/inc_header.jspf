@@ -1,0 +1,57 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<title>예가람저축은행 모집인 상담사</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="keywords" content="예가람저축은행 모집인 상담사" />
+<meta name="description" content="법인 및 상담사 소개, 고객센터, 대출신청" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:image" content="https://<%= request.getServerName() %>/resources/normal/images/temp/meta-img-square.jpg">
+
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/favicon.ico"/>" />
+<link href="<c:url value="/resources/mobile/css/jquery.bxslider.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/mobile/css/default.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/mobile/css/layout.css?v=20201012"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/mobile/css/contents.css?v=20201013"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/mobile/css/jquery-ui.css"/>" rel="stylesheet" /><!-- 180424 추가 -->
+<link href="<c:url value="/resources/mobile/css/swiper.min.css"/>" rel="stylesheet" /><!-- 180424 추가 -->
+
+<script src="<c:url value="/resources/mobile/js/jquery-1.11.3.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/mobile/js/jquery.bxslider.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/mobile/js/jquery-ui.js"/>" type="text/javascript"></script><!-- 180424 추가 -->
+<script src="<c:url value="/resources/mobile/js/TweenMax.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/mobile/js/default.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/mobile/js/ui.js?v=20210327"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/mobile/js/swiper.min.js"/>" type="text/javascript"></script>
+
+<script type="text/javascript" src="<c:url value="/resources/mobile/js/common_ajax.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/mobile/js/common_pagevalidate.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/mobile/js/common_util.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/mobile/js/jquery.animateSprite.min.js"/>"></script>
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-114050405-1');
+    
+    $(function() {
+    	function loading() {
+    		$('.menu-close').click();
+    		addLoading(Math.round(Math.random() + 1));
+    	}
+		$('.loading').click(loading);
+    });
+</script>
+<%-- <c:set var="streamdocsAdd" value="https://sapp.yegaramsb.co.kr/streamdocs/view/sd;streamdocsId=" /> --%>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114050405-1"></script>
+<script src="/resources/normal/js/streamdocs/adapter.js"></script> 
+<%@ include file="../include/inc_check_secure.jspf" %>

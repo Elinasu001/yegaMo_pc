@@ -1,0 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="co.kr.yegaramsb.common.util.DateUtil"%>
+
+<script type="text/javascript">
+	$(function() {
+		loanCheckTime();
+	});
+		
+	function loanCheckTime(){
+		var startTime = '20220630170000';
+		var endTime   = '20220701000000';
+// 		removeLoading();
+		if (UtilFunc.getCurrentDttm() > startTime && UtilFunc.getCurrentDttm() < endTime){
+			customAlert({title: "알림", message: '예가람저축은행 시스템 점검으로 인한 서비스 일시중단 안내\n(중단시간 : 2022.06.30 (목) 17:00 ~ 24:00 약 7시간)\n\n * 서버점검 일정에 따라 시간이 변동될 수 있습니다.', btn_txt1: '확인'},
+					 function() {
+				window.history.back();
+			});
+		}
+	}
+  
+	</script>

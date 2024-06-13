@@ -2,546 +2,588 @@
     
 
 
-<title>인증센터 &lt; 고객센터 &lt; 예가람저축은행</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta charset="utf-8">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta name="keywords" content="예가람저축은행 모집인 상담사">
-<meta name="description" content="법인 및 상담사 소개, 고객센터, 대출신청">
-<meta name="apple-mobile-web-app-status-bar-style" content="white">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta property="og:image" content="https://dsr-next.yegaramsb.co.kr/resources/normal/images/temp/meta-img-square.jpg">
-<!-- s:depth setting -->
-<script>
-	
-		
-            var depth1 = 2;//1~3 메뉴순서 없는 메뉴는 메뉴명 기입
+    <title>법인 및 상담사 소개 &lt; 예가람저축은행</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="keywords" content="예가람저축은행 모집인 상담사">
+    <meta name="description" content="법인 및 상담사 소개, 고객센터, 대출신청">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:image" content="https://dsr-next.yegaramsb.co.kr/resources/normal/images/temp/meta-img-square.jpg">
+    <!-- s:depth setting -->
+    <script>
         
-	    
-		
-	
-    
-	    
-	        var depth2 = 7;//1~3 메뉴순서 없는 메뉴는 메뉴명 기입
-	    
-	    
-	    
-    
-</script>
-<!-- //e:depth setting -->
-<link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico">
-<link href="/resources/normal/css/jquery.bxslider.css" rel="stylesheet">
-<link href="/resources/normal/css/default.css" rel="stylesheet">
-<link href="/resources/normal/css/layout.css?v=20190409" rel="stylesheet">
-<link href="/resources/normal/css/contents.css?v=20201013" rel="stylesheet">
-<link href="/resources/normal/css/jquery-ui.css" rel="stylesheet"><!-- 180424 추가 -->
-<script src="/resources/normal/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="/resources/normal/js/TweenMax.min.js" type="text/javascript"></script>
-<script src="/resources/normal/js/jquery.bxslider.min.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-<script src="/resources/normal/js/respond.min.js"></script>
-<script src="/resources/normal/js/html5.js"></script>
-<![endif]-->
-<script src="/resources/normal/js/jquery-ui.js" type="text/javascript"></script><!-- 180424 추가 -->
-<script src="/resources/normal/js/default.js?v=20210209" type="text/javascript"></script>
-<script src="/resources/normal/js/ui.js?v=20210326" type="text/javascript"></script>
-<script src="/resources/normal/js/iscroll.js" type="text/javascript"></script><!-- 180504 추가 -->
-
-<script type="text/javascript" src="/resources/normal/js/common_ajax.js"></script>
-<script type="text/javascript" src="/resources/normal/js/common_pagevalidate.js"></script>
-<script type="text/javascript" src="/resources/normal/js/common_util.js"></script>
-<script type="text/javascript" src="/resources/normal/js/placeholders.js"></script> <!-- 180430 플러그인추가 -->
-<script type="text/javascript" src="/resources/normal/js/jquery.animateSprite.min.js"></script> <!-- 180430 플러그인추가 -->
-<script src="/resources/normal/js/streamdocs/adapter.js"></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-114050405-1');
-    
-    $(function() {
-    	function loading() {
-    		$('.tooltip-close').click();
-    		addLoading(Math.round(Math.random() + 1));
-    	}
-		$('.loading').click(loading);
-    });
-</script>
-
-
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-114050405-1"></script>
-
-
-
-
-<!--델피노 보안 솔루션-->
-<script src="/resources/security/wizvera/delfino/delfino_config.js?20200313" type="text/javascript"></script>
-<script src="/resources/security/wizvera/delfino/delfino_internal.min.js?20170417" type="text/javascript"></script>
-<script src="/resources/security/wizvera/delfino/delfino.js?20170417" type="text/javascript"></script>
-<script src="/resources/security/wizvera/delfino/delfino_site.js?20160912" type="text/javascript"></script>
-
-<!--안랩 보안 솔루션-->
-<script src="/resources/security/ahnlab/astx2/astx2.min.js?r=13284" type="text/javascript"></script>
-<script src="/resources/security/ahnlab/astx2/astx2_custom.js?r=13284" type="text/javascript"></script>
-<script src="/resources/security/ahnlab/astx2/astx2_jq.min.js?r=13284" type="text/javascript"></script>
-
-
-<!-- 베라포트: 공통 -->
-<script type="text/javascript">_SITE_CreateObject = false;</script>
-<!-- script type="text/javascript" src="../jquery/json_parse.js"></script -->
-<script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20.js?v=20190226"></script>
-<!-- 베라포트공통JS -->
-<script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20_multi.js?v=20190226"></script>
-<!-- 베라포트공통JS -->
-<script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20_handler.js"></script>
-<!-- 베라포트공통JS -->
-<script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_internal.js"></script>
-<script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_internal.js"></script>
-<!-- 베라포트공통JS -->
-<!-- 베라포트공통JS -->
-<script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_config.js"></script>
-<!-- 베라포트공통JS -->
-
-
-<!--설치 확인-->
-<script>
-	function SITE_vpInstalCheckResult(isInstall) {
-	    //if (!isInstall) alert("통합설치프로그램이 설치되지 않았습니다.\n'통합설치프로그램다운로드'를 클릭하여 설치하시기 바랍니다.");
-	    if (!isInstall && !(VP_platformInfo.Linux && !VP_platformInfo.Fedora && !VP_platformInfo.Ubuntu)) {
-	    	securityCheckFunc.securityModuleLoadCount += 1;
-	    	securityCheckFunc.unInstallNames += "VP,";
-	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-	            securityCheckFunc.onCheckFinished();
-	        }
-	    }else{
-	    	securityCheckFunc.securityModuleLoadCount += 1;
-	    	if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-	            securityCheckFunc.onCheckFinished();
-	        }
-	    }
-	}
-    var securityCheckFunc = {
-        unifiedInstallationUrl: '/5959797913231323/cs/install?url=' + encodeURIComponent(window.location.href),
-        securityModuleCount: 3,
-        securityModuleLoadCount: 0,
-        unInstallNames: '',
-        checkASTxInstall: function () {
-            $ASTX2.init(
-                function onSuccess() {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                       securityCheckFunc.onCheckFinished();
-                    }
-                    //키보드 보안이 필요한 부분만
-                    $ASTX2.initE2E();
-                },
-                function onFailure() {
-                    var errno = $ASTX2.getLastError();
-                    if (errno != $ASTX2_CONST.ERROR_NOTINST) {
-                        alert("ASTX2에서 에러 발생 페이지를 새로고침해주세요.");
-                    }
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    securityCheckFunc.unInstallNames += "ASTx,";
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                        securityCheckFunc.onCheckFinished();
-                    }
-
-                },
-                750
-            );
-        },
-        checkDelfino: function () {
-            Delfino.isInstall(false, function onResult(result) {
-                if (result) {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                        securityCheckFunc.onCheckFinished();
-                    }
-                } else {
-                    securityCheckFunc.securityModuleLoadCount += 1;
-                    securityCheckFunc.unInstallNames += "DelfinoG3,";
-                    if (securityCheckFunc.securityModuleLoadCount === securityCheckFunc.securityModuleCount) {
-                       securityCheckFunc.onCheckFinished();
-                    }
-                }
-            });
-        },
-        checkAll: function () {
-            this.securityModuleLoadCount = 0;
-            if (typeof isInstallCheck === 'undefined' || isInstallCheck === null) {
-                isInstallCheck = true;
-            }
-            if (!isInstallCheck || !this.isWindowsOS()) {
-                return;
-            }
-            this.checkASTxInstall();
-            this.checkDelfino();
-        },
-        onCheckFinished: function () {
-            if (securityCheckFunc.unInstallNames.length === 0) {
-                setTimeout(function () {
-                }, 0)
-            } else {
-                var redirectLocation = securityCheckFunc.unInstallNames.substr(0, securityCheckFunc.unInstallNames.length - 1);
-                window.location.href = securityCheckFunc.unifiedInstallationUrl + "&P_name=" + redirectLocation;
-            }
-        },
-        isWindowsOS: function () {
-            return navigator.userAgent.toLowerCase().indexOf('windows') > 0;
-        }
-    };
-    $(function () {
-        $(window).ready(function () {
-            securityCheckFunc.checkAll();
-        });
-    });
-</script>
-	<!-- [필수]베라포트: non-Plugin 설치 확인/START-->
-	<script type="text/javascript">if (VP_config.useHandler) execVP_isInstall(timer_vpHandlerLoad);</script>
-	<!-- [필수]베라포트: non-Plugin 설치 확인/END -->
-	</head><body class="color-type1"><div style="display: none">
-	    <div id="VP_msg_installed" style=""> <!-- VeraPort 설치완료 -->
-	    </div>
-	    <div id="VP_msg_notinstall" style="display:none;"> <!-- VeraPort 미설치 -->
-	    </div>
-	    <div id="VP_msg_unsupported" style="display:none;"> <!-- VeraPort 미지원 -->
-	    </div>
-	    <div id="VP_btn_download" style="display:none;">
-	    </div>
-	    <div id="VP_btn_install" style=""></div>
-	</div>
-
-
-    <script type="text/javascript">
-        function completeExportCB(result) {
-            if(result.status==0)  {
-                customAlert({title : '안내', message : '내보내기 취소' }, function() {});
-            } else if(result.status==1) {
-                customAlert({title : '안내', message : '내보내기 성공' }, function() {});
-            } else {
-                customAlert({title : '안내', message : result.message + "[" + result.status + "]" }, function() {});
-            }
-        }
+            
+                var depth1 = 1;//1~3 메뉴순서 없는 메뉴는 메뉴명 기입
+            
+            
+            
+        
+        
+            
+                var depth2 = 0;//1~3 메뉴순서 없는 메뉴는 메뉴명 기입
+            
+            
+            
+        
     </script>
-
-
-
-
-
-
-
-
-
-
-<!-- ********** Include ********** -->
-<!-- s:bg -->
-<div class="bg1">
-    <img src="../../../resources/normal/images/common/bg1.gif">
-</div>
-<div class="bg2">
-    <img src="../../../resources/normal/images/common/bg2.gif">
-</div>
-<!-- //e:bg -->
-<!-- ********** //Include ********** -->
-<!-- ********** Include ********** -->
-<!-- s:skipnavi -->
-<ul id="skipnavi">
-    <li><a href="#gnb">메뉴 바로가기</a></li>
-    <li><a href="#contentsWrap">본문 바로가기</a></li>
-    <li><a href="#footerWrap">하단 바로가기</a></li>
-</ul>
-<!-- ********** //Include ********** -->
-<!-- //e:skipnavi -->
-<!-- s:wrap -->
-<div id="wrap">
-    <!-- ********** Include ********** -->
-    <!-- s:header -->
-    <div id="headerWrap">
-        <div class="header">
-            <h1><a class="loading" href="/5959797913231323">
-                <img src="/resources/normal/images/common/img_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행"></a></h1>
-            <div class="fl-l corporate-info">
-                <span>대출모집법인 테스트법인<span class="divide"></span>대출상담사 김도형</span>
+    <!-- //e:depth setting -->
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico">
+    <link href="/resources/normal/css/jquery.bxslider.css" rel="stylesheet">
+    <link href="/resources/normal/css/jquery-ui.css" rel="stylesheet"><!-- 180424 추가 -->
+    <!-- 기존 css <link href="/resources/normal/css/default.css" rel="stylesheet">
+    <link href="/resources/normal/css/layout.css" rel="stylesheet">
+    <link href="/resources/normal/css/contents.css" rel="stylesheet">-->
+    
+    <script src="/resources/normal/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/resources/normal/js/TweenMax.min.js" type="text/javascript"></script>
+    <script src="/resources/normal/js/jquery.bxslider.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="/resources/normal/js/respond.min.js"></script>
+    <script src="/resources/normal/js/html5.js"></script>
+    <![endif]-->
+    <script src="/resources/normal/js/jquery-ui.js" type="text/javascript"></script><!-- 180424 추가 -->
+    <script src="/resources/normal/js/default.js?v=20210209" type="text/javascript"></script>
+    <script src="/resources/normal/js/ui.js?v=20210326" type="text/javascript"></script>
+    <script src="/resources/normal/js/iscroll.js" type="text/javascript"></script><!-- 180504 추가 -->
+    
+    <script type="text/javascript" src="/resources/normal/js/common_ajax.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/common_pagevalidate.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/common_util.js"></script>
+    <script type="text/javascript" src="/resources/normal/js/placeholders.js"></script> <!-- 180430 플러그인추가 -->
+    <script type="text/javascript" src="/resources/normal/js/jquery.animateSprite.min.js"></script> <!-- 180430 플러그인추가 -->
+    <script src="/resources/normal/js/streamdocs/adapter.js"></script>
+    
+    
+    <link href="/resources/normal/css/default_new.css" rel="stylesheet">
+    <link href="/resources/normal/css/layout_new.css" rel="stylesheet">
+    <link href="/resources/normal/css/contents_new.css" rel="stylesheet">
+    
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'UA-114050405-1');
+        
+        $(function() {
+            function loading() {
+                $('.tooltip-close').click();
+                addLoading(Math.round(Math.random() + 1));
+            }
+            $('.loading').click(loading);
+        });
+    </script>
+    
+    
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-114050405-1"></script>
+    
+    
+    
+    
+    <!--델피노 보안 솔루션-->
+    <script src="/resources/security/wizvera/delfino/delfino_config.js?20200313" type="text/javascript"></script>
+    <script src="/resources/security/wizvera/delfino/delfino_internal.min.js?20170417" type="text/javascript"></script>
+    <script src="/resources/security/wizvera/delfino/delfino.js?20170417" type="text/javascript"></script>
+    <script src="/resources/security/wizvera/delfino/delfino_site.js?20160912" type="text/javascript"></script>
+    
+    <!--안랩 보안 솔루션-->
+    <script src="/resources/security/ahnlab/astx2/astx2.min.js?r=13284" type="text/javascript"></script>
+    <script src="/resources/security/ahnlab/astx2/astx2_custom.js?r=13284" type="text/javascript"></script>
+    <script src="/resources/security/ahnlab/astx2/astx2_jq.min.js?r=13284" type="text/javascript"></script>
+    
+    
+    <!-- 베라포트: 공통 -->
+    <script type="text/javascript">_SITE_CreateObject = false;</script>
+    <!-- script type="text/javascript" src="../jquery/json_parse.js"></script -->
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20.js?v=20190226"></script>
+    <!-- 베라포트공통JS -->
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20_multi.js?v=20190226"></script>
+    <!-- 베라포트공통JS -->
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/veraport20_handler.js"></script>
+    <!-- 베라포트공통JS -->
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_internal.js"></script>
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_internal.js"></script>
+    <!-- 베라포트공통JS -->
+    <!-- 베라포트공통JS -->
+    <script type="text/javascript" src="/resources/security/wizvera/veraport/install20/install_config.js"></script>
+    <!-- 베라포트공통JS -->
+    
+    
+    
+        <!-- [필수]베라포트: non-Plugin 설치 확인/START-->
+        <script type="text/javascript">if (VP_config.useHandler) execVP_isInstall(timer_vpHandlerLoad);</script>
+        <!-- [필수]베라포트: non-Plugin 설치 확인/END -->
+        </head><body class="color-type1"><div style="display: none">
+            <div id="VP_msg_installed" style=""> <!-- VeraPort 설치완료 -->
             </div>
-            <div class="menu-wrap">
-                <div class="menu-top fl-r">
-                    <ul>
-                        <li><a href="#none" class="menu01 btn-sitemap" data-tooltip="sitemap-layer">사이트맵</a></li>
-                        <li><a href="http://www.yegaramsb.co.kr" class="menu02" target="_blank" title="새창으로">예가람저축은행 바로가기</a></li>
+            <div id="VP_msg_notinstall" style="display:none;"> <!-- VeraPort 미설치 -->
+            </div>
+            <div id="VP_msg_unsupported" style="display:none;"> <!-- VeraPort 미지원 -->
+            </div>
+            <div id="VP_btn_download" style="display:none;">
+            </div>
+            <div id="VP_btn_install" style=""></div>
+        </div>
+    
+        <link href="/resources/normal/css/jquery-ui.css" rel="stylesheet">
+        <script src="/resources/normal/js/jquery-ui.js" type="text/javascript"></script>
+        <script src="/resources/normal/js/common_bank_calc_util.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var pageFunc = {
+                /**
+                 * 계산 결과로 대출 결과 출력
+                 * @param {Object} result fnCal4의 계산결과
+                 */
+                notifyLoanResult: function (result) {
+                    // $('#originMoney').html(bankCalcUtils.addComma(result.originMoney));
+                    // $('#loanPeriod').html(result.loanPeriod + '개월');
+                    // $('#holdingPeriod').html(result.holdingPeriod + '개월');
+                    // $('#loanRate').html(result.loanRate * 100 + '%');
+                    // $('#repaymentMoney').html(bankCalcUtils.addComma(result.repaymentMoney));
+                    // $('#interestMoney').html(bankCalcUtils.addComma(result.interestMoney));
+                    // $('#totalMoney').html(bankCalcUtils.addComma(result.totalMoney));
+    
+                    $("#loanResult").find("> tbody").remove();	//리스트 초기화
+    
+                    result.table.forEach(function (row, i) {
+                        var trStr = "<tr>";
+                        trStr += "<td class='ta-c' scope='row'>" + (i + 1) + "</td>";
+                        trStr += "<td class='ta-c'>" + bankCalcUtils.addComma(row.repaymentTotalMoney) + "</td>";
+                        trStr += "<td class='ta-c'>" + bankCalcUtils.addComma(row.repaymentOriginMoney) + "</td>";
+                        trStr += "<td class='ta-c'>" + bankCalcUtils.addComma(row.repaymentInterestMoney) + "</td>";
+                        trStr += "<td class='ta-c'>" + bankCalcUtils.addComma(row.repaymentOriginMoneySum) + "</td>";
+                        trStr += "<td class='ta-c'>" + bankCalcUtils.addComma(row.remainMoney) + "</td>";
+                        trStr += "</tr>";
+                        $("#loanResult").append(trStr);
+                    });
+    
+                    setTimeout(function () {
+                        var offset = $("#divResult").offset();
+                        $('html, body').animate({scrollTop: offset.top + 20}, 400);
+                    }, 100);
+    
+                },
+                isInt: function (val) {
+                    return val % 1 === 0;
+                }
+            };
+            $(function () {
+                //대출금액
+                $("#monthMoneySlider").slider({
+                    range: "min",
+                    value: removeComma($("#money").val()),
+                    min: 0,
+                    max: 1000000000,
+                    disabled: false,
+                    step: 10000,
+                    slide: function (event, ui) {
+                        $("#money").val(addComma(ui.value));
+                    }
+                });
+                $("#money").change(function () {
+                    var value = removeComma(this.value);
+                    $("#monthMoneySlider").slider("value", value);
+                });
+    
+                //맡기시는기간
+                $("#paymentSlider").slider({
+                    range: "min",
+                    value: 0,
+                    min: 0,
+                    max: 60,
+                    step: 1,
+                    slide: function (event, ui) {
+                        $("#month").val(addComma(ui.value));
+                    }
+                });
+                $("#month").change(function () {
+                    var value = removeComma(this.value);
+                    $("#paymentSlider").slider("value", value);
+                });
+                //이자율
+                $("#interestSlider").slider({
+                    range: "min",
+                    value: 0,
+                    min: 0,
+                    max: 30,
+                    step: 0.01,
+                    slide: function (event, ui) {
+                        $("#interest").val(ui.value);
+                    }
+                });
+                $("#interest").change(function () {
+                    var value = this.value;
+                    $("#interestSlider").slider("value", value);
+                });
+                //상환일
+                $("#returnSlider").slider({
+                    range: "min",
+                    value: 0,
+                    min: 0,
+                    max: 60,
+                    step: 1,
+                    slide: function (event, ui) {
+                        $("#return").val(ui.value);
+                    }
+                });
+                $("#return").change(function () {
+                    var value = this.value;
+                    $("#returnSlider").slider("value", value);
+                });
+    
+                $('#inquiryBtn').on('click', function () {
+    
+                    //money 대출금
+                    //month 대출 개월수
+                    //interest 아자율
+                    //return 상환일
+                    // radio1,2,3 : 대출 타입
+                    //조회하기 버튼 inquiryBtn
+                    var loanType = $('#radio1:checked').val() | $('#radio2:checked').val() | $('#radio3:checked').val();
+    
+                    var money = Number(bankCalcUtils.removeComma($('#money').val()));
+                    var loanPeriod = Number($('#month').val());
+                    var holdingPeriod = Number($('#return').val());
+                    var rate = Number($('#interest').val());
+    
+                    if (isNaN(money) || money === 0) {
+                        customAlert({title: "알림", message: "대출금액을 입력해주세요."});
+                        return;
+                    } else if (isNaN(loanPeriod) || loanPeriod === 0) {
+                        customAlert({title: "알림", message: "대출기간을 입력해주세요."});
+                        return;
+                    } else if (!pageFunc.isInt(loanPeriod)) {
+                        customAlert({title: "알림", message: "대출기간을 정수로 입력해주세요."});
+                        return;
+                    } else if (money > 1000000000) {
+                        customAlert({title: "알림", message: "대출원금을 10억 이하로 입력해 주세요."});
+                        return;
+                    } else if (loanPeriod > 60) {
+                        customAlert({title: "알림", message: "대출기간은 최대 60개월까지 입력가능합니다."});
+                        return;
+                    } else if (isNaN(rate) || rate === 0) {
+                        customAlert({title: "알림", message: "대출금리을 입력해주세요."});
+                        return;
+                    } else if (rate > 30) {
+                        customAlert({title: "알림", message: "대출금리는 최대 30%입니다."});
+                        return;
+                    } else if (isNaN(holdingPeriod)) {
+                        customAlert({title: "알림", message: "거치기간을 정확히 입력해주세요."});
+                        return;
+                    } else if (!pageFunc.isInt(holdingPeriod)) {
+                        customAlert({title: "알림", message: "거치기간을 정수로 입력해주세요."});
+                        return;
+                    } else if (holdingPeriod > 60) {
+                        customAlert({title: "알림", message: "거치기간은 최대 60개월까지 입력가능합니다."});
+                        return;
+                    } else if (loanType == '0' && holdingPeriod > 0) {
+                        customAlert({title: "알림", message: "원금만기일시상환은 거치기간 입력이 불가능합니다."});
+                        return;
+                    } else if (holdingPeriod >= loanPeriod) {
+                        customAlert({title: "알림", message: "거치기간이 대출기간보다 크거나 같을 수 없습니다."});
+                        return;
+                    }
+    
+                    var result = bankCalcUtils.fnCal4(loanType, money, loanPeriod, holdingPeriod, rate / 100);
+                    pageFunc.notifyLoanResult(result);
+                    $('.result-wrap').show();
+                });
+                $('#reInquiryBtn').on('click', function () {
+                    $('.result-wrap').hide();
+                });
+    
+                $('#money').change(function () {
+                    $(this).val(bankCalcUtils.addComma($(this).val()))
+                });
+    
+                $('#return').change(function () {
+                    var val = Number($(this).val());
+                    $("#returnSlider").slider("value", val);
+    
+                    if (isNaN(val)) {
+                        $(this).val('0')
+                    }
+                });
+                $('#interest').change(function () {
+                    var val = Number($(this).val());
+                    if (isNaN(val)) {
+                        $(this).val('0')
+                    }
+                });
+                $('#month').change(function () {
+                    var val = Number($(this).val());
+                    if (isNaN(val)) {
+                        $(this).val('0')
+                    }
+                });
+                $('#radio3').change(function () {
+                    $('#return').val('0');
+                    $("#returnSlider").slider("value", 0);
+                });
+            });
+        </script>
+    
+    
+    
+    <!-- s:skipnavi -->
+    <ul id="skipnavi">
+        <li><a href="#gnb">메뉴 바로가기</a></li>
+        <li><a href="#contentsWrap">본문 바로가기</a></li>
+        <li><a href="#footerWrap">하단 바로가기</a></li>
+    </ul>
+    <!-- ********** //Include ********** -->
+    <!-- //e:skipnavi -->
+    <!-- s:wrap -->
+    <div id="wrap">
+        <!-- ********** Include ********** -->
+        <!-- s:header -->
+        <div id="headerWrap">
+            <div class="header">
+                 <!--D : h1 위치 변경 및 corporate-info 구조 ul, li로 변경 - 대출상담사 김도형 부분 em으로 한번 더 감싸기-->
+                 <ul class="fl-l corporate-info">
+                    <li>대출모집법인 테스트법인</li>
+                    <li><em>대출상담사 김도형</em></li>
+                 </ul>
+                <h1>
+                    <a class="loading" href="/5959797913231323">
+                    <img src="/resources/normal/images/common/img_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행"></a>
+                </h1>
+                <div class="menu-wrap">
+                    <div class="menu-top fl-r">
+                        <ul>
+                            <li><a href="#none" class="menu01 btn-sitemap" data-tooltip="sitemap-layer">사이트맵</a></li>
+                            <li><a href="http://www.yegaramsb.co.kr" class="menu02" target="_blank" title="새창으로">예가람저축은행 바로가기</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                    <ul id="gnb" style="height:auto;">
+                        <li class="depth1">
+                            <a href="/5959797913231323/introduce" class="menu01 loading active"><span>법인 및 상담사 소개</span></a>
+                        </li>
+                        <li class="depth1">
+                            <a href="/5959797913231323/cs/protection" class="menu02 loading"><span>고객센터</span></a>
+                            <ul class="depth2-wrap" style="display: none;">
+                                <li class="col1">
+                                    <ul class="depth2">
+                                        <li><a class="loading" href="/5959797913231323/cs/protection">금융소비자보호</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/branchInfo">지점안내</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/unfair">부당행위 신고안내</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/pds">약관/서식 자료실</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/faqs">FAQ</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/calculator">대출계산기</a></li>
+                                        <li><a class="loading" href="/5959797913231323/cs/certification">인증센터</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="depth1">
+                            <a href="/5959797913231323/loan/01_loan_step2" class="menu03 loading">
+                                <!--D : blob, blob2 태그 삭제-->
+                                <span>대출신청</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="clear"></div>
-                <ul id="gnb" style="height: auto;">
-                    <li class="depth1">
-                        <a href="/5959797913231323/introduce" class="menu01 loading"><span>법인 및 상담사 소개</span></a>
-                    </li>
-                    <li class="depth1">
-                        <a href="/5959797913231323/cs/protection" class="menu02 loading active"><span>고객센터</span></a>
-                        <ul class="depth2-wrap" style="display: none;">
-                            <li class="col1">
-                                <ul class="depth2">
-                                    <li><a class="loading active" href="/5959797913231323/cs/protection">금융소비자보호</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/branchInfo">지점안내</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/unfair">부당행위 신고안내</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/pds">약관/서식 자료실</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/faqs">FAQ</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/calculator">대출계산기</a></li>
-                                    <li><a class="loading active" href="/5959797913231323/cs/certification">인증센터</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="depth1">
-                        
-                        
-                        	
-                        	
-                        		<a href="/5959797913231323/loan/01_loan_step2" class="menu03 loading">
-                        	
-                        
-                            <div class="blob"></div>
-                            <div class="blob2"></div>
-                            <span>대출신청</span>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
-    </div>
-    <!-- //e:header -->
-    <!-- ********** //Include ********** -->
-
-<!-- s contentsWrap -->
-<div id="contentsWrap">
-    <!-- s:subVisualWrap -->
-    <div id="subVisualWrap" class="sub2-7">
-        <div class="breadcrumb">
-            <a href="/5959797913231323" class="home ir loading">홈</a>
-            <a href="/5959797913231323/cs/protection" class="depth1 loading">고객센터</a>
-            <a href="/5959797913231323/cs/certification" class="depth2 loading">인증센터</a>
-        </div>
-        <div class="tit-wrap ta-c">
-            <h2 class="font50 mb10">인증센터</h2>
-            <p class="desc">전자거래를 안심하고 사용할 수 있도록 해주는 사이버 신분증입니다.</p>
-        </div>
-
-    </div>
-    <!-- //e:subVisualWrap -->
-    <!-- s:contents -->
-    <div class="contents default-wrap">
-        <div class="auth-center-wrap">
-            <div class="content1 of-hi">
-                <h3 class="tit">공동인증서란</h3>
-                <p>인터넷 창에서 발생하는 모든 전자거래를 안심하고 사용할 수 있도록 해주는 사이버 신분증입니다.</p>
-                <p class="list-tit mt60">기업고객용 공동인증서</p>
-                <div class="table-wrap">
-                    <table class="table type1">
-                        <caption>기업고객용 공동인증서</caption>
-                        <colgroup>
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col style="width:25%">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col" class="ta-c">공동인증서종류</th>
-                            <th scope="col" class="ta-c">발급대상</th>
-                            <th scope="col" class="ta-c">용도</th>
-                            <th scope="col" class="ta-c">수수료</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="ta-c">저축은행용</td>
-                            <td class="ta-c">기업뱅킹가입고객</td>
-                            <td class="ta-c">저축은행 인터넷뱅킹 거래용</td>
-                            <td class="ta-c">무료</td>
-                        </tr>
-                        </tbody>
-                    </table>
+        <!-- //e:header -->
+        <!-- ********** //Include ********** -->
+    
+        <!-- s contentsWrap -->
+        <div id="contentsWrap">
+            <!-- s:subVisualWrap -->
+            <div id="subVisualWrap" class="sub1-1">
+                <!--D : div breadcrumb 구조변경 -->
+                <div id="breadcrumb" class="breadcrumb-renewal">
+                    <div class="container">
+                        <div class="home-box"><a href="#" class="home ir">홈</a></div>
+                        <div class="depth-box">
+                            <a href="#">고객센터</a>
+                        </div>
+                        <div class="depth-box">
+                            <a href="#">인증센터</a>
+                        </div>
+                    </div>
                 </div>
-                <p class="list-tit mt60">개인고객용 공동인증서</p>
-                <div class="table-wrap">
-                    <table class="table type1">
-                        <caption>개인고객용 공동인증서</caption>
-                        <colgroup>
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col style="width:25%">
-                            <col style="width:25%">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col" class="ta-c">공동인증서종류</th>
-                            <th scope="col" class="ta-c">발급대상</th>
-                            <th scope="col" class="ta-c">용도</th>
-                            <th scope="col" class="ta-c">수수료</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                <div class="tit-wrap ta-c">
+                    <h2 class="font50 mb10">인증센터</h2>
+                    <p class="desc">전자거래를 안심하고 사용할 수 있도록 해주는 사이버 신분증입니다.</p>
+                </div>
+            </div>
+            <!-- //e:subVisualWrap -->
+             <!-- s:contents --> 
+             <!--D : contents default-wrap에서 jsp 그대로 들고 왔습니다. 걍 전체 복붙 한번 해보세요. -->
+             <div class="contents default-wrap">
+                <div class="auth-center-wrap">
+                    <div class="content1 of-hi">
+                        <h3 class="tit">공동인증서란</h3>
+                        <p>인터넷 창에서 발생하는 모든 전자거래를 안심하고 사용할 수 있도록 해주는 사이버 신분증입니다.</p>
+                        <p class="list-tit mt60">기업고객용 공동인증서</p>
+                        <div class="table-wrap">
+                            <table class="table type1">
+                                <caption>기업고객용 공동인증서</caption>
+                                <colgroup>
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="ta-c">공동인증서종류</th>
+                                    <th scope="col" class="ta-c">발급대상</th>
+                                    <th scope="col" class="ta-c">용도</th>
+                                    <th scope="col" class="ta-c">수수료</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="ta-c">저축은행용</td>
+                                    <td class="ta-c">기업뱅킹가입고객</td>
+                                    <td class="ta-c">저축은행 인터넷뱅킹 거래용</td>
+                                    <td class="ta-c">무료</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="list-tit mt60">개인고객용 공동인증서</p>
+                        <div class="table-wrap">
+                            <table class="table type1">
+                                <caption>개인고객용 공동인증서</caption>
+                                <colgroup>
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                    <col style="width:25%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="ta-c">공동인증서종류</th>
+                                    <th scope="col" class="ta-c">발급대상</th>
+                                    <th scope="col" class="ta-c">용도</th>
+                                    <th scope="col" class="ta-c">수수료</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- 180420(2) 추가 -->
+                                <tr>
+                                    <td class="ta-c va-m">은행/신용카드/보험용</td>
+                                    <td class="ta-c va-m">개인뱅킹 가입고객</td>
+                                    <td class="ta-c">
+                                        인터넷뱅킹, 국세청 연말정산용, 온라인보험거래, 전자민원서비스, 온라인 신용카드 결제
+                                    </td>
+                                    <td class="ta-c va-m">무료</td>
+                                </tr>
+                                <!-- //180420(2) 추가 -->
+                                <tr>
+                                    <td class="ta-c va-m">범용개인</td>
+                                    <td class="ta-c va-m">개인뱅킹 가입고객</td>
+                                    <td class="ta-c">
+                                        인증서가 필요한 모든 거래
+                                        <ul class="mt10">
+                                            <li>- 인터넷뱅킹</li>
+                                            <li>- 온라인 주식거래</li>
+                                            <li>- 온라인 신용카드 결제</li>
+                                            <li>- 전자민원서비스 등</li>
+                                        </ul>
+                                    </td>
+                                    <td class="ta-c va-m">4,400원/연간</td> <!-- 180420(2) 텍스트수정 -->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- 180420(2) 추가 -->
-                        <tr>
-                            <td class="ta-c va-m">은행/신용카드/보험용</td>
-                            <td class="ta-c va-m">개인뱅킹 가입고객</td>
-                            <td class="ta-c">
-                                인터넷뱅킹, 국세청 연말정산용, 온라인보험거래, 전자민원서비스, 온라인 신용카드 결제
-                            </td>
-                            <td class="ta-c va-m">무료</td>
-                        </tr>
+                        <h3 class="tit mt60">PC→스마트폰 공동인증서 내보내기</h3>
+                        <!-- D : 버튼공통 맞추기 -->
+                        <img src="/resources/normal/images/page/img_auth_center1.png" alt="1단계:스마트기기에서 예가람저축은행 논스탑대출 어플리케이션 실행 / 2단계: '공동인증서 내보내기(PC→스마트폰)' 선택 / 3단계:PC에서 복사할 인증서 선택 후 생성된 승인번호를 어플리케이션 화면에 입력 / 4단계:공동인증서를 PC에서 스마트기기로 복사완료" class="mt20">
+                        <div class="btn-wrap">
+                            <button type="button" name="button" class="btn-big prod-more" onclick="javascript:Delfino.exportCertificate(completeExportCB);">공동인증서 내보내기(PC→스마트폰)</button>
+                        </div>
                         <!-- //180420(2) 추가 -->
-                        <tr>
-                            <td class="ta-c va-m">범용개인</td>
-                            <td class="ta-c va-m">개인뱅킹 가입고객</td>
-                            <td class="ta-c">
-                                인증서가 필요한 모든 거래
-                                <ul class="mt10">
-                                    <li>- 인터넷뱅킹</li>
-                                    <li>- 온라인 주식거래</li>
-                                    <li>- 온라인 신용카드 결제</li>
-                                    <li>- 전자민원서비스 등</li>
-                                </ul>
-                            </td>
-                            <td class="ta-c va-m">4,400원/연간</td> <!-- 180420(2) 텍스트수정 -->
-                        </tr>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
-                <!-- 180420(2) 추가 -->
-                <div class="list-tit mt60">PC→스마트폰 공동인증서 내보내기</div>
-                <img src="/resources/normal/images/page/img_auth_center1.png" alt="1단계:스마트기기에서 예가람저축은행 논스탑대출 어플리케이션 실행 / 2단계: '공동인증서 내보내기(PC→스마트폰)' 선택 / 3단계:PC에서 복사할 인증서 선택 후 생성된 승인번호를 어플리케이션 화면에 입력 / 4단계:공동인증서를 PC에서 스마트기기로 복사완료" class="mt20">
-                <p class="ta-c mt40"><button type="button" name="button" class="btn-big pink" onclick="javascript:Delfino.exportCertificate(completeExportCB);">공동인증서 내보내기(PC→스마트폰)</button></p>
-                <!-- //180420(2) 추가 -->
             </div>
+            <!-- //e:contents -->
+            <button type="button" name="button" class="btn-circle top ir btn-top">위로</button>
         </div>
-    </div>
-    <!-- //e:contents -->
-    <button type="button" name="button" class="btn-circle top ir btn-top" style="display: none;">위로</button>
-</div>
-<!-- //e: contentsWrap -->
-
-
-
-    <!-- ********** Include ********** -->
-    <!-- s footerWrap -->
-    <div id="footerWrap">
-        <div class="top-wrap">
-            <div class="default-wrap">
-                <div class="fl-l">
-                    <span class="counselor">대출상담사 김도형</span>
-                    <span class="hp color-EC008C">010-1234-1234</span>
-                    <span class="time">( 평일 09:00 ~ 18:00 상담가능. 국경일 및 토,일요일은 휴무 )</span>
-                </div>
-                <!-- s:family-site-wrap -->
-                
-
-
-<div class="family-site-wrap of-hi fl-r">
-    <label class="blind" for="family-site-button">관련사이트</label>
-    <div class="select-wrap fl-l">
-        <select name="" id="family-site" style="display: none;">
-            <option selected="selected" value="">관련사이트</option>
-            <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
-            <option value="http://www.fss.or.kr">금융감독원</option>
-            <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
-            <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
-        </select><span tabindex="0" id="family-site-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-haspopup="true" class="ui-selectmenu-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget"><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span><span class="ui-selectmenu-text">관련사이트</span></span>
-    </div>
-    <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
-</div>
-                <!-- //e:family-site-wrap -->
-            </div>
-        </div>
-        <div class="footer default-wrap">
-            
-
-
-<div class="copyright">
-    <p class="mb15">상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 테스트법인 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다.<br>
-        또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
-        대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
-        예가람저축은행 소비자보호 담당자 : 02)6906-7065<br>
-	대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실&gt;모집인수수료율)<br>     
-      신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr </a> <br> 
-      금융소비자는 방문판매 목적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
-       두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
-        </p>
-    <p class="mb15">
-	    - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
-- 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
-- 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
-- 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
-- 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
-- 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
-- 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
-- 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
-- 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
-- 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.<br>
-	</p>
-	<p>예가람저축은행&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호 : 107-86-66267 &nbsp;&nbsp;|&nbsp;&nbsp;주소 : 서울특별시 중구 세종대로 50&nbsp;&nbsp;|&nbsp;&nbsp;대표번호 : 1877-7788&nbsp;&nbsp;|&nbsp;&nbsp;금융사기 야간콜센터 : (02)3978-600,800<br>
+        <!-- //e: contentsWrap -->
         
-        	
-        	
-        		예가람저축은행 준법감시인 심의필 제 2024-086호(2024.04.23 ~2025.04.22)
-        	
-       	
-        &nbsp;&nbsp;|&nbsp;&nbsp;Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!-- 예가람저축은행 준법감시인 심의필제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18) -->
-</div>
-            <div class="footer-logo">
-				<img style="width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
-                <img style="margin-top:17px;" src="/resources/normal/images/common/img_footer_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행">
+    
+    
+        <!-- ********** Include ********** -->
+        <div id="footerWrap">
+            <div class="top-wrap">
+                <div class="default-wrap">
+                    <div class="fl-l">
+                        <span class="counselor">대출상담사 김도형</span>
+                        <span class="hp color-EC008C">010-1234-1234</span>
+                        <span class="time">( 평일 09:00 ~ 18:00 상담가능. 국경일 및 토,일요일은 휴무 )</span>
+                    </div>
+                    <!-- s:family-site-wrap -->
+                    <div class="family-site-wrap of-hi fl-r">
+                        <label class="blind" for="family-site">관련사이트</label>
+                        <div class="select-wrap fl-l">
+                            <select name="" id="family-site">
+                                <option selected="selected" value="">관련사이트</option>
+                                <option value="http://www.yegaramsb.co.kr">예가람저축은행</option>
+                                <option value="http://www.fss.or.kr">금융감독원</option>
+                                <option value="https://www.fsb.or.kr/main.do">저축은행중앙회</option>
+                                <option value="http://cyberbureau.police.go.kr/index.do">경찰청사이버안전국</option>
+                            </select>
+                        </div>
+                        <button type="button" name="button" onclick="goFamilySite()" class="fl-l">Go</button>
+                    </div>
+                    <!-- //e:family-site-wrap -->
+                </div>
+            </div>
+            <div class="footer default-wrap">
+                <div class="copyright">
+                    <p class="mb15">상기인은 예가람저축은행과 대출모집업무 위탁계약을 체결한 테스트법인 대출모집법인 소속으로 저축은행 중앙회에 등록된 대출상담사 입니다.<br>
+                        또한, 예가람저축은행만의 대출상품을 대리·중개하며 계약 체결 권한은 예가람저축은행에 있습니다.<br>
+                        대출과 관련된 중개수수료를 요구하거나 받지 않습니다. 수수료를 요구하거나 받은것은 불법이며 수수료를 요구할 경우 금감원 1332로 신고바랍니다.<br>
+                        예가람저축은행 소비자보호 담당자 : 02)6906-7065<br>
+                    대출모집 수수료율 확인(<a href="https://www.yegaramsb.co.kr">https://www.yegaramsb.co.kr</a> 상품공시실&gt;모집인수수료율)<br>     
+                    신원확인방법 : <a href="https://www.loanconsultant.or.kr/loan_main.do">https://www.loanconsultant.or.kr </a> <br> 
+                    금융소비자는 방문판매 목적으로 방문 또는 전화 연락하는 것을 금지하도록 요구할 수 있습니다.<br> 
+                    두낫콜 홈페이지 <a href="https://www.donotcall.or.kr">https://www.donotcall.or.kr</a> 에 접속하시면 신청 및 철회가 가능합니다.       
+                        </p>
+                    <p class="mb15">
+                        - 저축은행 심사기준과 고객 신용도에 따라 대출여부가 결정됩니다.<br>
+                - 계약 체결 전 상품설명서 및 약관을 확인하시기 바랍니다.<br>
+                - 해당 상품에 대해 충분한 사전 설명을 받을 권리가 있으며, 설명을 이해한 후 거래하시기 바랍니다.<br>
+                - 대출금리는 기준금리 변동에 따라 변경될 수 있습니다.<br>
+                - 기간 연장시점에 개인 신상에 변경이 있는 경우 대출금의 일부 또는 전부가 회수될 수 있습니다.<br>
+                - 대출금의 상환 또는 이자납입이 지연된 경우 연체이율이 적용되며, 예금 등 기타채권과의 상계나 법적절차등으로 재산상의 불이익을 당하실 수 있습니다.<br>
+                - 연체 시 계약기한 만료 전 원리금 변제 의무가 발생할 수 있습니다.<br>
+                - 과도한 대출은 개인신용평점 하락의 원인이 될 수 있습니다.<br>
+                - 대출상품 이용시 귀하의 신용등급 또는 개인신용평점이 하락할 수 있습니다. 신용등급 또는 개인신용평점이 하락하면 추가 대출이 제한되거나, 대출금리 상승, 대출한도 감소 등 불이익이 발생할 수 있습니다.<br>
+                - 기타 자세한 내용은 창구직원 또는 대표번호(1877-7788)로 문의하시거나 상품설명서를 반드시 참조하시기 바랍니다.<br>
+                    </p>
+                    <p>예가람저축은행&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호 : 107-86-66267 &nbsp;&nbsp;|&nbsp;&nbsp;주소 : 서울특별시 중구 세종대로 50&nbsp;&nbsp;|&nbsp;&nbsp;대표번호 : 1877-7788&nbsp;&nbsp;|&nbsp;&nbsp;금융사기 야간콜센터 : (02)3978-600,800<br>
+                        
+                                
+                                예가람저축은행 준법감시인 심의필 제 2024-097호(2024.05.20 ~2025.05.19)
+                            
+                            
+                        
+                        &nbsp;&nbsp;|&nbsp;&nbsp;Copyright © 2018 Yegaram Savings Bank. All Rights Reserved.</p><!-- 예가람저축은행 준법감시인 심의필제 2024-022호(유효기간 2024.03.19 ~ 2024.03.18) -->
+                </div>
+                <div class="footer-logo">
+                    <!--D:이미지 위치 아래 위 변경-->
+                    <img src="/resources/normal/images/common/img_footer_logo_20191119.png" alt="Yegaram Savings Bank 예가람저축은행">
+                    <img style="margin-top:25px; width:65px !important;" class="img-kisa" src="/resources/normal/images/common/img_kisa.jpg" alt="KISA 인증마크(SSL)" title="KISA 인증마크(SSL)">
+                </div>
             </div>
         </div>
-    </div>
-    <!-- //e:footerWrap -->
-    <!-- s:sitemapWrap -->
-    <div id="sitemapWrap" class="layerpopup sitemap-layer" tabindex="0" data-tooltip-con="sitemap-layer" data-focus="sitemap-layer" data-focus-prev="btn-menu-close" style="max-height: 853px;">
-        <!-- s:all-menu-con -->
-        <div class="all-menu-con">
-            <div class="tit color-612885 font40 mb30">사이트맵</div>
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu1">
-                <h3><a class="loading" href="/5959797913231323/introduce">법인 및 상담사 소개</a></h3>
-            </div>
-            <!-- //e:all-menu-col -->
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu2">
-                <h3><a href="/5959797913231323/cs/protection">고객센터</a></h3>
-                <ul class="all-depth2">
-                    <li><a class="loading" href="/5959797913231323/cs/protection">- 금융소비자보호</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/branchInfo">- 지점안내</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/unfair">- 부당행위 신고안내</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/pds">- 약관/서식 자료실</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/faqs">- FAQ</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/calculator">- 대출계산기</a></li>
-                    <li><a class="loading" href="/5959797913231323/cs/certification">- 인증센터</a></li>
-                </ul>
-            </div>
-            <!-- //e:all-menu-col -->
-            <!-- s:all-menu-col -->
-            <div class="all-menu-col menu3">
-                
-                 
-                	
-                	
-                		<h3><a class="loading" href="/5959797913231323/loan/01_loan_step2">대출신청</a></h3>
-                	
-                
-            </div>
-            <!-- //e:all-menu-col -->
+        <!-- //e:sitemapWrap -->
+        <!-- ********** //Include ********** -->
         </div>
-        <!-- //e:all-menu-con -->
-        <button type="button" name="button" class="btn-menu-close tooltip-close" data-focus="btn-menu-close" data-focus-next="sitemap-layer">전체메뉴 닫기</button>
-    </div>
-    <!-- //e:sitemapWrap -->
-    <!-- ********** //Include ********** -->
-    </div>
-    <!-- //e:wrap -->
-
-
-
-<div class="ui-selectmenu-menu ui-front"><ul aria-hidden="true" aria-labelledby="family-site-button" id="family-site-menu" role="listbox" tabindex="0" class="ui-menu ui-corner-bottom ui-widget ui-widget-content"></ul></div></body></html>
+        <!-- //e:wrap -->
+    
+    </body>
+    </html>
