@@ -804,7 +804,11 @@ function setEddValue() {
                        	
                        	<div class="grid2 mb30">
                             <div class="form-wrap">
+<<<<<<< HEAD
                                 <label for="cust_nm" class="inp-tit req">성명</label>
+=======
+                                <p class="input-tit font13 color-351B6F">이름</p>
+>>>>>>> 6305ab5c8435ba2be85f301872f36a23510460a3
                                 <input type="text" name="cust_nm" value="${userInfo.CUST_NM }" id="cust_nm" placeholder="고객실명 입력" maxlength="20" class="ko-txt">
                             </div>
                             <div class="form-wrap">
@@ -1296,7 +1300,23 @@ function setEddValue() {
                                     <div class="subcheck-area add_class2">
                                     	<div class="sub-box">
                                         	<p class="check-tit"><label for="prod_terms_agree0" class="check"><input type="checkbox" name="prod_terms_agree0" id="prod_terms_agree0" value=""  disabled="disabled">금리인하요구권에 대한 상기의 설명을 확인하였습니다.</label></p>
+<<<<<<< HEAD
                                         	
+=======
+                                        	<!-- 2021.09.14 -->
+                                        	<!-- <p class="check-tit"><label for="prod_terms_agree1" class="check"><input type="checkbox" name="prod_terms_agree1" id="prod_terms_agree1" value=""  disabled="disabled">청약철회권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                        	<p class="check-tit"><label for="prod_terms_agree2" class="check"><input type="checkbox" name="prod_terms_agree2" id="prod_terms_agree2" value=""  disabled="disabled">위법계약해지권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                        	<p class="check-tit"><label for="prod_terms_agree6" class="check"><input type="checkbox" name="prod_terms_agree6" id="prod_terms_agree6" value=""  disabled="disabled">자료열람요구권에 대한 상기의 설명을 확인하였습니다.</label></p> -->
+                                       		<!-- <div>
+	                                        	<p class="check-tit">대출모집인 설명확인서 <br>
+                                        			<span class="radio-wrap fl-l" style="height: 20px;">
+				                                        <label for="prod_terms_agree3_1" class="radio r-on"><input type="radio" name="prod_terms_agree3" id="prod_terms_agree3_1" value="Y" checked disabled="disabled">설명 받았음</label>
+				                                        <label for="prod_terms_agree3_2" class="radio"><input type="radio" name="prod_terms_agree3" id="prod_terms_agree3_2" value="N"disabled="disabled">설명 받지 않았음</label>
+				                                    </span>
+                                        		
+    	                                    	</p>
+                                       		</div> -->
+>>>>>>> 6305ab5c8435ba2be85f301872f36a23510460a3
                                        		<div style="margin-top:20px;">
                                        			<p class="check-tit">대출거절사유 고지신청서 <br>
 	                                        		<span class="radio-wrap fl-l" style="height: 20px;">
@@ -1339,13 +1359,62 @@ function setEddValue() {
                                     <label for="agree-check3" class="check"><input type="checkbox" name="terms_agreement_3" id="agree-check3" value="" >(필수)개인(신용)정보 수집·이용·제공 동의서 (서민금융진흥원用)</label>
                                     <button type="button" name="button" class="btn-normal tiny agree-wrap-btn" data-tooltip="manual011-layer" title="(필수)개인(신용)정보 수집·이용·제공 동의서 (서민금융진흥원用) 자세히보기">자세히보기</button>
                                 </dd>
+<<<<<<< HEAD
 
+=======
+<!--                                 <dd id="T000800008"> -->
+<!--                                     <label for="agree-check4" class="check"><input type="checkbox" name="terms_agreement_4" id="agree-check4" value="" >(필수)개인(신용)정보 및 기업(신용)정보 조회․수집·이용·제공과 행정정보공동이용, 전자금융거래확인서 발급을 위한 동의서</label> -->
+<!--                                     <button type="button" name="button" class="btn-normal tiny agree-wrap-btn" data-tooltip="manual011-layer" title="(필수)개인(신용)정보 및 기업(신용)정보 수집·이용·제공과 행정정보공동이용, 전자금융거래확인서 발급을 위한 동의서 자세히보기">자세히보기</button> -->
+<!--                                 </dd> -->
+>>>>>>> 6305ab5c8435ba2be85f301872f36a23510460a3
                                 
                                 <dd id="T000800009">
                                     <label for="agree-check8" class="check"><input type="checkbox" name="terms_agreement_8" id="agree-check8" value="" >(필수)계약 체결·이행을 위한 상세 동의서(개인금융성 신용보험용)</label>
                                     <button type="button" name="button" class="btn-normal tiny agree-wrap-btn" data-tooltip="manual011-layer" title="(필수)계약 체결·이행을 위한 상세 동의서(개인금융성 신용보험용) 자세히보기">자세히보기</button>
                                 </dd>
+<<<<<<< HEAD
                                
+=======
+                                <!-- <dd id="N000804001">
+                                    <label for="productdetail" class="check"><input type="checkbox" id="productdetail" value="">(필수)가계대출상품설명서 확인하기</label>
+                                    <button type="button" name="button" class="btn-normal tiny agree-wrap-btn" data-tooltip="manual011-layer" title="상품설명서 확인하기">자세히보기</button>    
+                                    <div class="subcheck-area add_class2">
+                                    	<div class="sub-box">
+                                        	<p class="check-tit"><label for="prod_terms_agree0" class="check"><input type="checkbox" name="prod_terms_agree0" id="prod_terms_agree0" value=""  disabled="disabled">금리인하요구권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                        	2021.09.14
+                                        	<p class="check-tit"><label for="prod_terms_agree1" class="check"><input type="checkbox" name="prod_terms_agree1" id="prod_terms_agree1" value=""  disabled="disabled">청약철회권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                        	<p class="check-tit"><label for="prod_terms_agree2" class="check"><input type="checkbox" name="prod_terms_agree2" id="prod_terms_agree2" value=""  disabled="disabled">위법계약해지권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                        	<p class="check-tit"><label for="prod_terms_agree6" class="check"><input type="checkbox" name="prod_terms_agree6" id="prod_terms_agree6" value=""  disabled="disabled">자료열람요구권에 대한 상기의 설명을 확인하였습니다.</label></p>
+                                       		<div>
+	                                        	<p class="check-tit">대출모집인 설명확인서 <br>
+                                        			<span class="radio-wrap fl-l" style="height: 20px;">
+				                                        <label for="prod_terms_agree3_1" class="radio r-on"><input type="radio" name="prod_terms_agree3" id="prod_terms_agree3_1" value="Y" checked disabled="disabled">설명 받았음</label>
+				                                        <label for="prod_terms_agree3_2" class="radio"><input type="radio" name="prod_terms_agree3" id="prod_terms_agree3_2" value="N"disabled="disabled">설명 받지 않았음</label>
+				                                    </span>
+                                        		
+    	                                    	</p>
+                                       		</div>
+                                       		<div style="margin-top:20px;">
+                                       			<p class="check-tit">대출거절사유 고지신청서 <br>
+	                                        		<span class="radio-wrap fl-l" style="height: 20px;">
+				                                        <label for="prod_terms_agree4_1" class="radio"><input type="radio" name="prod_terms_agree4" id="prod_terms_agree4_1" value="Y">신청</label>
+				                                        <label for="prod_terms_agree4_2" class="radio r-on"><input type="radio" name="prod_terms_agree4" id="prod_terms_agree4_2" value="N" checked >신청하지 않음</label>
+				                                    </span>
+	                                        	</p>
+                                       		</div>
+                                        	<div style="margin-top:20px;">
+                                        		<p class="check-tit">대학생·청년층확인서 <br>
+	                                        		<span class="radio-wrap fl-l" style="height: 20px;">
+				                                        <label for="prod_terms_agree5_1" class="radio"><input type="radio" name="prod_terms_agree5" id="prod_terms_agree5_1" value="Y" disabled="disabled">설명 받았음</label>
+				                                        <label for="prod_terms_agree5_2" class="radio r-on"><input type="radio" name="prod_terms_agree5" id="prod_terms_agree5_2" value="N" checked disabled="disabled">설명 받지 않았음</label>
+				                                    </span>
+	                                        	</p>
+                                        	</div>
+                                        	<br>
+	                                    </div>
+                                    </div>
+                                </dd> -->
+>>>>>>> 6305ab5c8435ba2be85f301872f36a23510460a3
                                 <dd id="sunshinedetail1">
                                     <label for="sunshinedetail" class="check"><input type="checkbox" id="sunshinedetail" value="">(필수)가계대출 상품설명서 확인하기</label>
                                     <button type="button" name="button" class="btn-normal tiny agree-wrap-btn" data-tooltip="manual011-layer" title="햇살론 상품설명서 확인하기">자세히보기</button>
