@@ -234,7 +234,7 @@
 .layerpopup .pop-cts .txt-box2 .terms-txt2 { padding:10px; text-align:left; }
 
 /***메인배너 상품 팝업**/
-.layerpopup.main-layer { overflow:auto; }
+.layerpopup.main-layer { overflow:auto; transform: translateY(-40%); }
 .layerpopup.main-layer .bg-wrap { display:none; }
 .layerpopup.main-layer .title-wrap { padding:0 0 30px; margin:0; border-bottom:2px solid #000; line-height:46px; }
 .layerpopup.main-layer .title-wrap p { font-size:18px; color:#666666; line-height:1.5; }
